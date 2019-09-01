@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="福">
 <meta property="og:description" content="Hexo官网 Hexo中文网   nodejs 官网下载安装最新版即可 淘宝cnpm镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org 备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。    GitHub GitHub Desktop: 桌面版">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-01T09:15:18.472Z">
+<meta property="og:updated_time" content="2019-09-01T11:56:18.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github+hexo搭建个人博客">
 <meta name="twitter:description" content="Hexo官网 Hexo中文网   nodejs 官网下载安装最新版即可 淘宝cnpm镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org 备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。    GitHub GitHub Desktop: 桌面版">
@@ -38,8 +38,6 @@
 
 
   
-    <link rel="stylesheet" href="/css/personal-style.css">
-  
 
   
 
@@ -48,6 +46,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
+      hm.type = "*.*";
       hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
@@ -58,7 +57,8 @@
   
   <script type="text/javascript">
 	(function(){
-	    var bp = document.createElement('script');
+		var bp = document.createElement('script');
+		bp.type = "*.*";
 	    var curProtocol = window.location.protocol.split(':')[0];
 	    if (curProtocol === 'https') {
 	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
@@ -183,7 +183,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs"><span class="toc-text">nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-text">GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VSCode：编译器"><span class="toc-text">VSCode：编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo"><span class="toc-text">hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS插件"><span class="toc-text">RSS插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题更换：推荐一个个人比较喜欢的fexo"><span class="toc-text">主题更换：推荐一个个人比较喜欢的fexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用分类页面"><span class="toc-text">fexo：启用分类页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用标签页面"><span class="toc-text">fexo：启用标签页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用友链页面"><span class="toc-text">fexo：启用友链页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo-启用关于页面"><span class="toc-text">fexo: 启用关于页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用项目页面"><span class="toc-text">启用项目页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用搜索页面"><span class="toc-text">启用搜索页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装完成，享受成果把"><span class="toc-text">安装完成，享受成果把</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到GitHub"><span class="toc-text">部署到GitHub</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs"><span class="toc-text">nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-text">GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VSCode：编译器"><span class="toc-text">VSCode：编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo"><span class="toc-text">hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS插件"><span class="toc-text">RSS插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题更换：推荐一个个人比较喜欢的fexo"><span class="toc-text">主题更换：推荐一个个人比较喜欢的fexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用分类页面"><span class="toc-text">fexo：启用分类页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用标签页面"><span class="toc-text">fexo：启用标签页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用友链页面"><span class="toc-text">fexo：启用友链页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo-启用关于页面"><span class="toc-text">fexo: 启用关于页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo-启用项目页面"><span class="toc-text">fexo: 启用项目页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo-自定义样式"><span class="toc-text">fexo: 自定义样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用搜索页面"><span class="toc-text">启用搜索页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装完成，享受成果把"><span class="toc-text">安装完成，享受成果把</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到GitHub"><span class="toc-text">部署到GitHub</span></a></li></ol>
   </div>
 
 
@@ -317,12 +317,16 @@
 </ul>
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">layout: about</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-<h2 id="启用项目页面"><a href="#启用项目页面" class="headerlink" title="启用项目页面"></a>启用项目页面</h2><ul>
+<h2 id="fexo-启用项目页面"><a href="#fexo-启用项目页面" class="headerlink" title="fexo: 启用项目页面"></a>fexo: 启用项目页面</h2><ul>
 <li>根目录执行<code>hexo new page project</code></li>
 <li>修改<code>my-blog/source/project/index.md</code>内容</li>
 </ul>
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: project</span><br><span class="line">layout: project</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
+<h2 id="fexo-自定义样式"><a href="#fexo-自定义样式" class="headerlink" title="fexo: 自定义样式"></a>fexo: 自定义样式</h2><ul>
+<li>未自定义样式情况，屏蔽<code>personal_style: /css/personal-style.css</code></li>
+<li>需要自定义样式，官网文档有实例</li>
+</ul>
 <h2 id="启用搜索页面"><a href="#启用搜索页面" class="headerlink" title="启用搜索页面"></a>启用搜索页面</h2><ul>
 <li>目录执行<code>hexo new page search</code></li>
 <li>修改<code>my-blog/source/search/index.md</code>内容</li>
