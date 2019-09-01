@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>github+hexo搭建个人博客 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="hexo,github,">
+  
+
+  <meta name="description" content="Hexo官网 Hexo中文网   nodejs 官网下载安装最新版即可 淘宝cnpm镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org 备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。    GitHub GitHub Desktop: 桌面版">
+<meta name="keywords" content="hexo,github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github+hexo搭建个人博客">
+<meta property="og:url" content="https://fxliu.github.io/2019/09/01/github+hexo搭建个人博客/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="Hexo官网 Hexo中文网   nodejs 官网下载安装最新版即可 淘宝cnpm镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org 备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。    GitHub GitHub Desktop: 桌面版">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-01T09:15:18.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="github+hexo搭建个人博客">
+<meta name="twitter:description" content="Hexo官网 Hexo中文网   nodejs 官网下载安装最新版即可 淘宝cnpm镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org 备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。    GitHub GitHub Desktop: 桌面版">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs"><span class="toc-text">nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-text">GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VSCode：编译器"><span class="toc-text">VSCode：编译器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo"><span class="toc-text">hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSS插件"><span class="toc-text">RSS插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题更换：推荐一个个人比较喜欢的fexo"><span class="toc-text">主题更换：推荐一个个人比较喜欢的fexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用分类页面"><span class="toc-text">fexo：启用分类页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用标签页面"><span class="toc-text">fexo：启用标签页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo：启用友链页面"><span class="toc-text">fexo：启用友链页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo-启用关于页面"><span class="toc-text">fexo: 启用关于页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用项目页面"><span class="toc-text">启用项目页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启用搜索页面"><span class="toc-text">启用搜索页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装完成，享受成果把"><span class="toc-text">安装完成，享受成果把</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到GitHub"><span class="toc-text">部署到GitHub</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-github+hexo搭建个人博客" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">github+hexo搭建个人博客</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/博客/">博客</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <ul>
+<li><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo官网</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo中文网</a></li>
+</ul>
+<hr>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><ul>
+<li>官网<a href="http://nodejs.cn/download/" title="中文网" target="_blank" rel="noopener">下载</a>安装最新版即可</li>
+<li><a href="https://npm.taobao.org/" target="_blank" rel="noopener">淘宝cnpm镜像</a><ul>
+<li><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></li>
+<li>备注：先装的nodejs 64位，cnpm安装失败，各种百度 - 各种尝试 - 各种不好使；卸载重装32位搞定，心都碎了。</li>
+</ul>
+</li>
+</ul>
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><ul>
+<li><a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a>: 桌面版，Git UI工具</li>
+<li><a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git For Windows</a>: Git命令行工具，hexo需要</li>
+<li>仓库1：<a href="https://github.com/fxliu/fxliu.github.io" title="静态文件" target="_blank" rel="noopener">博客仓库</a>静态文件部署位置</li>
+<li>GitHub免费提供，申请方法问度娘，每个账号可以免费申请一个</li>
+<li>仓库2：<a href="https://github.com/fxliu/hexo" target="_blank" rel="noopener">源码仓库</a>hexo源码保存位置</li>
+</ul>
+<h2 id="VSCode：编译器"><a href="#VSCode：编译器" class="headerlink" title="VSCode：编译器"></a>VSCode：编译器</h2><ul>
+<li>微软官网<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">下载</a>安装</li>
+<li>推荐插件<ul>
+<li><code>Ctrl+Shift+P</code>-&gt;<code>configure Display Language</code>安装简体中文</li>
+<li><code>Ctrl+Shift+P</code>-&gt;<code>Markdown All in One</code></li>
+<li><code>Ctrl+Shift+P</code>-&gt;<code>Markdown Preview Github Styling</code><ul>
+<li><a href="https://www.jianshu.com/p/51523a1c6fe1" target="_blank" rel="noopener">规则翻译</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">hexo</a></h2><ul>
+<li>安装：<code>cnpm install -g hexo-cli</code></li>
+<li>初始化：<code>hexo init 保存博客源码目录</code></li>
+<li>配置：<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">官网中文文档</a>说的很详细了<ul>
+<li>然而，只需要把title什么的改成自己的就行了，其他都不用动</li>
+</ul>
+</li>
+<li><code>hexo server</code>启动本地服务，看看效果如何</li>
+</ul>
+<h2 id="RSS插件"><a href="#RSS插件" class="headerlink" title="RSS插件"></a>RSS插件</h2><ul>
+<li>安装插件：<code>cnpm install hexo-generator-feed</code></li>
+<li>启用插件：修改根目录下<code>_config.yml</code>配置文件</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="attr">plugins:</span></span><br><span class="line">  <span class="string">hexo-generator-feed</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">atom.xml</span></span><br><span class="line"><span class="attr">  limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="主题更换：推荐一个个人比较喜欢的fexo"><a href="#主题更换：推荐一个个人比较喜欢的fexo" class="headerlink" title="主题更换：推荐一个个人比较喜欢的fexo"></a>主题更换：推荐一个个人比较喜欢的fexo</h2><ul>
+<li><a href="https://github.com/forsigner/fexo" target="_blank" rel="noopener">fexo</a>，中文文档，配置方法说明也很详细</li>
+<li>我是fork到我仓库使用的<ul>
+<li>打开大佬的github，点击右上角的fork按钮</li>
+<li>然后回到自己的github-&gt;Repositories，同名的仓库已经存在了，就是这么简单</li>
+</ul>
+</li>
+<li>打开根目录的<code>_config.yml</code>，设为<code>theme: fexo</code></li>
+<li>主题配置全部在<code>theme/fexo</code>里面完成，所以下面所有配置指的是配置<code>theme/fexo/_config.yml</code></li>
+<li>名称<code>blog_name</code>，标语<code>slogan</code>，头像<code>avatar</code>什么的一笔带过</li>
+<li>导航，根据自己需要配置<ul>
+<li>除了<code>archives</code>是和hexo的配置文件对应的，其他都是fexo自己的</li>
+<li><em>关键是，关键是所有fexo自己的，都需要自己敲命令启动才好使<del>~</del></em></li>
+<li>启用就好，根据提示补充头，<code>_config.xml</code>中有默认Demo</li>
+</ul>
+</li>
+</ul>
+<h2 id="fexo：启用分类页面"><a href="#fexo：启用分类页面" class="headerlink" title="fexo：启用分类页面"></a>fexo：启用分类页面</h2><ul>
+<li>根目录执行<code>hexo new page category</code></li>
+<li>修改<code>my-blog/source/category/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: category</span><br><span class="line">layout: category</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="fexo：启用标签页面"><a href="#fexo：启用标签页面" class="headerlink" title="fexo：启用标签页面"></a>fexo：启用标签页面</h2><ul>
+<li>根目录执行<code>hexo new page tag</code></li>
+<li>修改<code>my-blog/source/tag/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tag</span><br><span class="line">layout: tag</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="fexo：启用友链页面"><a href="#fexo：启用友链页面" class="headerlink" title="fexo：启用友链页面"></a>fexo：启用友链页面</h2><ul>
+<li>根目录执行<code>hexo new page link</code></li>
+<li>修改<code>my-blog/source/link/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: link</span><br><span class="line">layout: link</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="fexo-启用关于页面"><a href="#fexo-启用关于页面" class="headerlink" title="fexo: 启用关于页面"></a>fexo: 启用关于页面</h2><ul>
+<li>根目录执行<code>hexo new page about</code></li>
+<li>修改<code>my-blog/source/about/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">layout: about</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用项目页面"><a href="#启用项目页面" class="headerlink" title="启用项目页面"></a>启用项目页面</h2><ul>
+<li>根目录执行<code>hexo new page project</code></li>
+<li>修改<code>my-blog/source/project/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: project</span><br><span class="line">layout: project</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用搜索页面"><a href="#启用搜索页面" class="headerlink" title="启用搜索页面"></a>启用搜索页面</h2><ul>
+<li>目录执行<code>hexo new page search</code></li>
+<li>修改<code>my-blog/source/search/index.md</code>内容</li>
+</ul>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: search</span><br><span class="line">layout: search</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><em>然后安装 Hexo 插件<code>hexo-search</code></em><ul>
+<li><code>cd my-blog(hexo根目录)</code></li>
+<li><code>npm install hexo-search --save</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="安装完成，享受成果把"><a href="#安装完成，享受成果把" class="headerlink" title="安装完成，享受成果把"></a>安装完成，享受成果把</h2><ul>
+<li><code>hexo server</code>启动本地服务，看看效果如何</li>
+<li><code>hexo g</code>执行编译，编译结果静态文件保存到<code>Public</code>文件夹</li>
+</ul>
+<h2 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h2><ul>
+<li>把<code>Public</code>下所有内容发布到博客仓库即可<ul>
+<li>原理就是这么简单，如果想要自动化复制+上传，自己动手吧</li>
+<li>git命令行自动提交需要配置秘钥什么的，就别问我这种准备使用GitHub Desktop工具的农民了</li>
+</ul>
+</li>
+<li><a href="https://fxliu.github.io/">我的成果</a></li>
+<li><a href="https://github.com/fxliu/hexo" target="_blank" rel="noopener">源码仓库</a></li>
+<li><a href="https://github.com/fxliu/fxliu.github.io" target="_blank" rel="noopener">博客仓库</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="hide pull-left" href="/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/01/test/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
