@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Windows开发环境 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="入门,">
+  
+
+  <meta name="description" content="菜鸟教程 安装 安装包下载http://www.oracle.com/technetwork/java/javase/downloads/index.html 点击最新版的JDK(Java SE DownLoads)下载就行 下载页：Java SE Development Kit XX 点击同意协议：Accept License Agreement 然后下载Windows版安装包即可    配置环">
+<meta name="keywords" content="入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows开发环境">
+<meta property="og:url" content="https://fxliu.github.io/2019/09/21/Java/开发环境/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="菜鸟教程 安装 安装包下载http://www.oracle.com/technetwork/java/javase/downloads/index.html 点击最新版的JDK(Java SE DownLoads)下载就行 下载页：Java SE Development Kit XX 点击同意协议：Accept License Agreement 然后下载Windows版安装包即可    配置环">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-03T07:50:38.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows开发环境">
+<meta name="twitter:description" content="菜鸟教程 安装 安装包下载http://www.oracle.com/technetwork/java/javase/downloads/index.html 点击最新版的JDK(Java SE DownLoads)下载就行 下载页：Java SE Development Kit XX 点击同意协议：Accept License Agreement 然后下载Windows版安装包即可    配置环">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境变量"><span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试环境"><span class="toc-text">测试环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HelloWorld"><span class="toc-text">HelloWorld</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理"><span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDE"><span class="toc-text">IDE</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Java/开发环境" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Windows开发环境</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://www.runoob.com/java/java-environment-setup.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">安装包下载</a><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li>点击最新版的JDK(Java SE DownLoads)下载就行</li>
+<li>下载页：Java SE Development Kit XX<ul>
+<li>点击同意协议：Accept License Agreement</li>
+<li>然后下载Windows版安装包即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul>
+<li>我的电脑-&gt;属性-&gt;高级-&gt;环境变量-&gt;系统环境变量</li>
+<li>JAVA_HOME：软件安装路径，例如：C:\Program Files\Java\jdk-13</li>
+<li>Path：补充”%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin”</li>
+</ul>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><ul>
+<li>创建HelloWorld.java文件，<strong>文件名需与类名一致</strong>，代码如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
+<li><p>编码GBK的不可映射字符：<code>javac -encoding UTF-8 test.java</code></p>
+</li>
+<li><p>编译：<code>javac HelloWorld.java</code></p>
+<ul>
+<li>生成：<code>HelloWorld.class</code>文件</li>
+</ul>
+</li>
+<li><p>执行：<code>java HelloWorld</code></p>
+<ul>
+<li>打印：<code>Hello World</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><ul>
+<li>netbeans<ul>
+<li>Java官网有netbeans的下载链接</li>
+<li>netbeans官网<a href="https://netbeans.org/" target="_blank" rel="noopener">https://netbeans.org/</a>, 下载最新的LTS版即可</li>
+<li>绿色版，直接解压就可以用</li>
+</ul>
+</li>
+<li>Java with Ant<ul>
+<li>工程创建使用：Java with Ant（其他俩没找到怎么挂在第三方库 -_-! ）</li>
+<li>常规库，直接Alt+Enter键自动import</li>
+<li>右键Libraries导入其他第三方库<ul>
+<li>mvn：<a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a></li>
+</ul>
+</li>
+<li>编译Jar<ul>
+<li>补充如下内容到<code>build.xml</code></li>
+<li>右键<code>build.xml</code>-&gt;<code>Run Target</code>-&gt;<code>Other Targets</code>-&gt;<code>pachage-for-store</code>，完成打包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>打包后的jar运行错误处理<ul>
+<li>提示缺少辅助jar之类，工程右键-&gt;属性-&gt;源：降低目标版本号即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">target</span> <span class="attr">name</span>=<span class="string">"package-for-store"</span> <span class="attr">depends</span>=<span class="string">"jar"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Change the value of this property to be the name of your JAR,</span></span><br><span class="line"><span class="comment">         minus the .jar extension. It should not have spaces.</span></span><br><span class="line"><span class="comment">         &lt;property name="store.jar.name" value="MyJarName"/&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"store.jar.name"</span> <span class="attr">value</span>=<span class="string">"目标文件名"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- don't edit below this line --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"store.dir"</span> <span class="attr">value</span>=<span class="string">"store"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"store.jar"</span> <span class="attr">value</span>=<span class="string">"$&#123;store.dir&#125;/$&#123;store.jar.name&#125;.jar"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">echo</span> <span class="attr">message</span>=<span class="string">"Packaging $&#123;application.title&#125; into a single JAR at $&#123;store.jar&#125;"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">dir</span>=<span class="string">"$&#123;store.dir&#125;"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mkdir</span> <span class="attr">dir</span>=<span class="string">"$&#123;store.dir&#125;"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">jar</span> <span class="attr">destfile</span>=<span class="string">"$&#123;store.dir&#125;/temp_final.jar"</span> <span class="attr">filesetmanifest</span>=<span class="string">"skip"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">zipgroupfileset</span> <span class="attr">dir</span>=<span class="string">"dist"</span> <span class="attr">includes</span>=<span class="string">"*.jar"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">zipgroupfileset</span> <span class="attr">dir</span>=<span class="string">"dist/lib"</span> <span class="attr">includes</span>=<span class="string">"*.jar"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">manifest</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">attribute</span> <span class="attr">name</span>=<span class="string">"Main-Class"</span> <span class="attr">value</span>=<span class="string">"$&#123;main.class&#125;"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">jar</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">zip</span> <span class="attr">destfile</span>=<span class="string">"$&#123;store.jar&#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">zipfileset</span> <span class="attr">src</span>=<span class="string">"$&#123;store.dir&#125;/temp_final.jar"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">excludes</span>=<span class="string">"META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">zip</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">delete</span> <span class="attr">file</span>=<span class="string">"$&#123;store.dir&#125;/temp_final.jar"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java with Maven<ul>
+<li>创建工程后，源码路径比较深，保持原样，在最深层创建java文件开发即可</li>
+<li>引入jar<ul>
+<li>打开pom.xml</li>
+<li>右键<code>Insert Code...</code> -&gt; <code>dependency</code> -&gt; 输入对应的字段搜索即可，或者预先到<a href="https://mvnrepository.com/" target="_blank" rel="noopener">maven</a>, 直接补充到pom中</li>
+<li>保存pom的时候该jar会自动被下载，并显示到项目中；如果没显示出来，可以编译下，会触发下载</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--pom.xml--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.bouncycastle<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>bcprov-jdk15on<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.63<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/16/Tools/FFmepg+SDL播放器/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/22/System/CSerialPort串口通讯/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

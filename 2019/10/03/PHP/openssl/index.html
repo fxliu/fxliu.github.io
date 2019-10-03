@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>加解密 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="openssl,">
+  
+
+  <meta name="description" content="openssl(1.1.1)// 版本号以及支持的内容printf(&quot;Versoin : %s&quot;, OPENSSL_VERSION_TEXT);echo &quot;&amp;lt;br&amp;gt;&quot;;echo &quot;&amp;lt;br&amp;gt;&quot;;$digests = openssl_get_md_methods(false);echo &quot;Digests : &quot;;foreach ($digests as $digest) &amp;#1">
+<meta name="keywords" content="openssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加解密">
+<meta property="og:url" content="https://fxliu.github.io/2019/10/03/PHP/openssl/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="openssl(1.1.1)// 版本号以及支持的内容printf(&quot;Versoin : %s&quot;, OPENSSL_VERSION_TEXT);echo &quot;&amp;lt;br&amp;gt;&quot;;echo &quot;&amp;lt;br&amp;gt;&quot;;$digests = openssl_get_md_methods(false);echo &quot;Digests : &quot;;foreach ($digests as $digest) &amp;#1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-03T08:33:13.576Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="加解密">
+<meta name="twitter:description" content="openssl(1.1.1)// 版本号以及支持的内容printf(&quot;Versoin : %s&quot;, OPENSSL_VERSION_TEXT);echo &quot;&amp;lt;br&amp;gt;&quot;;echo &quot;&amp;lt;br&amp;gt;&quot;;$digests = openssl_get_md_methods(false);echo &quot;Digests : &quot;;foreach ($digests as $digest) &amp;#1">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openssl-1-1-1"><span class="toc-text">openssl(1.1.1)</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-PHP/openssl" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">加解密</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.10.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/PHP/">PHP</a> / <a class="article-category-link" href="/categories/PHP/SM2-SM4/">SM2/SM4</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="openssl-1-1-1"><a href="#openssl-1-1-1" class="headerlink" title="openssl(1.1.1)"></a>openssl(1.1.1)</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本号以及支持的内容</span></span><br><span class="line">printf(<span class="string">"Versoin : %s"</span>, OPENSSL_VERSION_TEXT);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$digests = openssl_get_md_methods(<span class="keyword">false</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Digests : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($digests <span class="keyword">as</span> $digest) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $digest.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$ciphers = openssl_get_cipher_methods(<span class="keyword">false</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Ciphers : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($ciphers <span class="keyword">as</span> $cipher) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $cipher.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line">$curves = openssl_get_curve_names();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Curves : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($curves <span class="keyword">as</span> $curve) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $curve.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SM4 加解密</span></span><br><span class="line">$key = openssl_random_pseudo_bytes(<span class="number">16</span>);</span><br><span class="line">$ivlen = openssl_cipher_iv_length(<span class="string">"sm4"</span>);</span><br><span class="line"><span class="comment">// $iv = openssl_random_pseudo_bytes($ivlen);</span></span><br><span class="line">$iv = str_repeat(<span class="string">"\0"</span>, $ivlen);</span><br><span class="line">$plaintext = <span class="string">"message to be encrypted"</span>;</span><br><span class="line">$ciphertext = openssl_encrypt($plaintext, <span class="string">"sm4"</span>, $key, $options=<span class="number">0</span>, $iv);</span><br><span class="line">$original_plaintext = openssl_decrypt($ciphertext, <span class="string">"sm4"</span>, $key, $options=<span class="number">0</span>, $iv);</span><br><span class="line"></span><br><span class="line">printf(<span class="string">"sms4enc(\"%s\") = %s\n"</span>, $plaintext, bin2hex($ciphertext));</span><br><span class="line">printf(<span class="string">"sms4dec(%s) = \"%s\"\n"</span>, bin2hex($ciphertext), $original_plaintext);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// 证书加载：RM2 pkcs8格式证书</span></span><br><span class="line">$private_content = file_get_contents(<span class="keyword">__DIR__</span>.<span class="string">'\lfx.pkcs8.pem'</span>);</span><br><span class="line">$prikey = openssl_pkey_get_private($private_content);</span><br><span class="line"></span><br><span class="line">$pubkeypem = openssl_pkey_get_details($prikey)[<span class="string">"key"</span>];</span><br><span class="line">$pubkey = openssl_pkey_get_public($pubkeypem);</span><br><span class="line"></span><br><span class="line">$ec = openssl_pkey_get_details($prikey)[<span class="string">"ec"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="comment">// $ec["d"] &lt;==&gt; 证书明文</span></span><br><span class="line">printf(<span class="string">"SM2 Private Key: \nd:%s, \nx:%s, \ny:%s\n"</span>, bin2hex($ec[<span class="string">"d"</span>]), bin2hex($ec[<span class="string">"x"</span>]), bin2hex($ec[<span class="string">"y"</span>]));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 证书签名/验签</span></span><br><span class="line">$msg = <span class="string">"abc"</span>;</span><br><span class="line">$signature = <span class="string">""</span>;</span><br><span class="line">openssl_sign($msg, $signature, $prikey);            <span class="comment">// 签名</span></span><br><span class="line">$ok = openssl_verify($msg, $signature, $pubkey);    <span class="comment">// 签名校验</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">printf(<span class="string">"verify(\"%s\", %s) = %s\n"</span>, $msg, bin2hex($signature), $ok ? <span class="string">"OK"</span> : <span class="string">"Failure"</span>);</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/10/03/Java/常规函数/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
