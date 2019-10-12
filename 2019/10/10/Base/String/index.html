@@ -7,26 +7,26 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>hexo小技巧汇总 | 福</title>
+  <title>字符串 | 福</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="hexo,">
+    <meta name="keywords" content="String,">
   
 
-  <meta name="description" content="hexo常用命令 新文章 hexo new [layout] &amp;lt;title&amp;gt;：layout默认post    代码块不显示行号 调整根目录_config.yml配置文件 line_number默认true显示行号，影响代码复制  highlight:  line_number: false  fexo 调整根目录_config.yml配置文件 busuanzi: true开启网站统计">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="字符串 WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
+<meta name="keywords" content="String">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo小技巧汇总">
-<meta property="og:url" content="https://fxliu.github.io/2019/09/01/hexo小技巧汇总/index.html">
+<meta property="og:title" content="字符串">
+<meta property="og:url" content="https://fxliu.github.io/2019/10/10/Base/String/index.html">
 <meta property="og:site_name" content="福">
-<meta property="og:description" content="hexo常用命令 新文章 hexo new [layout] &amp;lt;title&amp;gt;：layout默认post    代码块不显示行号 调整根目录_config.yml配置文件 line_number默认true显示行号，影响代码复制  highlight:  line_number: false  fexo 调整根目录_config.yml配置文件 busuanzi: true开启网站统计">
+<meta property="og:description" content="字符串 WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-12T00:54:59.830Z">
+<meta property="og:updated_time" content="2019-10-10T11:04:01.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo小技巧汇总">
-<meta name="twitter:description" content="hexo常用命令 新文章 hexo new [layout] &amp;lt;title&amp;gt;：layout默认post    代码块不显示行号 调整根目录_config.yml配置文件 line_number默认true显示行号，影响代码复制  highlight:  line_number: false  fexo 调整根目录_config.yml配置文件 busuanzi: true开启网站统计">
+<meta name="twitter:title" content="字符串">
+<meta name="twitter:description" content="字符串 WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
 
   
 
@@ -172,20 +172,20 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo"><span class="toc-text">hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令"><span class="toc-text">常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码块不显示行号"><span class="toc-text">代码块不显示行号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fexo"><span class="toc-text">fexo</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小函数封装"><span class="toc-text">小函数封装</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-hexo小技巧汇总" class="article article-type-post" itemprop="blogPost">
+   <article id="post-Base/String" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">hexo小技巧汇总</h1>
+    <h1 class="post-title">字符串</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.09.01</span>
+        <span>2019.10.10</span>
       </span>
 
       
@@ -198,7 +198,7 @@
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/博客/">博客</a>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
   </span>
 
 
@@ -218,33 +218,31 @@
 
   <div class="article-content">
     
-      <h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li>新文章<ul>
-<li><code>hexo new [layout] &lt;title&gt;</code>：<code>layout</code>默认<code>post</code></li>
+      <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li><code>WlanOpenHandle</code>: 打开操作句柄</li>
+<li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul>
+<li>已连接，连接中，已断开等</li>
 </ul>
 </li>
+<li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul>
+<li>包含SSID，加密方式等热点信息</li>
 </ul>
-<h3 id="代码块不显示行号"><a href="#代码块不显示行号" class="headerlink" title="代码块不显示行号"></a>代码块不显示行号</h3><ul>
-<li>调整根目录<code>_config.yml</code>配置文件</li>
-<li><code>line_number</code>默认<code>true</code>显示行号，影响代码复制</li>
+</li>
+<li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul>
+<li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li>
+<li>API操作中配置文件名可以随意指定</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><code>WlanDeleteProfile</code>: 删除指定配置文件</li>
+<li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li>
+<li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul>
+<li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li>
+</ul>
+</li>
+<li><code>WlanDisconnect</code>: 终止WIFI连接</li>
+</ul>
+<h2 id="小函数封装"><a href="#小函数封装" class="headerlink" title="小函数封装"></a>小函数封装</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">H2I</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'a'</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> ch - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "A\u5218B" -&gt; A刘B</span></span><br><span class="line"><span class="function">CStringA <span class="title">Uncode2String</span><span class="params">(<span class="keyword">char</span> *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CStringA str;</span><br><span class="line">  <span class="keyword">while</span>(*d)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(d) &lt; <span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      str += d;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">0</span>] == <span class="string">'\\'</span> &amp;&amp; d[<span class="number">1</span>] == <span class="string">'u'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      WCHAR ch[<span class="number">2</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">      ch[<span class="number">0</span>] = (WCHAR((H2I(d[<span class="number">2</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">3</span>])) &lt;&lt; <span class="number">8</span>) + (H2I(d[<span class="number">4</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">5</span>]);</span><br><span class="line">      <span class="comment">// CP_UTF8</span></span><br><span class="line">      str += CW2A(ch);</span><br><span class="line">      d += <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      str += d[<span class="number">0</span>];</span><br><span class="line">      d += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="fexo"><a href="#fexo" class="headerlink" title="fexo"></a>fexo</h2><ul>
-<li>调整根目录<code>_config.yml</code>配置文件</li>
-<li><code>busuanzi: true</code>开启网站统计<ul>
-<li>js代码：<code>fexo\layout\_partial\head.ejs</code></li>
-</ul>
-</li>
-<li><code>baidu_analytics: ****</code>百度网站统计<ul>
-<li>js代码：<code>fexo\layout\_partial\baidu-analytics.ejs</code><ul>
-<li>补充类型字段<code>hm.type = &quot;*.*&quot;;</code>，避免部分浏览器加载失败</li>
-</ul>
-</li>
-<li>百度推送：<code>fexo\layout\_partial\baidu-analytics.ejs</code></li>
-</ul>
-</li>
-</ul>
 
     
   </div>
@@ -282,10 +280,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/09/01/Tools/MarkDown/">
+    <a class="show pull-left" href="/2019/10/03/PHP/openssl/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/09/04/github+hexo搭建个人博客/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>

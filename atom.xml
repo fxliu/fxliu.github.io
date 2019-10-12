@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fxliu.github.io/"/>
-  <updated>2019-10-03T08:33:13.576Z</updated>
+  <updated>2019-10-10T11:04:01.324Z</updated>
   <id>https://fxliu.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>字符串</title>
+    <link href="https://fxliu.github.io/2019/10/10/Base/String/"/>
+    <id>https://fxliu.github.io/2019/10/10/Base/String/</id>
+    <published>2019-10-10T07:21:28.856Z</published>
+    <updated>2019-10-10T11:04:01.324Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul><li><code>WlanOpenHandle</code>: 打开操作句柄</li><li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul><li>已连接，连接中，已断开等</li></ul></li><li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul><li>包含SSID，加密方式等热点信息</li></ul></li><li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul><li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li><li>API操作中配置文件名可以随意指定</li></ul></li><li><code>WlanDeleteProfile</code>: 删除指定配置文件</li><li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li><li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul><li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li></ul></li><li><code>WlanDisconnect</code>: 终止WIFI连接</li></ul><h2 id="小函数封装"><a href="#小函数封装" class="headerlink" title="小函数封装"></a>小函数封装</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">H2I</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'a'</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> ch - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "A\u5218B" -&gt; A刘B</span></span><br><span class="line"><span class="function">CStringA <span class="title">Uncode2String</span><span class="params">(<span class="keyword">char</span> *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CStringA str;</span><br><span class="line">  <span class="keyword">while</span>(*d)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(d) &lt; <span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      str += d;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">0</span>] == <span class="string">'\\'</span> &amp;&amp; d[<span class="number">1</span>] == <span class="string">'u'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      WCHAR ch[<span class="number">2</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">      ch[<span class="number">0</span>] = (WCHAR((H2I(d[<span class="number">2</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">3</span>])) &lt;&lt; <span class="number">8</span>) + (H2I(d[<span class="number">4</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">5</span>]);</span><br><span class="line">      <span class="comment">// CP_UTF8</span></span><br><span class="line">      str += CW2A(ch);</span><br><span class="line">      d += <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      str += d[<span class="number">0</span>];</span><br><span class="line">      d += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;WlanOpenHandle&lt;/code&gt;: 打开操作句柄&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;WlanEnumI
+      
+    
+    </summary>
+    
+      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+    
+    
+      <category term="String" scheme="https://fxliu.github.io/tags/String/"/>
+    
+  </entry>
   
   <entry>
     <title>加解密</title>
@@ -379,15 +406,15 @@
     <link href="https://fxliu.github.io/2019/09/01/hexo%E5%B0%8F%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
     <id>https://fxliu.github.io/2019/09/01/hexo小技巧汇总/</id>
     <published>2019-09-01T09:14:57.000Z</published>
-    <updated>2019-09-04T10:24:17.482Z</updated>
+    <updated>2019-10-12T00:54:59.830Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><h3 id="代码块不显示行号"><a href="#代码块不显示行号" class="headerlink" title="代码块不显示行号"></a>代码块不显示行号</h3><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>line_number</code>默认<code>true</code>显示行号，影响代码复制</li></ul><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><h2 id="fexo"><a href="#fexo" class="headerlink" title="fexo"></a>fexo</h2><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>busuanzi: true</code>开启网站统计<ul><li>js代码：<code>fexo\layout\_partial\head.ejs</code></li></ul></li><li><code>baidu_analytics: ****</code>百度网站统计<ul><li>js代码：<code>fexo\layout\_partial\baidu-analytics.ejs</code><ul><li>补充类型字段<code>hm.type = &quot;*.*&quot;;</code>，避免部分浏览器加载失败</li></ul></li><li>百度推送：<code>fexo\layout\_partial\baidu-analytics.ejs</code></li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul><li>新文章<ul><li><code>hexo new [layout] &lt;title&gt;</code>：<code>layout</code>默认<code>post</code></li></ul></li></ul><h3 id="代码块不显示行号"><a href="#代码块不显示行号" class="headerlink" title="代码块不显示行号"></a>代码块不显示行号</h3><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>line_number</code>默认<code>true</code>显示行号，影响代码复制</li></ul><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><h2 id="fexo"><a href="#fexo" class="headerlink" title="fexo"></a>fexo</h2><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>busuanzi: true</code>开启网站统计<ul><li>js代码：<code>fexo\layout\_partial\head.ejs</code></li></ul></li><li><code>baidu_analytics: ****</code>百度网站统计<ul><li>js代码：<code>fexo\layout\_partial\baidu-analytics.ejs</code><ul><li>补充类型字段<code>hm.type = &quot;*.*&quot;;</code>，避免部分浏览器加载失败</li></ul></li><li>百度推送：<code>fexo\layout\_partial\baidu-analytics.ejs</code></li></ul></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;hexo&quot;&gt;&lt;a href=&quot;#hexo&quot; class=&quot;headerlink&quot; title=&quot;hexo&quot;&gt;&lt;/a&gt;hexo&lt;/h2&gt;&lt;h3 id=&quot;代码块不显示行号&quot;&gt;&lt;a href=&quot;#代码块不显示行号&quot; class=&quot;headerlink&quot; title=&quot;代
+        &lt;h2 id=&quot;hexo&quot;&gt;&lt;a href=&quot;#hexo&quot; class=&quot;headerlink&quot; title=&quot;hexo&quot;&gt;&lt;/a&gt;hexo&lt;/h2&gt;&lt;h3 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a
       
     
     </summary>
@@ -396,6 +423,31 @@
     
     
       <category term="hexo" scheme="https://fxliu.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MarkDown</title>
+    <link href="https://fxliu.github.io/2019/09/01/Tools/MarkDown/"/>
+    <id>https://fxliu.github.io/2019/09/01/Tools/MarkDown/</id>
+    <published>2019-09-01T09:14:57.000Z</published>
+    <updated>2019-10-12T01:23:35.463Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常用规则"><a href="#常用规则" class="headerlink" title="常用规则"></a>常用规则</h2><h3 id="标题系列"><a href="#标题系列" class="headerlink" title="标题系列"></a>标题系列</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="section"># 大标题</span></span><br><span class="line"><span class="section">## 二标题</span></span><br><span class="line"><span class="section">###### 六标题也可以</span></span><br><span class="line"></span><br><span class="line">主标题</span><br><span class="line">======</span><br><span class="line"></span><br><span class="line">副标题</span><br><span class="line">------</span><br></pre></td></tr></table></figure><h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><ul><li><strong>这是加粗的文字</strong><code>**这是加粗的文字**</code></li><li><em>这是倾斜的文字</em><code>*这是倾斜的文字*</code></li><li><strong><em>这是斜体加粗的文字</em></strong><code>***这是斜体加粗的文字***</code></li><li><del>这是加删除线的文字</del><code>~~这是加删除线的文字~~</code></li></ul><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="code">`背景色突出`</span></span><br><span class="line"><span class="code">`单行代码`</span></span><br><span class="line">代码块</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote><p>引用内容1</p><blockquote><p>引用内容2</p></blockquote></blockquote><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">* </span>无序列表</span><br><span class="line"><span class="bullet">+ </span>无序列表</span><br><span class="line"><span class="bullet">- </span>无序列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>有序列表，注意空格</span><br><span class="line"><span class="bullet">2. </span>有序列表，会自动计算序号</span><br><span class="line"><span class="bullet">   + </span>嵌套</span><br><span class="line"><span class="bullet">   + </span>列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>[x] 任务列表</span><br><span class="line"><span class="bullet">- </span>[x] 已完成</span><br><span class="line"><span class="bullet">- </span>[ ] 未完成</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">分割线</span><br><span class="line"><span class="bullet">- </span>- - （推荐）</span><br><span class="line">---</span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="bullet">* </span><span class="bullet">* *</span></span><br></pre></td></tr></table></figure><p>分割线</p><hr><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 "图片title"</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/6860761-fd2f51090a890873.jpg" alt="blockchain" title="区块链"></p><h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[<span class="string">link</span>](<span class="link">URL "注释"</span>)</span><br></pre></td></tr></table></figure><p><a href="https://wwww.baidu.com" title="百度超链接" target="_blank" rel="noopener">百度</a><br><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="https://www.jianshu.com" target="_blank">新页面打开</a></p><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Computer</td><td>$1600</td></tr><tr><td>Phone</td><td>$12</td></tr><tr><td>Pipe</td><td>$1</td></tr></tbody></table><h4 id="表格：指定对齐方式"><a href="#表格：指定对齐方式" class="headerlink" title="表格：指定对齐方式"></a>表格：指定对齐方式</h4><table><thead><tr><th align="left">Item</th><th align="right">Value</th><th align="center">Qty</th></tr></thead><tbody><tr><td align="left">Computer</td><td align="right">$1600</td><td align="center">5</td></tr><tr><td align="left">Phone</td><td align="right">$12</td><td align="center">12</td></tr><tr><td align="left">Pipe</td><td align="right">$1</td><td align="center">234</td></tr></tbody></table><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure><h3 id="自动生成目录"><a href="#自动生成目录" class="headerlink" title="自动生成目录"></a>自动生成目录</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[TOC]自动生成目录</span><br></pre></td></tr></table></figure><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul><li>Nodepad++<ul><li>新版安装后就支持颜色处理，可扩展MarkDown插件展示效果</li></ul></li><li>Visual Studio Code (VS Code)</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常用规则&quot;&gt;&lt;a href=&quot;#常用规则&quot; class=&quot;headerlink&quot; title=&quot;常用规则&quot;&gt;&lt;/a&gt;常用规则&lt;/h2&gt;&lt;h3 id=&quot;标题系列&quot;&gt;&lt;a href=&quot;#标题系列&quot; class=&quot;headerlink&quot; title=&quot;标题系列&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="https://fxliu.github.io/categories/Tools/"/>
+    
+    
+      <category term="MarkDown" scheme="https://fxliu.github.io/tags/MarkDown/"/>
     
   </entry>
   
