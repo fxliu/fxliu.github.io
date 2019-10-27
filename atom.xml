@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fxliu.github.io/"/>
-  <updated>2019-10-10T11:04:01.324Z</updated>
+  <updated>2019-10-27T05:34:33.463Z</updated>
   <id>https://fxliu.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDE</title>
+    <link href="https://fxliu.github.io/2019/10/27/Tools/IDE/"/>
+    <id>https://fxliu.github.io/2019/10/27/Tools/IDE/</id>
+    <published>2019-10-27T04:35:32.501Z</published>
+    <updated>2019-10-27T05:34:33.463Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h2><ul><li>注册码：<a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></li><li>快捷键：视图查看<ul><li><code>Ctrl+F12</code>:         查看file，method结构图、类继承机构图</li><li><code>Ctrl+shift+Alt+U</code>: 查看maven依赖，类图</li></ul></li><li>快捷键：定位<ul><li><code>Ctrl+E</code>:           定位到最近浏览过的文件</li><li><code>Ctrl+Shift+E</code>:     最近更改的文件</li><li><code>Shift+Click(TAB)</code>: 可以关闭文件</li></ul></li><li>快捷键：位置跳转<ul><li><code>Ctrl+Shift+Backspace</code>: 跳转上一次修改的地方</li><li><code>Ctrl+Alt+B</code>:           跳转到方法实现处</li><li><code>Ctrl+Shift+左箭头</code>:    上一个浏览的地方</li><li><code>Ctrl+Shift+右箭头</code>:    下一个浏览的地方</li></ul></li><li>快捷键：其他跳转<ul><li><code>Ctrl+H</code>:   显示类结构图（类的继承层次）</li><li><code>Ctrl+Q</code>:   显示注释文档</li><li><code>Alt+1</code>:　　快速打开或隐藏工程面板</li><li><code>Alt+left/right</code>:   切换代码视图</li><li><code>F2 或 Shift+F2</code>:   高亮错误或警告快速定位</li><li><code>Tab</code>:      代码标签输入完成后，按 Tab，生成代码</li><li><code>Ctrl+Shift+F7</code>:    高亮显示所有该文本，按 Esc 高亮消失</li></ul></li><li>快捷键：搜索<ul><li><code>Ctrl＋N</code>:    快速搜索类</li><li><code>Ctrl＋Shift＋N</code>:     快速搜索文件</li><li><code>Ctrl＋Alt+Shift＋N</code>: 快速搜索函数</li><li><code>Ctrl+Shift+F</code>:       快速搜索字符串</li></ul></li><li>快捷键：光标移动和选中<ul><li><code>Ctrl＋Alt+Shift＋Click</code>:   多选</li><li><code>Ctrl＋Alt+Shift＋J</code>:       查找所有目标，并选中</li><li><code>Alt+Up/Down</code>：             在方法间快速移动定位</li><li><code>Ctrl+Shift+Up/Down</code>:       向上/下移动语句</li><li><code>Ctrl+Up/Down</code>:</li><li><code>Ctrl+B/Ctrl+Click</code>:    　　跳转到定义处</li></ul></li><li>超级组合键：<code>Alt+Enter</code><ul><li>代码提示 + 自动完成</li></ul></li><li>重构<ul><li><code>Shift+F6</code>:   重命名：所有使用过这个名称的地方都会跟着改变</li><li><code>Ctrl+F6</code>:    重构函数：所有用到此函数的地方一起重构</li><li>变量提取：<ul><li><code>Ctrl+Alt+V</code>  变量</li><li><code>Ctrl+Alt+C</code>  静态变量</li><li><code>Ctrl+Alt+F</code>  成员变量</li><li><code>Ctrl+Alt+P</code>  方法参数</li><li><code>Ctrl+Alt+M</code>  抽取方法</li></ul></li><li><code>Ctrl+Alt+M</code>  代码规范化</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;IntelliJ-IDEA&quot;&gt;&lt;a href=&quot;#IntelliJ-IDEA&quot; class=&quot;headerlink&quot; title=&quot;IntelliJ IDEA&quot;&gt;&lt;/a&gt;IntelliJ IDEA&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注册码：&lt;a href=&quot;http://
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="https://fxliu.github.io/categories/Tools/"/>
+    
+      <category term="IDE" scheme="https://fxliu.github.io/categories/Tools/IDE/"/>
+    
+    
+      <category term="IntelliJ IDEA" scheme="https://fxliu.github.io/tags/IntelliJ-IDEA/"/>
+    
+      <category term="PyCharm" scheme="https://fxliu.github.io/tags/PyCharm/"/>
+    
+      <category term="PhpStorm" scheme="https://fxliu.github.io/tags/PhpStorm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码整理</title>
+    <link href="https://fxliu.github.io/2019/10/23/Tools/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
+    <id>https://fxliu.github.io/2019/10/23/Tools/代码整理/</id>
+    <published>2019-10-23T11:34:17.849Z</published>
+    <updated>2019-10-24T12:24:31.329Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><ul><li><a href="https://github.com/fxliu/base64" target="_blank" rel="noopener">base64</a></li><li><a href="https://github.com/fxliu/cpp-base64" target="_blank" rel="noopener">base64_cpp</a></li><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">curl+openssl</a></li><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">openssl+aes</a></li></ul><h2 id="mytools"><a href="#mytools" class="headerlink" title="mytools"></a>mytools</h2><ul><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">ProductUpdate</a><ul><li>产品热升级机制</li><li>curl+openssl</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;tools&quot;&gt;&lt;a href=&quot;#tools&quot; class=&quot;headerlink&quot; title=&quot;tools&quot;&gt;&lt;/a&gt;tools&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fxliu/base64&quot; target=&quot;_b
+      
+    
+    </summary>
+    
+      <category term="tools" scheme="https://fxliu.github.io/categories/tools/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>代码整理</title>
+    <link href="https://fxliu.github.io/2019/10/23/Python/%E9%A1%B9%E7%9B%AE%E6%95%B4%E7%90%86/"/>
+    <id>https://fxliu.github.io/2019/10/23/Python/项目整理/</id>
+    <published>2019-10-23T10:30:40.358Z</published>
+    <updated>2019-10-23T11:23:56.600Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><ul><li><strong>PyCharm</strong><ul><li>注册码: <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></li></ul></li></ul><h2 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h2><ul><li><a href="https://github.com/fxliu/Python/tree/master/tools" target="_blank" rel="noopener">base64</a></li><li><a href="https://github.com/fxliu/Python/tree/master/tools" target="_blank" rel="noopener">webservice</a><ul><li>suds.wsdl, suds.client</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;IDE&quot;&gt;&lt;a href=&quot;#IDE&quot; class=&quot;headerlink&quot; title=&quot;IDE&quot;&gt;&lt;/a&gt;IDE&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PyCharm&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;注册码: &lt;a href=&quot;http://idea.l
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+    
+    
+      <category term="入门" scheme="https://fxliu.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>字符串</title>
@@ -131,9 +214,9 @@
     <link href="https://fxliu.github.io/2019/09/28/Tools/github/"/>
     <id>https://fxliu.github.io/2019/09/28/Tools/github/</id>
     <published>2019-09-28T03:04:52.316Z</published>
-    <updated>2019-10-03T04:35:37.980Z</updated>
+    <updated>2019-10-13T03:43:57.214Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><ul><li>恢复误删除文件(尚未提交到本地库情况)：<code>git checkout -- file</code><ul><li><code>git status</code> 查看删除文件，中文会转码，但git checkout时，直接用中文使用转码文件名不好使</li></ul></li></ul><h2 id="gihub"><a href="#gihub" class="headerlink" title="gihub"></a>gihub</h2><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p>分支别人的仓库到自己仓库</p><ul><li>打开大佬的github，点击右上角的fork按钮</li><li>然后回到自己的github-&gt;Repositories，同名的仓库已经存在了，就是这么简单</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><ul><li>恢复误删除文件(尚未提交到本地库情况)：<code>git checkout -- file</code><ul><li><code>git status</code> 查看删除文件，中文会转码，但git checkout时，直接用中文使用转码文件名不好使</li></ul></li><li>恢复误删除文件(已提交到本地库/远程库情况)<ul><li><code>git reset --hard + 版本号</code>版本回溯, 再<code>git checkout -- file</code></li></ul></li></ul><h2 id="gihub"><a href="#gihub" class="headerlink" title="gihub"></a>gihub</h2><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p>分支别人的仓库到自己仓库</p><ul><li>打开大佬的github，点击右上角的fork按钮</li><li>然后回到自己的github-&gt;Repositories，同名的仓库已经存在了，就是这么简单</li></ul>]]></content>
     
     <summary type="html">
     
