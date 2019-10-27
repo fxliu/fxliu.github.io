@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fxliu.github.io/"/>
-  <updated>2019-10-27T05:34:33.463Z</updated>
+  <updated>2019-10-27T08:45:09.313Z</updated>
   <id>https://fxliu.github.io/</id>
   
   <author>
@@ -15,6 +15,170 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>apache</title>
+    <link href="https://fxliu.github.io/2019/10/27/Linux/apache/"/>
+    <id>https://fxliu.github.io/2019/10/27/Linux/apache/</id>
+    <published>2019-10-27T08:15:33.089Z</published>
+    <updated>2019-10-27T08:45:09.313Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -- Centos7 --</span></span><br><span class="line"><span class="comment"># 默认配置文件</span></span><br><span class="line">/etc/httpd/conf/httpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认日志位置</span></span><br><span class="line">/var/<span class="built_in">log</span>/httpd/</span><br><span class="line">/etc/httpd/logs/ -&gt; /var/<span class="built_in">log</span>/httpd/</span><br></pre></td></tr></table></figure><h2 id="goaccess"><a href="#goaccess" class="headerlink" title="goaccess"></a>goaccess</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install goaccess -y</span><br><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">/etc/goaccess.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess.html /var/<span class="built_in">log</span>/httpd/access_log-2018-11-28</span><br><span class="line"><span class="comment"># 多文件：尾部指定多个文件名</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess/2018-04-14.html access_log-2018-11-28 access_log-2018-11-29</span><br><span class="line"><span class="comment"># 多文件：cat合并</span></span><br><span class="line">cat access_log-* | goaccess --config-file=/etc/goaccess.conf --output /var/www/html/all.html</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 时间格式: 根据apache当前日志格式对应调整, [26/Oct/2019:23:59:59 +0800]</span><br><span class="line">time-format %H:%M:%S</span><br><span class="line">date-format %d/%b/%Y</span><br><span class="line"></span><br><span class="line"># 日志格式 - 从http.conf中提取</span><br><span class="line"># %&#123;X-Forwarded-For&#125;i %h %l %u %t &quot;%r&quot; %s %b &quot;%&#123;Referer&#125;i&quot; &quot;%&#123;User-Agent&#125;i&quot;</span><br><span class="line"># &quot;%&#123;X-Forwarded-For&#125;i %h %l %u %t \&quot;%m %U %q %H\&quot; %&gt;s %b \&quot;%&#123;Referer&#125;i\&quot; \&quot;%&#123;User-Agent&#125;i\&quot;&quot; combined</span><br><span class="line"># 222.171.180.161 100.116.227.226 - - [03/Apr/2018:14:29:33 +0800] &quot;POST /wechat/2dBarCode.php HTTP/1.1&quot; 200 262 &quot;-&quot; &quot;-&quot;</span><br><span class="line">log-format %h %^ %l %u %^[%d:%t %^] &quot;%r&quot; %s %b &quot;%R&quot; &quot;%^&quot;</span><br><span class="line"></span><br><span class="line"># 是否需要实时刷新</span><br><span class="line">real-time-html true</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;apache&quot;&gt;&lt;a href=&quot;#apache&quot; class=&quot;headerlink&quot; title=&quot;apache&quot;&gt;&lt;/a&gt;apache&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://fxliu.github.io/categories/linux/"/>
+    
+    
+      <category term="apache" scheme="https://fxliu.github.io/tags/apache/"/>
+    
+      <category term="日志" scheme="https://fxliu.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    
+      <category term="goaccess" scheme="https://fxliu.github.io/tags/goaccess/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计划任务</title>
+    <link href="https://fxliu.github.io/2019/10/27/Linux/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
+    <id>https://fxliu.github.io/2019/10/27/Linux/计划任务/</id>
+    <published>2019-10-27T07:44:45.943Z</published>
+    <updated>2019-10-27T07:59:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看root用户的计划任务</span></span><br><span class="line">crontab -u root -l</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计划任务配置说明</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 示例 ----</span></span><br><span class="line"><span class="comment"># 每十分钟执行一次</span></span><br><span class="line">*/10 * * * * cmd</span><br><span class="line"><span class="comment"># 每天08:00点执行一次</span></span><br><span class="line">0 8 * * * php /<span class="built_in">test</span>/test.php &gt; <span class="built_in">log</span>/test.log</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 服务管理</span></span><br><span class="line">service crond start | stop | restart | status</span><br><span class="line"><span class="comment"># 重新载入配置</span></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;crontab&quot;&gt;&lt;a href=&quot;#crontab&quot; class=&quot;headerlink&quot; title=&quot;crontab&quot;&gt;&lt;/a&gt;crontab&lt;/h2&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;co
+      
+    
+    </summary>
+    
+      <category term="linux" scheme="https://fxliu.github.io/categories/linux/"/>
+    
+    
+      <category term="计划任务" scheme="https://fxliu.github.io/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无线网卡</title>
+    <link href="https://fxliu.github.io/2019/10/27/VCSystem/WLan/"/>
+    <id>https://fxliu.github.io/2019/10/27/VCSystem/WLan/</id>
+    <published>2019-10-27T07:35:33.565Z</published>
+    <updated>2019-09-16T10:32:07.828Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul><li><code>WlanOpenHandle</code>: 打开操作句柄</li><li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul><li>已连接，连接中，已断开等</li></ul></li><li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul><li>包含SSID，加密方式等热点信息</li></ul></li><li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul><li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li><li>API操作中配置文件名可以随意指定</li></ul></li><li><code>WlanDeleteProfile</code>: 删除指定配置文件</li><li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li><li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul><li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li></ul></li><li><code>WlanDisconnect</code>: 终止WIFI连接</li></ul><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul><li>查看所有配置名称: <code>netsh wlan show profile</code></li><li>连接到无线WIFI: <code>wlan connect name=PROFILE</code><ul><li>指定SSID: <code>netsh wlan connect ssid=SSID name=PROFILE</code></li></ul></li><li>断开无线: <code>netsh wlan disconnect</code></li><li>添加配置: <code>Netsh WLAN add profile filename=&quot;存放路径&quot;</code></li><li>导出配置：<code>Netsh WLAN export profile key=clear folder=&quot;存放路径&quot;</code><ul><li>导出的 XML 配置文件是明文存储，而且会导出 WIFI 连接密码</li></ul></li><li>删除配置: <code>Netsh WLAN delete profile name=&quot;无线名称&quot;</code></li><li>无线网卡配置，状态: <code>Netsh WLAN show interfaces</code></li><li>查看指定网卡: <code>Netsh WLAN show interface name=&quot;网卡名称&quot;</code></li><li>查看已存储密码: <code>Netsh WLAN show profile name=&quot;无线名称&quot; key=clear</code></li><li>查看无线网卡信息: <code>Netsh WLAN show drivers</code></li><li>无线网卡兼容/支持的功能: <code>Netsh WLAN show wirelesscapabilities</code></li></ul><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul><li>都是Windows标准API，懒得解释了，需要的时候直接看Demo把</li><li>Demo中检查到Wifi已连接时，是通过注册表获取IP数据的，实际上这个有延迟<ul><li>通常Windows先连接AP，然后在自动获取IP，而且获取IP整个动作是有延迟的，此时即使是使用ipconfig也未必能拿到正确的状态</li><li>问题备记，搁置~~</li></ul></li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/WLan" target="_blank" rel="noopener">WLan</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;WlanOpenHandle&lt;/code&gt;: 打开操作句柄&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;WlanEnumI
+      
+    
+    </summary>
+    
+      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+    
+    
+      <category term="WLAN" scheme="https://fxliu.github.io/tags/WLAN/"/>
+    
+      <category term="无线网卡" scheme="https://fxliu.github.io/tags/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HOOK键盘钩子</title>
+    <link href="https://fxliu.github.io/2019/10/27/VCSystem/HOOK%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/"/>
+    <id>https://fxliu.github.io/2019/10/27/VCSystem/HOOK键盘钩子/</id>
+    <published>2019-10-27T07:35:33.561Z</published>
+    <updated>2019-09-07T15:35:34.124Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="键盘钩子"><a href="#键盘钩子" class="headerlink" title="键盘钩子"></a>键盘钩子</h2><ul><li><code>WH_KEYBOARD_LL</code>：全局键盘钩子<ul><li>不需要封装DLL，EXE中直接钩挂即可</li><li><code>WH_KEYBOARD</code>：需要DLL封装模式使用</li></ul></li><li><code>WH_MOUSE_LL</code>：鼠标钩子，使用方式同键盘钩子<ul><li><code>WH_KEYBOARD</code>: DLL模式</li><li>DLL导出<code>HOOKPROC</code>函数</li><li>EXE加载DLL后，SetWindowsHookEx安装即可</li></ul></li></ul><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// EXE模式</span></span><br><span class="line"><span class="comment">// 挂在钩子</span></span><br><span class="line">m_hHook = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 卸载钩子</span></span><br><span class="line">UnhookWindowsHookEx(m_hHook);</span><br><span class="line"><span class="comment">// 键盘事件处理</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">LowLevelKeyboardProc</span><span class="params">(<span class="keyword">int</span> nCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (nCode == HC_ACTION)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">switch</span> (wParam)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> WM_KEYDOWN:</span><br><span class="line">    <span class="keyword">case</span> WM_SYSKEYDOWN:</span><br><span class="line">    <span class="keyword">case</span> WM_KEYUP:</span><br><span class="line">    <span class="keyword">case</span> WM_SYSKEYUP:</span><br><span class="line">      PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;</span><br><span class="line">      <span class="keyword">if</span> (p-&gt;vkCode == VK_ESCAPE &amp;&amp; GetAsyncKeyState(VK_CONTROL) &amp; <span class="number">0x8000</span> &amp;&amp; GetAsyncKeyState(VK_SHIFT) &amp; <span class="number">0x8000</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Ctrl+Shift+Esc"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="comment">// 返回1代表终止</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p-&gt;vkCode == VK_ESCAPE &amp;&amp; GetAsyncKeyState(VK_CONTROL) &amp; <span class="number">0x8000</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Ctrl+Esc"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 其他常规事件一定要继续传递下去</span></span><br><span class="line">  <span class="keyword">return</span> CallNextHookEx(<span class="literal">NULL</span>, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意钩子线程不能阻塞，可以内置消息循环，确保钩子有效</span></span><br><span class="line">MSG msg;</span><br><span class="line"><span class="keyword">while</span> (!GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>) &amp;&amp; pThis-&gt;m_hHook)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//TranslateMessage(&amp;msg);</span></span><br><span class="line">  <span class="comment">//DispatchMessage(&amp;msg);</span></span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// DLL模块方式</span></span><br><span class="line"><span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">// DLL导出函数</span></span><br><span class="line"><span class="comment">// 全局共享段，用户DLL公共数据处理，可以根据自己需要增删</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">"SHARED"</span>)</span></span><br><span class="line"><span class="keyword">static</span> HHOOK g_hHook = <span class="literal">NULL</span>;  <span class="comment">// 钩子句柄, 便于卸载</span></span><br><span class="line"><span class="keyword">static</span> HWND g_hookWnd = <span class="literal">NULL</span>;  <span class="comment">// 调用DLL的主窗口句柄, 这样就可以SendMessage给主窗口鼠标消息及其参数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">"/section:SHARED,rws"</span>)</span></span><br><span class="line"><span class="comment">// 钩子回调函数</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">MouseProc</span><span class="params">(<span class="keyword">int</span> nCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 有鼠标消息时，将其发给主程序</span></span><br><span class="line">  <span class="keyword">if</span> (g_hookWnd != <span class="literal">NULL</span> &amp;&amp; nCode == HC_ACTION)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 自定义消息</span></span><br><span class="line">    ::SendMessage(g_hookWnd, WM_HOOKMSG, wParam, lParam);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 常规事件继续传递: g_hook 可以给NULL</span></span><br><span class="line">  <span class="keyword">return</span> CallNextHookEx(g_hHook, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 其他辅助导出函数</span></span><br><span class="line"><span class="function">BOOL <span class="title">SetHwnd</span><span class="params">(HWND hwnd, HHOOK hHook)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  g_hookWnd = hwnd;</span><br><span class="line">  g_hHook = hHook;</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// .def 内容</span></span><br><span class="line">LIBRARY</span><br><span class="line">EXPORTS</span><br><span class="line">  MouseProc</span><br><span class="line">  SetHwnd</span><br><span class="line"><span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">// EXE 加载部分</span></span><br><span class="line"><span class="comment">// 加载DLL</span></span><br><span class="line">HMODULE hModule = LoadLibrary(GetRunPath() + TEXT(<span class="string">"\\HookDll.dll"</span>));</span><br><span class="line">PSetHwnd pSetHwnd = (PSetHwnd)GetProcAddress(hModule, <span class="string">"SetHwnd"</span>);</span><br><span class="line">HOOKPROC mouseProc = (HOOKPROC)GetProcAddress(hModule, <span class="string">"MouseProc"</span>);</span><br><span class="line"><span class="keyword">if</span> (!pSetHwnd || !mouseProc)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 安装</span></span><br><span class="line">HHOOK hHook = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 0代表全局</span></span><br><span class="line">hHook = SetWindowsHookEx(WH_MOUSE, mouseProc, hModule, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (hHook)</span><br><span class="line">&#123;</span><br><span class="line">  SetWindowText(g_static, TEXT(<span class="string">"SetWindowsHookEx Success"</span>));</span><br><span class="line">  <span class="comment">// 把句柄设置进去是为了方便回传数据</span></span><br><span class="line">  pSetHwnd(g_hwnd, hHook);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  SetWindowText(g_static, TEXT(<span class="string">"SetWindowsHookEx Fail"</span>));</span><br><span class="line"><span class="comment">// 卸载</span></span><br><span class="line">FreeLibrary(hModule);</span><br><span class="line"><span class="keyword">if</span> (hHook)</span><br><span class="line">  UnhookWindowsHookEx(hHook);</span><br></pre></td></tr></table></figure><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul><li>EXE模式仍然依赖于消息机制，调用<code>SetWindowsHookEx</code>的线程不可被阻塞，否则会导致钩子无效，系统所有按键事件被延迟处理</li><li>Exe需要管理员权限</li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/HOOK/KeyboardHook" target="_blank" rel="noopener">HOOK</a>包含一个EXE方式键盘钩子和一个DLL模块方式鼠标钩子<br><code>https://github.com/fxliu/VCDemo/tree/master/HOOK/KeyboardHook</code><br>EXE方式比DLL方式便捷的多，但貌似DLL模块方式速度比较快</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;键盘钩子&quot;&gt;&lt;a href=&quot;#键盘钩子&quot; class=&quot;headerlink&quot; title=&quot;键盘钩子&quot;&gt;&lt;/a&gt;键盘钩子&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;WH_KEYBOARD_LL&lt;/code&gt;：全局键盘钩子&lt;ul&gt;
+&lt;li&gt;不需要封装DLL，EXE中
+      
+    
+    </summary>
+    
+      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+    
+    
+      <category term="HOOK" scheme="https://fxliu.github.io/tags/HOOK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>串口通讯</title>
+    <link href="https://fxliu.github.io/2019/10/27/VCSystem/CSerialPort%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/"/>
+    <id>https://fxliu.github.io/2019/10/27/VCSystem/CSerialPort串口通讯/</id>
+    <published>2019-10-27T07:35:33.556Z</published>
+    <updated>2019-09-22T04:10:53.373Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul><li><code>CreateFile</code>: 打开串口，文件名指定为<code>COM2</code>即可</li><li>参数设置：<ul><li><code>SetCommTimeouts</code>: 读写超时控制</li><li><code>SetCommState</code>: 设置参数<ul><li><code>GetCommState</code>: 获取参数(DCB)</li><li>先获取，调整需要修改的项，然后再设置</li><li>注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位</li></ul></li></ul></li></ul><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 常用字段</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">DCB</span> &#123;</span></span><br><span class="line">    DWORD DCBlength;      <span class="comment">/* sizeof(DCB)                     */</span></span><br><span class="line">    DWORD BaudRate;       <span class="comment">/* 波特率：115200,9600等       */</span></span><br><span class="line">    DWORD fBinary: <span class="number">1</span>;     <span class="comment">/* 数据位：通常为8    */</span></span><br><span class="line">    DWORD fParity: <span class="number">1</span>;     <span class="comment">/* 奇偶检验位          */</span></span><br><span class="line">    BYTE StopBits;        <span class="comment">/* 停止位：0,1,2 = 1, 1.5, 2        */</span></span><br><span class="line">&#125; DCB, *LPDCB;</span><br></pre></td></tr></table></figure><ul><li><code>PurgeComm</code>: 清空缓冲区<ul><li>PURGE_TXABORT：中断所有写操作并立即返回，即使写操作还没有完成。</li><li>PURGE_RXABORT：中断所有读操作并立即返回，即使读操作还没有完成。</li><li>PURGE_TXCLEAR：清除输出缓冲区</li><li>PURGE_RXCLEAR：清除输入缓冲区</li></ul></li><li><code>ReadFile</code>: 读</li><li><code>WriteFile</code>: 写</li><li>串口遍历<ul><li><code>SetupDiGetClassDevs</code>: 打开句柄<ul><li>GUID: <code>GUID_CLASS_COMPORT</code>，在<code>WinIoCtl.h</code>文件中被定义</li><li><code>SetupDiDestroyDeviceInfoList</code>：释放句柄</li></ul></li><li><code>SetupDiEnumDeviceInterfaces</code>: 遍历</li><li><code>SetupDiGetDeviceInterfaceDetail</code>: 接口路径，比如“COM2”什么的</li><li><code>SetupDiGetDeviceRegistryProperty</code>：接口属性<ul><li><code>SPDRP_DEVICEDESC</code>：设备描述</li><li><code>SPDRP_CLASS</code>：类名</li><li><code>SPDRP_MFG</code>：制造商</li><li><code>SPDRP_FRIENDLYNAME</code>：设备描述(友好名称)</li><li><code>SPDRP_LOCATION_INFORMATION</code>：本地环境属性</li><li><code>SPDRP_PHYSICAL_DEVICE_OBJECT_NAME</code>：设备物理名称</li><li><code>SPDRP_ENUMERATOR_NAME</code>：枚举类型</li></ul></li></ul></li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/CSerialPort" target="_blank" rel="noopener">CSerialPort</a></p><h2 id="GitHub第三方库"><a href="#GitHub第三方库" class="headerlink" title="GitHub第三方库"></a>GitHub第三方库</h2><ul><li><a href="https://github.com/itas109/CSerialPort" target="_blank" rel="noopener">CSerialPort</a>，支持Windows/Linux，封装比较完善</li><li>直接搜索<code>CSerialPort</code>也有其他一些简单封装</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CreateFile&lt;/code&gt;: 打开串口，文件名指定为&lt;code&gt;COM2&lt;/code&gt;即可&lt;/li&gt;
+      
+    
+    </summary>
+    
+      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+    
+    
+      <category term="串口" scheme="https://fxliu.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
+    
+      <category term="通讯" scheme="https://fxliu.github.io/tags/%E9%80%9A%E8%AE%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL</title>
+    <link href="https://fxliu.github.io/2019/10/27/DB/MySQL/"/>
+    <id>https://fxliu.github.io/2019/10/27/DB/MySQL/</id>
+    <published>2019-10-27T05:53:32.370Z</published>
+    <updated>2019-10-27T06:31:29.607Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常规Demo"><a href="#常规Demo" class="headerlink" title="常规Demo"></a>常规Demo</h2><ul><li>表复制: <code>INSERT INTO t1 SELECT * FROM t2</code></li></ul><h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- CASE</span></span><br><span class="line"><span class="keyword">SELECT</span> k1,</span><br><span class="line">  <span class="keyword">CASE</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">150</span> <span class="keyword">THEN</span> <span class="string">'&gt;150'</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">120</span> <span class="keyword">THEN</span> <span class="string">'120&lt; k2 &gt;150'</span></span><br><span class="line">    <span class="keyword">ELSE</span> <span class="string">'&lt;120'</span></span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">as</span> v</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br></pre></td></tr></table></figure><h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t2;</span><br><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"><span class="comment">-- REPLACE INTO: 用法与Insert相同</span></span><br><span class="line"><span class="comment">-- 当KEY不存在时，等价于Delete</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，先Delete然后Insert，未设定的字段按照默认值处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- INSERT INTO ** ON DUPLICATE KEY UPDATE</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，只更新指定字段</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> t1.k1=t2.k1</span><br></pre></td></tr></table></figure><h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 联表更新：方式1</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">SET</span> a.test_key=(<span class="keyword">SELECT</span> test_key <span class="keyword">FROM</span> t2 <span class="keyword">as</span> b <span class="keyword">WHERE</span> a.id=b.id);</span><br><span class="line"><span class="comment">-- 联表更新：方式2</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> t2 <span class="keyword">as</span> b <span class="keyword">ON</span> a.id=b.id</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="comment">-- 联表更新： 方式3</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a, t2 <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="keyword">WHERE</span> a.id=b.id</span><br></pre></td></tr></table></figure><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> @d1=<span class="string">'2019-10-20'</span>;</span><br><span class="line"><span class="keyword">SET</span> @d2=<span class="string">'2019-10-27'</span>;</span><br><span class="line"><span class="keyword">SET</span> @dc=<span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>, @d1, @d2);   <span class="comment">-- 时间差：日</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> tkey, <span class="keyword">count</span>(<span class="number">1</span>) / @dc <span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span> uptime <span class="keyword">BETWEEN</span> @d1 <span class="keyword">AND</span> @d2</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> tkey</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">set</span> @dt = <span class="keyword">now</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">day</span>); <span class="comment">-- add 1 day</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">hour</span>); <span class="comment">-- add 1 hour</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">minute</span>); <span class="comment">-- ...</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">second</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">microsecond</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">week</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">month</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">quarter</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">year</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">-1</span> <span class="keyword">day</span>); <span class="comment">-- sub 1 day</span></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">MONTH</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 时间 -&gt; 字符串</span></span><br><span class="line"><span class="keyword">SET</span> @DB := <span class="keyword">CONCAT</span>(<span class="string">'database.database_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">LIST</span> := <span class="keyword">CONCAT</span>(<span class="string">'netbaropt.list_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="comment">-- 字符串 -&gt; 时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">str_to_date</span>(<span class="string">'2008-08-09 08:09:30'</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间戳</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">unix_timestamp</span>(<span class="string">'2008-08-08 12:30:00'</span>);    <span class="comment">-- 1218169800</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>);                <span class="comment">-- 2008-08-08 12:30:00</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);    <span class="comment">-- 2008-08-08 12:30:00</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常规Demo&quot;&gt;&lt;a href=&quot;#常规Demo&quot; class=&quot;headerlink&quot; title=&quot;常规Demo&quot;&gt;&lt;/a&gt;常规Demo&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;表复制: &lt;code&gt;INSERT INTO t1 SELECT * FROM t2&lt;/code
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="https://fxliu.github.io/categories/MySQL/"/>
+    
+    
+      <category term="SQL" scheme="https://fxliu.github.io/tags/SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>IDE</title>
@@ -50,8 +214,8 @@
   
   <entry>
     <title>代码整理</title>
-    <link href="https://fxliu.github.io/2019/10/23/Tools/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
-    <id>https://fxliu.github.io/2019/10/23/Tools/代码整理/</id>
+    <link href="https://fxliu.github.io/2019/10/23/VCTools/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
+    <id>https://fxliu.github.io/2019/10/23/VCTools/代码整理/</id>
     <published>2019-10-23T11:34:17.849Z</published>
     <updated>2019-10-24T12:24:31.329Z</updated>
     
@@ -74,8 +238,8 @@
   
   <entry>
     <title>代码整理</title>
-    <link href="https://fxliu.github.io/2019/10/23/Python/%E9%A1%B9%E7%9B%AE%E6%95%B4%E7%90%86/"/>
-    <id>https://fxliu.github.io/2019/10/23/Python/项目整理/</id>
+    <link href="https://fxliu.github.io/2019/10/23/Python/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
+    <id>https://fxliu.github.io/2019/10/23/Python/代码整理/</id>
     <published>2019-10-23T10:30:40.358Z</published>
     <updated>2019-10-23T11:23:56.600Z</updated>
     
@@ -101,20 +265,18 @@
   
   <entry>
     <title>字符串</title>
-    <link href="https://fxliu.github.io/2019/10/10/Base/String/"/>
-    <id>https://fxliu.github.io/2019/10/10/Base/String/</id>
+    <link href="https://fxliu.github.io/2019/10/10/VC/String/"/>
+    <id>https://fxliu.github.io/2019/10/10/VC/String/</id>
     <published>2019-10-10T07:21:28.856Z</published>
-    <updated>2019-10-10T11:04:01.324Z</updated>
+    <updated>2019-10-27T05:50:49.297Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul><li><code>WlanOpenHandle</code>: 打开操作句柄</li><li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul><li>已连接，连接中，已断开等</li></ul></li><li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul><li>包含SSID，加密方式等热点信息</li></ul></li><li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul><li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li><li>API操作中配置文件名可以随意指定</li></ul></li><li><code>WlanDeleteProfile</code>: 删除指定配置文件</li><li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li><li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul><li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li></ul></li><li><code>WlanDisconnect</code>: 终止WIFI连接</li></ul><h2 id="小函数封装"><a href="#小函数封装" class="headerlink" title="小函数封装"></a>小函数封装</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">H2I</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'a'</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> ch - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "A\u5218B" -&gt; A刘B</span></span><br><span class="line"><span class="function">CStringA <span class="title">Uncode2String</span><span class="params">(<span class="keyword">char</span> *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CStringA str;</span><br><span class="line">  <span class="keyword">while</span>(*d)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(d) &lt; <span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      str += d;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">0</span>] == <span class="string">'\\'</span> &amp;&amp; d[<span class="number">1</span>] == <span class="string">'u'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      WCHAR ch[<span class="number">2</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">      ch[<span class="number">0</span>] = (WCHAR((H2I(d[<span class="number">2</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">3</span>])) &lt;&lt; <span class="number">8</span>) + (H2I(d[<span class="number">4</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">5</span>]);</span><br><span class="line">      <span class="comment">// CP_UTF8</span></span><br><span class="line">      str += CW2A(ch);</span><br><span class="line">      d += <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      str += d[<span class="number">0</span>];</span><br><span class="line">      d += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="小函数封装"><a href="#小函数封装" class="headerlink" title="小函数封装"></a>小函数封装</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">H2I</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'a'</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> ch - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "A\u5218B" -&gt; A刘B</span></span><br><span class="line"><span class="function">CStringA <span class="title">Uncode2String</span><span class="params">(<span class="keyword">char</span> *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CStringA str;</span><br><span class="line">  <span class="keyword">while</span>(*d)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(d) &lt; <span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      str += d;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">0</span>] == <span class="string">'\\'</span> &amp;&amp; d[<span class="number">1</span>] == <span class="string">'u'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      WCHAR ch[<span class="number">2</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">      ch[<span class="number">0</span>] = (WCHAR((H2I(d[<span class="number">2</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">3</span>])) &lt;&lt; <span class="number">8</span>) + (H2I(d[<span class="number">4</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">5</span>]);</span><br><span class="line">      <span class="comment">// CP_UTF8</span></span><br><span class="line">      str += CW2A(ch);</span><br><span class="line">      d += <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      str += d[<span class="number">0</span>];</span><br><span class="line">      d += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;WlanOpenHandle&lt;/code&gt;: 打开操作句柄&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;WlanEnumI
+        &lt;h2 id=&quot;小函数封装&quot;&gt;&lt;a href=&quot;#小函数封装&quot; class=&quot;headerlink&quot; title=&quot;小函数封装&quot;&gt;&lt;/a&gt;小函数封装&lt;/h2&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pr
       
     
     </summary>
@@ -265,34 +427,6 @@
   </entry>
   
   <entry>
-    <title>串口通讯</title>
-    <link href="https://fxliu.github.io/2019/09/22/System/CSerialPort%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/"/>
-    <id>https://fxliu.github.io/2019/09/22/System/CSerialPort串口通讯/</id>
-    <published>2019-09-22T03:08:30.175Z</published>
-    <updated>2019-09-22T04:10:53.373Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul><li><code>CreateFile</code>: 打开串口，文件名指定为<code>COM2</code>即可</li><li>参数设置：<ul><li><code>SetCommTimeouts</code>: 读写超时控制</li><li><code>SetCommState</code>: 设置参数<ul><li><code>GetCommState</code>: 获取参数(DCB)</li><li>先获取，调整需要修改的项，然后再设置</li><li>注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位</li></ul></li></ul></li></ul><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 常用字段</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">DCB</span> &#123;</span></span><br><span class="line">    DWORD DCBlength;      <span class="comment">/* sizeof(DCB)                     */</span></span><br><span class="line">    DWORD BaudRate;       <span class="comment">/* 波特率：115200,9600等       */</span></span><br><span class="line">    DWORD fBinary: <span class="number">1</span>;     <span class="comment">/* 数据位：通常为8    */</span></span><br><span class="line">    DWORD fParity: <span class="number">1</span>;     <span class="comment">/* 奇偶检验位          */</span></span><br><span class="line">    BYTE StopBits;        <span class="comment">/* 停止位：0,1,2 = 1, 1.5, 2        */</span></span><br><span class="line">&#125; DCB, *LPDCB;</span><br></pre></td></tr></table></figure><ul><li><code>PurgeComm</code>: 清空缓冲区<ul><li>PURGE_TXABORT：中断所有写操作并立即返回，即使写操作还没有完成。</li><li>PURGE_RXABORT：中断所有读操作并立即返回，即使读操作还没有完成。</li><li>PURGE_TXCLEAR：清除输出缓冲区</li><li>PURGE_RXCLEAR：清除输入缓冲区</li></ul></li><li><code>ReadFile</code>: 读</li><li><code>WriteFile</code>: 写</li><li>串口遍历<ul><li><code>SetupDiGetClassDevs</code>: 打开句柄<ul><li>GUID: <code>GUID_CLASS_COMPORT</code>，在<code>WinIoCtl.h</code>文件中被定义</li><li><code>SetupDiDestroyDeviceInfoList</code>：释放句柄</li></ul></li><li><code>SetupDiEnumDeviceInterfaces</code>: 遍历</li><li><code>SetupDiGetDeviceInterfaceDetail</code>: 接口路径，比如“COM2”什么的</li><li><code>SetupDiGetDeviceRegistryProperty</code>：接口属性<ul><li><code>SPDRP_DEVICEDESC</code>：设备描述</li><li><code>SPDRP_CLASS</code>：类名</li><li><code>SPDRP_MFG</code>：制造商</li><li><code>SPDRP_FRIENDLYNAME</code>：设备描述(友好名称)</li><li><code>SPDRP_LOCATION_INFORMATION</code>：本地环境属性</li><li><code>SPDRP_PHYSICAL_DEVICE_OBJECT_NAME</code>：设备物理名称</li><li><code>SPDRP_ENUMERATOR_NAME</code>：枚举类型</li></ul></li></ul></li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/CSerialPort" target="_blank" rel="noopener">CSerialPort</a></p><h2 id="GitHub第三方库"><a href="#GitHub第三方库" class="headerlink" title="GitHub第三方库"></a>GitHub第三方库</h2><ul><li><a href="https://github.com/itas109/CSerialPort" target="_blank" rel="noopener">CSerialPort</a>，支持Windows/Linux，封装比较完善</li><li>直接搜索<code>CSerialPort</code>也有其他一些简单封装</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CreateFile&lt;/code&gt;: 打开串口，文件名指定为&lt;code&gt;COM2&lt;/code&gt;即可&lt;/li&gt;
-      
-    
-    </summary>
-    
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
-    
-    
-      <category term="串口" scheme="https://fxliu.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
-    
-      <category term="通讯" scheme="https://fxliu.github.io/tags/%E9%80%9A%E8%AE%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Windows开发环境</title>
     <link href="https://fxliu.github.io/2019/09/21/Java/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
     <id>https://fxliu.github.io/2019/09/21/Java/开发环境/</id>
@@ -320,8 +454,8 @@
   
   <entry>
     <title>FFmepg(4.2)+SDL(2.0)播放器</title>
-    <link href="https://fxliu.github.io/2019/09/16/Tools/FFmepg+SDL%E6%92%AD%E6%94%BE%E5%99%A8/"/>
-    <id>https://fxliu.github.io/2019/09/16/Tools/FFmepg+SDL播放器/</id>
+    <link href="https://fxliu.github.io/2019/09/16/VCTools/FFmepg+SDL%E6%92%AD%E6%94%BE%E5%99%A8/"/>
+    <id>https://fxliu.github.io/2019/09/16/VCTools/FFmepg+SDL播放器/</id>
     <published>2019-09-16T09:55:53.191Z</published>
     <updated>2019-09-16T09:55:53.191Z</updated>
     
@@ -349,38 +483,9 @@
   </entry>
   
   <entry>
-    <title>无线网卡</title>
-    <link href="https://fxliu.github.io/2019/09/16/System/WLan/"/>
-    <id>https://fxliu.github.io/2019/09/16/System/WLan/</id>
-    <published>2019-09-16T06:55:54.123Z</published>
-    <updated>2019-09-16T10:32:07.828Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul><li><code>WlanOpenHandle</code>: 打开操作句柄</li><li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul><li>已连接，连接中，已断开等</li></ul></li><li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul><li>包含SSID，加密方式等热点信息</li></ul></li><li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul><li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li><li>API操作中配置文件名可以随意指定</li></ul></li><li><code>WlanDeleteProfile</code>: 删除指定配置文件</li><li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li><li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul><li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li></ul></li><li><code>WlanDisconnect</code>: 终止WIFI连接</li></ul><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul><li>查看所有配置名称: <code>netsh wlan show profile</code></li><li>连接到无线WIFI: <code>wlan connect name=PROFILE</code><ul><li>指定SSID: <code>netsh wlan connect ssid=SSID name=PROFILE</code></li></ul></li><li>断开无线: <code>netsh wlan disconnect</code></li><li>添加配置: <code>Netsh WLAN add profile filename=&quot;存放路径&quot;</code></li><li>导出配置：<code>Netsh WLAN export profile key=clear folder=&quot;存放路径&quot;</code><ul><li>导出的 XML 配置文件是明文存储，而且会导出 WIFI 连接密码</li></ul></li><li>删除配置: <code>Netsh WLAN delete profile name=&quot;无线名称&quot;</code></li><li>无线网卡配置，状态: <code>Netsh WLAN show interfaces</code></li><li>查看指定网卡: <code>Netsh WLAN show interface name=&quot;网卡名称&quot;</code></li><li>查看已存储密码: <code>Netsh WLAN show profile name=&quot;无线名称&quot; key=clear</code></li><li>查看无线网卡信息: <code>Netsh WLAN show drivers</code></li><li>无线网卡兼容/支持的功能: <code>Netsh WLAN show wirelesscapabilities</code></li></ul><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul><li>都是Windows标准API，懒得解释了，需要的时候直接看Demo把</li><li>Demo中检查到Wifi已连接时，是通过注册表获取IP数据的，实际上这个有延迟<ul><li>通常Windows先连接AP，然后在自动获取IP，而且获取IP整个动作是有延迟的，此时即使是使用ipconfig也未必能拿到正确的状态</li><li>问题备记，搁置~~</li></ul></li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/WLan" target="_blank" rel="noopener">WLan</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;WlanOpenHandle&lt;/code&gt;: 打开操作句柄&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;WlanEnumI
-      
-    
-    </summary>
-    
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
-    
-    
-      <category term="WLAN" scheme="https://fxliu.github.io/tags/WLAN/"/>
-    
-      <category term="无线网卡" scheme="https://fxliu.github.io/tags/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1/"/>
-    
-  </entry>
-  
-  <entry>
     <title>UPNP穿透</title>
-    <link href="https://fxliu.github.io/2019/09/12/Net/UPNP/"/>
-    <id>https://fxliu.github.io/2019/09/12/Net/UPNP/</id>
+    <link href="https://fxliu.github.io/2019/09/12/VCNet/UPNP/"/>
+    <id>https://fxliu.github.io/2019/09/12/VCNet/UPNP/</id>
     <published>2019-09-12T10:14:38.665Z</published>
     <updated>2019-09-12T10:56:09.757Z</updated>
     
@@ -403,36 +508,9 @@
   </entry>
   
   <entry>
-    <title>HOOK键盘钩子</title>
-    <link href="https://fxliu.github.io/2019/09/07/System/HOOK%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/"/>
-    <id>https://fxliu.github.io/2019/09/07/System/HOOK键盘钩子/</id>
-    <published>2019-09-07T08:51:20.632Z</published>
-    <updated>2019-09-07T15:35:34.124Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="键盘钩子"><a href="#键盘钩子" class="headerlink" title="键盘钩子"></a>键盘钩子</h2><ul><li><code>WH_KEYBOARD_LL</code>：全局键盘钩子<ul><li>不需要封装DLL，EXE中直接钩挂即可</li><li><code>WH_KEYBOARD</code>：需要DLL封装模式使用</li></ul></li><li><code>WH_MOUSE_LL</code>：鼠标钩子，使用方式同键盘钩子<ul><li><code>WH_KEYBOARD</code>: DLL模式</li><li>DLL导出<code>HOOKPROC</code>函数</li><li>EXE加载DLL后，SetWindowsHookEx安装即可</li></ul></li></ul><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// EXE模式</span></span><br><span class="line"><span class="comment">// 挂在钩子</span></span><br><span class="line">m_hHook = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 卸载钩子</span></span><br><span class="line">UnhookWindowsHookEx(m_hHook);</span><br><span class="line"><span class="comment">// 键盘事件处理</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">LowLevelKeyboardProc</span><span class="params">(<span class="keyword">int</span> nCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (nCode == HC_ACTION)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">switch</span> (wParam)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> WM_KEYDOWN:</span><br><span class="line">    <span class="keyword">case</span> WM_SYSKEYDOWN:</span><br><span class="line">    <span class="keyword">case</span> WM_KEYUP:</span><br><span class="line">    <span class="keyword">case</span> WM_SYSKEYUP:</span><br><span class="line">      PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;</span><br><span class="line">      <span class="keyword">if</span> (p-&gt;vkCode == VK_ESCAPE &amp;&amp; GetAsyncKeyState(VK_CONTROL) &amp; <span class="number">0x8000</span> &amp;&amp; GetAsyncKeyState(VK_SHIFT) &amp; <span class="number">0x8000</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Ctrl+Shift+Esc"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="comment">// 返回1代表终止</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (p-&gt;vkCode == VK_ESCAPE &amp;&amp; GetAsyncKeyState(VK_CONTROL) &amp; <span class="number">0x8000</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Ctrl+Esc"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 其他常规事件一定要继续传递下去</span></span><br><span class="line">  <span class="keyword">return</span> CallNextHookEx(<span class="literal">NULL</span>, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意钩子线程不能阻塞，可以内置消息循环，确保钩子有效</span></span><br><span class="line">MSG msg;</span><br><span class="line"><span class="keyword">while</span> (!GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>) &amp;&amp; pThis-&gt;m_hHook)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//TranslateMessage(&amp;msg);</span></span><br><span class="line">  <span class="comment">//DispatchMessage(&amp;msg);</span></span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// DLL模块方式</span></span><br><span class="line"><span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">// DLL导出函数</span></span><br><span class="line"><span class="comment">// 全局共享段，用户DLL公共数据处理，可以根据自己需要增删</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg(<span class="meta-string">"SHARED"</span>)</span></span><br><span class="line"><span class="keyword">static</span> HHOOK g_hHook = <span class="literal">NULL</span>;  <span class="comment">// 钩子句柄, 便于卸载</span></span><br><span class="line"><span class="keyword">static</span> HWND g_hookWnd = <span class="literal">NULL</span>;  <span class="comment">// 调用DLL的主窗口句柄, 这样就可以SendMessage给主窗口鼠标消息及其参数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> data_seg()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">"/section:SHARED,rws"</span>)</span></span><br><span class="line"><span class="comment">// 钩子回调函数</span></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">MouseProc</span><span class="params">(<span class="keyword">int</span> nCode, WPARAM wParam, LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 有鼠标消息时，将其发给主程序</span></span><br><span class="line">  <span class="keyword">if</span> (g_hookWnd != <span class="literal">NULL</span> &amp;&amp; nCode == HC_ACTION)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 自定义消息</span></span><br><span class="line">    ::SendMessage(g_hookWnd, WM_HOOKMSG, wParam, lParam);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 常规事件继续传递: g_hook 可以给NULL</span></span><br><span class="line">  <span class="keyword">return</span> CallNextHookEx(g_hHook, nCode, wParam, lParam);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 其他辅助导出函数</span></span><br><span class="line"><span class="function">BOOL <span class="title">SetHwnd</span><span class="params">(HWND hwnd, HHOOK hHook)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  g_hookWnd = hwnd;</span><br><span class="line">  g_hHook = hHook;</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// .def 内容</span></span><br><span class="line">LIBRARY</span><br><span class="line">EXPORTS</span><br><span class="line">  MouseProc</span><br><span class="line">  SetHwnd</span><br><span class="line"><span class="comment">// ------------------------------------------------------------------</span></span><br><span class="line"><span class="comment">// EXE 加载部分</span></span><br><span class="line"><span class="comment">// 加载DLL</span></span><br><span class="line">HMODULE hModule = LoadLibrary(GetRunPath() + TEXT(<span class="string">"\\HookDll.dll"</span>));</span><br><span class="line">PSetHwnd pSetHwnd = (PSetHwnd)GetProcAddress(hModule, <span class="string">"SetHwnd"</span>);</span><br><span class="line">HOOKPROC mouseProc = (HOOKPROC)GetProcAddress(hModule, <span class="string">"MouseProc"</span>);</span><br><span class="line"><span class="keyword">if</span> (!pSetHwnd || !mouseProc)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 安装</span></span><br><span class="line">HHOOK hHook = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 0代表全局</span></span><br><span class="line">hHook = SetWindowsHookEx(WH_MOUSE, mouseProc, hModule, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (hHook)</span><br><span class="line">&#123;</span><br><span class="line">  SetWindowText(g_static, TEXT(<span class="string">"SetWindowsHookEx Success"</span>));</span><br><span class="line">  <span class="comment">// 把句柄设置进去是为了方便回传数据</span></span><br><span class="line">  pSetHwnd(g_hwnd, hHook);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  SetWindowText(g_static, TEXT(<span class="string">"SetWindowsHookEx Fail"</span>));</span><br><span class="line"><span class="comment">// 卸载</span></span><br><span class="line">FreeLibrary(hModule);</span><br><span class="line"><span class="keyword">if</span> (hHook)</span><br><span class="line">  UnhookWindowsHookEx(hHook);</span><br></pre></td></tr></table></figure><h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul><li>EXE模式仍然依赖于消息机制，调用<code>SetWindowsHookEx</code>的线程不可被阻塞，否则会导致钩子无效，系统所有按键事件被延迟处理</li><li>Exe需要管理员权限</li></ul><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/HOOK/KeyboardHook" target="_blank" rel="noopener">HOOK</a>包含一个EXE方式键盘钩子和一个DLL模块方式鼠标钩子<br><code>https://github.com/fxliu/VCDemo/tree/master/HOOK/KeyboardHook</code><br>EXE方式比DLL方式便捷的多，但貌似DLL模块方式速度比较快</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;键盘钩子&quot;&gt;&lt;a href=&quot;#键盘钩子&quot; class=&quot;headerlink&quot; title=&quot;键盘钩子&quot;&gt;&lt;/a&gt;键盘钩子&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;WH_KEYBOARD_LL&lt;/code&gt;：全局键盘钩子&lt;ul&gt;
-&lt;li&gt;不需要封装DLL，EXE中
-      
-    
-    </summary>
-    
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
-    
-    
-      <category term="HOOK" scheme="https://fxliu.github.io/tags/HOOK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>opencv2</title>
-    <link href="https://fxliu.github.io/2019/09/07/Tools/opcv2/"/>
-    <id>https://fxliu.github.io/2019/09/07/Tools/opcv2/</id>
+    <link href="https://fxliu.github.io/2019/09/07/VCTools/opcv2/"/>
+    <id>https://fxliu.github.io/2019/09/07/VCTools/opcv2/</id>
     <published>2019-09-07T08:51:20.629Z</published>
     <updated>2019-09-16T10:07:27.294Z</updated>
     
@@ -481,76 +559,6 @@
       <category term="hexo" scheme="https://fxliu.github.io/tags/hexo/"/>
     
       <category term="github" scheme="https://fxliu.github.io/tags/github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo小技巧汇总</title>
-    <link href="https://fxliu.github.io/2019/09/01/hexo%E5%B0%8F%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
-    <id>https://fxliu.github.io/2019/09/01/hexo小技巧汇总/</id>
-    <published>2019-09-01T09:14:57.000Z</published>
-    <updated>2019-10-12T00:54:59.830Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul><li>新文章<ul><li><code>hexo new [layout] &lt;title&gt;</code>：<code>layout</code>默认<code>post</code></li></ul></li></ul><h3 id="代码块不显示行号"><a href="#代码块不显示行号" class="headerlink" title="代码块不显示行号"></a>代码块不显示行号</h3><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>line_number</code>默认<code>true</code>显示行号，影响代码复制</li></ul><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><h2 id="fexo"><a href="#fexo" class="headerlink" title="fexo"></a>fexo</h2><ul><li>调整根目录<code>_config.yml</code>配置文件</li><li><code>busuanzi: true</code>开启网站统计<ul><li>js代码：<code>fexo\layout\_partial\head.ejs</code></li></ul></li><li><code>baidu_analytics: ****</code>百度网站统计<ul><li>js代码：<code>fexo\layout\_partial\baidu-analytics.ejs</code><ul><li>补充类型字段<code>hm.type = &quot;*.*&quot;;</code>，避免部分浏览器加载失败</li></ul></li><li>百度推送：<code>fexo\layout\_partial\baidu-analytics.ejs</code></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;hexo&quot;&gt;&lt;a href=&quot;#hexo&quot; class=&quot;headerlink&quot; title=&quot;hexo&quot;&gt;&lt;/a&gt;hexo&lt;/h2&gt;&lt;h3 id=&quot;常用命令&quot;&gt;&lt;a href=&quot;#常用命令&quot; class=&quot;headerlink&quot; title=&quot;常用命令&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="博客" scheme="https://fxliu.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="hexo" scheme="https://fxliu.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MarkDown</title>
-    <link href="https://fxliu.github.io/2019/09/01/Tools/MarkDown/"/>
-    <id>https://fxliu.github.io/2019/09/01/Tools/MarkDown/</id>
-    <published>2019-09-01T09:14:57.000Z</published>
-    <updated>2019-10-12T01:23:35.463Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="常用规则"><a href="#常用规则" class="headerlink" title="常用规则"></a>常用规则</h2><h3 id="标题系列"><a href="#标题系列" class="headerlink" title="标题系列"></a>标题系列</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="section"># 大标题</span></span><br><span class="line"><span class="section">## 二标题</span></span><br><span class="line"><span class="section">###### 六标题也可以</span></span><br><span class="line"></span><br><span class="line">主标题</span><br><span class="line">======</span><br><span class="line"></span><br><span class="line">副标题</span><br><span class="line">------</span><br></pre></td></tr></table></figure><h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><ul><li><strong>这是加粗的文字</strong><code>**这是加粗的文字**</code></li><li><em>这是倾斜的文字</em><code>*这是倾斜的文字*</code></li><li><strong><em>这是斜体加粗的文字</em></strong><code>***这是斜体加粗的文字***</code></li><li><del>这是加删除线的文字</del><code>~~这是加删除线的文字~~</code></li></ul><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="code">`背景色突出`</span></span><br><span class="line"><span class="code">`单行代码`</span></span><br><span class="line">代码块</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote><p>引用内容1</p><blockquote><p>引用内容2</p></blockquote></blockquote><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">* </span>无序列表</span><br><span class="line"><span class="bullet">+ </span>无序列表</span><br><span class="line"><span class="bullet">- </span>无序列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>有序列表，注意空格</span><br><span class="line"><span class="bullet">2. </span>有序列表，会自动计算序号</span><br><span class="line"><span class="bullet">   + </span>嵌套</span><br><span class="line"><span class="bullet">   + </span>列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>[x] 任务列表</span><br><span class="line"><span class="bullet">- </span>[x] 已完成</span><br><span class="line"><span class="bullet">- </span>[ ] 未完成</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">分割线</span><br><span class="line"><span class="bullet">- </span>- - （推荐）</span><br><span class="line">---</span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="bullet">* </span><span class="bullet">* *</span></span><br></pre></td></tr></table></figure><p>分割线</p><hr><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 "图片title"</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/6860761-fd2f51090a890873.jpg" alt="blockchain" title="区块链"></p><h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[<span class="string">link</span>](<span class="link">URL "注释"</span>)</span><br></pre></td></tr></table></figure><p><a href="https://wwww.baidu.com" title="百度超链接" target="_blank" rel="noopener">百度</a><br><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="https://www.jianshu.com" target="_blank">新页面打开</a></p><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Computer</td><td>$1600</td></tr><tr><td>Phone</td><td>$12</td></tr><tr><td>Pipe</td><td>$1</td></tr></tbody></table><h4 id="表格：指定对齐方式"><a href="#表格：指定对齐方式" class="headerlink" title="表格：指定对齐方式"></a>表格：指定对齐方式</h4><table><thead><tr><th align="left">Item</th><th align="right">Value</th><th align="center">Qty</th></tr></thead><tbody><tr><td align="left">Computer</td><td align="right">$1600</td><td align="center">5</td></tr><tr><td align="left">Phone</td><td align="right">$12</td><td align="center">12</td></tr><tr><td align="left">Pipe</td><td align="right">$1</td><td align="center">234</td></tr></tbody></table><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure><h3 id="自动生成目录"><a href="#自动生成目录" class="headerlink" title="自动生成目录"></a>自动生成目录</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[TOC]自动生成目录</span><br></pre></td></tr></table></figure><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul><li>Nodepad++<ul><li>新版安装后就支持颜色处理，可扩展MarkDown插件展示效果</li></ul></li><li>Visual Studio Code (VS Code)</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;常用规则&quot;&gt;&lt;a href=&quot;#常用规则&quot; class=&quot;headerlink&quot; title=&quot;常用规则&quot;&gt;&lt;/a&gt;常用规则&lt;/h2&gt;&lt;h3 id=&quot;标题系列&quot;&gt;&lt;a href=&quot;#标题系列&quot; class=&quot;headerlink&quot; title=&quot;标题系列&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-      <category term="Tools" scheme="https://fxliu.github.io/categories/Tools/"/>
-    
-    
-      <category term="MarkDown" scheme="https://fxliu.github.io/tags/MarkDown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测试页</title>
-    <link href="https://fxliu.github.io/2019/09/01/test/"/>
-    <id>https://fxliu.github.io/2019/09/01/test/</id>
-    <published>2019-09-01T07:53:28.000Z</published>
-    <updated>2019-09-04T10:24:17.482Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="博客" scheme="https://fxliu.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="test" scheme="https://fxliu.github.io/categories/%E5%8D%9A%E5%AE%A2/test/"/>
-    
-    
-      <category term="hexo" scheme="https://fxliu.github.io/tags/hexo/"/>
     
   </entry>
   

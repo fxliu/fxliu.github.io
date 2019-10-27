@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>UPNP穿透 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="UPNP,">
+  
+
+  <meta name="description" content="UPNP用即插即用（英语：Universal Plug and Play，简称UPnP）是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。UPnP通过定义和发布基于开放、因特网通讯网协议标准的UPnP设备控制协议来实现这一目标。UPnP这个概念是从即插即用（Plug-a">
+<meta name="keywords" content="UPNP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UPNP穿透">
+<meta property="og:url" content="https://fxliu.github.io/2019/09/12/VCNet/UPNP/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="UPNP用即插即用（英语：Universal Plug and Play，简称UPnP）是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。UPnP通过定义和发布基于开放、因特网通讯网协议标准的UPnP设备控制协议来实现这一目标。UPnP这个概念是从即插即用（Plug-a">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-12T10:56:09.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UPNP穿透">
+<meta name="twitter:description" content="UPNP用即插即用（英语：Universal Plug and Play，简称UPnP）是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。UPnP通过定义和发布基于开放、因特网通讯网协议标准的UPnP设备控制协议来实现这一目标。UPnP这个概念是从即插即用（Plug-a">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UPNP"><span class="toc-text">UPNP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UPNP穿透-WIN-API"><span class="toc-text">UPNP穿透(WIN API)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化COM接口"><span class="toc-text">初始化COM接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历跟设备"><span class="toc-text">遍历跟设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历子设备"><span class="toc-text">遍历子设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历服务"><span class="toc-text">遍历服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口映射"><span class="toc-text">端口映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备注"><span class="toc-text">备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCNet/UPNP" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">UPNP穿透</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="UPNP"><a href="#UPNP" class="headerlink" title="UPNP"></a>UPNP</h2><p>用即插即用（英语：Universal Plug and Play，简称UPnP）是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。<br>该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。<br>UPnP通过定义和发布基于开放、因特网通讯网协议标准的UPnP设备控制协议来实现这一目标。<br>UPnP这个概念是从即插即用（Plug-and-play）派生而来的，即插即用是一种热拔插技术。</p>
+<h2 id="UPNP穿透-WIN-API"><a href="#UPNP穿透-WIN-API" class="headerlink" title="UPNP穿透(WIN API)"></a>UPNP穿透(WIN API)</h2><p>NAT穿透允许UPnP数据包在没有用户交互的情况下，无障碍的通过路由器或者防火墙（假如那个路由器或者防火墙支持NAT）。<br>事实上大部分防火墙默认都是开通这个端口的</p>
+<h3 id="初始化COM接口"><a href="#初始化COM接口" class="headerlink" title="初始化COM接口"></a>初始化COM接口</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">```C++</span><br><span class="line">typedef enum _EPortMapping</span><br><span class="line">&#123;</span><br><span class="line">  PM_OK = 0,				// 操作成功</span><br><span class="line">  PM_SUCCESS = 0,			// 未注册 &amp;&amp; 可注册</span><br><span class="line">  PM_SUCCESS_EXIST,		// 已注册</span><br><span class="line">  PM_ERROR = 10,			// 操作失败</span><br><span class="line">  PM_ERROR_PORT,			// 外网端口已被本机其他端口映射</span><br><span class="line">  PM_ERROR_REMOTE_PORT,	// 外网端口已被其他机器映射</span><br><span class="line">  PM_ERROR_PORT_CONFLICT,	// 端口冲突：端口必须 &gt;= 1024</span><br><span class="line">&#125;EPortMapping;</span><br><span class="line"></span><br><span class="line">// 定义结构体模型：每个IUPnPDevice都有子IUPnPDevice组以及自身提供的IUPnPService组</span><br><span class="line">typedef struct _MyUpnpService</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  CComVariant cv;</span><br><span class="line">  CComPtr&lt;IUPnPService&gt; service;</span><br><span class="line">  _MyUpnpService(CComVariant &amp;cv)</span><br><span class="line">  &#123;</span><br><span class="line">    this-&gt;cv = cv;</span><br><span class="line">    this-&gt;service = (IUPnPService*)V_DISPATCH(&amp;cv);</span><br><span class="line">  &#125;</span><br><span class="line">  ~_MyUpnpService()</span><br><span class="line">  &#123;&#125;</span><br><span class="line">&#125;MyUpnpService;</span><br><span class="line"></span><br><span class="line">typedef struct _MyUpnpDevice</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  CComVariant cv;</span><br><span class="line">  CComPtr&lt;IUPnPDevice&gt; device;</span><br><span class="line">  std::vector&lt;_MyUpnpDevice&gt; subDevice;</span><br><span class="line">  std::vector&lt;MyUpnpService&gt; service;</span><br><span class="line">  _MyUpnpDevice(CComVariant &amp;cv)</span><br><span class="line">  &#123;</span><br><span class="line">    this-&gt;cv = cv;</span><br><span class="line">    this-&gt;device = (IUPnPDevice*)V_DISPATCH(&amp;cv);</span><br><span class="line">  &#125;</span><br><span class="line">  ~_MyUpnpDevice()</span><br><span class="line">  &#123;</span><br><span class="line">    service.clear();</span><br><span class="line">    subDevice.clear();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;MyUpnpDevice;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历跟设备"><a href="#遍历跟设备" class="headerlink" title="遍历跟设备"></a>遍历跟设备</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">BOOL CMyUpnp::SearchRootDevices()</span><br><span class="line">&#123;</span><br><span class="line">  IUPnPDeviceFinder* pUPnPDeviceFinder;</span><br><span class="line">  HRESULT hr = CoCreateInstance(CLSID_UPnPDeviceFinder, <span class="literal">NULL</span>, CLSCTX_INPROC_SERVER,</span><br><span class="line">    IID_IUPnPDeviceFinder, <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">void</span>**&gt;(&amp;pUPnPDeviceFinder));</span><br><span class="line">  <span class="keyword">if</span> (SUCCEEDED(hr))</span><br><span class="line">  &#123;</span><br><span class="line">    IUPnPDevices *devices = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">// TypeURI: 对应ST字段内容</span></span><br><span class="line">    <span class="comment">// 查询跟设备：upnp:rootdevice</span></span><br><span class="line">    <span class="comment">// 查询网关设备：urn:schemas-upnp-org:device:InternetGatewayDevice:1</span></span><br><span class="line">    BSTR uri = SysAllocString(TEXT(<span class="string">"urn:schemas-upnp-org:device:InternetGatewayDevice:1"</span>));</span><br><span class="line">    hr = pUPnPDeviceFinder-&gt;FindByType(uri, <span class="number">0</span>, &amp;devices);</span><br><span class="line">    SysFreeString(uri);</span><br><span class="line">    <span class="keyword">if</span> (SUCCEEDED(hr))</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 遍历根设备</span></span><br><span class="line">      IEnumVARIANT *piEnum = <span class="literal">NULL</span>;</span><br><span class="line">      hr = devices-&gt;get__NewEnum((IUnknown**)&amp;piEnum);</span><br><span class="line">      CComVariant var;</span><br><span class="line">      ULONG nReturned = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span> (piEnum-&gt;Next(<span class="number">1</span>, &amp;var, &amp;nReturned) == S_OK)</span><br><span class="line">      &#123;</span><br><span class="line">        m_rootDevices.push_back(var);</span><br><span class="line">      &#125;</span><br><span class="line">      piEnum-&gt;Release();</span><br><span class="line">    &#125;</span><br><span class="line">    pUPnPDeviceFinder-&gt;Release();</span><br><span class="line">    <span class="keyword">return</span> TRUE;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历子设备"><a href="#遍历子设备" class="headerlink" title="遍历子设备"></a>遍历子设备</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// device</span></span><br><span class="line"><span class="keyword">void</span> CMyUpnp::EnumSubDevices(MyUpnpDevice &amp;device)</span><br><span class="line">&#123;</span><br><span class="line">  device.subDevice.clear();</span><br><span class="line">  EnumSubServices(device);</span><br><span class="line">  IUPnPDevices *children;</span><br><span class="line">  <span class="keyword">if</span> (device.device-&gt;get_Children(&amp;children) == S_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    IEnumVARIANT *piEnum = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">if</span> (children-&gt;get__NewEnum((IUnknown**)&amp;piEnum) == S_OK)</span><br><span class="line">    &#123;</span><br><span class="line">      CComVariant var;</span><br><span class="line">      ULONG nReturned = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span> (piEnum-&gt;Next(<span class="number">1</span>, &amp;var, &amp;nReturned) == S_OK)</span><br><span class="line">      &#123;</span><br><span class="line">        device.subDevice.push_back(MyUpnpDevice(var));</span><br><span class="line">        EnumSubDevices(device.subDevice.back());</span><br><span class="line">      &#125;</span><br><span class="line">      piEnum-&gt;Release();</span><br><span class="line">    &#125;</span><br><span class="line">    children-&gt;Release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历服务"><a href="#遍历服务" class="headerlink" title="遍历服务"></a>遍历服务</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> CMyUpnp::EnumSubServices(MyUpnpDevice &amp;device)</span><br><span class="line">&#123;</span><br><span class="line">  device.service.clear();</span><br><span class="line">  <span class="comment">// 遍历服务</span></span><br><span class="line">  IUPnPServices* services = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="keyword">if</span> (device.device-&gt;get_Services(&amp;services) == S_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    IEnumVARIANT *piEnum = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">if</span> (services-&gt;get__NewEnum((IUnknown**)&amp;piEnum) == S_OK)</span><br><span class="line">    &#123;</span><br><span class="line">      CComVariant var;</span><br><span class="line">      ULONG nReturned = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">while</span> (piEnum-&gt;Next(<span class="number">1</span>, &amp;var, &amp;nReturned) == S_OK)</span><br><span class="line">      &#123;</span><br><span class="line">        device.service.push_back(var);</span><br><span class="line">        IUPnPService *service = (IUPnPService*)V_DISPATCH(&amp;var);</span><br><span class="line">        BSTR tmp = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span> (service-&gt;get_ServiceTypeIdentifier(&amp;tmp) == S_OK)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="comment">//cout &lt;&lt; "get_ServiceTypeIdentifier\t\t" &lt;&lt; CW2A(tmp) &lt;&lt; endl;</span></span><br><span class="line">          CString sn = tmp;</span><br><span class="line">          <span class="keyword">if</span> (sn == TEXT(<span class="string">"urn:schemas-upnp-org:service:WANIPConnection:1"</span>) || sn == TEXT(<span class="string">"urn:schemas-upnp-org:service:WANPPPConnection:1"</span>))</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="comment">// 这个就是端口映射服务</span></span><br><span class="line">            m_connService = service;</span><br><span class="line">          &#125;</span><br><span class="line">          SysFreeString(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      piEnum-&gt;Release();</span><br><span class="line">    &#125;</span><br><span class="line">    services-&gt;Release();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 服务接口：发送Action事件，反馈执行结果</span></span><br><span class="line">BOOL CMyUpnp::InvokeAction(CString strAction, CComSafeArray&lt;VARIANT&gt; &amp;arr, CComVariant &amp;vaOutArgs, CComVariant &amp;vaRetVal)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (!m_connService)</span><br><span class="line">  &#123;</span><br><span class="line">    CheckSupportPortMapping();</span><br><span class="line">    <span class="keyword">if</span> (!m_connService)</span><br><span class="line">      <span class="keyword">return</span> FALSE;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">CComVariant <span class="title">vaInActionArgs</span><span class="params">(*arr.GetSafeArrayPtr())</span></span>;</span><br><span class="line">  BSTR act = strAction.AllocSysString();</span><br><span class="line">  HRESULT re = m_connService-&gt;InvokeAction(act, vaInActionArgs, &amp;vaOutArgs, &amp;vaRetVal);</span><br><span class="line">  <span class="keyword">if</span> (re != S_OK)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (re == DISP_E_TYPEMISMATCH)</span><br><span class="line">      wcout &lt;&lt; strAction.GetBuffer() &lt;&lt; <span class="string">L" -&gt; InvokeAction Error: 类型不匹配"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(re == E_FAIL)</span><br><span class="line">      wcout &lt;&lt; strAction.GetBuffer() &lt;&lt; <span class="string">L" -&gt; InvokeAction Error: E_FAIL"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      wcout &lt;&lt; strAction.GetBuffer() &lt;&lt; <span class="string">L" -&gt; InvokeAction Error: "</span> &lt;&lt; hex &lt;&lt; re;</span><br><span class="line">      <span class="keyword">if</span> (vaRetVal.vt == VT_BSTR)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 排除常规遍历提醒</span></span><br><span class="line">        <span class="keyword">if</span> (strAction != TEXT(<span class="string">"GetGenericPortMappingEntry"</span>) || CString(V_BSTR(&amp;vaRetVal)) != TEXT(<span class="string">"SpecifiedArrayIndexInvalid"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">          wcout &lt;&lt; <span class="string">L" -&gt; "</span> &lt;&lt; V_BSTR(&amp;vaRetVal);</span><br><span class="line">          m_lastError = V_BSTR(&amp;vaRetVal);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      wcout &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  SysFreeString(act);</span><br><span class="line">  <span class="keyword">return</span> re == S_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">EPortMapping CMyUpnp::AddPortMapping(CString localIP, DWORD localPort, DWORD remotePort, CString des, CString protocol, CString remoteHost)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 添加映射</span></span><br><span class="line">  CString act = TEXT(<span class="string">"AddPortMapping"</span>);</span><br><span class="line">  CComSafeArray&lt;VARIANT&gt; saInArr;</span><br><span class="line">  saInArr.Create();</span><br><span class="line">  <span class="comment">// 注意这里的参数顺序是固定的，一一对应到XML结构</span></span><br><span class="line">  saInArr.Add(CComVariant(<span class="string">""</span>));	<span class="comment">// NewRemoteHost: 通常是空串</span></span><br><span class="line">  saInArr.Add(CComVariant(remotePort));	<span class="comment">// NewExternalPort</span></span><br><span class="line">  saInArr.Add(CComVariant(protocol));		<span class="comment">// NewProtocol: TCP|UDP</span></span><br><span class="line">  saInArr.Add(CComVariant(localPort));	<span class="comment">// NewInternalPort</span></span><br><span class="line">  saInArr.Add(CComVariant(localIP));		<span class="comment">// NewInternalClient</span></span><br><span class="line">  saInArr.Add(CComVariant(VARIANT_TRUE));	<span class="comment">// NewEnabled: 必须是 VARIANT_TRUE</span></span><br><span class="line">  saInArr.Add(CComVariant(des.GetBuffer()));	<span class="comment">// NewPortMappingDescription</span></span><br><span class="line">  saInArr.Add(CComVariant(<span class="string">"0"</span>));			<span class="comment">// NewLeaseDuration</span></span><br><span class="line"></span><br><span class="line">  CComVariant vaOutArgs, vaRetVal;</span><br><span class="line">  <span class="keyword">if</span> (InvokeAction(act, saInArr, vaOutArgs, vaRetVal))</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> PM_SUCCESS;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (m_lastError == TEXT(<span class="string">"ConflictInMappingEntry"</span>))</span><br><span class="line">    <span class="keyword">return</span> PM_ERROR_PORT_CONFLICT;</span><br><span class="line">  <span class="keyword">return</span> PM_ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">EPortMapping CMyUpnp::DeletePortMapping(DWORD remotePort, CString protocol, CString remoteHost)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 删除映射</span></span><br><span class="line">  CString act = TEXT(<span class="string">"DeletePortMapping"</span>);</span><br><span class="line">  CComSafeArray&lt;VARIANT&gt; saInArr;</span><br><span class="line">  saInArr.Create();</span><br><span class="line">  <span class="comment">// 注意这里的参数顺序是固定的，一一对应到XML结构</span></span><br><span class="line">  saInArr.Add(CComVariant(remoteHost));	<span class="comment">// NewRemoteHost: 通常是空串</span></span><br><span class="line">  saInArr.Add(CComVariant(remotePort));	<span class="comment">// NewExternalPort</span></span><br><span class="line">  saInArr.Add(CComVariant(protocol));		<span class="comment">// NewProtocol: TCP|UDP</span></span><br><span class="line"></span><br><span class="line">  CComVariant vaOutArgs, vaRetVal;</span><br><span class="line">  <span class="keyword">if</span> (InvokeAction(act, saInArr, vaOutArgs, vaRetVal))</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> PM_SUCCESS;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> PM_ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul>
+<li>端口映射<ul>
+<li><strong>测试发现仅支持&gt;=1024的端口，否则反馈端口冲突错误</strong><ul>
+<li>端口映射服务也明确说明了这点，可以查UPNP官方文档，有XML和结构字段说明</li>
+</ul>
+</li>
+<li><strong>WinAPI所传参数和XML结构中的参数是一一对应的，并且顺序是固定的</strong></li>
+<li>WinAPI封装了网络通讯，查找/遍历/添加映射/删除映射都是网络通讯，可以抓包分析明文XML加强理解</li>
+</ul>
+</li>
+<li>测试映射<ul>
+<li>通道打通后，内网端口开HTTP服务</li>
+<li>然后直接访问外网映射端口即可（外网映射端口只能外网访问）</li>
+</ul>
+</li>
+</ul>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/NET/Upnp" target="_blank" rel="noopener">UPNP</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/07/VCTools/opcv2/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/16/VCTools/FFmepg+SDL播放器/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

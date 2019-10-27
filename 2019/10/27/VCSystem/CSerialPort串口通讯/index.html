@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>串口通讯 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="串口,通讯,">
+  
+
+  <meta name="description" content="API CreateFile: 打开串口，文件名指定为COM2即可 参数设置： SetCommTimeouts: 读写超时控制 SetCommState: 设置参数 GetCommState: 获取参数(DCB) 先获取，调整需要修改的项，然后再设置 注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位      // 常用字段typedef struct _DCB &amp;#12">
+<meta name="keywords" content="串口,通讯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="串口通讯">
+<meta property="og:url" content="https://fxliu.github.io/2019/10/27/VCSystem/CSerialPort串口通讯/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="API CreateFile: 打开串口，文件名指定为COM2即可 参数设置： SetCommTimeouts: 读写超时控制 SetCommState: 设置参数 GetCommState: 获取参数(DCB) 先获取，调整需要修改的项，然后再设置 注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位      // 常用字段typedef struct _DCB &amp;#12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-22T04:10:53.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="串口通讯">
+<meta name="twitter:description" content="API CreateFile: 打开串口，文件名指定为COM2即可 参数设置： SetCommTimeouts: 读写超时控制 SetCommState: 设置参数 GetCommState: 获取参数(DCB) 先获取，调整需要修改的项，然后再设置 注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位      // 常用字段typedef struct _DCB &amp;#12">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub第三方库"><span class="toc-text">GitHub第三方库</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCSystem/CSerialPort串口通讯" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">串口通讯</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.10.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><code>CreateFile</code>: 打开串口，文件名指定为<code>COM2</code>即可</li>
+<li>参数设置：<ul>
+<li><code>SetCommTimeouts</code>: 读写超时控制</li>
+<li><code>SetCommState</code>: 设置参数<ul>
+<li><code>GetCommState</code>: 获取参数(DCB)</li>
+<li>先获取，调整需要修改的项，然后再设置</li>
+<li>注意停止位的定义：0代表1个停止位，1代表1.5个停止位，2代表2个停止位</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 常用字段</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">DCB</span> &#123;</span></span><br><span class="line">    DWORD DCBlength;      <span class="comment">/* sizeof(DCB)                     */</span></span><br><span class="line">    DWORD BaudRate;       <span class="comment">/* 波特率：115200,9600等       */</span></span><br><span class="line">    DWORD fBinary: <span class="number">1</span>;     <span class="comment">/* 数据位：通常为8    */</span></span><br><span class="line">    DWORD fParity: <span class="number">1</span>;     <span class="comment">/* 奇偶检验位          */</span></span><br><span class="line">    BYTE StopBits;        <span class="comment">/* 停止位：0,1,2 = 1, 1.5, 2        */</span></span><br><span class="line">&#125; DCB, *LPDCB;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>PurgeComm</code>: 清空缓冲区<ul>
+<li>PURGE_TXABORT：中断所有写操作并立即返回，即使写操作还没有完成。</li>
+<li>PURGE_RXABORT：中断所有读操作并立即返回，即使读操作还没有完成。</li>
+<li>PURGE_TXCLEAR：清除输出缓冲区</li>
+<li>PURGE_RXCLEAR：清除输入缓冲区</li>
+</ul>
+</li>
+<li><code>ReadFile</code>: 读</li>
+<li><code>WriteFile</code>: 写</li>
+<li>串口遍历<ul>
+<li><code>SetupDiGetClassDevs</code>: 打开句柄<ul>
+<li>GUID: <code>GUID_CLASS_COMPORT</code>，在<code>WinIoCtl.h</code>文件中被定义</li>
+<li><code>SetupDiDestroyDeviceInfoList</code>：释放句柄</li>
+</ul>
+</li>
+<li><code>SetupDiEnumDeviceInterfaces</code>: 遍历</li>
+<li><code>SetupDiGetDeviceInterfaceDetail</code>: 接口路径，比如“COM2”什么的</li>
+<li><code>SetupDiGetDeviceRegistryProperty</code>：接口属性<ul>
+<li><code>SPDRP_DEVICEDESC</code>：设备描述</li>
+<li><code>SPDRP_CLASS</code>：类名</li>
+<li><code>SPDRP_MFG</code>：制造商</li>
+<li><code>SPDRP_FRIENDLYNAME</code>：设备描述(友好名称)</li>
+<li><code>SPDRP_LOCATION_INFORMATION</code>：本地环境属性</li>
+<li><code>SPDRP_PHYSICAL_DEVICE_OBJECT_NAME</code>：设备物理名称</li>
+<li><code>SPDRP_ENUMERATOR_NAME</code>：枚举类型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/CSerialPort" target="_blank" rel="noopener">CSerialPort</a></p>
+<h2 id="GitHub第三方库"><a href="#GitHub第三方库" class="headerlink" title="GitHub第三方库"></a>GitHub第三方库</h2><ul>
+<li><a href="https://github.com/itas109/CSerialPort" target="_blank" rel="noopener">CSerialPort</a>，支持Windows/Linux，封装比较完善</li>
+<li>直接搜索<code>CSerialPort</code>也有其他一些简单封装</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/10/27/DB/MySQL/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/10/27/VCSystem/HOOK键盘钩子/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

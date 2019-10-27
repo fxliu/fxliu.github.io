@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>无线网卡 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="WLAN,无线网卡,">
+  
+
+  <meta name="description" content="API WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
+<meta name="keywords" content="WLAN,无线网卡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线网卡">
+<meta property="og:url" content="https://fxliu.github.io/2019/10/27/VCSystem/WLan/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="API WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-16T10:32:07.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无线网卡">
+<meta name="twitter:description" content="API WlanOpenHandle: 打开操作句柄 WlanEnumInterfaces: 遍历无线设备接口，并获取接口状态 已连接，连接中，已断开等   WlanGetAvailableNetworkList: 遍历热点 包含SSID，加密方式等热点信息   WlanGetProfileList: 获取机器已保存所有热点配置 Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-text">命令行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备注"><span class="toc-text">备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCSystem/WLan" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">无线网卡</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.10.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><code>WlanOpenHandle</code>: 打开操作句柄</li>
+<li><code>WlanEnumInterfaces</code>: 遍历无线设备接口，并获取接口状态<ul>
+<li>已连接，连接中，已断开等</li>
+</ul>
+</li>
+<li><code>WlanGetAvailableNetworkList</code>: 遍历热点<ul>
+<li>包含SSID，加密方式等热点信息</li>
+</ul>
+</li>
+<li><code>WlanGetProfileList</code>: 获取机器已保存所有热点配置<ul>
+<li>Windows没连接一次热点，会自动保存一份该热点的配置文件，配置文件名一般就是热点名</li>
+<li>API操作中配置文件名可以随意指定</li>
+</ul>
+</li>
+<li><code>WlanDeleteProfile</code>: 删除指定配置文件</li>
+<li><code>WlanSetProfile</code>: 新增/重置指定配置文件</li>
+<li><code>WlanConnect</code>: WIFI连接指令，Windows会自动查找默认配置，并尝试连接<ul>
+<li>该函数指令返回时，仅说明Windows接收到该指令并开始执行，不保证能连接成功</li>
+</ul>
+</li>
+<li><code>WlanDisconnect</code>: 终止WIFI连接</li>
+</ul>
+<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><ul>
+<li>查看所有配置名称: <code>netsh wlan show profile</code></li>
+<li>连接到无线WIFI: <code>wlan connect name=PROFILE</code><ul>
+<li>指定SSID: <code>netsh wlan connect ssid=SSID name=PROFILE</code></li>
+</ul>
+</li>
+<li>断开无线: <code>netsh wlan disconnect</code></li>
+<li>添加配置: <code>Netsh WLAN add profile filename=&quot;存放路径&quot;</code></li>
+<li>导出配置：<code>Netsh WLAN export profile key=clear folder=&quot;存放路径&quot;</code><ul>
+<li>导出的 XML 配置文件是明文存储，而且会导出 WIFI 连接密码</li>
+</ul>
+</li>
+<li>删除配置: <code>Netsh WLAN delete profile name=&quot;无线名称&quot;</code></li>
+<li>无线网卡配置，状态: <code>Netsh WLAN show interfaces</code></li>
+<li>查看指定网卡: <code>Netsh WLAN show interface name=&quot;网卡名称&quot;</code></li>
+<li>查看已存储密码: <code>Netsh WLAN show profile name=&quot;无线名称&quot; key=clear</code></li>
+<li>查看无线网卡信息: <code>Netsh WLAN show drivers</code></li>
+<li>无线网卡兼容/支持的功能: <code>Netsh WLAN show wirelesscapabilities</code></li>
+</ul>
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul>
+<li>都是Windows标准API，懒得解释了，需要的时候直接看Demo把</li>
+<li>Demo中检查到Wifi已连接时，是通过注册表获取IP数据的，实际上这个有延迟<ul>
+<li>通常Windows先连接AP，然后在自动获取IP，而且获取IP整个动作是有延迟的，此时即使是使用ipconfig也未必能拿到正确的状态</li>
+<li>问题备记，搁置~~</li>
+</ul>
+</li>
+</ul>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/SYSTEM/WLan" target="_blank" rel="noopener">WLan</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/10/27/VCSystem/HOOK键盘钩子/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/10/27/Linux/计划任务/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
