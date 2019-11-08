@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fxliu.github.io/"/>
-  <updated>2019-10-30T10:34:46.294Z</updated>
+  <updated>2019-10-31T01:13:59.697Z</updated>
   <id>https://fxliu.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>工具集</title>
+    <link href="https://fxliu.github.io/2019/10/31/Python/tools/"/>
+    <id>https://fxliu.github.io/2019/10/31/Python/tools/</id>
+    <published>2019-10-31T01:07:37.259Z</published>
+    <updated>2019-10-31T01:13:59.697Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h2><ul><li>脚本编译成可执行文件<ul><li>pyinstaller: <code>pip install pyinstaller</code><ul><li>编译成单个文件<ul><li><code>pyinstaller -F t.py</code></li></ul></li><li>编译到目录，公共模块会提取成dll<ul><li><code>pyinstaller t.py</code></li><li><code>pyinstaller -D t.py</code></li></ul></li><li>其他参数<ul><li>-p：指定python安装包路径</li><li>-i：指定图标</li><li>–noconsole，就是无窗口运行</li></ul></li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      tools, pyinstaller
+    
+    </summary>
+    
+      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+    
+    
+      <category term="tools" scheme="https://fxliu.github.io/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>apache</title>
@@ -49,9 +71,9 @@
     <link href="https://fxliu.github.io/2019/10/27/Linux/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
     <id>https://fxliu.github.io/2019/10/27/Linux/计划任务/</id>
     <published>2019-10-27T07:44:45.943Z</published>
-    <updated>2019-10-30T10:37:48.951Z</updated>
+    <updated>2019-11-06T04:04:04.913Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看root用户的计划任务</span></span><br><span class="line">crontab -u root -l</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计划任务配置说明</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 示例 ----</span></span><br><span class="line"><span class="comment"># 每十分钟执行一次</span></span><br><span class="line">*/10 * * * * cmd</span><br><span class="line"><span class="comment"># 每天08:00点执行一次</span></span><br><span class="line">0 8 * * * php /<span class="built_in">test</span>/test.php &gt; <span class="built_in">log</span>/test.log</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 服务管理</span></span><br><span class="line">service crond start | stop | restart | status</span><br><span class="line"><span class="comment"># 重新载入配置</span></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看root用户的计划任务</span></span><br><span class="line">crontab -u root -l</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计划任务配置说明</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 示例 ----</span></span><br><span class="line"><span class="comment"># 每十分钟执行一次</span></span><br><span class="line">*/10 * * * * cmd</span><br><span class="line"><span class="comment"># 每小时执行一次</span></span><br><span class="line">0 * * * * cmd</span><br><span class="line"><span class="comment"># 每天08:00点执行一次</span></span><br><span class="line">0 8 * * * php /<span class="built_in">test</span>/test.php &gt; <span class="built_in">log</span>/test.log</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 服务管理</span></span><br><span class="line">service crond start | stop | restart | status</span><br><span class="line"><span class="comment"># 重新载入配置</span></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -331,9 +353,9 @@
     <link href="https://fxliu.github.io/2019/09/28/Tools/github/"/>
     <id>https://fxliu.github.io/2019/09/28/Tools/github/</id>
     <published>2019-09-28T03:04:52.316Z</published>
-    <updated>2019-10-30T10:41:25.527Z</updated>
+    <updated>2019-11-06T06:11:09.466Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><ul><li>恢复误删除文件(尚未提交到本地库情况)：<code>git checkout -- file</code><ul><li><code>git status</code> 查看删除文件，中文会转码，但git checkout时，直接用中文使用转码文件名不好使</li></ul></li><li>恢复误删除文件(已提交到本地库/远程库情况)<ul><li><code>git reset --hard + 版本号</code>版本回溯, 再<code>git checkout -- file</code></li></ul></li></ul><h2 id="gihub"><a href="#gihub" class="headerlink" title="gihub"></a>gihub</h2><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p>分支别人的仓库到自己仓库</p><ul><li>打开大佬的github，点击右上角的fork按钮</li><li>然后回到自己的github-&gt;Repositories，同名的仓库已经存在了，就是这么简单</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="常规指令"><a href="#常规指令" class="headerlink" title="常规指令"></a>常规指令</h2><ul><li>恢复误删除文件(尚未提交到本地库情况)：<code>git checkout -- file</code><ul><li><code>git status</code> 查看删除文件，中文会转码，但git checkout时，直接用中文使用转码文件名不好使</li></ul></li><li>恢复误删除文件(已提交到本地库/远程库情况)<ul><li><code>git reset --hard + 版本号</code>版本回溯, 再<code>git checkout -- file</code></li></ul></li></ul><h2 id="gihub"><a href="#gihub" class="headerlink" title="gihub"></a>gihub</h2><p><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="noopener">git-简明指南</a><br><a href="https://backlog.com/git-tutorial/cn/" target="_blank" rel="noopener">猴子都能懂得GIT入门</a></p><h3 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h3><p>分支别人的仓库到自己仓库</p><ul><li>打开大佬的github，点击右上角的fork按钮</li><li>然后回到自己的github-&gt;Repositories，同名的仓库已经存在了，就是这么简单</li></ul>]]></content>
     
     <summary type="html">
     
@@ -461,28 +483,6 @@
     
     
       <category term="opencv" scheme="https://fxliu.github.io/tags/opencv/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MarkDown</title>
-    <link href="https://fxliu.github.io/2019/09/02/Tools/MarkDown/"/>
-    <id>https://fxliu.github.io/2019/09/02/Tools/MarkDown/</id>
-    <published>2019-09-02T05:27:37.835Z</published>
-    <updated>2019-10-30T10:42:47.572Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="常用规则"><a href="#常用规则" class="headerlink" title="常用规则"></a>常用规则</h2><h3 id="标题系列"><a href="#标题系列" class="headerlink" title="标题系列"></a>标题系列</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="section"># 大标题</span></span><br><span class="line"><span class="section">## 二标题</span></span><br><span class="line"><span class="section">###### 六标题也可以</span></span><br><span class="line"></span><br><span class="line">主标题</span><br><span class="line">======</span><br><span class="line"></span><br><span class="line">副标题</span><br><span class="line">------</span><br></pre></td></tr></table></figure><h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><ul><li><strong>这是加粗的文字</strong><code>**这是加粗的文字**</code></li><li><em>这是倾斜的文字</em><code>*这是倾斜的文字*</code></li><li><strong><em>这是斜体加粗的文字</em></strong><code>***这是斜体加粗的文字***</code></li><li><del>这是加删除线的文字</del><code>~~这是加删除线的文字~~</code></li></ul><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="code">`背景色突出`</span></span><br><span class="line"><span class="code">`单行代码`</span></span><br><span class="line">代码块</span><br></pre></td></tr></table></figure><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote><p>引用内容1</p><blockquote><p>引用内容2</p></blockquote></blockquote><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">* </span>无序列表</span><br><span class="line"><span class="bullet">+ </span>无序列表</span><br><span class="line"><span class="bullet">- </span>无序列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>有序列表，注意空格</span><br><span class="line"><span class="bullet">2. </span>有序列表，会自动计算序号</span><br><span class="line"><span class="bullet">   + </span>嵌套</span><br><span class="line"><span class="bullet">   + </span>列表</span><br></pre></td></tr></table></figure><figure class="highlight md"><table><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>[x] 任务列表</span><br><span class="line"><span class="bullet">- </span>[x] 已完成</span><br><span class="line"><span class="bullet">- </span>[ ] 未完成</span><br></pre></td></tr></table></figure><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">分割线</span><br><span class="line"><span class="bullet">- </span>- - （推荐）</span><br><span class="line">---</span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="bullet">* </span><span class="bullet">* *</span></span><br></pre></td></tr></table></figure><p>分割线</p><hr><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 "图片title"</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/6860761-fd2f51090a890873.jpg" alt="blockchain" title="区块链"></p><h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[<span class="string">link</span>](<span class="link">URL "注释"</span>)</span><br></pre></td></tr></table></figure><p><a href="https://wwww.baidu.com" title="百度超链接" target="_blank" rel="noopener">百度</a><br><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="https://www.jianshu.com" target="_blank">新页面打开</a></p><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Computer</td><td>$1600</td></tr><tr><td>Phone</td><td>$12</td></tr><tr><td>Pipe</td><td>$1</td></tr></tbody></table><h4 id="表格：指定对齐方式"><a href="#表格：指定对齐方式" class="headerlink" title="表格：指定对齐方式"></a>表格：指定对齐方式</h4><table><thead><tr><th align="left">Item</th><th align="right">Value</th><th align="center">Qty</th></tr></thead><tbody><tr><td align="left">Computer</td><td align="right">$1600</td><td align="center">5</td></tr><tr><td align="left">Phone</td><td align="right">$12</td><td align="center">12</td></tr><tr><td align="left">Pipe</td><td align="right">$1</td><td align="center">234</td></tr></tbody></table><h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure><h3 id="自动生成目录"><a href="#自动生成目录" class="headerlink" title="自动生成目录"></a>自动生成目录</h3><figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[TOC]自动生成目录</span><br></pre></td></tr></table></figure><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul><li>Nodepad++<ul><li>新版安装后就支持颜色处理，可扩展MarkDown插件展示效果</li></ul></li><li>Visual Studio Code (VS Code)</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      MarkDown, md
-    
-    </summary>
-    
-      <category term="Tools" scheme="https://fxliu.github.io/categories/Tools/"/>
-    
-    
-      <category term="MarkDown" scheme="https://fxliu.github.io/tags/MarkDown/"/>
     
   </entry>
   

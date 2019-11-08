@@ -7,26 +7,26 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>apache | 福</title>
+  <title>工具集 | 福</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="apache,goaccess,日志,">
+    <meta name="keywords" content="tools,">
   
 
-  <meta name="description" content="apache,goaccess,日志分析">
-<meta name="keywords" content="apache,goaccess,日志">
+  <meta name="description" content="tools, pyinstaller">
+<meta name="keywords" content="tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="apache">
-<meta property="og:url" content="https://fxliu.github.io/2019/10/27/Service/apache/index.html">
+<meta property="og:title" content="工具集">
+<meta property="og:url" content="https://fxliu.github.io/2019/10/31/Python/tools/index.html">
 <meta property="og:site_name" content="福">
-<meta property="og:description" content="apache,goaccess,日志分析">
+<meta property="og:description" content="tools, pyinstaller">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-30T10:34:46.294Z">
+<meta property="og:updated_time" content="2019-10-31T01:13:59.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="apache">
-<meta name="twitter:description" content="apache,goaccess,日志分析">
+<meta name="twitter:title" content="工具集">
+<meta name="twitter:description" content="tools, pyinstaller">
 
   
 
@@ -172,20 +172,20 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#apache"><span class="toc-text">apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#goaccess"><span class="toc-text">goaccess</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具集"><span class="toc-text">工具集</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="post-Service/apache" class="article article-type-post" itemprop="blogPost">
+   <article id="post-Python/tools" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">apache</h1>
+    <h1 class="post-title">工具集</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.10.27</span>
+        <span>2019.10.31</span>
       </span>
 
       
@@ -198,7 +198,7 @@
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/service/">service</a> / <a class="article-category-link" href="/categories/service/linux/">linux</a>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
   </span>
 
 
@@ -218,12 +218,29 @@
 
   <div class="article-content">
     
-      <h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -- Centos7 --</span></span><br><span class="line"><span class="comment"># 默认配置文件</span></span><br><span class="line">/etc/httpd/conf/httpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认日志位置</span></span><br><span class="line">/var/<span class="built_in">log</span>/httpd/</span><br><span class="line">/etc/httpd/logs/ -&gt; /var/<span class="built_in">log</span>/httpd/</span><br></pre></td></tr></table></figure>
-
-<h2 id="goaccess"><a href="#goaccess" class="headerlink" title="goaccess"></a>goaccess</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install goaccess -y</span><br><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">/etc/goaccess.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess.html /var/<span class="built_in">log</span>/httpd/access_log-2018-11-28</span><br><span class="line"><span class="comment"># 多文件：尾部指定多个文件名</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess/2018-04-14.html access_log-2018-11-28 access_log-2018-11-29</span><br><span class="line"><span class="comment"># 多文件：cat合并</span></span><br><span class="line">cat access_log-* | goaccess --config-file=/etc/goaccess.conf --output /var/www/html/all.html</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 时间格式: 根据apache当前日志格式对应调整, [26/Oct/2019:23:59:59 +0800]</span><br><span class="line">time-format %H:%M:%S</span><br><span class="line">date-format %d/%b/%Y</span><br><span class="line"></span><br><span class="line"># 日志格式 - 从http.conf中提取</span><br><span class="line"># %&#123;X-Forwarded-For&#125;i %h %l %u %t &quot;%r&quot; %s %b &quot;%&#123;Referer&#125;i&quot; &quot;%&#123;User-Agent&#125;i&quot;</span><br><span class="line"># &quot;%&#123;X-Forwarded-For&#125;i %h %l %u %t \&quot;%m %U %q %H\&quot; %&gt;s %b \&quot;%&#123;Referer&#125;i\&quot; \&quot;%&#123;User-Agent&#125;i\&quot;&quot; combined</span><br><span class="line"># 222.171.180.161 100.116.227.226 - - [03/Apr/2018:14:29:33 +0800] &quot;POST /wechat/2dBarCode.php HTTP/1.1&quot; 200 262 &quot;-&quot; &quot;-&quot;</span><br><span class="line">log-format %h %^ %l %u %^[%d:%t %^] &quot;%r&quot; %s %b &quot;%R&quot; &quot;%^&quot;</span><br><span class="line"></span><br><span class="line"># 是否需要实时刷新</span><br><span class="line">real-time-html true</span><br></pre></td></tr></table></figure>
-
+      <h2 id="工具集"><a href="#工具集" class="headerlink" title="工具集"></a>工具集</h2><ul>
+<li>脚本编译成可执行文件<ul>
+<li>pyinstaller: <code>pip install pyinstaller</code><ul>
+<li>编译成单个文件<ul>
+<li><code>pyinstaller -F t.py</code></li>
+</ul>
+</li>
+<li>编译到目录，公共模块会提取成dll<ul>
+<li><code>pyinstaller t.py</code></li>
+<li><code>pyinstaller -D t.py</code></li>
+</ul>
+</li>
+<li>其他参数<ul>
+<li>-p：指定python安装包路径</li>
+<li>-i：指定图标</li>
+<li>–noconsole，就是无窗口运行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
     
   </div>
@@ -261,10 +278,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/10/27/Linux/计划任务/">
+    <a class="show pull-left" href="/2019/10/27/Service/apache/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/10/31/Python/tools/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
