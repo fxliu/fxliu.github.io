@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>进程 / 线程 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="进程,线程,">
+  
+
+  <meta name="description" content="多进程, 多线程">
+<meta name="keywords" content="进程,线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程 &#x2F; 线程">
+<meta property="og:url" content="https://fxliu.github.io/2019/11/08/Python/线程-进程/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="多进程, 多线程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-08T09:43:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="进程 &#x2F; 线程">
+<meta name="twitter:description" content="多进程, 多线程">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程"><span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multiprocessing"><span class="toc-text">multiprocessing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#concurrent-futures-ProcessPoolExecutor"><span class="toc-text">concurrent.futures.ProcessPoolExecutor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程"><span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#threading"><span class="toc-text">threading</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#concurrent-futures-ThreadPoolExecutor"><span class="toc-text">concurrent.futures.ThreadPoolExecutor</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Python/线程-进程" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">进程 / 线程</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h3><ul>
+<li>在UNIX平台上，当某个进程终结之后，该进程需要被其父进程调用wait，否则进程成为僵尸进程(Zombie)。所以，有必要对每个Process对象调用join()方法 (实际上等同于wait)。</li>
+<li>multiprocessing提供的threading包中没有的IPC(比如Pipe和Queue)，效率上更高。</li>
+<li>应优先考虑Pipe和Queue，避免使用Lock/Event/Semaphore/Condition等同步方式 (因为它们占据的不是用户进程的资源)。</li>
+<li>所有进程的任务在打印时都会向同一个标准输出(stdout)输出</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: gbk -*-</span></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(i)</span>:</span></span><br><span class="line">    print(<span class="string">"start"</span>, i)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">"end"</span>, i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">()</span>:</span></span><br><span class="line">    pros = list()</span><br><span class="line">    <span class="comment"># 创建进程池</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        pros.append(multiprocessing.Process(target=func, args=(i, )))</span><br><span class="line">    <span class="comment"># 启动</span></span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> pros:</span><br><span class="line">        p.start()</span><br><span class="line">    <span class="comment"># 活动子进程</span></span><br><span class="line">    print(multiprocessing.active_children())</span><br><span class="line">    <span class="comment"># 等待终止</span></span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> pros:</span><br><span class="line">        p.join()</span><br><span class="line">        <span class="comment"># 返回值</span></span><br><span class="line">        print(<span class="string">'%15s.exitcode = %s'</span> % (p.name, p.exitcode))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    start()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 是否活动</span></span><br><span class="line">p.is_alive()</span><br><span class="line"><span class="comment"># 强制终止</span></span><br><span class="line">p.terminate()</span><br><span class="line"><span class="comment"># 返回值</span></span><br><span class="line">p.join()</span><br><span class="line">print(<span class="string">'%15s.exitcode = %s'</span> % (p.name, p.exitcode))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进程同步：管道，队列</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程安全：管道</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Pipe</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(conn)</span>:</span></span><br><span class="line">    conn.send([<span class="number">42</span>, <span class="literal">None</span>, <span class="string">'hello'</span>])</span><br><span class="line">    conn.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    parent_conn, child_conn = Pipe()</span><br><span class="line">    p = Process(target=f, args=(child_conn,))</span><br><span class="line">    p.start()</span><br><span class="line">    <span class="keyword">print</span> parent_conn.recv()   <span class="comment"># prints "[42, None, 'hello']"</span></span><br><span class="line">    p.join()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程安全：队列</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(q)</span>:</span></span><br><span class="line">    <span class="comment">#队列满时阻塞</span></span><br><span class="line">    q.put([<span class="number">42</span>, <span class="literal">None</span>, <span class="string">'hello'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    q = Queue(<span class="number">10</span>)       <span class="comment">#队列最大存储10条数据, 不指定则代表无限定</span></span><br><span class="line">    p = Process(target=f, args=(q,))</span><br><span class="line">    p.start()</span><br><span class="line">    <span class="keyword">print</span> q.get()       <span class="comment">#无数据时阻塞</span></span><br><span class="line">    p.join()</span><br></pre></td></tr></table></figure>
+
+<h3 id="concurrent-futures-ProcessPoolExecutor"><a href="#concurrent-futures-ProcessPoolExecutor" class="headerlink" title="concurrent.futures.ProcessPoolExecutor"></a>concurrent.futures.ProcessPoolExecutor</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 批量创建：map机制, 自动等待结束</span></span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(params)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    print(params)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="keyword">with</span> ProcessPoolExecutor(max_workers=<span class="number">2</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        results = list(pool.map(fun, [(i,) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]))</span><br><span class="line">        print(<span class="string">'Took %.3f seconds.'</span> % (time.time() - start))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 单个创建：submit机制, 程序控制结束</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">with</span> ProcessPoolExecutor(max_workers=<span class="number">2</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        futures = [pool.submit(fun, (i, )) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># result等待结束, 并获得返回值</span></span><br><span class="line">        print(<span class="string">'results: %s'</span> % [future.result() <span class="keyword">for</span> future <span class="keyword">in</span> futures])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># wait等待全部结束: ALL_COMPLETED, FIRST_COMPLETED, FIRST_EXCEPTION</span></span><br><span class="line">        <span class="comment"># 返回(done, unfinished)，分别为已完成/未完成future对象列表</span></span><br><span class="line">        done, unfinished = wait(futures, timeout=<span class="number">2</span>, return_when=concurrent.futures.ALL_COMPLETED)</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="threading"><a href="#threading" class="headerlink" title="threading"></a>threading</h3><ul>
+<li><code>threading.currentThread()</code>: 返回当前的线程变量。</li>
+<li><code>threading.enumerate()</code>: 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。</li>
+<li><code>threading.activeCount()</code>: 返回正在运行的线程数量，与<code>len(threading.enumerate())</code>有相同的结果。</li>
+<li>线程对象方法：<ul>
+<li><code>isAlive()</code>: 返回线程是否活动的。</li>
+<li><code>getName()</code>: 返回线程名。</li>
+<li><code>setName()</code>: 设置线程名。</li>
+</ul>
+</li>
+<li>线程队列<code>import queue</code><ul>
+<li><code>q = queue.Queue(10)</code> 创建同步的、线程安全的队列</li>
+<li><code>qsize()</code> 返回队列的大小</li>
+<li><code>empty()</code> 如果队列为空，返回True,反之False</li>
+<li><code>full()</code> 如果队列满了，返回True,反之False, full 与 maxsize 大小对应</li>
+<li><code>get([block[, timeout]])</code> 获取队列，timeout等待时间</li>
+<li><code>get_nowait()</code> 相当Queue.get(False)</li>
+<li><code>put(item)</code> 写入队列，timeout等待时间</li>
+<li><code>put_nowait(item)</code> 相当Queue.put(item, False)</li>
+<li><code>task_done()</code> 在完成一项工作之后，Queue.task_done()函数向任务已经完成的队列发送一个信号</li>
+<li><code>join()</code> 实际上意味着等到队列为空，再执行别的操作</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(i)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    t = threading.Thread(target=hello, args=(<span class="number">1</span>,))</span><br><span class="line">    t.setDaemon(<span class="literal">True</span>)   <span class="comment"># 设置跟随父线程</span></span><br><span class="line">    t.setName(<span class="string">'t'</span>)      <span class="comment"># 设置线程名称</span></span><br><span class="line">    t.start()</span><br><span class="line">    t.join()</span><br><span class="line">    print(t.getName())      <span class="comment"># 获取线程名称</span></span><br><span class="line">    print(t.isAlive())      <span class="comment"># 是否活动</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 继承模式，创建自己的线程类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, lock)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.name = name</span><br><span class="line">        self.lock = lock</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"开始线程："</span> + self.name)</span><br><span class="line">        time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        self.lock.acquire()     <span class="comment"># 锁定</span></span><br><span class="line">        print(<span class="string">"退出线程："</span> + self.name)</span><br><span class="line">        self.lock.release()     <span class="comment"># 解锁</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    lock = threading.Lock()   <span class="comment"># 线程锁</span></span><br><span class="line">    ts = [MyThread(<span class="string">"Thread-"</span>+str(i), lock) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line">    <span class="comment"># 设置跟随父线程</span></span><br><span class="line">    [t.setDaemon(<span class="literal">True</span>) <span class="keyword">for</span> t <span class="keyword">in</span> ts]</span><br><span class="line">    [t.start() <span class="keyword">for</span> t <span class="keyword">in</span> ts]</span><br><span class="line">    [t.join() <span class="keyword">for</span> t <span class="keyword">in</span> ts]</span><br></pre></td></tr></table></figure>
+
+<h3 id="concurrent-futures-ThreadPoolExecutor"><a href="#concurrent-futures-ThreadPoolExecutor" class="headerlink" title="concurrent.futures.ThreadPoolExecutor"></a>concurrent.futures.ThreadPoolExecutor</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># map机制，支持submit控制单个进程，见concurrent.futures.ProcessPoolExecutor例子</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span><span class="params">(params)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">0.1</span>)</span><br><span class="line">    print(params)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(max_workers=<span class="number">5</span>) <span class="keyword">as</span> pool:</span><br><span class="line">        results = list(pool.map(fun, [(i,) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]))</span><br><span class="line">        print(<span class="string">'Took %.3f seconds.'</span> % (time.time() - start))</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/08/Python/系统/剪切板/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
