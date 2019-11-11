@@ -37,24 +37,34 @@
   <div id="app">
     <el-row :gutter="20">
       <el-col :span="4" v-for="num,irow in numbers" v-bind:key="irow">
-        <el-card shadow="always" :span="8">
-          <p style="text-align:center;font-size: 18px;">{{num}}</p>
+        <el-card shadow="always">
+          <div style="text-align:center;"><span style="font-size: 6vw;font-weight: bold;line-height: 7vw;">{{num}}</span></div>
         </el-card>
       </el-col>
       <el-col :span="8">
-      	<div @click="numbers = getRandomNums(); userNums=[];">
-      	  <el-card>
-          	<p style="text-align:center;font-size: 18px;">刷新</p>
+      	<div @touchstart="OnRestart" style="width: 100%; height: 100%;">
+      	  <el-card style="background-color: #E6A23C;">
+      	  	<div style="text-align:center;"><span style="font-size: 4vw;font-weight: bold;line-height: 7vw;color: #FFFFFF;">重新开始</span></div>
           </el-card>
         </div>
       </el-col>
     </el-row>
 	<!-- 键盘: start -->
     <el-row :gutter="20" v-for="row,i in keys" v-bind:key="i">
-      <el-col :span="6" v-for="num,i in row" v-bind:key="i">
-        <div @click="userPushKey(num);"><el-card shadow="always">
-          <p style="text-align:center;font-size: 18px;">{{num}}</p>
-        </el-card></div>
+      <el-col :span="4"><el-card shadow="never">
+      	<div style="text-align:center;"><span style="text-align:center;font-size: 4vw;line-height: 4vw;color: #C0C4CC;">*</span></div>
+      </el-col>
+      <el-col :span="4" v-for="num,j in row" v-bind:key="j">
+        <div @touchstart="userPushKey(num);">
+        	<el-card shadow="hover">
+          		<div style="text-align:center;">
+          			<span style="font-size: 5vw;line-height: 5vw;color: #409EFF;" :style="keyType(num)">{{num}}</span>
+          		</div>
+        	</el-card>
+    	</div>
+      </el-col>
+      <el-col :span="4"><el-card shadow="never">
+      	<div style="text-align:center;"><span style="text-align:center;font-size: 4vw;line-height: 4vw;color: #C0C4CC;">*</span></div>
       </el-col>
     </el-row>
     <!-- 键盘: end -->
@@ -62,8 +72,10 @@
     <!-- 输入历史: start -->
     <el-row :gutter="20">
       <el-col :span="4" v-for="num,i in userNums" v-bind:key="i">
-        <dev style="display: flex; justify-content: center;">
-          <el-tag :type="tagType(i)" style="margin: 10px;" @click="clickTag(i);">{{num}}</el-tag>
+        <dev @touchstart="clickTag(i);">
+        	<el-card shadow="hover" style="margin: 3px;">
+        		<div style="text-align:center;"><span style="font-weight: bold;font-size: 2.4vw;line-height: 2vw;" :style="tagType(i, num)">{{num}}</span></div>
+        	</el-card>
         </dev>
       </el-col>
     </el-row>
@@ -74,6 +86,7 @@
   <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/js/vue-2.6.10.min.js"></script>
   <!-- import JavaScript -->
   <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/element-ui/index-2.12.0.js"></script>
+  <script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
   <script>
     new Vue({
       el: '#app',
@@ -82,7 +95,7 @@
         return {
           numbers: [0,1,2,3],
           keys: [
-          	[1, 2, 3, '<-'],
+          	[1, 2, 3, 'del'],
           	[4, 5, 6, 'clr'],
           	[7, 8, 9, 0],
           ],
@@ -104,12 +117,22 @@
           }
           return nums.sort();
         },
+        // 重新开始
+        OnRestart: function() {
+        	this.userNums=[];
+        	this.numbers = this.getRandomNums();
+        },
         // 用户按键盘
         userPushKey: function(num) {
-          if(num === '<-')
+          if(num === 'del')
           {
           	if(this.userNums.length % 6 !== 0)
           		this.userNums.pop();
+          	else{
+          		this.userNums.pop();
+          		this.userNums.pop();
+          		this.userNums.pop();
+          	}
           	return ;
           }
           if(num === 'clr')
@@ -117,23 +140,47 @@
           	this.userNums = [];
           	return ;
           }
+          // 检查数字是否已经存在
+          for(let j = this.userNums.length-1; j>=0 && this.userNums[j] != 'X'; j-=1)
+          {
+          	if(this.userNums[j] == num)
+          		return ;
+          }
           this.userNums.push(num);
+          // 已经满4个数字，计算结果
           if(this.userNums.length % 6 === 4)
           {
-          	this.userNums.push('2B');
+          	let n = 0;
+          	for(let i = 0; i < 4; i++)
+          	{
+          		if(this.numbers.indexOf(this.userNums[this.userNums.length-i-1]) != -1)
+          			n += 1;
+          	}
+          	this.userNums.push(n + 'B');
           	this.userNums.push('X');
           }
         },
         // 用户按标签
-        clickTag: function(i) {
-        	if(i % 6 === 5)
-        		this.userNums.splice(i-5, 6);
+        clickTag: function(index) {
+        	if(index % 6 === 5)
+        		this.userNums.splice(index-5, 6);
         },
-        tagType: function(i) {
-        	if(i % 6 === 4)
-        		return 'success';
-        	if(i % 6 === 5)
-        		return 'danger';
+        // 键盘颜色
+        keyType: function(num) {
+        	if(num === 'del' || num === 'clr')
+        		return {'color': '#F56C6C'};
+        	return {};
+        },
+        // 历史数字颜色
+        tagType: function(index, num) {
+        	if(index % 6 === 4)
+        	{
+        		if(num != '4B')
+        			return {'color': '#E6A23C'};
+        		return {'color': '#67C23A'};
+        	}
+        	if(index % 6 === 5)
+        		return {'color': '#F56C6C'};
         	return '';
         },
       },
