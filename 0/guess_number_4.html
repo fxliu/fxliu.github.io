@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/element-ui/index-2.12.0.css">
+</head>
+<style>
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+</style>
+<body style="margin: 10px">
+  <div id="app">
+    <el-row :gutter="20">
+      <el-col :span="4" v-for="num,irow in numbers" v-bind:key="irow">
+        <el-card shadow="always" :span="8">
+          <p style="text-align:center;font-size: 18px;">{{num}}</p>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+      	<div @click="numbers = getRandomNums(); userNums=[];">
+      	  <el-card>
+          	<p style="text-align:center;font-size: 18px;">刷新</p>
+          </el-card>
+        </div>
+      </el-col>
+    </el-row>
+	<!-- 键盘: start -->
+    <el-row :gutter="20" v-for="row,i in keys" v-bind:key="i">
+      <el-col :span="6" v-for="num,i in row" v-bind:key="i">
+        <div @click="userPushKey(num);"><el-card shadow="always">
+          <p style="text-align:center;font-size: 18px;">{{num}}</p>
+        </el-card></div>
+      </el-col>
+    </el-row>
+    <!-- 键盘: end -->
+    <el-divider></el-divider>
+    <!-- 输入历史: start -->
+    <el-row :gutter="20">
+      <el-col :span="4" v-for="num,i in userNums" v-bind:key="i">
+        <dev style="display: flex; justify-content: center;">
+          <el-tag :type="tagType(i)" style="margin: 10px;" @click="clickTag(i);">{{num}}</el-tag>
+        </dev>
+      </el-col>
+    </el-row>
+    <!-- 输入历史: end -->
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/js/vue-2.6.10.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/element-ui/index-2.12.0.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      // 数据
+      data: function() {
+        return {
+          numbers: [0,1,2,3],
+          keys: [
+          	[1, 2, 3, '<-'],
+          	[4, 5, 6, 'clr'],
+          	[7, 8, 9, 0],
+          ],
+          userNums: []
+        };
+      },
+      mounted: function () {
+        // 页面初始化
+        this.numbers = this.getRandomNums();
+      },
+      methods: {
+        // 自定义函数
+        getRandomNums: function() {
+          let nums = [];
+          while(nums.length < 4) {
+            let num = Math.floor(Math.random()*10);
+            if(nums.indexOf(num) === -1)
+              nums.push(num);
+          }
+          return nums.sort();
+        },
+        // 用户按键盘
+        userPushKey: function(num) {
+          if(num === '<-')
+          {
+          	if(this.userNums.length % 6 !== 0)
+          		this.userNums.pop();
+          	return ;
+          }
+          if(num === 'clr')
+          {
+          	this.userNums = [];
+          	return ;
+          }
+          this.userNums.push(num);
+          if(this.userNums.length % 6 === 4)
+          {
+          	this.userNums.push('2B');
+          	this.userNums.push('X');
+          }
+        },
+        // 用户按标签
+        clickTag: function(i) {
+        	if(i % 6 === 5)
+        		this.userNums.splice(i-5, 6);
+        },
+        tagType: function(i) {
+        	if(i % 6 === 4)
+        		return 'success';
+        	if(i % 6 === 5)
+        		return 'danger';
+        	return '';
+        },
+      },
+      filter: {
+      }
+    })
+  </script>
+</html>
+

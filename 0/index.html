@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/element-ui/index-2.12.0.css">
+</head>
+<style>
+  .el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+</style>
+<body>
+  <div id="app">
+    <div style="margin: 10px">
+      <el-row :gutter="10" v-for="row,irow in rows" v-bind:key="irow">
+        <!-- 列：24 分栏 -->
+        <el-col :span="6" v-for="card,icard in row" v-bind:key="icard">
+          <!-- 卡片 -->
+          <el-card class="box-card">
+            <!-- 标题 -->
+            <div slot="header" class="clearfix">
+              <span>{{card.title}}</span>
+            </div>
+            <el-link style="margin-right: 15px" type="primary" :href="link.src" target="_blank" v-for="link,index in card.links">
+              {{link.name}}
+            </el-link>
+          </el-card>
+        </el-col>
+      </el-row>
+  	</div>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/js/vue-2.6.10.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://es-bar-machine.oss-cn-shanghai.aliyuncs.com/web_static/element-ui/index-2.12.0.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return {
+          rows: [
+            [{
+              "title":"数字游戏", 
+              "links":[
+                {"name":"猜数字(4)","src":"./guess_number_4.html"}
+              ]
+            }]
+          ]
+        };
+      }
+    })
+  </script>
+</html>
+
