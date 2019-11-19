@@ -5,9 +5,9 @@
   <subtitle>业精于勤荒于嬉</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://fxliu.github.io/"/>
-  <updated>2019-11-11T06:27:12.000Z</updated>
-  <id>https://fxliu.github.io/</id>
+  <link href="/"/>
+  <updated>2019-11-19T11:50:02.463Z</updated>
+  <id>/</id>
   
   <author>
     <name>福</name>
@@ -17,9 +17,119 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>文件</title>
+    <link href="/2019/11/19/Python/%E6%96%87%E4%BB%B6/%E6%96%87%E4%BB%B6/"/>
+    <id>/2019/11/19/Python/文件/文件/</id>
+    <published>2019-11-19T11:40:25.477Z</published>
+    <updated>2019-11-19T11:50:02.463Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建时间</span></span><br><span class="line">os.stat(fn).st_ctime</span><br></pre></td></tr></table></figure><h2 id="文件夹"><a href="#文件夹" class="headerlink" title="文件夹"></a>文件夹</h2><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 通配符遍历</span></span><br><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"></span><br><span class="line">files = glob.glob(<span class="string">'*/*.json'</span>)   <span class="comment"># 遍历一级子目录下的json</span></span><br><span class="line"><span class="keyword">print</span> files   <span class="comment"># ['1/t1.json', '1/t2.json', '2/t.py']</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      文件
+    
+    </summary>
+    
+      <category term="Python" scheme="/categories/Python/"/>
+    
+    
+      <category term="文件" scheme="/tags/%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加解密</title>
+    <link href="/2019/11/18/Python/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <id>/2019/11/18/Python/加解密/</id>
+    <published>2019-11-18T07:25:11.000Z</published>
+    <updated>2019-11-18T07:25:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># python2</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'我们'</span>.encode(<span class="string">'base64'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'ztLDxw=='</span>.decode(<span class="string">'base64'</span>)</span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># python2</span></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">s = <span class="string">'我是字符串'</span></span><br><span class="line">a = base64.b64encode(s)</span><br><span class="line"><span class="keyword">print</span> base64.b64decode(a)</span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: gbk -*-</span></span><br><span class="line"><span class="comment"># pyton3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">P3</span>:</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b2s</span><span class="params">(b)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> b.decode(<span class="string">'gbk'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">s2b</span><span class="params">(s, s16=False)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :param s:</span></span><br><span class="line"><span class="string">        :param s16: 是否是16进制字符串, 比如：616263646566</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> s16:</span><br><span class="line">            <span class="keyword">return</span> bytes.fromhex(s)</span><br><span class="line">        <span class="keyword">return</span> s.encode(<span class="string">'gbk'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">(self, s, s16=False)</span>:</span></span><br><span class="line">        <span class="comment"># 注意bytes和str之间的转化</span></span><br><span class="line">        s = self.s2b(s, s16)</span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(s, out_hex=False)</span>:</span></span><br><span class="line">        <span class="comment"># python3: b64decode -&gt; bytes -&gt; hex()</span></span><br><span class="line">        re = base64.b64decode(s)</span><br><span class="line">        <span class="keyword">if</span> out_hex:</span><br><span class="line">            <span class="keyword">return</span> re.hex()</span><br><span class="line">        <span class="keyword">return</span> re</span><br></pre></td></tr></table></figure><h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip install crypto</span><br><span class="line"><span class="comment"># 如果提示找不到Crypto.Cipher，近Python第三方安装包目录，把crypto 改为 Crypto 即可</span></span><br><span class="line"><span class="comment"># 如果还提示找不到，更换模块：pycrypto -&gt; pycryptodome</span></span><br><span class="line">pip uninstall pycrypto</span><br><span class="line">pip install pycryptodome</span><br></pre></td></tr></table></figure><h3 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding=utf8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">AES/CBC/PKCS7Padding</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> estools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ESCBC</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cfg = estools.get_cfg()</span><br><span class="line">        self.mode = AES.MODE_CBC</span><br><span class="line"></span><br><span class="line">        self.key = self.cfg[<span class="string">'cbc'</span>][<span class="string">'key'</span>]  <span class="comment"># type: str</span></span><br><span class="line">        self.vi = self.cfg[<span class="string">'cbc'</span>][<span class="string">'vi'</span>]  <span class="comment"># type: str</span></span><br><span class="line">        self.key = self.key.decode(<span class="string">"hex"</span>)</span><br><span class="line">        self.vi = self.vi.decode(<span class="string">"hex"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pkcs7padding</span><span class="params">(data)</span>:</span></span><br><span class="line">        <span class="comment"># AES.block_size 16位</span></span><br><span class="line">        bs = AES.block_size</span><br><span class="line">        padding = bs - len(data) % bs</span><br><span class="line">        padding_text = chr(padding) * padding</span><br><span class="line">        <span class="keyword">return</span> data + padding_text</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pkcs7unpadding</span><span class="params">(data)</span>:</span></span><br><span class="line">        lengt = len(data)</span><br><span class="line">        unpadding = ord(data[lengt - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> data[<span class="number">0</span>:lengt - unpadding]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        s = copy.deepcopy(s)</span><br><span class="line">        cipher = AES.new(self.key, self.mode, self.vi)</span><br><span class="line">        <span class="keyword">return</span> cipher.encrypt(self.pkcs7padding(s))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        s = copy.deepcopy(s)</span><br><span class="line">        cipher = AES.new(self.key, self.mode, self.vi)</span><br><span class="line">        decrypted = cipher.decrypt(s)</span><br><span class="line">        <span class="keyword">return</span> self.pkcs7unpadding(decrypted)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b64encode</span><span class="params">(s)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b64decode</span><span class="params">(s)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> base64.b64decode(s)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    cbc = ESCBC()</span><br><span class="line">    text = <span class="string">'abcdeft'</span></span><br><span class="line">    encrypted = cbc.encrypt(text)</span><br><span class="line">    <span class="keyword">print</span> base64.b64encode(encrypted)</span><br><span class="line">    <span class="keyword">print</span> cbc.decrypt(encrypted)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure><h3 id="CFB"><a href="#CFB" class="headerlink" title="CFB"></a>CFB</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding=utf8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">AES/CFB/NOPADDING加解密</span></span><br><span class="line"><span class="string">等价于PHP: AES-128-CFB+OPENSSL_ZERO_PADDING</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ESCFB</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.mode = AES.MODE_CFB</span><br><span class="line"></span><br><span class="line">        self.key = <span class="string">'ba0d1eba1b5aa3dc6f465f0d03d1a1f3'</span>  <span class="comment"># type: str</span></span><br><span class="line">        self.vi = <span class="string">'15b32d0a12b89b7857c75556ff8176aa'</span>  <span class="comment"># type: str</span></span><br><span class="line">        self.key = self.key.decode(<span class="string">"hex"</span>)</span><br><span class="line">        self.vi = self.vi.decode(<span class="string">"hex"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">zero_padding</span><span class="params">(data)</span>:</span></span><br><span class="line">        bs = AES.block_size</span><br><span class="line">        num = bs - len(data) % bs</span><br><span class="line">        padding_text = <span class="string">'\0'</span> * num</span><br><span class="line">        <span class="keyword">return</span> data + padding_text, num</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        s = copy.deepcopy(s)</span><br><span class="line">        cipher = AES.new(self.key, self.mode, self.vi, segment_size=<span class="number">128</span>)</span><br><span class="line">        s, n = self.zero_padding(s)</span><br><span class="line">        s = cipher.encrypt(s)</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        <span class="keyword">return</span> s[<span class="number">0</span>:-n]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        s = copy.deepcopy(s)</span><br><span class="line">        cipher = AES.new(self.key, self.mode, self.vi, segment_size=<span class="number">128</span>)</span><br><span class="line">        s, n = self.zero_padding(s)</span><br><span class="line">        s = cipher.decrypt(s)</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        <span class="keyword">return</span> s[<span class="number">0</span>:-n]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b64encode</span><span class="params">(s)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> base64.b64encode(s)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">b64decode</span><span class="params">(s)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> base64.b64decode(s)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    cbc = ESCFB()</span><br><span class="line">    text = <span class="string">'1ffedd4c51506214a1a196f4128c4267b3c9911wD'</span></span><br><span class="line">    encrypted = cbc.encrypt(text)</span><br><span class="line">    <span class="keyword">print</span> base64.b64encode(encrypted)</span><br><span class="line">    <span class="keyword">print</span> cbc.decrypt(encrypted)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure><h3 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">简单应用</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"></span><br><span class="line">mode = DES.MODE_CBC</span><br><span class="line">key = <span class="string">'01234567'</span></span><br><span class="line">vi = <span class="string">'01234567'</span></span><br><span class="line">text = <span class="string">'12345678123456789'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(text)</span>:</span></span><br><span class="line">    cipher = DES.new(key, mode, vi)</span><br><span class="line">    <span class="keyword">return</span> cipher.encrypt(text + <span class="string">'\0'</span> * (<span class="number">8</span> - len(text) % <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">encrypted = encrypt(text)</span><br><span class="line"><span class="keyword">print</span> encrypted.encode(<span class="string">'hex'</span>)</span><br><span class="line"><span class="comment"># MODE_CBC must reset vi</span></span><br><span class="line">cipher = DES.new(key, mode, vi)</span><br><span class="line">decrypted = cipher.decrypt(encrypted)</span><br><span class="line"><span class="keyword">print</span> decrypted.rstrip(<span class="string">'\0'</span>)</span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding=gbk</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">文件加解密封装</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsCBC</span>:</span></span><br><span class="line">    mode = DES.MODE_CBC</span><br><span class="line">    key = <span class="string">'01234567'</span></span><br><span class="line">    vi = <span class="string">'01234567'</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cipher = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inttobytes</span><span class="params">(i)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">itoc</span><span class="params">(v)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> chr(v)</span><br><span class="line"></span><br><span class="line">        b = bytearray()</span><br><span class="line">        b.append(itoc(i &amp; <span class="number">0xFF</span>))</span><br><span class="line">        b.append(itoc((i &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xFF</span>))</span><br><span class="line">        b.append(itoc((i &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>))</span><br><span class="line">        b.append(itoc((i &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xFF</span>))</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bytestoint</span><span class="params">(b)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> ord(b[<span class="number">0</span>]) + (ord(b[<span class="number">1</span>]) &lt;&lt; <span class="number">8</span>) + (ord(b[<span class="number">2</span>]) &lt;&lt; <span class="number">16</span>) + (ord(b[<span class="number">3</span>]) &lt;&lt; <span class="number">24</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加密</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(self, fn, new_fn)</span>:</span></span><br><span class="line">        self.cipher = DES.new(EsCBC.key, EsCBC.mode, EsCBC.vi)</span><br><span class="line">        <span class="keyword">with</span> open(fn, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = f.read()</span><br><span class="line">            data = bytearray(data)</span><br><span class="line">            data.extend(inttobytes(len(data)))                 <span class="comment"># 追加长度</span></span><br><span class="line">            data.extend(bytearray([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>]))       <span class="comment"># 追加尾部标示</span></span><br><span class="line">            <span class="keyword">if</span> len(data) % <span class="number">8</span>:</span><br><span class="line">                data.extend(bytearray(<span class="number">8</span> - len(data) % <span class="number">8</span>))      <span class="comment"># 长度补全</span></span><br><span class="line">            new_data = self.cipher.encrypt(str(data))</span><br><span class="line">            <span class="keyword">with</span> open(new_fn, <span class="string">'wb'</span>) <span class="keyword">as</span> new_f:</span><br><span class="line">                new_f.write(new_data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解密</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decrypt</span><span class="params">(self, fn, new_fn)</span>:</span></span><br><span class="line">        self.cipher = DES.new(EsCBC.key, EsCBC.mode, EsCBC.vi)</span><br><span class="line">        <span class="keyword">with</span> open(fn, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data = f.read()</span><br><span class="line">            new_data = self.cipher.decrypt(data)</span><br><span class="line">            new_data = bytearray(new_data)</span><br><span class="line">            new_data = new_data.rstrip(<span class="string">b'\x00'</span>)</span><br><span class="line">            <span class="keyword">if</span> (chr(new_data[<span class="number">-4</span>]), chr(new_data[<span class="number">-3</span>]), chr(new_data[<span class="number">-2</span>]), chr(new_data[<span class="number">-1</span>])) != (<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>):</span><br><span class="line">                <span class="keyword">raise</span> SyntaxError, <span class="string">'zip error'</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            new_data = str(new_data[:<span class="number">-4</span>])</span><br><span class="line">            new_datalen = EsCBC.bytestoint(new_data[<span class="number">-4</span>:])</span><br><span class="line">            new_data = str(new_data[:<span class="number">-4</span>])</span><br><span class="line">            <span class="comment"># print new_datalen</span></span><br><span class="line">            <span class="comment"># print new_data.encode('hex')</span></span><br><span class="line">            <span class="keyword">with</span> open(new_fn, <span class="string">'wb'</span>) <span class="keyword">as</span> new_f:</span><br><span class="line">                new_f.write(new_data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    cbc = EsCBC()</span><br><span class="line">    cbc.encrypt(<span class="string">'1.txt'</span>, <span class="string">'2.txt'</span>)</span><br><span class="line">    cbc.decrypt(<span class="string">'2.txt'</span>, <span class="string">'3.txt'</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      pymysql
+    
+    </summary>
+    
+      <category term="Python" scheme="/categories/Python/"/>
+    
+    
+      <category term="AES, CBC, CFB" scheme="/tags/AES-CBC-CFB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Session</title>
+    <link href="/2019/11/16/PHP/SESSION/"/>
+    <id>/2019/11/16/PHP/SESSION/</id>
+    <published>2019-11-16T10:06:07.000Z</published>
+    <updated>2019-11-16T10:06:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">check();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(substr($_SERVER[<span class="string">'REMOTE_ADDR'</span>], <span class="number">0</span>, <span class="number">10</span>) == <span class="string">'192.168.1.'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 内网放行</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!$_SESSION[<span class="string">'is_login'</span>] == <span class="string">'1'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 已经登陆: 调整Session过期时间</span></span><br><span class="line">        ini_set(<span class="string">'session.gc_maxlifetime'</span>, <span class="string">"86400"</span>); <span class="comment">// 秒</span></span><br><span class="line">        ini_set(<span class="string">"session.cookie_lifetime"</span>,<span class="string">"86400"</span>); <span class="comment">// 秒</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 强制跳转到login</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'&lt;script&gt;window.location.href="./login.html";&lt;/script&gt;'</span>;</span><br><span class="line">    <span class="keyword">die</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($_REQUEST[<span class="string">'name'</span>] == <span class="string">'...'</span> &amp;&amp; $_REQUEST[<span class="string">'pwd'</span>] == <span class="string">'***'</span>) &#123;</span><br><span class="line">    <span class="comment">// 标记登陆</span></span><br><span class="line">    $_SESSION[<span class="string">'is_login'</span>] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      Session, login
+    
+    </summary>
+    
+      <category term="PHP" scheme="/categories/PHP/"/>
+    
+    
+      <category term="Session" scheme="/tags/Session/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JQuery</title>
+    <link href="/2019/11/14/Html/JQuery/"/>
+    <id>/2019/11/14/Html/JQuery/</id>
+    <published>2019-11-14T11:04:37.000Z</published>
+    <updated>2019-11-14T11:04:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajaxGet</span>(<span class="params">url, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    $.<span class="keyword">get</span>(url, data, function (data, status) &#123;</span><br><span class="line">        myPrint(<span class="string">"状态："</span> + status);</span><br><span class="line">        myPrint(<span class="string">"数据："</span> + data);</span><br><span class="line">        <span class="comment">// 这里的this是ajax的this, 要使用外层this需要自己定义变量保存</span></span><br><span class="line">        _this.content = data;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajaxPost</span>(<span class="params">url, data, param=&#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(param)</span><br><span class="line">        url += <span class="string">"?"</span> + $.param(param);</span><br><span class="line">    $.post(url, data, <span class="function"><span class="keyword">function</span> (<span class="params">data, status</span>) </span>&#123;</span><br><span class="line">        myPrint(<span class="string">"状态："</span> + status);</span><br><span class="line">        myPrint(<span class="string">"数据："</span> + data);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> d = &#123;</span><br><span class="line">    a: <span class="string">"1"</span>,</span><br><span class="line">    b: <span class="string">"2"</span>,</span><br><span class="line">&#125;;</span><br><span class="line">ajaxGet(<span class="string">'/uri'</span>, d);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      JQuery
+    
+    </summary>
+    
+      <category term="JS" scheme="/categories/JS/"/>
+    
+    
+      <category term="JQuery" scheme="/tags/JQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS基础</title>
+    <link href="/2019/11/14/Html/JS%E5%9F%BA%E7%A1%80/"/>
+    <id>/2019/11/14/Html/JS基础/</id>
+    <published>2019-11-14T11:04:37.000Z</published>
+    <updated>2019-11-14T11:04:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 模板字符串</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">`<span class="subst">$&#123;a&#125;</span> world`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// json字符串 -&gt; js对象</span></span><br><span class="line">js_obj = <span class="built_in">JSON</span>.parse(json_str);</span><br><span class="line"></span><br><span class="line"><span class="comment">// encodeUrl</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">urlEncode</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> paramStr = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> k <span class="keyword">in</span> param) &#123;</span><br><span class="line">        paramStr += paramStr ? <span class="string">'&amp;'</span>:<span class="string">''</span>;</span><br><span class="line">        paramStr += <span class="built_in">encodeURIComponent</span>(k) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(param[k]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> paramStr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 日期</span></span><br><span class="line"><span class="keyword">let</span> d1 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2010-02-12'</span>);</span><br><span class="line">d1.setFullYear(d.getFullYear()+<span class="number">10</span>);</span><br><span class="line"><span class="comment">// 毫秒</span></span><br><span class="line"><span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.log(date, date.getMilliseconds());</span><br><span class="line"><span class="comment">// vux的日期格式化</span></span><br><span class="line"><span class="keyword">import</span> &#123;dateFormat&#125; <span class="keyword">from</span> <span class="string">'vux'</span>;</span><br><span class="line"><span class="keyword">let</span> d2 = dateFormat(d, <span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 遍历</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>,len=arr.length; j &lt; len; j++) &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 清空</span></span><br><span class="line">arr.splice(<span class="number">0</span>,arr.length);</span><br></pre></td></tr></table></figure><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="string">'0'</span>:<span class="string">'a'</span>,<span class="string">'1'</span>:<span class="string">'b'</span>,<span class="string">'2'</span>:<span class="string">'c'</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(i,<span class="string">":"</span>,obj[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      基础
+    
+    </summary>
+    
+      <category term="JS" scheme="/categories/JS/"/>
+    
+    
+      <category term="基础" scheme="/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>数据库</title>
-    <link href="https://fxliu.github.io/2019/11/11/Python/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>https://fxliu.github.io/2019/11/11/Python/数据库/</id>
+    <link href="/2019/11/11/Python/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>/2019/11/11/Python/数据库/</id>
     <published>2019-11-11T06:27:12.000Z</published>
     <updated>2019-11-11T06:27:12.000Z</updated>
     
@@ -31,17 +141,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="pymysql" scheme="https://fxliu.github.io/tags/pymysql/"/>
+      <category term="pymysql" scheme="/tags/pymysql/"/>
     
   </entry>
   
   <entry>
     <title>web.py</title>
-    <link href="https://fxliu.github.io/2019/11/11/Python/Web/web.py/"/>
-    <id>https://fxliu.github.io/2019/11/11/Python/Web/web.py/</id>
+    <link href="/2019/11/11/Python/Web/web.py/"/>
+    <id>/2019/11/11/Python/Web/web.py/</id>
     <published>2019-11-11T05:51:44.000Z</published>
     <updated>2019-11-11T05:51:44.000Z</updated>
     
@@ -53,17 +163,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="web.py" scheme="https://fxliu.github.io/tags/web-py/"/>
+      <category term="web.py" scheme="/tags/web-py/"/>
     
   </entry>
   
   <entry>
     <title>Django</title>
-    <link href="https://fxliu.github.io/2019/11/09/Python/Web/django/"/>
-    <id>https://fxliu.github.io/2019/11/09/Python/Web/django/</id>
+    <link href="/2019/11/09/Python/Web/django/"/>
+    <id>/2019/11/09/Python/Web/django/</id>
     <published>2019-11-09T06:25:09.000Z</published>
     <updated>2019-11-09T06:25:09.000Z</updated>
     
@@ -75,17 +185,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="Django" scheme="https://fxliu.github.io/tags/Django/"/>
+      <category term="Django" scheme="/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>进程 / 线程</title>
-    <link href="https://fxliu.github.io/2019/11/08/Python/%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B/"/>
-    <id>https://fxliu.github.io/2019/11/08/Python/线程-进程/</id>
+    <link href="/2019/11/08/Python/%E7%BA%BF%E7%A8%8B-%E8%BF%9B%E7%A8%8B/"/>
+    <id>/2019/11/08/Python/线程-进程/</id>
     <published>2019-11-08T09:43:31.000Z</published>
     <updated>2019-11-08T09:43:31.000Z</updated>
     
@@ -97,19 +207,19 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="进程" scheme="https://fxliu.github.io/tags/%E8%BF%9B%E7%A8%8B/"/>
+      <category term="进程" scheme="/tags/%E8%BF%9B%E7%A8%8B/"/>
     
-      <category term="线程" scheme="https://fxliu.github.io/tags/%E7%BA%BF%E7%A8%8B/"/>
+      <category term="线程" scheme="/tags/%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>剪切板</title>
-    <link href="https://fxliu.github.io/2019/11/08/Python/%E7%B3%BB%E7%BB%9F/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
-    <id>https://fxliu.github.io/2019/11/08/Python/系统/剪切板/</id>
+    <link href="/2019/11/08/Python/%E7%B3%BB%E7%BB%9F/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
+    <id>/2019/11/08/Python/系统/剪切板/</id>
     <published>2019-11-08T09:36:20.000Z</published>
     <updated>2019-11-08T09:42:07.785Z</updated>
     
@@ -121,17 +231,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="剪切板" scheme="https://fxliu.github.io/tags/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
+      <category term="剪切板" scheme="/tags/%E5%89%AA%E5%88%87%E6%9D%BF/"/>
     
   </entry>
   
   <entry>
     <title>PDF</title>
-    <link href="https://fxliu.github.io/2019/11/08/Python/%E6%96%87%E4%BB%B6/pdf/"/>
-    <id>https://fxliu.github.io/2019/11/08/Python/文件/pdf/</id>
+    <link href="/2019/11/08/Python/%E6%96%87%E4%BB%B6/pdf/"/>
+    <id>/2019/11/08/Python/文件/pdf/</id>
     <published>2019-11-08T08:35:15.000Z</published>
     <updated>2019-11-08T08:35:15.000Z</updated>
     
@@ -143,21 +253,21 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="PDF" scheme="https://fxliu.github.io/tags/PDF/"/>
+      <category term="PDF" scheme="/tags/PDF/"/>
     
   </entry>
   
   <entry>
-    <title>常规</title>
-    <link href="https://fxliu.github.io/2019/11/08/Python/%E5%B8%B8%E8%A7%84/"/>
-    <id>https://fxliu.github.io/2019/11/08/Python/常规/</id>
+    <title>基础</title>
+    <link href="/2019/11/08/Python/%E5%9F%BA%E7%A1%80/"/>
+    <id>/2019/11/08/Python/基础/</id>
     <published>2019-11-08T05:15:37.000Z</published>
     <updated>2019-11-08T05:15:37.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机序列</span></span><br><span class="line">d = [random.randint(<span class="number">0</span>,<span class="number">20</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">20</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表推导式</span></span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> d <span class="keyword">if</span> i &gt;= <span class="number">0</span>]</span><br><span class="line"><span class="comment"># 过滤：只保留lambda式返回True的项</span></span><br><span class="line">filter(<span class="keyword">lambda</span> x: x&gt;= <span class="number">0</span>, d)</span><br><span class="line"><span class="comment"># 排序</span></span><br><span class="line">sorted(d)</span><br><span class="line">sorted(d, reverse=<span class="literal">True</span>)   <span class="comment"># 反序</span></span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数组中指定元素出现的次数</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">Counter([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>])</span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 交集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).intersection(set(<span class="string">'cdefg'</span>))</span><br><span class="line"><span class="comment"># 并集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).union(set(<span class="string">'cdefg'</span>))</span><br><span class="line"><span class="comment"># 差集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).difference(set(<span class="string">'cdefg'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="comment"># 累积</span></span><br><span class="line">reduce(<span class="keyword">lambda</span> x, y: x+y, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基础数据</span></span><br><span class="line">d = &#123;<span class="string">'c'</span>:<span class="number">2</span>, <span class="string">'b'</span>:<span class="number">1</span> , <span class="string">'a'</span>:<span class="number">3</span>&#125;</span><br><span class="line">d.keys()</span><br><span class="line">d.values()</span><br><span class="line">d.items()   <span class="comment"># [('a', 2), ('b', 1)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历，过滤</span></span><br><span class="line">&#123;k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items() <span class="keyword">if</span> v &gt; <span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># key 排序</span></span><br><span class="line">&#123;k:d[k] <span class="keyword">for</span> k <span class="keyword">in</span> sorted(d.keys())&#125;</span><br><span class="line"><span class="comment"># value 自定义排序: 注意 d.items() 返回的是数组，其实用的是数组排序</span></span><br><span class="line"><span class="comment"># 返回值也是 [(k,v),(k,v)] 模式, 转化成 dict 即可</span></span><br><span class="line">dict(sorted(d.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组 -&gt; 元组列表 -&gt; 字典</span></span><br><span class="line">dict(zip([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]))</span><br></pre></td></tr></table></figure><h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><ul><li>随机数</li></ul><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机小数: (0-1)</span></span><br><span class="line">random.random()</span><br><span class="line"><span class="comment"># 随机小数: (1-9)</span></span><br><span class="line">random.uniform(<span class="number">1</span>,<span class="number">9</span>)</span><br><span class="line"><span class="comment"># 随机整数: [1,5]</span></span><br><span class="line">random.randint(<span class="number">1</span>,<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 随机奇数，第三个参数代表递增基数</span></span><br><span class="line">random.randrange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 随机选择</span></span><br><span class="line">random.choice([<span class="string">'1'</span>,<span class="string">'a'</span>])</span><br><span class="line"><span class="comment"># 随机选择多个</span></span><br><span class="line">random.sample([<span class="string">'1'</span>,<span class="string">'a'</span>, <span class="number">1</span>, <span class="number">2</span>], <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 乱序: 直接改变列表</span></span><br><span class="line">random.shuffle(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机码</span></span><br><span class="line"><span class="string">''</span>.join([random.choice(<span class="string">'0123456789abcdef'</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">64</span>)])</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ul><li><strong>pycharm</strong><ul><li>见PHP -&gt; PHPStorm</li></ul></li><li>快捷键<ul><li>关闭 close: <code>Ctrl+F4</code>, 补充<code>Ctrl+W</code></li><li>运行 run: <code>Ctrl+Shift+F10</code> + <code>Shift+F10</code></li><li><code>Editor</code>-&gt;<code>Inspections</code>-&gt;<code>Python</code><ul><li>取消选中<code>Method may be static</code>, 静态函数</li><li>取消选中<code>Shadowing names from outer scopes</code>, 重复定义(外定义)</li><li>取消选中<code>Too broad exception clauses</code>, 模糊的exception</li></ul></li></ul></li><li>新建文件<ul><li><code>File and Code Templates</code>-&gt;<code>Python Script</code>-&gt;清空</li></ul></li></ul><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: gbk -*-</span></span><br><span class="line"><span class="keyword">import</span> os,sys,traceback</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">version = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">  test()</span><br></pre></td></tr></table></figure><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time, datetime</span><br><span class="line"><span class="comment"># 当前时间</span></span><br><span class="line">time.time()                 <span class="comment"># 1574157735.59</span></span><br><span class="line">time.localtime()            <span class="comment"># time:struct_time(tm_year=2019, ..., tm_hour=18, ...)</span></span><br><span class="line">datetime.datetime.now()     <span class="comment"># datetime.datetime(2019, 11, 19, 18, 3, 6, 764000)</span></span><br><span class="line"><span class="comment"># 指定时间</span></span><br><span class="line">d1 = datetime.datetime(<span class="number">1970</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)                  <span class="comment"># 默认本地时间</span></span><br><span class="line">d2 = datetime.datetime(<span class="number">2016</span>,<span class="number">3</span>,<span class="number">18</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,pytz.utc)        <span class="comment"># 指明是格林时间</span></span><br><span class="line"><span class="comment"># 延迟</span></span><br><span class="line">time.sleep(<span class="number">1</span>)   <span class="comment"># 休眠1秒</span></span><br><span class="line">time.sleep(<span class="number">0.1</span>) <span class="comment"># 休眠0.1秒</span></span><br></pre></td></tr></table></figure><h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># datetime -&gt; str</span></span><br><span class="line"><span class="keyword">print</span> datetime.datetime.now().strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span><br><span class="line"><span class="keyword">print</span> datetime.datetime.strftime(datetime.datetime.now(), <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span><br><span class="line"><span class="comment"># str -&gt; datetime</span></span><br><span class="line">datetime.datetime.strptime(<span class="string">"2016-05-05 05:05:05"</span>, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># time -&gt; struct_time</span></span><br><span class="line"><span class="keyword">print</span> time.strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>, time.localtime())</span><br><span class="line"><span class="keyword">print</span> time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>, time.gmtime(time.time()))</span><br><span class="line"><span class="comment"># struct_time -&gt; time</span></span><br><span class="line">time.mktime(t)</span><br><span class="line"><span class="comment"># str -&gt; struct_time</span></span><br><span class="line">time.strptime(<span class="string">"time:2009-08-08"</span>, <span class="string">"time:%Y-%m-%d"</span>)</span><br><span class="line">time.strptime(<span class="string">"2016-05-05 05:05:05"</span>, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># datetime -&gt; struct_time</span></span><br><span class="line"><span class="keyword">print</span> time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>, datetime.datetime.utcnow().timetuple())  <span class="comment"># utc才是时间戳</span></span><br><span class="line"><span class="keyword">print</span> time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>, datetime.datetime.now().utctimetuple())</span><br><span class="line"></span><br><span class="line"><span class="comment"># time -&gt; datetime</span></span><br><span class="line">datetime.datetime.fromtimestamp(time.time())</span><br><span class="line">datetime.datetime.utcfromtimestamp(time.time())</span><br><span class="line"><span class="comment"># datetime -&gt; struct_time -&gt; time</span></span><br><span class="line">time.mktime(datetime.datetime.now().timetuple())</span><br><span class="line">time.mktime(datetime.datetime.now().utctimetuple())        <span class="comment"># 指明格林时间</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># gmtime 只支持UTC时间, struct_time中指定tm_isdst=0</span></span><br><span class="line"><span class="comment"># mktime 忽略tm_isdst参数, 只支持本地时间, 使用(- time.altzone)调整为UTC时间戳</span></span><br></pre></td></tr></table></figure><h3 id="程序运行时间"><a href="#程序运行时间" class="headerlink" title="程序运行时间"></a>程序运行时间</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">timer</span><span class="params">(func, *pargs)</span>:</span></span><br><span class="line">    start = time.clock()</span><br><span class="line">    ret = func(*pargs)</span><br><span class="line">    elapsed = time.clock() - start</span><br><span class="line">    <span class="keyword">return</span> (elapsed, ret)</span><br></pre></td></tr></table></figure><h3 id="时差"><a href="#时差" class="headerlink" title="时差"></a>时差</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># datetime.timedelta: 内部存储days，seconds，microseconds, 可直接访问变量</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">ti1 = datetime.datetime.now()</span><br><span class="line">ti2 = datetime.datetime.now()</span><br><span class="line"><span class="comment"># 时差</span></span><br><span class="line">t=ti2-ti1   <span class="comment"># datetime.timedelta(0, 0, 1000)</span></span><br><span class="line">t.total_seconds() <span class="comment"># ==&gt; (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6</span></span><br><span class="line">str(t)    <span class="comment"># 返回字符串，格式为： [D day[s], ][H]H:MM:SS[.UUUUUU]</span></span><br><span class="line">repr(t)   <span class="comment"># 返回字符串，格式为： datetime.timedelta(D[, S[, U]])</span></span><br><span class="line"></span><br><span class="line">now = datetime.now()</span><br><span class="line">now + datetime.timedelta(seconds=<span class="number">11</span>)</span><br><span class="line">yestoday = now - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">tommorow = now + datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">next_year = now + timedelta(days = <span class="number">365</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># datetime.date也可以使用timedelta时间差</span></span><br><span class="line">t = datetime.date.today() - datetime.timedelta(days=<span class="number">30</span>)</span><br><span class="line"><span class="keyword">print</span> t.strftime(<span class="string">'%Y-%m-%d'</span>)</span><br></pre></td></tr></table></figure><h3 id="计时"><a href="#计时" class="headerlink" title="计时"></a>计时</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime, time</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimeSheet</span>:</span></span><br><span class="line">    <span class="comment"># time_sheet = dict()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, time_sheet, flag, reset=False)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> reset <span class="keyword">or</span> (flag <span class="keyword">not</span> <span class="keyword">in</span> time_sheet):</span><br><span class="line">            time_sheet[flag] = datetime.timedelta()</span><br><span class="line">        self.time_sheet = time_sheet</span><br><span class="line">        self.flag = flag</span><br><span class="line">        self.t = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 创建时开始计时</span></span><br><span class="line">        self.t = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, _, __, ___)</span>:</span></span><br><span class="line">        <span class="comment"># 释放时，计算时差</span></span><br><span class="line">        self.time_sheet[self.flag] += datetime.datetime.now() - self.t</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_time_sheet</span><span class="params">(time_sheet)</span>:</span></span><br><span class="line">    re = []</span><br><span class="line">    <span class="keyword">for</span> flag <span class="keyword">in</span> time_sheet:</span><br><span class="line">        re.append(<span class="string">'%s: %s'</span> % (flag, time_sheet[flag]))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">','</span>.join(re)</span><br><span class="line"></span><br><span class="line">time_sheet = &#123;&#125;</span><br><span class="line"><span class="keyword">with</span> TimeSheet(time_sheet, <span class="string">"test"</span>, <span class="literal">True</span>) <span class="keyword">as</span> t:</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">print</span> get_time_sheet(time_sheet)</span><br></pre></td></tr></table></figure><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机序列</span></span><br><span class="line">d = [random.randint(<span class="number">0</span>,<span class="number">20</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">20</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表推导式</span></span><br><span class="line">[i <span class="keyword">for</span> i <span class="keyword">in</span> d <span class="keyword">if</span> i &gt;= <span class="number">0</span>]</span><br><span class="line"><span class="comment"># 过滤：只保留lambda式返回True的项</span></span><br><span class="line">filter(<span class="keyword">lambda</span> x: x&gt;= <span class="number">0</span>, d)</span><br><span class="line"><span class="comment"># 排序</span></span><br><span class="line">sorted(d)</span><br><span class="line">sorted(d, reverse=<span class="literal">True</span>)   <span class="comment"># 反序</span></span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数组中指定元素出现的次数</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">Counter([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>])</span><br></pre></td></tr></table></figure><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 交集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).intersection(set(<span class="string">'cdefg'</span>))</span><br><span class="line"><span class="comment"># 并集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).union(set(<span class="string">'cdefg'</span>))</span><br><span class="line"><span class="comment"># 差集</span></span><br><span class="line">set(<span class="string">'abcde'</span>).difference(set(<span class="string">'cdefg'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="comment"># 累积</span></span><br><span class="line">reduce(<span class="keyword">lambda</span> x, y: x+y, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br></pre></td></tr></table></figure><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基础数据</span></span><br><span class="line">d = &#123;<span class="string">'c'</span>:<span class="number">2</span>, <span class="string">'b'</span>:<span class="number">1</span> , <span class="string">'a'</span>:<span class="number">3</span>&#125;</span><br><span class="line">d.keys()</span><br><span class="line">d.values()</span><br><span class="line">d.items()   <span class="comment"># [('a', 2), ('b', 1)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历，过滤</span></span><br><span class="line">&#123;k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items() <span class="keyword">if</span> v &gt; <span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># key 排序</span></span><br><span class="line">&#123;k:d[k] <span class="keyword">for</span> k <span class="keyword">in</span> sorted(d.keys())&#125;</span><br><span class="line"><span class="comment"># value 自定义排序: 注意 d.items() 返回的是数组，其实用的是数组排序</span></span><br><span class="line"><span class="comment"># 返回值也是 [(k,v),(k,v)] 模式, 转化成 dict 即可</span></span><br><span class="line">dict(sorted(d.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组 -&gt; 元组列表 -&gt; 字典</span></span><br><span class="line">dict(zip([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]))</span><br></pre></td></tr></table></figure><h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><ul><li>随机数</li></ul><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 随机小数: (0-1)</span></span><br><span class="line">random.random()</span><br><span class="line"><span class="comment"># 随机小数: (1-9)</span></span><br><span class="line">random.uniform(<span class="number">1</span>,<span class="number">9</span>)</span><br><span class="line"><span class="comment"># 随机整数: [1,5]</span></span><br><span class="line">random.randint(<span class="number">1</span>,<span class="number">5</span>)</span><br><span class="line"><span class="comment"># 随机奇数，第三个参数代表递增基数</span></span><br><span class="line">random.randrange(<span class="number">1</span>,<span class="number">10</span>,<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 随机选择</span></span><br><span class="line">random.choice([<span class="string">'1'</span>,<span class="string">'a'</span>])</span><br><span class="line"><span class="comment"># 随机选择多个</span></span><br><span class="line">random.sample([<span class="string">'1'</span>,<span class="string">'a'</span>, <span class="number">1</span>, <span class="number">2</span>], <span class="number">2</span>)</span><br><span class="line"><span class="comment"># 乱序: 直接改变列表</span></span><br><span class="line">random.shuffle(a)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机码</span></span><br><span class="line"><span class="string">''</span>.join([random.choice(<span class="string">'0123456789abcdef'</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">64</span>)])</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -165,25 +275,25 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="入门" scheme="https://fxliu.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+      <category term="基础" scheme="/tags/%E5%9F%BA%E7%A1%80/"/>
     
-      <category term="list" scheme="https://fxliu.github.io/tags/list/"/>
+      <category term="list" scheme="/tags/list/"/>
     
-      <category term="set" scheme="https://fxliu.github.io/tags/set/"/>
+      <category term="set" scheme="/tags/set/"/>
     
-      <category term="dict" scheme="https://fxliu.github.io/tags/dict/"/>
+      <category term="dict" scheme="/tags/dict/"/>
     
-      <category term="bytes" scheme="https://fxliu.github.io/tags/bytes/"/>
+      <category term="bytes" scheme="/tags/bytes/"/>
     
   </entry>
   
   <entry>
     <title>工具集</title>
-    <link href="https://fxliu.github.io/2019/10/31/Python/tools/"/>
-    <id>https://fxliu.github.io/2019/10/31/Python/tools/</id>
+    <link href="/2019/10/31/Python/tools/"/>
+    <id>/2019/10/31/Python/tools/</id>
     <published>2019-10-31T01:07:37.000Z</published>
     <updated>2019-10-31T01:07:37.000Z</updated>
     
@@ -195,17 +305,17 @@
     
     </summary>
     
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
+      <category term="Python" scheme="/categories/Python/"/>
     
     
-      <category term="tools" scheme="https://fxliu.github.io/tags/tools/"/>
+      <category term="tools" scheme="/tags/tools/"/>
     
   </entry>
   
   <entry>
     <title>apache</title>
-    <link href="https://fxliu.github.io/2019/10/27/Service/apache/"/>
-    <id>https://fxliu.github.io/2019/10/27/Service/apache/</id>
+    <link href="/2019/10/27/Service/apache/"/>
+    <id>/2019/10/27/Service/apache/</id>
     <published>2019-10-27T08:15:33.089Z</published>
     <updated>2019-10-30T10:34:46.294Z</updated>
     
@@ -217,27 +327,27 @@
     
     </summary>
     
-      <category term="service" scheme="https://fxliu.github.io/categories/service/"/>
+      <category term="service" scheme="/categories/service/"/>
     
-      <category term="linux" scheme="https://fxliu.github.io/categories/service/linux/"/>
+      <category term="linux" scheme="/categories/service/linux/"/>
     
     
-      <category term="apache" scheme="https://fxliu.github.io/tags/apache/"/>
+      <category term="apache" scheme="/tags/apache/"/>
     
-      <category term="goaccess" scheme="https://fxliu.github.io/tags/goaccess/"/>
+      <category term="goaccess" scheme="/tags/goaccess/"/>
     
-      <category term="日志" scheme="https://fxliu.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+      <category term="日志" scheme="/tags/%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
   <entry>
     <title>计划任务</title>
-    <link href="https://fxliu.github.io/2019/10/27/Linux/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
-    <id>https://fxliu.github.io/2019/10/27/Linux/计划任务/</id>
+    <link href="/2019/10/27/Linux/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
+    <id>/2019/10/27/Linux/计划任务/</id>
     <published>2019-10-27T07:44:45.943Z</published>
-    <updated>2019-11-06T04:04:04.913Z</updated>
+    <updated>2019-11-18T08:07:13.608Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看root用户的计划任务</span></span><br><span class="line">crontab -u root -l</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计划任务配置说明</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 示例 ----</span></span><br><span class="line"><span class="comment"># 每十分钟执行一次</span></span><br><span class="line">*/10 * * * * cmd</span><br><span class="line"><span class="comment"># 每小时执行一次</span></span><br><span class="line">0 * * * * cmd</span><br><span class="line"><span class="comment"># 每天08:00点执行一次</span></span><br><span class="line">0 8 * * * php /<span class="built_in">test</span>/test.php &gt; <span class="built_in">log</span>/test.log</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 服务管理</span></span><br><span class="line">service crond start | stop | restart | status</span><br><span class="line"><span class="comment"># 重新载入配置</span></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看root用户的计划任务</span></span><br><span class="line">crontab -u root -l</span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line">crontab -l</span><br><span class="line"><span class="comment"># 编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计划任务配置说明</span></span><br><span class="line">cat /etc/crontab</span><br><span class="line"><span class="comment"># Example of job definition:</span></span><br><span class="line"><span class="comment"># .---------------- minute (0 - 59)</span></span><br><span class="line"><span class="comment"># |  .------------- hour (0 - 23)</span></span><br><span class="line"><span class="comment"># |  |  .---------- day of month (1 - 31)</span></span><br><span class="line"><span class="comment"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span></span><br><span class="line"><span class="comment"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span></span><br><span class="line"><span class="comment"># |  |  |  |  |</span></span><br><span class="line"><span class="comment"># *  *  *  *  * user-name  command to be executed</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---- 示例 ----</span></span><br><span class="line"><span class="comment"># 每十分钟执行一次</span></span><br><span class="line">*/10 * * * * cmd</span><br><span class="line"><span class="comment"># 每小时执行一次</span></span><br><span class="line">0 * * * * cmd</span><br><span class="line"><span class="comment"># 每天08:00点执行一次</span></span><br><span class="line">0 8 * * * php /<span class="built_in">test</span>/test.php &gt; <span class="built_in">log</span>/test.log</span><br><span class="line"><span class="comment"># 每天的10:30开始，每隔2小时重复一次</span></span><br><span class="line">30 10-23/2 * * * cmd</span><br></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 服务管理</span></span><br><span class="line">service crond start | stop | restart | status</span><br><span class="line"><span class="comment"># 重新载入配置</span></span><br><span class="line">service crond reload</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -245,19 +355,19 @@
     
     </summary>
     
-      <category term="linux" scheme="https://fxliu.github.io/categories/linux/"/>
+      <category term="linux" scheme="/categories/linux/"/>
     
     
-      <category term="crontab" scheme="https://fxliu.github.io/tags/crontab/"/>
+      <category term="crontab" scheme="/tags/crontab/"/>
     
-      <category term="计划任务" scheme="https://fxliu.github.io/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
+      <category term="计划任务" scheme="/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>无线网卡</title>
-    <link href="https://fxliu.github.io/2019/10/27/VCSystem/WLan/"/>
-    <id>https://fxliu.github.io/2019/10/27/VCSystem/WLan/</id>
+    <link href="/2019/10/27/VCSystem/WLan/"/>
+    <id>/2019/10/27/VCSystem/WLan/</id>
     <published>2019-10-27T07:35:33.565Z</published>
     <updated>2019-10-30T10:45:49.262Z</updated>
     
@@ -269,19 +379,19 @@
     
     </summary>
     
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+      <category term="VC" scheme="/categories/VC/"/>
     
     
-      <category term="WLAN" scheme="https://fxliu.github.io/tags/WLAN/"/>
+      <category term="WLAN" scheme="/tags/WLAN/"/>
     
-      <category term="无线网卡" scheme="https://fxliu.github.io/tags/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1/"/>
+      <category term="无线网卡" scheme="/tags/%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1/"/>
     
   </entry>
   
   <entry>
     <title>HOOK键盘钩子</title>
-    <link href="https://fxliu.github.io/2019/10/27/VCSystem/HOOK%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/"/>
-    <id>https://fxliu.github.io/2019/10/27/VCSystem/HOOK键盘钩子/</id>
+    <link href="/2019/10/27/VCSystem/HOOK%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/"/>
+    <id>/2019/10/27/VCSystem/HOOK键盘钩子/</id>
     <published>2019-10-27T07:35:33.561Z</published>
     <updated>2019-10-30T10:45:30.171Z</updated>
     
@@ -293,17 +403,17 @@
     
     </summary>
     
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+      <category term="VC" scheme="/categories/VC/"/>
     
     
-      <category term="HOOK" scheme="https://fxliu.github.io/tags/HOOK/"/>
+      <category term="HOOK" scheme="/tags/HOOK/"/>
     
   </entry>
   
   <entry>
     <title>串口通讯</title>
-    <link href="https://fxliu.github.io/2019/10/27/VCSystem/CSerialPort%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/"/>
-    <id>https://fxliu.github.io/2019/10/27/VCSystem/CSerialPort串口通讯/</id>
+    <link href="/2019/10/27/VCSystem/CSerialPort%E4%B8%B2%E5%8F%A3%E9%80%9A%E8%AE%AF/"/>
+    <id>/2019/10/27/VCSystem/CSerialPort串口通讯/</id>
     <published>2019-10-27T07:35:33.556Z</published>
     <updated>2019-10-30T10:45:04.063Z</updated>
     
@@ -315,23 +425,23 @@
     
     </summary>
     
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
+      <category term="VC" scheme="/categories/VC/"/>
     
     
-      <category term="串口" scheme="https://fxliu.github.io/tags/%E4%B8%B2%E5%8F%A3/"/>
+      <category term="串口" scheme="/tags/%E4%B8%B2%E5%8F%A3/"/>
     
-      <category term="通讯" scheme="https://fxliu.github.io/tags/%E9%80%9A%E8%AE%AF/"/>
+      <category term="通讯" scheme="/tags/%E9%80%9A%E8%AE%AF/"/>
     
   </entry>
   
   <entry>
     <title>MySQL</title>
-    <link href="https://fxliu.github.io/2019/10/27/DB/MySQL/"/>
-    <id>https://fxliu.github.io/2019/10/27/DB/MySQL/</id>
+    <link href="/2019/10/27/DB/MySQL/"/>
+    <id>/2019/10/27/DB/MySQL/</id>
     <published>2019-10-27T05:53:32.370Z</published>
-    <updated>2019-10-30T10:35:20.910Z</updated>
+    <updated>2019-11-19T07:15:36.712Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="常规Demo"><a href="#常规Demo" class="headerlink" title="常规Demo"></a>常规Demo</h2><ul><li>表复制: <code>INSERT INTO t1 SELECT * FROM t2</code></li></ul><h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- CASE</span></span><br><span class="line"><span class="keyword">SELECT</span> k1,</span><br><span class="line">  <span class="keyword">CASE</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">150</span> <span class="keyword">THEN</span> <span class="string">'&gt;150'</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">120</span> <span class="keyword">THEN</span> <span class="string">'120&lt; k2 &gt;150'</span></span><br><span class="line">    <span class="keyword">ELSE</span> <span class="string">'&lt;120'</span></span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">as</span> v</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br></pre></td></tr></table></figure><h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t2;</span><br><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"><span class="comment">-- REPLACE INTO: 用法与Insert相同</span></span><br><span class="line"><span class="comment">-- 当KEY不存在时，等价于Delete</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，先Delete然后Insert，未设定的字段按照默认值处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- INSERT INTO ** ON DUPLICATE KEY UPDATE</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，只更新指定字段</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> t1.k1=t2.k1</span><br></pre></td></tr></table></figure><h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 联表更新：方式1</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">SET</span> a.test_key=(<span class="keyword">SELECT</span> test_key <span class="keyword">FROM</span> t2 <span class="keyword">as</span> b <span class="keyword">WHERE</span> a.id=b.id);</span><br><span class="line"><span class="comment">-- 联表更新：方式2</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> t2 <span class="keyword">as</span> b <span class="keyword">ON</span> a.id=b.id</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="comment">-- 联表更新： 方式3</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a, t2 <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="keyword">WHERE</span> a.id=b.id</span><br></pre></td></tr></table></figure><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> @d1=<span class="string">'2019-10-20'</span>;</span><br><span class="line"><span class="keyword">SET</span> @d2=<span class="string">'2019-10-27'</span>;</span><br><span class="line"><span class="keyword">SET</span> @dc=<span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>, @d1, @d2);   <span class="comment">-- 时间差：日</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> tkey, <span class="keyword">count</span>(<span class="number">1</span>) / @dc <span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span> uptime <span class="keyword">BETWEEN</span> @d1 <span class="keyword">AND</span> @d2</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> tkey</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">set</span> @dt = <span class="keyword">now</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">day</span>); <span class="comment">-- add 1 day</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">hour</span>); <span class="comment">-- add 1 hour</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">minute</span>); <span class="comment">-- ...</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">second</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">microsecond</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">week</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">month</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">quarter</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">year</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">-1</span> <span class="keyword">day</span>); <span class="comment">-- sub 1 day</span></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">MONTH</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 时间 -&gt; 字符串</span></span><br><span class="line"><span class="keyword">SET</span> @DB := <span class="keyword">CONCAT</span>(<span class="string">'database.database_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">LIST</span> := <span class="keyword">CONCAT</span>(<span class="string">'netbaropt.list_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="comment">-- 字符串 -&gt; 时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">str_to_date</span>(<span class="string">'2008-08-09 08:09:30'</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间戳</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">unix_timestamp</span>(<span class="string">'2008-08-08 12:30:00'</span>);    <span class="comment">-- 1218169800</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>);                <span class="comment">-- 2008-08-08 12:30:00</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);    <span class="comment">-- 2008-08-08 12:30:00</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="常规Demo"><a href="#常规Demo" class="headerlink" title="常规Demo"></a>常规Demo</h2><ul><li>表复制: <code>INSERT INTO t1 SELECT * FROM t2</code></li></ul><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- REPLACE</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">REPLACE</span>(<span class="string">'aaa.mysql.com'</span>,<span class="string">'a'</span>,<span class="string">'w'</span>);</span><br></pre></td></tr></table></figure><h2 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- CASE</span></span><br><span class="line"><span class="keyword">SELECT</span> k1,</span><br><span class="line">  <span class="keyword">CASE</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">150</span> <span class="keyword">THEN</span> <span class="string">'&gt;150'</span></span><br><span class="line">    <span class="keyword">WHEN</span> k2 &gt; <span class="number">120</span> <span class="keyword">THEN</span> <span class="string">'120&lt; k2 &gt;150'</span></span><br><span class="line">    <span class="keyword">ELSE</span> <span class="string">'&lt;120'</span></span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">as</span> v</span><br><span class="line"><span class="keyword">FROM</span> t1</span><br></pre></td></tr></table></figure><h2 id="INSERT-REPLACE"><a href="#INSERT-REPLACE" class="headerlink" title="INSERT/REPLACE"></a>INSERT/REPLACE</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t2;</span><br><span class="line"><span class="comment">-- INSERT INTO</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"></span><br><span class="line"><span class="comment">-- REPLACE INTO: 用法与Insert相同</span></span><br><span class="line"><span class="comment">-- 当KEY不存在时，等价于Delete</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，先Delete然后Insert，未设定的字段按照默认值处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- INSERT INTO ** ON DUPLICATE KEY UPDATE</span></span><br><span class="line"><span class="comment">-- 当KEY存在时，只更新指定字段</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t1 (k1, k2)</span><br><span class="line"><span class="keyword">SELECT</span> k1, k2 <span class="keyword">FROM</span> t2</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> <span class="keyword">UPDATE</span> t1.k1=t2.k1</span><br></pre></td></tr></table></figure><h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 联表更新：方式1</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">SET</span> a.test_key=(<span class="keyword">SELECT</span> test_key <span class="keyword">FROM</span> t2 <span class="keyword">as</span> b <span class="keyword">WHERE</span> a.id=b.id);</span><br><span class="line"><span class="comment">-- 联表更新：方式2</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> t2 <span class="keyword">as</span> b <span class="keyword">ON</span> a.id=b.id</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="comment">-- 联表更新： 方式3</span></span><br><span class="line"><span class="keyword">UPDATE</span> t1 <span class="keyword">as</span> a, t2 <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">SET</span> a.test_key=b.test_key</span><br><span class="line"><span class="keyword">WHERE</span> a.id=b.id</span><br></pre></td></tr></table></figure><h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> @d1=<span class="string">'2019-10-20'</span>;</span><br><span class="line"><span class="keyword">SET</span> @d2=<span class="string">'2019-10-27'</span>;</span><br><span class="line"><span class="keyword">SET</span> @dc=<span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>, @d1, @d2);   <span class="comment">-- 时间差：日</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> tkey, <span class="keyword">count</span>(<span class="number">1</span>) / @dc <span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span> uptime <span class="keyword">BETWEEN</span> @d1 <span class="keyword">AND</span> @d2</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> tkey</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">set</span> @dt = <span class="keyword">now</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">day</span>); <span class="comment">-- add 1 day</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">hour</span>); <span class="comment">-- add 1 hour</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">minute</span>); <span class="comment">-- ...</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">second</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">microsecond</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">week</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">month</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">quarter</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">1</span> <span class="keyword">year</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">date_add</span>(@dt, <span class="built_in">interval</span> <span class="number">-1</span> <span class="keyword">day</span>); <span class="comment">-- sub 1 day</span></span><br><span class="line"><span class="comment">-- 时间差</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">DAY</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">TIMESTAMPDIFF</span>(<span class="keyword">MONTH</span>,<span class="string">'2012-10-01'</span>,<span class="string">'2013-01-13'</span>);</span><br></pre></td></tr></table></figure><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 时间 -&gt; 字符串</span></span><br><span class="line"><span class="keyword">SET</span> @DB := <span class="keyword">CONCAT</span>(<span class="string">'database.database_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">LIST</span> := <span class="keyword">CONCAT</span>(<span class="string">'netbaropt.list_'</span>, <span class="keyword">DATE_FORMAT</span>(<span class="keyword">now</span>(), <span class="string">'%Y%m%d'</span>));</span><br><span class="line"><span class="comment">-- 字符串 -&gt; 时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">str_to_date</span>(<span class="string">'2008-08-09 08:09:30'</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 时间戳</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">unix_timestamp</span>(<span class="string">'2008-08-08 12:30:00'</span>);    <span class="comment">-- 1218169800</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>);                <span class="comment">-- 2008-08-08 12:30:00</span></span><br><span class="line"><span class="keyword">select</span> from_unixtime(<span class="number">1218169800</span>, <span class="string">'%Y-%m-%d %h:%i:%s'</span>);    <span class="comment">-- 2008-08-08 12:30:00</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -339,17 +449,17 @@
     
     </summary>
     
-      <category term="MySQL" scheme="https://fxliu.github.io/categories/MySQL/"/>
+      <category term="MySQL" scheme="/categories/MySQL/"/>
     
     
-      <category term="SQL" scheme="https://fxliu.github.io/tags/SQL/"/>
+      <category term="SQL" scheme="/tags/SQL/"/>
     
   </entry>
   
   <entry>
     <title>IDE</title>
-    <link href="https://fxliu.github.io/2019/10/27/Tools/IDE/"/>
-    <id>https://fxliu.github.io/2019/10/27/Tools/IDE/</id>
+    <link href="/2019/10/27/Tools/IDE/"/>
+    <id>/2019/10/27/Tools/IDE/</id>
     <published>2019-10-27T04:35:32.501Z</published>
     <updated>2019-10-30T10:42:06.398Z</updated>
     
@@ -361,128 +471,16 @@
     
     </summary>
     
-      <category term="Tools" scheme="https://fxliu.github.io/categories/Tools/"/>
+      <category term="Tools" scheme="/categories/Tools/"/>
     
-      <category term="IDE" scheme="https://fxliu.github.io/categories/Tools/IDE/"/>
-    
-    
-      <category term="IntelliJ IDEA" scheme="https://fxliu.github.io/tags/IntelliJ-IDEA/"/>
-    
-      <category term="PyCharm" scheme="https://fxliu.github.io/tags/PyCharm/"/>
-    
-      <category term="PhpStorm" scheme="https://fxliu.github.io/tags/PhpStorm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代码整理</title>
-    <link href="https://fxliu.github.io/2019/10/23/VCTools/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
-    <id>https://fxliu.github.io/2019/10/23/VCTools/代码整理/</id>
-    <published>2019-10-23T11:34:17.849Z</published>
-    <updated>2019-10-30T10:35:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h2><ul><li><a href="https://github.com/fxliu/base64" target="_blank" rel="noopener">base64</a></li><li><a href="https://github.com/fxliu/cpp-base64" target="_blank" rel="noopener">base64_cpp</a></li><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">curl+openssl</a></li><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">openssl+aes</a></li></ul><h2 id="mytools"><a href="#mytools" class="headerlink" title="mytools"></a>mytools</h2><ul><li><a href="https://github.com/fxliu/VCDemo/tree/master/NET/ProductUpdate" target="_blank" rel="noopener">ProductUpdate</a><ul><li>产品热升级机制</li><li>curl+openssl</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      代码整理
-    
-    </summary>
-    
-      <category term="tools" scheme="https://fxliu.github.io/categories/tools/"/>
+      <category term="IDE" scheme="/categories/Tools/IDE/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title>代码整理</title>
-    <link href="https://fxliu.github.io/2019/10/23/Python/%E4%BB%A3%E7%A0%81%E6%95%B4%E7%90%86/"/>
-    <id>https://fxliu.github.io/2019/10/23/Python/代码整理/</id>
-    <published>2019-10-23T10:30:40.358Z</published>
-    <updated>2019-11-08T04:21:16.295Z</updated>
+      <category term="IntelliJ IDEA" scheme="/tags/IntelliJ-IDEA/"/>
     
-    <content type="html"><![CDATA[<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><ul><li><strong>PyCharm</strong><ul><li>注册码: <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></li></ul></li></ul><h2 id="常用Demo"><a href="#常用Demo" class="headerlink" title="常用Demo"></a>常用Demo</h2><ul><li><a href="https://github.com/fxliu/Python/tree/master/tools" target="_blank" rel="noopener">base64</a></li><li><a href="https://github.com/fxliu/Python/tree/master/tools" target="_blank" rel="noopener">md5</a></li><li><a href="https://github.com/fxliu/Python/tree/master/tools" target="_blank" rel="noopener">webservice</a><ul><li>suds.wsdl, suds.client</li></ul></li></ul>]]></content>
+      <category term="PyCharm" scheme="/tags/PyCharm/"/>
     
-    <summary type="html">
-    
-      代码整理
-    
-    </summary>
-    
-      <category term="Python" scheme="https://fxliu.github.io/categories/Python/"/>
-    
-    
-      <category term="入门" scheme="https://fxliu.github.io/tags/%E5%85%A5%E9%97%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字符串</title>
-    <link href="https://fxliu.github.io/2019/10/10/VC/String/"/>
-    <id>https://fxliu.github.io/2019/10/10/VC/String/</id>
-    <published>2019-10-10T07:21:28.856Z</published>
-    <updated>2019-10-10T07:21:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="小函数封装"><a href="#小函数封装" class="headerlink" title="小函数封装"></a>小函数封装</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">H2I</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'0'</span>;</span><br><span class="line">  <span class="keyword">if</span> (ch &gt;= <span class="string">'a'</span> &amp;&amp; ch &lt;= <span class="string">'f'</span>)</span><br><span class="line">    <span class="keyword">return</span> ch - <span class="string">'a'</span> + <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> ch - <span class="string">'A'</span> + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "A\u5218B" -&gt; A刘B</span></span><br><span class="line"><span class="function">CStringA <span class="title">Uncode2String</span><span class="params">(<span class="keyword">char</span> *d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CStringA str;</span><br><span class="line">  <span class="keyword">while</span>(*d)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(d) &lt; <span class="number">6</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      str += d;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[<span class="number">0</span>] == <span class="string">'\\'</span> &amp;&amp; d[<span class="number">1</span>] == <span class="string">'u'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      WCHAR ch[<span class="number">2</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">      ch[<span class="number">0</span>] = (WCHAR((H2I(d[<span class="number">2</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">3</span>])) &lt;&lt; <span class="number">8</span>) + (H2I(d[<span class="number">4</span>]) &lt;&lt; <span class="number">4</span>) + H2I(d[<span class="number">5</span>]);</span><br><span class="line">      <span class="comment">// CP_UTF8</span></span><br><span class="line">      str += CW2A(ch);</span><br><span class="line">      d += <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      str += d[<span class="number">0</span>];</span><br><span class="line">      d += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      String
-    
-    </summary>
-    
-      <category term="VC" scheme="https://fxliu.github.io/categories/VC/"/>
-    
-    
-      <category term="String" scheme="https://fxliu.github.io/tags/String/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>加解密</title>
-    <link href="https://fxliu.github.io/2019/10/03/PHP/openssl/"/>
-    <id>https://fxliu.github.io/2019/10/03/PHP/openssl/</id>
-    <published>2019-10-03T08:03:34.730Z</published>
-    <updated>2019-10-30T10:39:35.515Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="openssl-1-1-1"><a href="#openssl-1-1-1" class="headerlink" title="openssl(1.1.1)"></a>openssl(1.1.1)</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 版本号以及支持的内容</span></span><br><span class="line">printf(<span class="string">"Versoin : %s"</span>, OPENSSL_VERSION_TEXT);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$digests = openssl_get_md_methods(<span class="keyword">false</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Digests : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($digests <span class="keyword">as</span> $digest) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $digest.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">$ciphers = openssl_get_cipher_methods(<span class="keyword">false</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Ciphers : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($ciphers <span class="keyword">as</span> $cipher) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $cipher.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line">$curves = openssl_get_curve_names();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"Curves : "</span>;</span><br><span class="line"><span class="keyword">foreach</span> ($curves <span class="keyword">as</span> $curve) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $curve.<span class="string">","</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SM4 加解密</span></span><br><span class="line">$key = openssl_random_pseudo_bytes(<span class="number">16</span>);</span><br><span class="line">$ivlen = openssl_cipher_iv_length(<span class="string">"sm4"</span>);</span><br><span class="line"><span class="comment">// $iv = openssl_random_pseudo_bytes($ivlen);</span></span><br><span class="line">$iv = str_repeat(<span class="string">"\0"</span>, $ivlen);</span><br><span class="line">$plaintext = <span class="string">"message to be encrypted"</span>;</span><br><span class="line">$ciphertext = openssl_encrypt($plaintext, <span class="string">"sm4"</span>, $key, $options=<span class="number">0</span>, $iv);</span><br><span class="line">$original_plaintext = openssl_decrypt($ciphertext, <span class="string">"sm4"</span>, $key, $options=<span class="number">0</span>, $iv);</span><br><span class="line"></span><br><span class="line">printf(<span class="string">"sms4enc(\"%s\") = %s\n"</span>, $plaintext, bin2hex($ciphertext));</span><br><span class="line">printf(<span class="string">"sms4dec(%s) = \"%s\"\n"</span>, bin2hex($ciphertext), $original_plaintext);</span><br></pre></td></tr></table></figure><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ------------------------------------------------</span></span><br><span class="line"><span class="comment">// 证书加载：RM2 pkcs8格式证书</span></span><br><span class="line">$private_content = file_get_contents(<span class="keyword">__DIR__</span>.<span class="string">'\lfx.pkcs8.pem'</span>);</span><br><span class="line">$prikey = openssl_pkey_get_private($private_content);</span><br><span class="line"></span><br><span class="line">$pubkeypem = openssl_pkey_get_details($prikey)[<span class="string">"key"</span>];</span><br><span class="line">$pubkey = openssl_pkey_get_public($pubkeypem);</span><br><span class="line"></span><br><span class="line">$ec = openssl_pkey_get_details($prikey)[<span class="string">"ec"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="comment">// $ec["d"] &lt;==&gt; 证书明文</span></span><br><span class="line">printf(<span class="string">"SM2 Private Key: \nd:%s, \nx:%s, \ny:%s\n"</span>, bin2hex($ec[<span class="string">"d"</span>]), bin2hex($ec[<span class="string">"x"</span>]), bin2hex($ec[<span class="string">"y"</span>]));</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 证书签名/验签</span></span><br><span class="line">$msg = <span class="string">"abc"</span>;</span><br><span class="line">$signature = <span class="string">""</span>;</span><br><span class="line">openssl_sign($msg, $signature, $prikey);            <span class="comment">// 签名</span></span><br><span class="line">$ok = openssl_verify($msg, $signature, $pubkey);    <span class="comment">// 签名校验</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;<span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">printf(<span class="string">"verify(\"%s\", %s) = %s\n"</span>, $msg, bin2hex($signature), $ok ? <span class="string">"OK"</span> : <span class="string">"Failure"</span>);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      openssl, SM2, SM4
-    
-    </summary>
-    
-      <category term="PHP" scheme="https://fxliu.github.io/categories/PHP/"/>
-    
-    
-      <category term="openssl" scheme="https://fxliu.github.io/tags/openssl/"/>
-    
-      <category term="SM2" scheme="https://fxliu.github.io/tags/SM2/"/>
-    
-      <category term="SM4" scheme="https://fxliu.github.io/tags/SM4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常规函数</title>
-    <link href="https://fxliu.github.io/2019/10/03/Java/%E5%B8%B8%E8%A7%84%E5%87%BD%E6%95%B0/"/>
-    <id>https://fxliu.github.io/2019/10/03/Java/常规函数/</id>
-    <published>2019-10-03T04:29:05.993Z</published>
-    <updated>2019-10-30T10:36:00.776Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 格式化输出</span></span><br><span class="line">System.out.printf(<span class="string">"&#123;\"result\":\"%s\"&#125;"</span>, <span class="keyword">new</span> String(key));</span><br><span class="line"><span class="comment">// 对象打印: 可以直接打印单个任意对象</span></span><br><span class="line">System.out.println(<span class="string">"asdf"</span>);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      JAVA, 入门
-    
-    </summary>
-    
-      <category term="JAVA" scheme="https://fxliu.github.io/categories/JAVA/"/>
-    
-    
-      <category term="入门" scheme="https://fxliu.github.io/tags/%E5%85%A5%E9%97%A8/"/>
+      <category term="PhpStorm" scheme="/tags/PhpStorm/"/>
     
   </entry>
   

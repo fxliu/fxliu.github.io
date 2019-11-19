@@ -19,7 +19,7 @@
 <meta name="keywords" content="hexo,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github+hexo搭建个人博客">
-<meta property="og:url" content="https://fxliu.github.io/2019/09/01/github+hexo搭建个人博客/index.html">
+<meta property="og:url" content="/2019/09/01/github+hexo搭建个人博客/index.html">
 <meta property="og:site_name" content="福">
 <meta property="og:description" content="hexo,github">
 <meta property="og:locale" content="zh-CN">
@@ -332,7 +332,13 @@
 <li><code>npm install hexo-search --save</code></li>
 </ul>
 </li>
+<li><code>npm install hexo-generator-searchdb --save</code><ul>
+<li>全局配置文件<code>_config.yml</code>，新增如下内容</li>
 </ul>
+</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># https://github.com/theme-next/hexo-generator-searchdb</span></span><br><span class="line"><span class="comment"># git上有也使用说明</span></span><br><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.json</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">content:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="安装完成，享受成果把"><a href="#安装完成，享受成果把" class="headerlink" title="安装完成，享受成果把"></a>安装完成，享受成果把</h2><ul>
 <li><code>hexo server</code>启动本地服务，看看效果如何</li>
 <li><code>hexo g</code>执行编译，编译结果静态文件保存到<code>Public</code>文件夹</li>
@@ -343,7 +349,7 @@
 <li>git命令行自动提交需要配置秘钥什么的，就别问我这种准备使用GitHub Desktop工具的农民了</li>
 </ul>
 </li>
-<li><a href="https://fxliu.github.io/">我的成果</a></li>
+<li><a href="https://fxliu.github.io/" target="_blank" rel="noopener">我的成果</a></li>
 <li><a href="https://github.com/fxliu/hexo" target="_blank" rel="noopener">源码仓库</a></li>
 <li><a href="https://github.com/fxliu/fxliu.github.io" target="_blank" rel="noopener">博客仓库</a></li>
 </ul>
