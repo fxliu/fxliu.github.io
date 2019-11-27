@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>MySQL-存储过程 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SQL,存储过程,">
+  
+
+  <meta name="description" content="SQL, 存储过程">
+<meta name="keywords" content="SQL,存储过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL-存储过程">
+<meta property="og:url" content="/2019/11/22/DB/MySQL-存储过程/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="SQL, 存储过程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-22T01:27:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL-存储过程">
+<meta name="twitter:description" content="SQL, 存储过程">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语句返回值接收"><span class="toc-text">语句返回值接收</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重建索引"><span class="toc-text">重建索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改列"><span class="toc-text">修改列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加列"><span class="toc-text">添加列</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-DB/MySQL-存储过程" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">MySQL-存储过程</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li>不支持打印输出</li>
+<li>不支持SQL语句输出</li>
+<li>支持参数传入传出</li>
+<li>批量数据只能创建临时表, 存储过程中保存数据到临时表, 存储过程外从临时表提取输出</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 同名存储过程存在则删除</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`proc_adder`</span>;</span><br><span class="line"><span class="comment">-- 重置语句结束符</span></span><br><span class="line">DELIMITER ;;</span><br><span class="line"><span class="comment">-- 创建存储过程：一个加法器</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> proc_adder(<span class="keyword">IN</span> a <span class="built_in">int</span>, <span class="keyword">IN</span> b <span class="built_in">int</span>, <span class="keyword">OUT</span> <span class="keyword">sum</span> <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DECLARE</span> c <span class="built_in">int</span>;</span><br><span class="line">    if a is null then <span class="keyword">set</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">    if b is null then <span class="keyword">set</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line">    <span class="keyword">set</span> <span class="keyword">sum</span> = a + b;</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line">;;</span><br><span class="line">DELIMITER ;    <span class="comment">-- 还原默认语句结束符</span></span><br><span class="line"><span class="comment">-- 调用</span></span><br><span class="line"><span class="keyword">set</span> @b=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">call</span> proc_adder(<span class="number">2</span>,@b,@s);</span><br><span class="line"><span class="keyword">select</span> @s <span class="keyword">as</span> <span class="keyword">sum</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="语句返回值接收"><a href="#语句返回值接收" class="headerlink" title="语句返回值接收"></a>语句返回值接收</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">into</span> @c <span class="keyword">FROM</span> shengyibao.area;</span><br><span class="line"><span class="keyword">SELECT</span> @c;</span><br><span class="line"><span class="comment">-- ----------------------------------------</span></span><br><span class="line"><span class="keyword">SET</span> @STMT = <span class="keyword">CONCAT</span>(<span class="string">"SELECT count(*) into @c FROM shengyibao.area;"</span>);</span><br><span class="line"><span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> @STMT;</span><br><span class="line"><span class="keyword">EXECUTE</span> STMT;</span><br><span class="line"><span class="keyword">SELECT</span> @c;</span><br></pre></td></tr></table></figure>
+
+<h3 id="重建索引"><a href="#重建索引" class="headerlink" title="重建索引"></a>重建索引</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- SQL不支持直接使用IF语句，所以只能使用负载均衡</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="keyword">test</span>;</span><br><span class="line">DELIMITER ;;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="keyword">test</span> (<span class="keyword">OUT</span> pv <span class="built_in">TEXT</span>) <span class="keyword">DETERMINISTIC</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> INDEX_NAME <span class="keyword">FROM</span> information_schema.statistics <span class="keyword">WHERE</span> table_schema=<span class="string">'table_name'</span> <span class="keyword">AND</span> table_name = <span class="string">'index_name'</span> <span class="keyword">AND</span> index_name = <span class="string">'idx_test'</span>) <span class="keyword">THEN</span></span><br><span class="line">    <span class="keyword">ALTER</span> <span class="keyword">TABLE</span> netbar_2308052252.<span class="string">`duty`</span> <span class="keyword">ADD</span> <span class="keyword">INDEX</span> <span class="string">`idx_tmbegin`</span> (<span class="string">`tmbegin`</span>);</span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span>;;</span><br><span class="line">DELIMITER ;</span><br><span class="line"><span class="comment">-- 调用</span></span><br><span class="line"><span class="keyword">call</span> <span class="keyword">test</span>(@pv);</span><br><span class="line"><span class="keyword">select</span> @pv;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 遍历库，对库中指定表进行操作 */</span></span><br><span class="line"><span class="comment">-- 同名存储过程存在则删除</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="comment">-- 置存储过程标记符号";;"</span></span><br><span class="line">DELIMITER ;;</span><br><span class="line"><span class="comment">-- 创建存储过程"test"</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="keyword">test</span> (<span class="keyword">OUT</span> pv <span class="built_in">TEXT</span>) <span class="keyword">DETERMINISTIC</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">DECLARE</span> time_b <span class="built_in">VARCHAR</span>(<span class="number">64</span>) <span class="keyword">DEFAULT</span> <span class="string">'2018-04-14 8:00:00'</span>;  <span class="comment">-- 自定义变量</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">DECLARE</span> done <span class="built_in">tinyint</span> <span class="keyword">default</span> <span class="number">0</span>;   <span class="comment">-- 游标结束判定符</span></span><br><span class="line">  <span class="keyword">DECLARE</span> db <span class="built_in">VARCHAR</span>(<span class="number">64</span>);           <span class="comment">-- 游标数据接收变量</span></span><br><span class="line">  <span class="comment">-- 创建游标</span></span><br><span class="line">  <span class="keyword">DECLARE</span> cur <span class="keyword">CURSOR</span> <span class="keyword">FOR</span></span><br><span class="line">    <span class="keyword">SELECT</span> SCHEMA_NAME <span class="keyword">FROM</span> information_schema.SCHEMATA <span class="keyword">WHERE</span> SCHEMA_NAME REGEXP <span class="string">"^testdb_[0-9]&#123;10&#125;$"</span>;</span><br><span class="line">  <span class="comment">-- 设定游标结束标记</span></span><br><span class="line">  <span class="keyword">DECLARE</span> continue <span class="keyword">handler</span> <span class="keyword">for</span> <span class="keyword">sqlstate</span> <span class="string">'02000'</span> <span class="keyword">SET</span> done=<span class="number">1</span>;</span><br><span class="line">  <span class="comment">-- 打开游标</span></span><br><span class="line">  OPEN cur;</span><br><span class="line">  <span class="comment">-- 提取游标值</span></span><br><span class="line">  FETCH cur INTO db;</span><br><span class="line">  <span class="comment">-- 循环检查游标</span></span><br><span class="line">  WHILE done&lt;&gt;1 DO</span><br><span class="line">    <span class="keyword">SET</span> @db = db;</span><br><span class="line">    <span class="comment">-- ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">-- 不需要IF，如果列未发生变化，语句会很快结束</span></span><br><span class="line">    <span class="comment">-- AFTER用于指定调整列位置</span></span><br><span class="line">    <span class="keyword">SET</span> @STMT = <span class="keyword">CONCAT</span>(<span class="string">'</span></span><br><span class="line"><span class="string">      ALTER TABLE '</span>, @db, <span class="string">'.`member`</span></span><br><span class="line"><span class="string">      MODIFY COLUMN `col_name1`  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'创建时间\' AFTER `col_name2`;'</span>);</span><br><span class="line">    <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> @STMT;</span><br><span class="line">    <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">    <span class="comment">-- -----------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">-- 下一个游标</span></span><br><span class="line">    FETCH cur INTO db;</span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">WHILE</span>;</span><br><span class="line">  <span class="comment">-- 关闭游标</span></span><br><span class="line">  CLOSE cur;</span><br><span class="line"><span class="keyword">END</span>;;   <span class="comment">-- 存储过程结束标记</span></span><br><span class="line">DELIMITER ; <span class="comment">-- 重置存储过程结束标记为默认值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 调用该存储过程，注意：输出参数必须是一个带@符号的变量，支持多参数传入传出</span></span><br><span class="line"><span class="keyword">CALL</span> <span class="keyword">test</span> (@pv);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 显示</span></span><br><span class="line"><span class="keyword">SELECT</span> @pv;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="keyword">test</span>;</span><br><span class="line"></span><br><span class="line">DELIMITER ;;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> <span class="keyword">test</span> (<span class="keyword">OUT</span> pv <span class="built_in">TEXT</span>) <span class="keyword">DETERMINISTIC</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">SET</span> pv = <span class="string">'0'</span>;</span><br><span class="line">  <span class="comment">-- 检查列是否存在</span></span><br><span class="line">  IF NOT EXISTS(<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> information_schema.<span class="string">`COLUMNS`</span> <span class="keyword">WHERE</span> TABLE_SCHEMA=<span class="string">'NetbarOpt'</span> <span class="keyword">AND</span> TABLE_NAME=<span class="string">'table_name'</span> <span class="keyword">AND</span> COLUMN_NAME=<span class="string">'col_name'</span>)</span><br><span class="line">  <span class="keyword">THEN</span></span><br><span class="line">    <span class="comment">-- 不存在则创建</span></span><br><span class="line">    <span class="keyword">SET</span> @bar_tn = <span class="string">'table_name'</span>;</span><br><span class="line">    <span class="keyword">SET</span> @STMT = <span class="keyword">CONCAT</span>(<span class="string">"ALTER TABLE `"</span>, @bar_tn,<span class="string">"` ADD COLUMN `col_name` VARCHAR (50) NULL AFTER `opt_time`;"</span>);</span><br><span class="line">    <span class="keyword">PREPARE</span> STMT <span class="keyword">FROM</span> @STMT;</span><br><span class="line">    <span class="keyword">EXECUTE</span> STMT;</span><br><span class="line">    <span class="keyword">SET</span> pv = @STMT;</span><br><span class="line">  <span class="keyword">END</span> <span class="keyword">IF</span>;</span><br><span class="line"><span class="keyword">END</span>;;</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 调用该存储过程，注意：输出参数必须是一个带@符号的变量 */</span></span><br><span class="line"><span class="keyword">CALL</span> <span class="keyword">test</span> (@pv);</span><br><span class="line"><span class="keyword">SELECT</span> @pv;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/20/PHP/IDE/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/22/DB/MySQL-优化/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

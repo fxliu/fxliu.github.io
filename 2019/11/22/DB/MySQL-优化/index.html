@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>MySQL-优化 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SQL,优化,">
+  
+
+  <meta name="description" content="SQL, 优化">
+<meta name="keywords" content="SQL,优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL-优化">
+<meta property="og:url" content="/2019/11/22/DB/MySQL-优化/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="SQL, 优化">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-22T03:48:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL-优化">
+<meta name="twitter:description" content="SQL, 优化">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT优化"><span class="toc-text">SELECT优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表优化"><span class="toc-text">表优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询缓存检查是否开启"><span class="toc-text">查询缓存检查是否开启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引优化"><span class="toc-text">索引优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置优化"><span class="toc-text">配置优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#碎片整理"><span class="toc-text">碎片整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态检查"><span class="toc-text">状态检查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内存占用"><span class="toc-text">内存占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未提交事务"><span class="toc-text">未提交事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锁等待"><span class="toc-text">锁等待</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志"><span class="toc-text">日志</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-DB/MySQL-优化" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">MySQL-优化</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/MySQL/">MySQL</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="SELECT优化"><a href="#SELECT优化" class="headerlink" title="SELECT优化"></a>SELECT优化</h2><p>频繁操作的库不适合开启查询缓存</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 当你查询表的有些时候，你已经知道结果只会有一条结果，但因为你可能需要去fetch游标，或是你也许会去检查返回的记录数。</span></span><br><span class="line"><span class="comment">-- 在这种情况下，加上 LIMIT 1 可以增加性能。这样一样，MySQL数据库引擎会在找到一条数据后停止搜索，而不是继续往后查少下一条符合记录的数据。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tn <span class="keyword">where</span> <span class="keyword">id</span> = <span class="number">1</span> <span class="keyword">LIMIT</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="表优化"><a href="#表优化" class="headerlink" title="表优化"></a>表优化</h2><ul>
+<li>VARCHAR -&gt; ENUM<ul>
+<li>ENUM 类型是非常快和紧凑的。在实际上，其保存的是 TINYINT，但其外表上显示为字符串。</li>
+<li>这样一来，用这个字段来做一些选项列表变得相当的完美; 比如“性别”，“国家”，“民族”，“状态”或“部门”，字段的取值是有限而且固定的</li>
+</ul>
+</li>
+</ul>
+<h3 id="查询缓存检查是否开启"><a href="#查询缓存检查是否开启" class="headerlink" title="查询缓存检查是否开启"></a>查询缓存检查是否开启</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%cache%'</span>;</span><br><span class="line"><span class="comment">-- query_cache_size</span></span><br><span class="line"><span class="comment">-- query_cache_type = 0/1</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%qcache%'</span>;        <span class="comment">-- 命中情况</span></span><br><span class="line"><span class="comment">-- Qcache_hits</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 0: 关闭, 1: 开启</span></span><br><span class="line"><span class="comment">-- 临时关闭</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> query_cache_size=<span class="number">0</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> query_cache_type=<span class="number">0</span></span><br><span class="line"><span class="comment">-- 永久关闭: 修改配置文件my.cnf</span></span><br><span class="line">query_cache_type=<span class="number">0</span></span><br><span class="line">query_cache_size=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 语句指定</span></span><br><span class="line"><span class="keyword">select</span> sql_no_cache <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;    <span class="comment">-- 无缓存</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sql_cache</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;       <span class="comment">-- 缓存</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 单条大数据</span></span><br><span class="line"><span class="comment">-- 默认1M, 改为10M</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'max_allowed_packet'</span>;</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> max_allowed_packet = <span class="number">10</span>*<span class="number">1024</span>*<span class="number">1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 特定函数导致不缓存</span></span><br><span class="line"><span class="comment">-- 某些查询语句会让MySQL不使用缓存。请看下面的示例：</span></span><br><span class="line"><span class="comment">-- 查询缓存不开启</span></span><br><span class="line">$r = mysql_query(<span class="string">"SELECT username FROM user WHERE signup_date &gt;= CURDATE()"</span>);</span><br><span class="line"><span class="comment">-- 开启查询缓存</span></span><br><span class="line">$today = date("Y-m-d");</span><br><span class="line">$r = mysql_query("<span class="keyword">SELECT</span> username <span class="keyword">FROM</span> <span class="keyword">user</span> <span class="keyword">WHERE</span> signup_date &gt;= <span class="string">'$today'</span><span class="string">");</span></span><br><span class="line"><span class="string">-- 上面两条SQL语句的差别就是 CURDATE() ，MySQL的查询缓存对这个函数不起作用。</span></span><br><span class="line"><span class="string">-- 所以，像 NOW() 和 RAND() 或是其它的诸如此类的SQL函数都不会开启查询缓存，因为这些函数的返回是会不定的易变的。</span></span><br><span class="line"><span class="string">-- 所以，你所需要的就是用一个变量来代替MySQL的函数，从而开启缓存。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">-- 无缓冲查询</span></span><br><span class="line"><span class="string">-- 并不像mysql_query()一样去自动fethch和缓存结果。这会相当节约很多可观的内存，尤其是那些会产生大量结果的查询语句</span></span><br><span class="line"><span class="string">-- 你不需要等到所有的结果都返回，只需要第一行数据返回的时候，你就可以开始马上开始工作于查询结果了。</span></span><br><span class="line"><span class="string">mysql_unbuffered_query()</span></span><br><span class="line"><span class="string">-- 限制：你要么把所有行都读走，或是你要在进行下一次的查询前调用mysql_free_result() 清除结果</span></span><br><span class="line"><span class="string">-- 而且， mysql_num_rows() 或 mysql_data_seek() 将无法使用。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> shengyibao.icafe_services <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">"1"</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>值</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td></td>
+<td>如果多条的话, 代表该语句分多次运行, id顺序代表执行顺序</td>
+<td></td>
+</tr>
+<tr>
+<td>select_type</td>
+<td>simple</td>
+<td>表示简单查询</td>
+<td>查询类型</td>
+</tr>
+<tr>
+<td></td>
+<td>primary</td>
+<td>最外层的 select 查询</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>DEPENDENT SUBQUERY</td>
+<td>子查询中的第一个 select 查询,依赖于外部 查询的结果集</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>DERIVED</td>
+<td>用于 from 子句里有子查询的情况。 MySQL 会 递归执行这些子查询, 把结果放在临时表里。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>UNCACHEABLE SUBQUERY</td>
+<td>结果集不能被缓存的子查询,必须重新为外 层查询的每一行进行评估。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>UNCACHEABLE UNION</td>
+<td>UNION 中的第二个或随后的 select 查询,属 于不可缓存的子查询</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>system</td>
+<td>表仅有一行, const的特例</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>const</td>
+<td>const 用于用常数值比较 PRIMARY KEY 时。当 查询的表仅有一行时,使用 System。</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>eq_ref</td>
+<td>关联表 - 最多匹配一行, 除const外最优</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ref</td>
+<td>关联表 - 所有内容都是索引关联</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ref_or_null</td>
+<td>等同于ref+NULL判断</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>ref_or_null</td>
+<td>等同于ref+NULL判断</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>index_merge</td>
+<td>索引合并优化方法 - 查询中使用多个索引</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>key</td>
+<td>列包含了使用的索引的清单</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>unique_subquery</td>
+<td>子查询, 不建议使用</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>index_subquery</td>
+<td>子查询, 使用非唯一性索引</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>range</td>
+<td>范围查询</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>index</td>
+<td>索引全表扫描</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>all</td>
+<td>行全表扫描</td>
+<td></td>
+</tr>
+<tr>
+<td>possible_keys</td>
+<td></td>
+<td>指出 MySQL 能在该表中使用哪些索引有助于 查询。如果为空,说明没有可用的索引。</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td></td>
+<td>MySQL 实际从 possible_key 选择使用的索引。 如果为 NULL,则没有使用索引。</td>
+<td></td>
+</tr>
+<tr>
+<td>key_length</td>
+<td></td>
+<td>使用的索引长度, 越小也好</td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td></td>
+<td>显示索引的哪一列被使用了</td>
+<td></td>
+</tr>
+<tr>
+<td>rows</td>
+<td></td>
+<td>检查行数, 越小越好</td>
+<td></td>
+</tr>
+<tr>
+<td>Extra</td>
+<td>Using Index</td>
+<td>使用索引</td>
+<td>解决查询的详细信息</td>
+</tr>
+<tr>
+<td></td>
+<td>using filesort</td>
+<td>外部排序</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Using temporary</td>
+<td>使用到临时表</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="配置优化"><a href="#配置优化" class="headerlink" title="配置优化"></a>配置优化</h2><ul>
+<li>table_open_cache<ul>
+<li>该值比较大时, 占用内存较多</li>
+<li>建议值: max_connections * 表数目, 一段时间内可能打开的表对象总和</li>
+<li>释放规则:<ul>
+<li>当缓冲已满，而连接想要打开一个不在缓冲中的表时。</li>
+<li>当缓冲数目已经超过了table_open_cache设置的值，mysql开始使用LRU算法释放表对象。</li>
+<li>当你用flush tables;语句时。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GLOBAL</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'Open%tables'</span></span><br><span class="line"><span class="comment">-- Open_tables: 当前打开的table对象数量</span></span><br><span class="line"><span class="comment">-- Opened_tables: 打开过的表的数量总和</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- MYSQL运行时长</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">global</span> <span class="keyword">status</span> <span class="keyword">like</span> <span class="string">'uptime'</span>;</span><br><span class="line"><span class="comment">-- Opened_tables/Uptime的值过大说明table_open_cache过小，</span></span><br><span class="line">  <span class="comment">-- 导致一些table对象（即下文说的table对象）经常会刷出server层，需要的时候再创建，最终导致此计数过大。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 当前打开的表</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">open</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="碎片整理"><a href="#碎片整理" class="headerlink" title="碎片整理"></a>碎片整理</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 在OPTIMIZE TABLE运行过程中，MySQL会锁定表</span></span><br><span class="line"><span class="comment">-- delete 操作不能够直接回收被删除数据占用的数据文件空间</span></span><br><span class="line"><span class="keyword">OPTIMIZE</span> [<span class="keyword">LOCAL</span> | <span class="keyword">NO_WRITE_TO_BINLOG</span>] <span class="keyword">TABLE</span> tbl_name [, tbl_name] ...</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ENGINE</span> = <span class="keyword">Innodb</span>;		<span class="comment">-- 空alter语句，但是也会达到优化的效果，它会重建整个表</span></span><br><span class="line"><span class="comment">-- 表数据状态</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">status</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">table</span> <span class="keyword">STATUS</span> <span class="keyword">like</span> <span class="string">'表名'</span>;</span><br><span class="line"><span class="comment">-- 分析表</span></span><br><span class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> 表名;    <span class="comment">-- 分析表, 关键字分布等，确保show查询的表状态是正确的</span></span><br><span class="line"><span class="comment">-- 备记</span></span><br><span class="line"><span class="comment">-- 优化表+重组数据，并不会完全释放剩余空间(Data_free)，根据表当前数据量可能会保留一部分(通常是默认值1-4M，压缩表2M，非压缩表4M)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="状态检查"><a href="#状态检查" class="headerlink" title="状态检查"></a>状态检查</h2><h3 id="内存占用"><a href="#内存占用" class="headerlink" title="内存占用"></a>内存占用</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">TABLES</span>;</span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">STATUS</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 清理: FLUSH, 缓慢释放已占用内存</span></span><br><span class="line"><span class="keyword">FLUSH</span> flush_option [,flush_option]</span><br><span class="line"><span class="comment">-- HOSTS: 清空主机缓存表</span></span><br><span class="line"><span class="comment">-- LOGS:  关闭当前的二进制日志文件并创建一个新文件</span></span><br><span class="line"><span class="comment">-- TABLES: 关闭所有打开的表，同时该操作将会清空查询缓存中的内容。</span></span><br><span class="line">        <span class="comment">-- FLUSH TABLES WITH READ LOCK  关闭所有打开的表，同时对于所有数据库中的表都加一个读锁</span></span><br><span class="line">        <span class="comment">-- 直到显示地执行unlock tables，该操作常常用于数据备份的时候。</span></span><br><span class="line"><span class="comment">-- STATUS: 重置大多数状态变量到0。</span></span><br><span class="line"><span class="comment">-- QUERY CACHE: 重整查询缓存，消除其中的碎片，提高性能，但是并不影响查询缓存中现有的数据，</span></span><br><span class="line">             <span class="comment">-- 这点和Flush table 和Reset Query  Cache（将会清空查询缓存的内容）不一样的。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 各种内存空间配置项</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">where</span> variable_name <span class="keyword">in</span> (</span><br><span class="line"><span class="string">'innodb_buffer_pool_size'</span>,<span class="string">'innodb_log_buffer_size'</span>,<span class="string">'innodb_additional_mem_pool_size'</span>,<span class="string">'key_buffer_size'</span>,<span class="string">'query_cache_size'</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">where</span> variable_name <span class="keyword">in</span> (</span><br><span class="line"><span class="string">'read_buffer_size'</span>,<span class="string">'read_rnd_buffer_size'</span>,<span class="string">'sort_buffer_size'</span>,<span class="string">'join_buffer_size'</span>,<span class="string">'binlog_cache_size'</span>,<span class="string">'tmp_table_size'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">used_Mem = key_buffer_size + query_cache_size + innodb_buffer_pool_size</span><br><span class="line">used_Mem += innodb_log_buffer_size</span><br><span class="line">used_Mem += 210 * (</span><br><span class="line">    read_buffer_size</span><br><span class="line">    + read_rnd_buffer_size</span><br><span class="line">    + sort_buffer_size</span><br><span class="line">    + join_buffer_size</span><br><span class="line">    + binlog_cache_size</span><br><span class="line">    + tmp_table_size</span><br><span class="line">    + thread_stack</span><br><span class="line">    + thread_cache_size</span><br><span class="line">    + net_buffer_length</span><br><span class="line">    + bulk_insert_buffer_size</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="未提交事务"><a href="#未提交事务" class="headerlink" title="未提交事务"></a>未提交事务</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> t.trx_mysql_thread_id <span class="keyword">from</span> information_schema.innodb_trx t;</span><br><span class="line"><span class="comment">-- kill 3836183;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询 正在执行的事务：</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> information_schema.INNODB_TRX;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看正在锁的事务</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> INFORMATION_SCHEMA.INNODB_LOCKS; </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看等待锁的事务</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> INFORMATION_SCHEMA.INNODB_LOCK_WAITS;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 长时间未结束的查询</span></span><br><span class="line"><span class="comment">-- COMMAND='Query' AND INFO IS NOT NULL</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> information_schema.<span class="string">`PROCESSLIST`</span> <span class="keyword">where</span> <span class="keyword">id</span> &lt;&gt; CONNECTION_ID() <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="built_in">time</span> <span class="keyword">desc</span>;</span><br><span class="line"><span class="comment">-- 长时间执行的查询(1小时), 可以直接kill掉返回的id</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> information_schema.processlist</span><br><span class="line"><span class="keyword">where</span> <span class="built_in">time</span> &gt;= <span class="number">3600</span> <span class="keyword">and</span> command <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'sleep'</span>)</span><br><span class="line">    <span class="keyword">and</span> <span class="keyword">user</span> <span class="keyword">not</span> <span class="keyword">in</span> (<span class="string">'system user'</span>, <span class="string">'replicator'</span>, <span class="string">'aurora'</span>, <span class="string">'event_scheduler'</span>)</span><br><span class="line">    <span class="keyword">and</span> state <span class="keyword">not</span> <span class="keyword">like</span> (<span class="string">'waiting for table%lock'</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="锁等待"><a href="#锁等待" class="headerlink" title="锁等待"></a>锁等待</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> l.* <span class="keyword">FROM</span></span><br><span class="line">  (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">'Blocker'</span> <span class="keyword">role</span>, p.id, p.USER,</span><br><span class="line">      <span class="keyword">LEFT</span> ( p.HOST, <span class="keyword">locate</span>(<span class="string">':'</span>, p.HOST) - <span class="number">1</span> ) HOST,</span><br><span class="line">      tx.trx_id, tx.trx_state, tx.trx_started,</span><br><span class="line">      <span class="keyword">timestampdiff</span>( <span class="keyword">SECOND</span>, tx.trx_started, <span class="keyword">now</span>() ) <span class="keyword">duration</span>,</span><br><span class="line">      lo.lock_mode, lo.lock_type, lo.lock_table, lo.lock_index, tx.trx_query, lw.requesting_trx_id Blockee_trx</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">      information_schema.innodb_trx tx,</span><br><span class="line">      information_schema.innodb_lock_waits lw,</span><br><span class="line">      information_schema.innodb_locks lo,</span><br><span class="line">      information_schema. <span class="keyword">PROCESSLIST</span> p</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">      lw.blocking_trx_id = tx.trx_id <span class="keyword">AND</span> p.id = tx.trx_mysql_thread_id <span class="keyword">AND</span> lo.lock_id = lw.blocking_lock_id</span><br><span class="line">    <span class="keyword">UNION</span></span><br><span class="line">      <span class="keyword">SELECT</span></span><br><span class="line">        <span class="string">'Blockee'</span> <span class="keyword">role</span>, p.id, p.USER, <span class="keyword">LEFT</span> ( p.HOST, <span class="keyword">locate</span>(<span class="string">':'</span>, p.HOST) - <span class="number">1</span> ) HOST,</span><br><span class="line">        tx.trx_id, tx.trx_state, tx.trx_started,</span><br><span class="line">        <span class="keyword">timestampdiff</span>( <span class="keyword">SECOND</span>, tx.trx_started, <span class="keyword">now</span>() ) <span class="keyword">duration</span>,</span><br><span class="line">        lo.lock_mode, lo.lock_type, lo.lock_table, lo.lock_index, tx.trx_query, <span class="literal">NULL</span></span><br><span class="line">      <span class="keyword">FROM</span></span><br><span class="line">        information_schema.innodb_trx tx,</span><br><span class="line">        information_schema.innodb_lock_waits lw,</span><br><span class="line">        information_schema.innodb_locks lo,</span><br><span class="line">        information_schema. <span class="keyword">PROCESSLIST</span> p</span><br><span class="line">      <span class="keyword">WHERE</span></span><br><span class="line">        lw.requesting_trx_id = tx.trx_id <span class="keyword">AND</span> p.id = tx.trx_mysql_thread_id <span class="keyword">AND</span> lo.lock_id = lw.requested_lock_id</span><br><span class="line">  ) l</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">  <span class="keyword">role</span> <span class="keyword">DESC</span>,</span><br><span class="line">  trx_state <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">master</span> <span class="keyword">logs</span>;</span><br><span class="line"><span class="keyword">show</span> <span class="built_in">binary</span> <span class="keyword">logs</span>;</span><br><span class="line"><span class="comment">-- 远程提取: 下载后可直接cat查看</span></span><br><span class="line">mysqlbinlog  -u** -p -h***.mysql.rds.aliyuncs.com --read-from-remote-server mysql-bin.000497 &gt;a.sql</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/22/DB/MySQL-存储过程/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/22/Linux/系统/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

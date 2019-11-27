@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>命令行 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="管道,命令行,">
+  
+
+  <meta name="description" content="管道, 命令行">
+<meta name="keywords" content="管道,命令行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命令行">
+<meta property="og:url" content="/2019/11/26/VCSystem/命令行/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="管道, 命令行">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-27T04:09:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="命令行">
+<meta name="twitter:description" content="管道, 命令行">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令执行"><span class="toc-text">命令执行</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCSystem/命令行" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">命令行</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li><a href="https://github.com/fxliu/VCDemo/tree/master/Process/命令行-输入输出" target="_blank" rel="noopener">封装Demo</a><ul>
+<li>支持持续通讯</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">GetInfoByCmd</span><span class="params">(CString &amp;strResult, CString strCmd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  BOOL bret = FALSE;</span><br><span class="line"></span><br><span class="line">  HANDLE hOutRead, hOutWrite, hInRead, hInWrite;</span><br><span class="line">  hOutRead = hOutWrite = hInRead = hInWrite = <span class="literal">NULL</span>;</span><br><span class="line">  SECURITY_ATTRIBUTES sa;</span><br><span class="line">  sa.nLength = <span class="keyword">sizeof</span>(SECURITY_ATTRIBUTES);</span><br><span class="line">  sa.lpSecurityDescriptor = <span class="literal">NULL</span>;</span><br><span class="line">  sa.bInheritHandle = TRUE;</span><br><span class="line">  <span class="comment">//创建管道</span></span><br><span class="line">  <span class="keyword">if</span> (!CreatePipe(&amp;hOutRead, &amp;hOutWrite, &amp;sa, <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">goto</span> _end;</span><br><span class="line">  <span class="keyword">if</span> (!CreatePipe(&amp;hInRead, &amp;hInWrite, &amp;sa, <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">goto</span> _end;</span><br><span class="line">  <span class="comment">//控制命令行窗口信息</span></span><br><span class="line">  STARTUPINFO si;</span><br><span class="line">  ZeroMemory(&amp;si, <span class="keyword">sizeof</span>(si));</span><br><span class="line">  si.cb = <span class="keyword">sizeof</span>(STARTUPINFO);</span><br><span class="line">  GetStartupInfo(&amp;si);</span><br><span class="line">  si.hStdInput = hInRead;</span><br><span class="line">  si.hStdError = hOutWrite;</span><br><span class="line">  si.hStdOutput = hOutWrite;</span><br><span class="line">  si.wShowWindow = SW_HIDE; <span class="comment">//隐藏命令行窗口</span></span><br><span class="line">  si.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;</span><br><span class="line">  <span class="comment">//进程信息</span></span><br><span class="line">  PROCESS_INFORMATION pi;</span><br><span class="line">  ZeroMemory(&amp;pi, <span class="keyword">sizeof</span>(pi));</span><br><span class="line"></span><br><span class="line">  <span class="comment">//创建获取命令行进程</span></span><br><span class="line">  <span class="keyword">if</span> (strCmd.Find(<span class="string">'\n'</span>) == <span class="number">-1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 单行指令</span></span><br><span class="line">    TCHAR szCmd[<span class="number">256</span>] = TEXT(<span class="string">"cmd.exe /c"</span>);   <span class="comment">// 必须单独申请变量，直接CreateProcess会崩溃，BUG？？</span></span><br><span class="line">    StrCat(szCmd, strCmd);</span><br><span class="line">    <span class="keyword">if</span> (!CreateProcess(<span class="literal">NULL</span>, szCmd, <span class="literal">NULL</span>, <span class="literal">NULL</span>, TRUE, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, &amp;si, &amp;pi))</span><br><span class="line">      <span class="keyword">goto</span> _end;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// 多行指令 - 最后一条指令必须是exit，否则进程无法退出</span></span><br><span class="line">    <span class="comment">// strCmd = TEXT("@echo off\ndir\nexit\n");</span></span><br><span class="line">    TCHAR szCmd[<span class="number">32</span>] = TEXT(<span class="string">"cmd.exe"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!CreateProcess(<span class="literal">NULL</span>, szCmd, <span class="literal">NULL</span>, <span class="literal">NULL</span>, TRUE, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, &amp;si, &amp;pi))</span><br><span class="line">      <span class="keyword">goto</span> _end;</span><br><span class="line">    <span class="keyword">if</span> (strCmd.Right(<span class="number">1</span>) != TEXT(<span class="string">"\n"</span>))</span><br><span class="line">      strCmd += TEXT(<span class="string">"\n"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!WriteFile(hInWrite, CW2A(strCmd).m_psz, strCmd.GetLength(), <span class="literal">NULL</span>, <span class="literal">NULL</span>))</span><br><span class="line">      <span class="keyword">goto</span> _end;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 等待进程结束</span></span><br><span class="line">  WaitForSingleObject(pi.hProcess, INFINITE);</span><br><span class="line">  CloseHandle(hOutWrite);   <span class="comment">// 关闭Write，避免缓存数据读完后read阻塞</span></span><br><span class="line">  hOutWrite = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="comment">// 缓冲区数据读取</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">long</span> MAX_OUT_SIZE = <span class="number">1024</span>;</span><br><span class="line">  <span class="keyword">char</span> szBuffer[MAX_OUT_SIZE + <span class="number">1</span>];</span><br><span class="line">  <span class="built_in">memset</span>(szBuffer, <span class="number">0</span>, <span class="keyword">sizeof</span>(szBuffer));</span><br><span class="line">  <span class="keyword">while</span> (ReadFile(hOutRead, szBuffer, MAX_OUT_SIZE, <span class="literal">NULL</span>, <span class="number">0</span>))</span><br><span class="line">  &#123;</span><br><span class="line">    strResult += CA2W(szBuffer);</span><br><span class="line">    <span class="built_in">memset</span>(szBuffer, <span class="number">0</span>, <span class="keyword">sizeof</span>(szBuffer));</span><br><span class="line">  &#125;</span><br><span class="line">  bret = TRUE;</span><br><span class="line"></span><br><span class="line">  _end:</span><br><span class="line">  <span class="comment">//关闭所有的句柄</span></span><br><span class="line">  <span class="keyword">if</span> (hOutRead)</span><br><span class="line">    CloseHandle(hOutRead);</span><br><span class="line">  <span class="keyword">if</span> (hOutWrite)</span><br><span class="line">    CloseHandle(hOutWrite);</span><br><span class="line">  <span class="keyword">if</span> (hInRead)</span><br><span class="line">    CloseHandle(hInRead);</span><br><span class="line">  <span class="keyword">if</span> (hInWrite)</span><br><span class="line">    CloseHandle(hInWrite);</span><br><span class="line">  <span class="keyword">if</span> (pi.hProcess)</span><br><span class="line">    CloseHandle(pi.hProcess);</span><br><span class="line">  <span class="keyword">if</span> (pi.hThread)</span><br><span class="line">    CloseHandle(pi.hThread);</span><br><span class="line">  <span class="keyword">return</span> bret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 常规指令</span></span><br><span class="line">UINT re = WinExec(cmd, SW_HIDE);</span><br><span class="line"><span class="keyword">if</span> (re &lt;= <span class="number">31</span>)</span><br><span class="line">&#123;</span><br><span class="line">  CString strError;</span><br><span class="line">  <span class="keyword">switch</span> (re)</span><br><span class="line">  &#123;</span><br><span class="line">  <span class="keyword">case</span> ERROR_BAD_FORMAT:      strError = cmd + TEXT(<span class="string">":ERROR_BAD_FORMAT"</span>); <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> ERROR_FILE_NOT_FOUND:  strError = cmd + TEXT(<span class="string">":ERROR_FILE_NOT_FOUND"</span>); <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> ERROR_PATH_NOT_FOUND:  strError = cmd + TEXT(<span class="string">":ERROR_PATH_NOT_FOUND"</span>); <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">0</span>:                     strError = cmd + TEXT(<span class="string">":系统内存或资源已耗尽"</span>); <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:                    strError = cmd + TEXT(<span class="string">":ERROR"</span>); <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 32位程序启动64位程序</span></span><br><span class="line">ShellExecute(<span class="literal">NULL</span>, <span class="literal">NULL</span>, GetRunPath() + TEXT(<span class="string">"\\SystemInit64.exe"</span>), <span class="literal">NULL</span>, <span class="literal">NULL</span>, FALSE);</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/25/Linux/服务/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

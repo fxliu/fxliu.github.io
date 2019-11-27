@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>RabbitMQ | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="RabbitMQ,">
+  
+
+  <meta name="description" content="RabbitMQ, httpapi">
+<meta name="keywords" content="RabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="/2019/11/25/DB/RabbitMQ/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="RabbitMQ, httpapi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-25T06:32:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RabbitMQ">
+<meta name="twitter:description" content="RabbitMQ, httpapi">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-DB/RabbitMQ" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">RabbitMQ</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/RabbitMQ/">RabbitMQ</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">RabbitMQ 操作</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> tools <span class="keyword">import</span> estools</span><br><span class="line"><span class="keyword">from</span> tools.eslogging <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsPublish</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""生产者"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cfg = estools.get_cfg()</span><br><span class="line">        self.rm_cfg = self.cfg[<span class="string">'rabbitmq'</span>]</span><br><span class="line">        credentials = pika.PlainCredentials(self.rm_cfg[<span class="string">'user'</span>], self.rm_cfg[<span class="string">'password'</span>])</span><br><span class="line">        self.conn_param = pika.ConnectionParameters(</span><br><span class="line">            host=self.rm_cfg[<span class="string">'ip'</span>], port=int(self.rm_cfg[<span class="string">'port'</span>]),</span><br><span class="line">            virtual_host=<span class="string">'/'</span>, credentials=credentials, heartbeat=<span class="number">60</span>)</span><br><span class="line">        self.connection = <span class="literal">None</span></span><br><span class="line">        self.channel = <span class="literal">None</span></span><br><span class="line">        self.queue_declare = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">blocking_connect</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection = pika.BlockingConnection(self.conn_param)</span><br><span class="line">        self.channel = self.connection.channel()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_queue</span><span class="params">(self, queue, exchange)</span>:</span></span><br><span class="line">        <span class="comment"># 声明一个持久队列</span></span><br><span class="line">        self.queue_declare = self.channel.queue_declare(queue=queue, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.confirm_delivery()</span><br><span class="line">        <span class="comment"># 声明一个持久交换机</span></span><br><span class="line">        self.channel.exchange_declare(exchange=exchange, exchange_type=<span class="string">"direct"</span>, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.queue_bind(queue=queue, exchange=exchange, routing_key=queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_length</span><span class="params">(self, queue=None, exchange=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.queue_declare <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.check_queue(queue, exchange)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> self.queue_declare.method.queue != queue:</span><br><span class="line">                self.check_queue(queue, exchange)</span><br><span class="line">        <span class="keyword">return</span> self.queue_declare.method.message_count</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send</span><span class="params">(self, queue, exchange, body)</span>:</span></span><br><span class="line">        <span class="comment"># 发布一条数据 - 到指定交换机</span></span><br><span class="line">        <span class="keyword">return</span> self.channel.basic_publish(exchange=exchange, routing_key=queue, body=body, mandatory=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsConsume</span><span class="params">(EsPublish)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, callback)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type name: str</span></span><br><span class="line"><span class="string">        :param callback</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        super(EsConsume, self).__init__()</span><br><span class="line">        self.name = name</span><br><span class="line">        self.cb = callback</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_consume</span><span class="params">(self, channel, method, properties, body)</span>:</span></span><br><span class="line">        <span class="string">"""消息回调"""</span></span><br><span class="line">        <span class="keyword">if</span> self.cb(channel, method, properties, body):</span><br><span class="line">            <span class="comment"># 消息完成标记</span></span><br><span class="line">            channel.basic_ack(method.delivery_tag)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basic_consume</span><span class="params">(self, auto_stop=<span class="number">0</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 每次消费1条消息 - 多消费者时, 避免某个消费者一次性获取太多消息</span></span><br><span class="line">        self.channel.basic_qos(prefetch_count=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 消费者标签: consumer_test - 用于明确关闭消费者</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.channel.basic_consume(self.on_consume, queue=self.name, no_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            self.channel.basic_consume(queue=self.name, on_message_callback=self.on_consume, auto_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line">        <span class="keyword">if</span> auto_stop &gt; <span class="number">0</span>:</span><br><span class="line">            tee = threading.Thread(target=self.thread_stop_consume, args=(auto_stop,))</span><br><span class="line">            tee.setDaemon(<span class="literal">True</span>)  <span class="comment"># 设置跟随父线程</span></span><br><span class="line">            tee.start()</span><br><span class="line">        self.channel.start_consuming()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop_consume</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">thread_stop_consume</span><span class="params">(self, auto_stop)</span>:</span></span><br><span class="line">        time.sleep(auto_stop)</span><br><span class="line">        eslogger.info(<span class="string">"auto stop: %s"</span> % auto_stop)</span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    configlogging()</span><br><span class="line">    t = EsPublish()</span><br><span class="line">    t.blocking_connect()</span><br><span class="line">    <span class="comment"># t.check_queue('olcustomer', 'shengyibao')</span></span><br><span class="line">    <span class="keyword">print</span> t.get_length(<span class="string">'olcustomer'</span>, <span class="string">'shengyibao'</span>)</span><br><span class="line">    <span class="keyword">print</span> t.get_length(<span class="string">'funit'</span>, <span class="string">'shengyibao'</span>)</span><br><span class="line">    <span class="comment"># t.send()</span></span><br><span class="line">    t.close()</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/23/DB/RabbitMQ-HTTPAPI/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/25/Linux/服务/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
