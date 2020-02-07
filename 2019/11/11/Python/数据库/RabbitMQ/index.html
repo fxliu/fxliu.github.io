@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>RabbitMQ | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="RabbitMQ,">
+  
+
+  <meta name="description" content="RabbitMQ">
+<meta name="keywords" content="RabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="/2019/11/11/Python/数据库/RabbitMQ/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="RabbitMQ">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T09:09:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RabbitMQ">
+<meta name="twitter:description" content="RabbitMQ">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#封装"><span class="toc-text">封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#封装-生产者"><span class="toc-text">封装-生产者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装-消费者"><span class="toc-text">封装-消费者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTPAPI"><span class="toc-text">HTTPAPI</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Python/数据库/RabbitMQ" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">RabbitMQ</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><h3 id="封装-生产者"><a href="#封装-生产者" class="headerlink" title="封装-生产者"></a>封装-生产者</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">RabbitMQ 生产者</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsPublish</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""生产者"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db)</span>:</span></span><br><span class="line">        self.cfg = db</span><br><span class="line">        credentials = pika.PlainCredentials(self.cfg[<span class="string">'user'</span>], self.cfg[<span class="string">'password'</span>])</span><br><span class="line">        self.conn_param = pika.ConnectionParameters(</span><br><span class="line">            host=self.cfg[<span class="string">'ip'</span>], port=int(self.cfg[<span class="string">'port'</span>]),</span><br><span class="line">            virtual_host=<span class="string">'/'</span>, credentials=credentials, heartbeat=<span class="number">60</span>)</span><br><span class="line">        self.connection = <span class="literal">None</span></span><br><span class="line">        self.channel = <span class="literal">None</span></span><br><span class="line">        self.queue_declare = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">blocking_connect</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection = pika.BlockingConnection(self.conn_param)</span><br><span class="line">        self.channel = self.connection.channel()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_queue</span><span class="params">(self, queue, exchange)</span>:</span></span><br><span class="line">        <span class="comment"># 声明一个持久队列</span></span><br><span class="line">        self.queue_declare = self.channel.queue_declare(queue=queue, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.confirm_delivery()</span><br><span class="line">        <span class="comment"># 声明一个持久交换机</span></span><br><span class="line">        self.channel.exchange_declare(exchange=exchange, exchange_type=<span class="string">"direct"</span>, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.queue_bind(queue=queue, exchange=exchange, routing_key=queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_length</span><span class="params">(self, queue=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> queue <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self.queue_declare.method.message_count</span><br><span class="line">        <span class="keyword">if</span> self.queue_declare <span class="keyword">and</span> (queue == self.queue_declare.method.queue):</span><br><span class="line">            <span class="keyword">return</span> self.queue_declare.method.message_count</span><br><span class="line">        queue_declare = self.channel.queue_declare(queue=queue, durable=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> queue_declare.method.message_count</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send</span><span class="params">(self, queue, exchange, body)</span>:</span></span><br><span class="line">        <span class="comment"># 发布一条数据 - 到指定交换机</span></span><br><span class="line">        <span class="keyword">return</span> self.channel.basic_publish(exchange=exchange, routing_key=queue, body=body, mandatory=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsConsume</span><span class="params">(EsPublish)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db, queue, callback)</span>:</span></span><br><span class="line">        <span class="string">"""消费者"""</span></span><br><span class="line">        super(EsConsume, self).__init__(db)</span><br><span class="line">        self.queue = queue</span><br><span class="line">        self.cb = callback</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_consume</span><span class="params">(self, channel, method, properties, body)</span>:</span></span><br><span class="line">        <span class="string">"""消息回调"""</span></span><br><span class="line">        <span class="keyword">if</span> self.cb(channel, method, properties, body):</span><br><span class="line">            <span class="comment"># 消息完成标记</span></span><br><span class="line">            channel.basic_ack(method.delivery_tag)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basic_consume</span><span class="params">(self, auto_stop=<span class="number">0</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 每次消费1条消息 - 多消费者时, 避免某个消费者一次性获取太多消息</span></span><br><span class="line">        self.channel.basic_qos(prefetch_count=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 消费者标签: consumer_test - 用于明确关闭消费者</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.channel.basic_consume(self.on_consume, queue=self.queue, no_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.queue)</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            self.channel.basic_consume(queue=self.queue, on_message_callback=self.on_consume, auto_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.queue)</span><br><span class="line">        <span class="keyword">if</span> auto_stop &gt; <span class="number">0</span>:</span><br><span class="line">            tee = threading.Thread(target=self.thread_stop_consume, args=(auto_stop,))</span><br><span class="line">            tee.setDaemon(<span class="literal">True</span>)  <span class="comment"># 设置跟随父线程</span></span><br><span class="line">            tee.start()</span><br><span class="line">        self.channel.start_consuming()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop_consume</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">thread_stop_consume</span><span class="params">(self, auto_stop)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> auto_stop &gt; <span class="number">0</span>:</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            auto_stop -= <span class="number">1</span></span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.queue)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    db = &#123;</span><br><span class="line">        <span class="string">'ip'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="string">'5672'</span>,</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'user'</span>,</span><br><span class="line">        <span class="string">'password'</span>: <span class="string">'password'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    t = EsPublish(db)</span><br><span class="line">    t.blocking_connect()</span><br><span class="line">    t.check_queue(<span class="string">'test_queue'</span>, <span class="string">'test_exchange'</span>)</span><br><span class="line">    t.send(<span class="string">'test_queue'</span>, <span class="string">'test_exchange'</span>, <span class="string">'test_value'</span>)</span><br><span class="line">    <span class="keyword">print</span> t.get_length()</span><br><span class="line">    t.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+
+<h3 id="封装-消费者"><a href="#封装-消费者" class="headerlink" title="封装-消费者"></a>封装-消费者</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">rabbitmq 消费者</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> test_rabbitmq_publish <span class="keyword">import</span> EsConsume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RabbitMQRead</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, db, queue, exchange)</span>:</span></span><br><span class="line">        self.queue = queue</span><br><span class="line">        self.exchange = exchange</span><br><span class="line">        self.time_start = int(time.time())</span><br><span class="line">        self.rabbitmq = EsConsume(db, queue=queue, callback=self.on_consume)</span><br><span class="line">        self.auto_stop = <span class="number">3600</span>*<span class="number">6</span>      <span class="comment"># 每6h, 重启一次</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_consume</span><span class="params">(self, channel, method, properties, body)</span>:</span></span><br><span class="line">        <span class="string">"""消息回调：重写此函数即可"""</span></span><br><span class="line">        <span class="comment"># print channel, method, properties</span></span><br><span class="line">        <span class="keyword">print</span> body</span><br><span class="line">        <span class="comment"># 处理完成后一定要返回True，标记消息处理完成</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.rabbitmq.blocking_connect()</span><br><span class="line">        self.rabbitmq.check_queue(self.queue, self.exchange)</span><br><span class="line">        <span class="keyword">return</span> self.rabbitmq.get_length(self.queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.rabbitmq.basic_consume(self.auto_stop)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    db = &#123;</span><br><span class="line">        <span class="string">'ip'</span>: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">        <span class="string">'port'</span>: <span class="string">'5672'</span>,</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'user'</span>,</span><br><span class="line">        <span class="string">'password'</span>: <span class="string">'password'</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    rr = RabbitMQRead(db, <span class="string">'test_queue'</span>, <span class="string">'test_exchange'</span>)</span><br><span class="line">    rr.auto_stop = <span class="number">3</span></span><br><span class="line">    rr.connect()</span><br><span class="line">    rr.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTPAPI"><a href="#HTTPAPI" class="headerlink" title="HTTPAPI"></a>HTTPAPI</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding=utf8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">RabbitMQ</span></span><br><span class="line"><span class="string">无效队列: RabbitMQ 会自动清理长时间不使用的队列</span></span><br><span class="line"><span class="string">    猜测：所谓的持久队列仅仅是数据持久，如果队列无数据且无消费者/生产者，还是会被自动清理掉的</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RabbitMQHttp</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.host = <span class="string">'http://127.0.0.1:15672'</span></span><br><span class="line">        self.auth = (<span class="string">'***'</span>, <span class="string">'***'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request_api</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        r = requests.get(self.host + <span class="string">'/api/'</span> + name, auth=self.auth)</span><br><span class="line">        <span class="keyword">return</span> json.loads(r.content)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request_vhosts</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.request_api(<span class="string">'vhosts'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request_queues</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.request_api(<span class="string">'queues'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request_connections</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.request_api(<span class="string">'connections'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsClear</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.rh = RabbitMQHttp()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_invalid_queues</span><span class="params">(self)</span>:</span></span><br><span class="line">        d = datetime.datetime.now() - datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line">        d = d.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span><br><span class="line">        queues = self.rh.request_queues()</span><br><span class="line">        re = []</span><br><span class="line">        <span class="keyword">for</span> q <span class="keyword">in</span> queues:</span><br><span class="line">            <span class="comment"># 自动清理的越过</span></span><br><span class="line">            <span class="keyword">if</span> q[<span class="string">'auto_delete'</span>]:</span><br><span class="line">                <span class="comment"># print 'auto_delete', q</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># 存在消费者的越过</span></span><br><span class="line">            <span class="keyword">if</span> q[<span class="string">'consumers'</span>] &gt; <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># print 'consumers: name=%(name)s, consumers=%(consumers)s, messages=%(messages)s' % q</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># 最近使用过的越过</span></span><br><span class="line">            <span class="keyword">if</span> q[<span class="string">'idle_since'</span>] &gt; d:</span><br><span class="line">                <span class="keyword">print</span> <span class="string">'idle_since: name=%(name)s, idle_since=%(idle_since)s, messages=%(messages)s'</span> % q</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            re.append(q)</span><br><span class="line">            <span class="keyword">print</span> json.dumps(q, sort_keys=<span class="literal">True</span>, indent=<span class="number">4</span>)</span><br><span class="line">        <span class="keyword">return</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    ec = EsClear()</span><br><span class="line">    ec.get_invalid_queues()</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/11/Python/Web/web.py/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/11/Python/数据库/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
