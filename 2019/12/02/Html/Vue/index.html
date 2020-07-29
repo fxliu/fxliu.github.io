@@ -172,7 +172,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定-class-style"><span class="toc-text">绑定(class | style)</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定-class-style"><span class="toc-text">绑定(class | style)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件"><span class="toc-text">插件</span></a></li></ol>
   </div>
 
 
@@ -226,6 +226,8 @@
 
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"[active, error]"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="comment">// 数组形式</span></span></span><br><span class="line">data: &#123;</span><br><span class="line"><span class="javascript">  active: <span class="string">'active'</span>,</span></span><br><span class="line"><span class="javascript">  isActive: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">  error: <span class="string">'text-danger'</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"[&#123; active: isActive &#125;, error]"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="comment">// 数组对象交叉</span></span></span><br><span class="line">data: &#123;</span><br><span class="line"><span class="javascript">  isActive: <span class="literal">true</span>,</span></span><br><span class="line"><span class="javascript">  error: <span class="string">'text-danger'</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  getUrlKey:<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> parames = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'[?|&amp;]'</span> + name + <span class="string">'='</span> + <span class="string">'([^&amp;;]+?)(&amp;|#|;|$)'</span>).exec(location.href);</span><br><span class="line">    <span class="keyword">if</span>(parames)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(parames[<span class="number">1</span>].replace(<span class="regexp">/\+/g</span>, <span class="string">'%20'</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> utils <span class="keyword">from</span> <span class="string">'./components/utils'</span></span><br><span class="line">Vue.prototype.$utils = utils;</span><br><span class="line"><span class="comment">// .vue使用</span></span><br><span class="line"><span class="keyword">let</span> code = <span class="keyword">this</span>.$utils.getUrlKey(<span class="string">'code'</span>);</span><br></pre></td></tr></table></figure>
+
 
     
   </div>
@@ -263,7 +265,7 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/11/30/Python/文件/二维码/">
+    <a class="show pull-left" href="/2019/12/02/Html/vue/vue-cli/">
         <i class="icon icon-angle-left"></i>
     </a>
     <a class="show pull-right" href="/2019/12/03/VCTools/libusb/">

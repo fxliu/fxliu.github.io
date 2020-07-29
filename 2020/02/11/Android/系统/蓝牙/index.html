@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>蓝牙 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="蓝牙,">
+  
+
+  <meta name="description" content="蓝牙">
+<meta name="keywords" content="蓝牙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝牙">
+<meta property="og:url" content="/2020/02/11/Android/系统/蓝牙/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="蓝牙">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-11T07:38:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蓝牙">
+<meta name="twitter:description" content="蓝牙">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#蓝牙"><span class="toc-text">蓝牙</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/系统/蓝牙" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">蓝牙</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h2><p><code>https://github.com/a-voyager/BluetoothHelper</code><br>    + 安卓蓝牙操作库</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">### BLE</span><br><span class="line"></span><br><span class="line">`api <span class="string">'com.inuker.bluetooth:library:1.4.0'</span>`</span><br><span class="line">    + `https:<span class="comment">//github.com/dingjikerbo/Android-BluetoothKit`</span></span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZBleManager</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String TAG = ZBleManager<span class="class">.<span class="keyword">class</span>.<span class="title">getSimpleName</span>()</span>;</span><br><span class="line">    <span class="keyword">private</span> BluetoothClient mClient;</span><br><span class="line"><span class="comment">//    private BluetoothBondListener mBluetoothBondListener;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 单例模式</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ZBleManager INSTANCE = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ZBleManager <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == INSTANCE) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (ZBleManager<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> == INSTANCE) &#123;</span><br><span class="line">                    INSTANCE = <span class="keyword">new</span> ZBleManager();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ZBleManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 初始化对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBle</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient)</span><br><span class="line">            mClient = <span class="keyword">new</span> BluetoothClient(context);</span><br><span class="line">        <span class="comment">//配对监听</span></span><br><span class="line"><span class="comment">//        mBluetoothBondListener = new BluetoothBondListener() &#123;</span></span><br><span class="line"><span class="comment">//            @Override</span></span><br><span class="line"><span class="comment">//            public void onBondStateChanged(String mac, int bondState) &#123;</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;;</span></span><br><span class="line"><span class="comment">//        mClient.registerBluetoothBondListener(mBluetoothBondListener);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 开关</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSupportBle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span> != adapter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBlueOpen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mClient.isBluetoothOpened();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> IBleStateListener mIBleStateListener = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> BluetoothStateListener mBluetoothStateListener = <span class="keyword">new</span> BluetoothStateListener() &#123;</span><br><span class="line">        <span class="meta">@SuppressLint</span>(<span class="string">"CheckResult"</span>)</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBluetoothStateChanged</span><span class="params">(<span class="keyword">boolean</span> openOrClosed)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != mClient)</span><br><span class="line">                mClient.unregisterBluetoothStateListener(<span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != mIBleStateListener) &#123;</span><br><span class="line">                mIBleStateListener.onBleOpen(openOrClosed);</span><br><span class="line">                mIBleStateListener = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">openBluetooth</span><span class="params">(IBleStateListener listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != listener) &#123;</span><br><span class="line">            mIBleStateListener = listener;</span><br><span class="line">            <span class="comment">// 注意该监听只支持监听状态发生变化情况</span></span><br><span class="line">            <span class="comment">// openBluetooth后，如果用户阻止了打开行为，该回调不生效</span></span><br><span class="line">            <span class="comment">// 弹窗会导致APP UI失去焦点，可以根据焦点状态判定用户是否已经选择，然后再检查用户选择结果</span></span><br><span class="line">            mClient.registerBluetoothStateListener(mBluetoothStateListener);</span><br><span class="line">        &#125;</span><br><span class="line">        mClient.openBluetooth();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeBluetooth</span><span class="params">(IBleStateListener listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != listener) &#123;</span><br><span class="line">            mIBleStateListener = listener;</span><br><span class="line">            mClient.registerBluetoothStateListener(mBluetoothStateListener);</span><br><span class="line">        &#125;</span><br><span class="line">        mClient.closeBluetooth();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 扫描</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scan</span><span class="params">(<span class="keyword">final</span> IBleScanListener listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        SearchRequest request = <span class="keyword">new</span> SearchRequest.Builder()</span><br><span class="line"><span class="comment">//                .searchBluetoothLeDevice(3000, 3)   // Start by scanning your BLE devices 3 times， every time 3s</span></span><br><span class="line"><span class="comment">//                .searchBluetoothClassicDevice(5000) // and scanning the traditional bluetooth devices 5s</span></span><br><span class="line">                .searchBluetoothLeDevice(<span class="number">2000</span>)      <span class="comment">//and scanning BLE devices 2s</span></span><br><span class="line">                .build();</span><br><span class="line">        mClient.search(request, <span class="keyword">new</span> SearchResponse() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSearchStarted</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (listener != <span class="keyword">null</span>) listener.onScanStarted();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDeviceFounded</span><span class="params">(SearchResult device)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (listener != <span class="keyword">null</span>) listener.onDeviceFounded(device);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSearchStopped</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (listener != <span class="keyword">null</span>) listener.onScanStop();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSearchCanceled</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (listener != <span class="keyword">null</span>) listener.onScanCanceled();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancelScan</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mClient)</span><br><span class="line">            mClient.stopSearch();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 连接</span></span><br><span class="line">    <span class="keyword">private</span> Disposable mDisposable;</span><br><span class="line">    <span class="keyword">private</span> IBleConnectStatusListener mConnectListener;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isConnected = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getConnectStatus</span><span class="params">(String mac)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> code = mClient.getConnectStatus(mac);</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isConnected;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressLint</span>(<span class="string">"CheckResult"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">final</span> String mac, IBleConnectStatusListener listener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        isConnected = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.mConnectListener = listener;</span><br><span class="line">        mClient.registerConnectStatusListener(mac, mBleConnectStatusListener);</span><br><span class="line">        mDisposable = Flowable.timer(<span class="number">100</span>, TimeUnit.MILLISECONDS)</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(<span class="keyword">new</span> Consumer&lt;Long&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Long aLong)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                        <span class="keyword">final</span> BleConnectOptions options = <span class="keyword">new</span> BleConnectOptions.Builder()</span><br><span class="line">                                .setConnectRetry(<span class="number">3</span>)   <span class="comment">// Retry the connection 3 times if it fails</span></span><br><span class="line">                                .setConnectTimeout(<span class="number">5000</span>)   <span class="comment">// Connect Timeout 5s</span></span><br><span class="line">                                .setServiceDiscoverRetry(<span class="number">3</span>)  <span class="comment">// Retry service discovery 3 times if it fails</span></span><br><span class="line">                                .setServiceDiscoverTimeout(<span class="number">5000</span>)  <span class="comment">// Discovery of service timeout 5s</span></span><br><span class="line">                                .build();</span><br><span class="line">                        <span class="keyword">if</span> (mConnectListener != <span class="keyword">null</span>)</span><br><span class="line">                            mConnectListener.onStartConnect();</span><br><span class="line">                        mClient.connect(mac, options, <span class="keyword">new</span> BleConnectResponse() &#123;</span><br><span class="line">                            <span class="meta">@Override</span></span><br><span class="line">                            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">int</span> code, BleGattProfile data)</span> </span>&#123;</span><br><span class="line">                                <span class="keyword">if</span> (code == REQUEST_SUCCESS) &#123;</span><br><span class="line">                                    isConnected = <span class="keyword">true</span>;</span><br><span class="line">                                    <span class="keyword">if</span> (<span class="keyword">null</span> != mConnectListener)</span><br><span class="line">                                        mConnectListener.onConnectSuccess(code, data, mac);</span><br><span class="line">                                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                    isConnected = <span class="keyword">false</span>;</span><br><span class="line">                                    <span class="keyword">if</span> (<span class="keyword">null</span> != mConnectListener)</span><br><span class="line">                                        mConnectListener.onConnectFail();</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BleConnectStatusListener mBleConnectStatusListener = <span class="keyword">new</span> BleConnectStatusListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnectStatusChanged</span><span class="params">(String mac, <span class="keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (status == STATUS_CONNECTED) &#123;</span><br><span class="line">                isConnected = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == STATUS_DISCONNECTED) &#123;</span><br><span class="line">                mClient.unregisterConnectStatusListener(mac, mBleConnectStatusListener);</span><br><span class="line">                <span class="keyword">if</span> (!isConnected) &#123;</span><br><span class="line">                    <span class="comment">// 未连接成功就反馈失败：蓝牙状态异常，stop掉</span></span><br><span class="line">                    unIndicate();</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                        mClient.disconnect(mac);</span><br><span class="line">                    &#125;</span><br><span class="line">                    Log.e(TAG, <span class="string">"STATUS_DISCONNECTED: stop"</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Log.e(TAG, <span class="string">"STATUS_DISCONNECTED"</span>);</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> != mConnectListener) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (isConnected)</span><br><span class="line">                        mConnectListener.onDisConnected(mac);</span><br><span class="line">                    mConnectListener = <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                isConnected = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">disConnectDevice</span><span class="params">(String mac)</span> </span>&#123;</span><br><span class="line">        unIndicate();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mClient) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!mac.isEmpty()) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    mClient.disconnect(mac);</span><br><span class="line">                &#125;</span><br><span class="line">                mClient.clearRequest(mac, REQUEST_READ);</span><br><span class="line">                mClient.clearRequest(mac, REQUEST_WRITE);</span><br><span class="line">                mClient.clearRequest(mac, REQUEST_NOTIFY);</span><br><span class="line"><span class="comment">//                mClient.refreshCache(mac);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mDisposable) &#123;</span><br><span class="line">            mDisposable.dispose();</span><br><span class="line">            mDisposable = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        isConnected = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 蓝牙设备服务事件监听</span></span><br><span class="line">    <span class="keyword">private</span> String indicateMac;</span><br><span class="line">    <span class="keyword">private</span> String serviceUUID;</span><br><span class="line">    <span class="keyword">private</span> String characterUUID;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">indicate</span><span class="params">(String MAC, String serviceUUID, String characterUUID, <span class="keyword">final</span> IBleIndicateListener callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        indicateMac = MAC;</span><br><span class="line">        <span class="keyword">this</span>.serviceUUID = serviceUUID;</span><br><span class="line">        <span class="keyword">this</span>.characterUUID = characterUUID;</span><br><span class="line">        mClient.notify(MAC, UUID.fromString(serviceUUID), UUID.fromString(characterUUID), <span class="keyword">new</span> BleNotifyResponse() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotify</span><span class="params">(UUID service, UUID character, <span class="keyword">byte</span>[] value)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">null</span> != callback) callback.onCharacteristicChanged(value);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (code == REQUEST_SUCCESS) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">null</span> != callback) callback.onIndicateSuccess();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (REQUEST_FAILED == code) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">null</span> != callback) callback.onIndicateFailure(code);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unIndicate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (indicateMac == <span class="keyword">null</span> || indicateMac.isEmpty()) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (serviceUUID == <span class="keyword">null</span> || serviceUUID.isEmpty()) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (characterUUID == <span class="keyword">null</span> || characterUUID.isEmpty()) <span class="keyword">return</span>;</span><br><span class="line">        Log.e(TAG, <span class="string">"unIndicate"</span>);</span><br><span class="line">        mClient.unnotify(indicateMac, UUID.fromString(serviceUUID), UUID.fromString(characterUUID), <span class="keyword">new</span> BleUnnotifyResponse() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        indicateMac = <span class="string">""</span>;</span><br><span class="line">        serviceUUID = <span class="string">""</span>;</span><br><span class="line">        characterUUID = <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 读写</span></span><br><span class="line">    <span class="keyword">private</span> IBleWriteListener mIBleWriteListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String MAC, String uuid_service, String uuid_write, <span class="keyword">final</span> <span class="keyword">byte</span>[] data, IBleWriteListener callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">this</span>.mIBleWriteListener = callback;</span><br><span class="line">        mClient.write(MAC, UUID.fromString(uuid_service), UUID.fromString(uuid_write), data, <span class="keyword">new</span> BleWriteResponse() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">int</span> code)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (code == REQUEST_SUCCESS) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">null</span> != mIBleWriteListener) mIBleWriteListener.onWriteSuccess();</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">null</span> != mIBleWriteListener) mIBleWriteListener.onWriteFailure(code);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(String MAC, String uuid_service, String uuid_write)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == mClient) <span class="keyword">return</span>;</span><br><span class="line">        mClient.read(MAC, UUID.fromString(uuid_service), UUID.fromString(uuid_write), <span class="keyword">new</span> BleReadResponse() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(<span class="keyword">int</span> code, <span class="keyword">byte</span>[] data)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ---------------------------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 释放</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Constants.REQUEST_READ，所有读请求</span></span><br><span class="line">        <span class="comment">// Constants.REQUEST_WRITE，所有写请求</span></span><br><span class="line">        <span class="comment">// Constants.REQUEST_NOTIFY，所有通知相关的请求</span></span><br><span class="line">        <span class="comment">// Constants.REQUEST_RSSI，所有读信号强度的请求</span></span><br><span class="line">        cancelScan();</span><br><span class="line">        disConnectDevice(<span class="string">""</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mClient) &#123;</span><br><span class="line"><span class="comment">//            mClient.unregisterBluetoothBondListener(mBluetoothBondListener);</span></span><br><span class="line"><span class="comment">//            mClient.unregisterBluetoothStateListener(mBluetoothStateListener);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        if (null != mIBleStateListener) mIBleStateListener = null;</span></span><br><span class="line"><span class="comment">//        if (null != mBluetoothStateListener) mBluetoothStateListener = null;</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != mBleConnectStatusListener) mBleConnectStatusListener = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//        if (null != mBluetoothBondListener) mBluetoothBondListener = null;</span></span><br><span class="line">        <span class="keyword">if</span> (mIBleWriteListener != <span class="keyword">null</span>) mIBleWriteListener = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/11/Android/系统/文件/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/14/Android/AndroidManifest/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

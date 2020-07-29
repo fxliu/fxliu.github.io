@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>SVG | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="SVG,">
+  
+
+  <meta name="description" content="SVG">
+<meta name="keywords" content="SVG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVG">
+<meta property="og:url" content="/2020/07/12/Html/vue/svg/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="SVG">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-12T11:27:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVG">
+<meta name="twitter:description" content="SVG">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件引入"><span class="toc-text">插件引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件配置"><span class="toc-text">插件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件引用"><span class="toc-text">组件引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svg加载"><span class="toc-text">svg加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svg-使用"><span class="toc-text">svg 使用</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Html/vue/svg" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">SVG</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.07.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="插件引入"><a href="#插件引入" class="headerlink" title="插件引入"></a>插件引入</h2><p><code>npm install svg-sprite-loader --save-dev</code></p>
+<h2 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.join(__dirname, dir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath: <span class="string">'./'</span>,</span><br><span class="line">  lintOnSave: process.env.NODE_ENV === <span class="string">'development'</span>,</span><br><span class="line">  productionSourceMap: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  chainWebpack(config) &#123;</span><br><span class="line">    <span class="comment">// set svg-sprite-loader，配置svg路径</span></span><br><span class="line">    config.module</span><br><span class="line">      .rule(<span class="string">'svg'</span>)</span><br><span class="line">      .exclude.add(resolve(<span class="string">'src/icons'</span>))</span><br><span class="line">      .end();</span><br><span class="line">    config.module</span><br><span class="line">      .rule(<span class="string">'icons'</span>)</span><br><span class="line">      .test(<span class="regexp">/\.svg$/</span>)</span><br><span class="line">      .include.add(resolve(<span class="string">'src/icons'</span>))</span><br><span class="line">      .end()</span><br><span class="line">      .use(<span class="string">'svg-sprite-loader'</span>)</span><br><span class="line">      .loader(<span class="string">'svg-sprite-loader'</span>)</span><br><span class="line">      .options(&#123;</span><br><span class="line">        symbolId: <span class="string">'icon-[name]'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      .end();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件引用"><a href="#组件引用" class="headerlink" title="组件引用"></a>组件引用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// components/SvgIcon/index.vue</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div v-<span class="keyword">if</span>=<span class="string">"isExternal"</span> :style=<span class="string">"styleExternalIcon"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"svg-external-icon svg-icon"</span> v-on=<span class="string">"$listeners"</span> /&gt;</span><br><span class="line">  &lt;svg v-<span class="keyword">else</span> :<span class="class"><span class="keyword">class</span></span>=<span class="string">"svgClass"</span> aria-hidden=<span class="string">"true"</span> v-on=<span class="string">"$listeners"</span>&gt;</span><br><span class="line">    &lt;use :href=<span class="string">"iconName"</span> /&gt;</span><br><span class="line">  &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="comment">// doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'SvgIcon'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    iconClass: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    className: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    isExternal() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="regexp">/^(https?:|mailto:|tel:)/</span>.test(<span class="keyword">this</span>.iconClass)</span><br><span class="line">    &#125;,</span><br><span class="line">    iconName() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`#icon-<span class="subst">$&#123;<span class="keyword">this</span>.iconClass&#125;</span>`</span></span><br><span class="line">    &#125;,</span><br><span class="line">    svgClass() &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.className) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'svg-icon '</span> + <span class="keyword">this</span>.className</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'svg-icon'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    styleExternalIcon() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        mask: <span class="string">`url(<span class="subst">$&#123;<span class="keyword">this</span>.iconClass&#125;</span>) no-repeat 50% 50%`</span>,</span><br><span class="line">        <span class="string">'-webkit-mask'</span>: <span class="string">`url(<span class="subst">$&#123;<span class="keyword">this</span>.iconClass&#125;</span>) no-repeat 50% 50%`</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style scoped&gt;</span></span><br><span class="line"><span class="regexp">.svg-icon &#123;</span></span><br><span class="line"><span class="regexp">  width: 1.2em;</span></span><br><span class="line"><span class="regexp">  height: 1.2em;</span></span><br><span class="line"><span class="regexp">  vertical-align: -0.15em;</span></span><br><span class="line"><span class="regexp">  fill: currentColor;</span></span><br><span class="line"><span class="regexp">  overflow: hidden;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">.svg-external-icon &#123;</span></span><br><span class="line"><span class="regexp">  background-color: currentColor;</span></span><br><span class="line"><span class="regexp">  mask-size: cover!important;</span></span><br><span class="line"><span class="regexp">  display: inline-block;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="svg加载"><a href="#svg加载" class="headerlink" title="svg加载"></a>svg加载</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/index.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> SvgIcon <span class="keyword">from</span> <span class="string">'@/components/SvgIcon'</span><span class="comment">// svg component</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// register globally</span></span><br><span class="line">Vue.component(<span class="string">'svg-icon'</span>, SvgIcon);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> req = <span class="built_in">require</span>.context(<span class="string">'./svg'</span>, <span class="literal">false</span>, /\.svg$/);</span><br><span class="line"><span class="keyword">const</span> requireAll = <span class="function"><span class="params">requireContext</span> =&gt;</span> requireContext.keys().map(requireContext);</span><br><span class="line">requireAll(req);</span><br></pre></td></tr></table></figure>
+
+<h2 id="svg-使用"><a href="#svg-使用" class="headerlink" title="svg 使用"></a>svg 使用</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建svg文件到 src/icons/svg</span></span><br><span class="line">&lt;svg-icon icon-<span class="class"><span class="keyword">class</span></span>=<span class="string">"password"</span> <span class="class"><span class="keyword">class</span>-<span class="title">name</span></span>=<span class="string">"myclass"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/06/18/Tools/github/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/07/16/Linux/NFS/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

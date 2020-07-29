@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>FFmepg(4.2)+SDL(2.0)播放器 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="FFmepg,SDL,UI,">
+  
+
+  <meta name="description" content="FFmepg, SDL, UI">
+<meta name="keywords" content="FFmepg,SDL,UI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFmepg(4.2)+SDL(2.0)播放器">
+<meta property="og:url" content="/2019/09/16/VCTools/FFmepg+SDL播放器/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="FFmepg, SDL, UI">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-08T04:16:43.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFmepg(4.2)+SDL(2.0)播放器">
+<meta name="twitter:description" content="FFmepg, SDL, UI">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FFmepg环境-4-2"><span class="toc-text">FFmepg环境(4.2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FFmepg引入"><span class="toc-text">FFmepg引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FFmepg应用"><span class="toc-text">FFmepg应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备记几个FFmepg常用参数"><span class="toc-text">备记几个FFmepg常用参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDL环境-2-0"><span class="toc-text">SDL环境(2.0)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SDL引入"><span class="toc-text">SDL引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDL应用"><span class="toc-text">SDL应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDL扩展"><span class="toc-text">SDL扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备注"><span class="toc-text">备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCTools/FFmepg+SDL播放器" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">FFmepg(4.2)+SDL(2.0)播放器</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="FFmepg环境-4-2"><a href="#FFmepg环境-4-2" class="headerlink" title="FFmepg环境(4.2)"></a>FFmepg环境(4.2)</h2><ul>
+<li><a href="http://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener">FFmepg官网</a> 下载最新的ffmpeg的dev版和share版，当前最新版是4.2<ul>
+<li>注意区分x64和x86，取决于你vs2015调试的解决方案平台用什么，如果安装了错误的版本将会出现一堆无法解析的错误</li>
+<li>包含三个版本：Static、Shared以及Dev<ul>
+<li>Static: 包含3个应用程序：ffmpeg.exe , ffplay.exe , ffprobe.exe，体积都很大，相关的DLL已经被编译到exe里面去了。</li>
+<li>Shared: 除了ffmpeg.exe , ffplay.exe , ffprobe.exe之外还有一些DLL，exe体积很小，在运行时到相应的DLL中调用功能。</li>
+<li>Dev: 开发者（developer）版本，里面包含了库文件xxx.lib以及头文件xxx.h，这个版本不含exe文件</li>
+</ul>
+</li>
+<li>把dev版本与share版本都下下来解压，dev版本文件夹中的Include和lib目录整个儿复制到VS项目目录下</li>
+<li>将share版本文件夹中bin目录下对应的所有dll复制到exe根目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="FFmepg引入"><a href="#FFmepg引入" class="headerlink" title="FFmepg引入"></a>FFmepg引入</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 头文件中的函数定义在编译为 C 程序的文件中，而头文件是在 C++ 文件中不带 extern “C” 修饰符声明的。在此情况下，需要添加extern "C"修饰符。</span></span><br><span class="line"><span class="comment">// 不添加 extern “C” 修饰符 会提示 无法解析 导致编译失败</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavcodec\avcodec.h"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavformat\avformat.h"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\channel_layout.h"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\common.h"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\imgutils.h"</span>  </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libswscale\swscale.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\imgutils.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\opt.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\mathematics.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"libavutil\samplefmt.h"</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"avcodec.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"avformat.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"avdevice.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"avfilter.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"avutil.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"postproc.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"swresample.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"swscale.lib"</span>)</span></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%s"</span>, avcodec_configuration());</span><br></pre></td></tr></table></figure>
+
+<h3 id="FFmepg应用"><a href="#FFmepg应用" class="headerlink" title="FFmepg应用"></a>FFmepg应用</h3><p>关键函数调试不通过时，还是自己到dev版的examples搜函数使用案例吧，网上各种旧版本的说明，有些函数已经废弃了，调用逻辑也不对</p>
+<p>视频播放基本上时固定模式打开-&gt;参数设定-&gt;读取-&gt;解码-&gt;转码-&gt;显示，剩下的看Demo吧</p>
+<p>音频处理流程基本类似</p>
+<ul>
+<li><code>avformat_open_input</code>打开视频文件<ul>
+<li><code>avformat_close_input</code>关闭视频文件</li>
+</ul>
+</li>
+<li><code>av_read_frame</code>读</li>
+<li><code>avcodec_send_packet</code> -&gt; <code>avcodec_receive_frame</code>解码</li>
+<li><code>sws_scale</code>转码，Demo中时转为YUV420P格式，提供SDL播放<ul>
+<li>注意保存解码结果的缓冲区的申请，被网上旧代码各种坑，自己去examples看官方势力吧</li>
+<li>注意还有个视频/音频播放延迟提取，SDL播放时要做到音视频同步</li>
+</ul>
+</li>
+</ul>
+<h3 id="备记几个FFmepg常用参数"><a href="#备记几个FFmepg常用参数" class="headerlink" title="备记几个FFmepg常用参数"></a>备记几个FFmepg常用参数</h3><ul>
+<li>格式转换<ul>
+<li><code>ffmpeg -i input.avi output.mp4</code></li>
+<li><code>-vcodec mpeg4</code>：指定编码格式</li>
+</ul>
+</li>
+<li>裁剪：从30秒开始到40秒<ul>
+<li><code>ffmpeg -i input.wmv -ss 30 -t 10 output.wmv</code></li>
+<li><code>ffmpeg -i input.wmv -ss 30 -to 40 output.wmv</code><ul>
+<li>把-ss, -t参数放在-i参数之后，是对输出文件执行的seek操作; 逐帧解码，直到-ss设置的时间点为止，这么操作会很慢，虽然时间点是准确的，但是很容易出现黑屏问题。</li>
+<li>将-ss，-t参数放在-i参数之前，对输入文件执行seek操作，会seek到-ss设置的时间点前面的关键帧上，时间不精确，但是不会出现黑屏。<ul>
+<li>可以补充accurate_seek 参数，让剪切时间更加精准，但seek要放在-i之前</li>
+<li><code>ffmpeg -ss 10 -t 15 -accurate_seek -i test.mp4 cut.mp4</code></li>
+<li>如果编码格式采用的copy 最好加上 -avoid_negative_ts 1参数</li>
+<li><code>ffmpeg -ss 10 -t 15 -accurate_seek -i test.mp4 -codec copy -avoid_negative_ts 1 cut.mp4</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>-c copy</code>：复制所有的流</li>
+<li><code>-vcodec copy</code>：使用跟原视频一样的视频编解码器</li>
+<li><code>-acodec copy</code>：使用跟原视频一样的音频编解码器</li>
+<li>``</li>
+</ul>
+</li>
+<li>音量：音贝<ul>
+<li><code>.\ffmpeg -i s1.mp4 -af &quot;volumedetect&quot; -f null /dev/null</code>：查看<code>mean_volume</code>-&gt;<code>max_volume</code></li>
+<li><code>ffmpeg  -i input.mp3 -af &quot;volume=0.5&quot; output.mp3</code>：减半</li>
+<li><code>ffmpeg  -i input.mp3 -af &quot;volume=2&quot; output.mp3</code>：加倍</li>
+<li><code>ffmpeg  -i input.mp3 -af &quot;volume=5dB&quot; output.mp3</code>：增加指定分贝数（使用负数<code>-5dB</code>则为降低分贝）</li>
+<li><code>ffmepg -i input.mp3 -filter:a &quot;loudnorm&quot; output.mp3</code>：音频标准化：削峰填谷，使整个音频的音量变化跨度降低，变得平滑</li>
+</ul>
+</li>
+</ul>
+<h2 id="SDL环境-2-0"><a href="#SDL环境-2-0" class="headerlink" title="SDL环境(2.0)"></a>SDL环境(2.0)</h2><ul>
+<li><a href="http://www.libsdl.org/" target="_blank" rel="noopener">SDL官网</a></li>
+</ul>
+<h3 id="SDL引入"><a href="#SDL引入" class="headerlink" title="SDL引入"></a>SDL引入</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ffmpeg\libavutil\frame.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"SDL/SDL.h"</span></span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"SDL2.lib"</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="SDL应用"><a href="#SDL应用" class="headerlink" title="SDL应用"></a>SDL应用</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">SDL_Init(SDL_INIT_EVERYTHING);</span><br><span class="line"><span class="comment">// 创建窗体：支持直接创建一个弹出窗，或者附加到指定窗体句柄上</span></span><br><span class="line"><span class="keyword">if</span> (!m_hWnd)</span><br><span class="line">&#123;</span><br><span class="line">  m_sdlWindow = SDL_CreateWindow(<span class="string">"SDL_Window"</span>, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,</span><br><span class="line">    w, h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">  m_sdlWindow = SDL_CreateWindowFrom(m_hWnd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 渲染器</span></span><br><span class="line">m_sdlRenderer = SDL_CreateRenderer(m_sdlWindow, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 设置Renderer按视频比例(m_videoWidth, m_videoHeight)缩放，默认按屏幕拉伸</span></span><br><span class="line">SDL_RenderSetLogicalSize(m_sdlRenderer, m_videoWidth, m_videoHeight);</span><br><span class="line"><span class="comment">// 纹理：Texture宽高一定要对应视频宽高</span></span><br><span class="line">m_sdlTexture = SDL_CreateTexture(m_sdlRenderer, SDL_PIXELFORMAT_IYUV, SDL_TEXTUREACCESS_STREAMING, m_videoWidth, m_videoHeight);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 视频播放 frame 为FFmepg解码后的数据帧</span></span><br><span class="line"><span class="keyword">if</span> (m_sdlTexture) SDL_UpdateTexture(m_sdlTexture, <span class="literal">NULL</span>, frame-&gt;data[<span class="number">0</span>], frame-&gt;linesize[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">// 遇到SDL_UpdateTexture崩溃情况的话，可以尝试直接调用SDL_UpdateYUVTexture</span></span><br><span class="line"><span class="comment">//if (m_sdlTexture) SDL_UpdateYUVTexture(m_sdlTexture, NULL,</span></span><br><span class="line"><span class="comment">//  frame-&gt;data[0], frame-&gt;linesize[0], frame-&gt;data[1], frame-&gt;linesize[1], frame-&gt;data[2], frame-&gt;linesize[2]);</span></span><br><span class="line"><span class="keyword">if</span> (m_sdlRenderer) SDL_RenderClear(m_sdlRenderer);</span><br><span class="line"><span class="keyword">if</span> (m_sdlRenderer &amp;&amp; m_sdlTexture) SDL_RenderCopy(m_sdlRenderer, m_sdlTexture, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">if</span> (m_sdlRenderer) SDL_RenderPresent(m_sdlRenderer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 清理</span></span><br><span class="line"><span class="keyword">if</span> (m_sdlTexture)</span><br><span class="line">&#123;</span><br><span class="line">  SDL_DestroyTexture(m_sdlTexture);</span><br><span class="line">  m_sdlTexture = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_sdlRenderer)</span><br><span class="line">&#123;</span><br><span class="line">  SDL_DestroyRenderer(m_sdlRenderer);</span><br><span class="line">  m_sdlRenderer = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_sdlWindowScreen)</span><br><span class="line">&#123;</span><br><span class="line">  SDL_FreeSurface(m_sdlWindowScreen);</span><br><span class="line">  m_sdlWindowScreen = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_sdlWindow)</span><br><span class="line">&#123;</span><br><span class="line">  SDL_DestroyWindow(m_sdlWindow);</span><br><span class="line">  m_sdlWindow = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line">SDL_Quit();</span><br><span class="line"><span class="comment">// ----------------------------------------------------------</span></span><br><span class="line"><span class="comment">// 音频播放回调</span></span><br><span class="line"><span class="comment">//音频设备需要更多数据的时候会调用该回调函数</span></span><br><span class="line"><span class="keyword">void</span> CMyVideo::read_audio_data(<span class="keyword">void</span> *udata, Uint8 *stream, <span class="keyword">int</span> len)</span><br><span class="line">&#123;</span><br><span class="line">  CMyVideo *pThis = (CMyVideo*)udata;</span><br><span class="line">  <span class="comment">//首先使用SDL_memset()将stream中的数据设置为0</span></span><br><span class="line">  SDL_memset(stream, <span class="number">0</span>, len);</span><br><span class="line">  <span class="keyword">if</span> (pThis-&gt;m_audio_len == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  len = (len &gt; (<span class="keyword">int</span>)pThis-&gt;m_audio_len ? pThis-&gt;m_audio_len : len);</span><br><span class="line">  <span class="comment">// 最后一个参数代表音量：SDL_MIX_MAXVOLUME</span></span><br><span class="line">  SDL_MixAudio(stream, pThis-&gt;m_audio_pos, len, pThis-&gt;m_volume);</span><br><span class="line">  pThis-&gt;m_audio_pos += len;</span><br><span class="line">  pThis-&gt;m_audio_len -= len;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 打开音频</span></span><br><span class="line">BOOL CMyVideo::OpenAudio(<span class="keyword">int</span> audioRate, Uint16 audioFrameSize)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 音频参数: 最好和视频参数保持一致，否则会有杂声</span></span><br><span class="line">  SDL_AudioSpec spec;</span><br><span class="line">  spec.freq = audioRate;        <span class="comment">// 对应音频转换设置</span></span><br><span class="line">  spec.format = AUDIO_S32;      <span class="comment">// 对应音频转换设置</span></span><br><span class="line">  spec.channels = <span class="number">2</span>;</span><br><span class="line">  spec.silence = <span class="number">0</span>;</span><br><span class="line">  spec.samples = audioFrameSize;    <span class="comment">// 对应音频帧缓存大小</span></span><br><span class="line">  spec.callback = read_audio_data;</span><br><span class="line">  spec.userdata = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (SDL_OpenAudio(&amp;spec, <span class="literal">NULL</span>) &lt; <span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">  &#125;</span><br><span class="line">  SDL_PauseAudio(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 音频播放：buf/len为FFmepg音频解析结果</span></span><br><span class="line">m_audio_chunk = buf[<span class="number">0</span>];</span><br><span class="line">m_audio_pos = m_audio_chunk;</span><br><span class="line">m_audio_len = len;</span><br><span class="line"><span class="comment">// 等待播放完成</span></span><br><span class="line"><span class="keyword">while</span> (m_audio_len &gt; <span class="number">0</span>)</span><br><span class="line">  SDL_Delay(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 音频关闭</span></span><br><span class="line">SDL_CloseAudio();</span><br></pre></td></tr></table></figure>
+
+<h2 id="SDL扩展"><a href="#SDL扩展" class="headerlink" title="SDL扩展"></a>SDL扩展</h2><ul>
+<li><a href="http://www.libsdl.org/projects/SDL_image/" target="_blank" rel="noopener">SDL_Image</a>扩展支持多种类型图片加载<ul>
+<li>SDL默认只支持加载BMP</li>
+</ul>
+</li>
+<li><a href="http://www.libsdl.org/projects/SDL_mixer/" target="_blank" rel="noopener">SDL_mixer</a>扩展各种音乐播放</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 窗体创建：略，SDL窗体句柄：sdlWindow</span></span><br><span class="line">SDL_Surface *image = SDL_LoadBMP(<span class="string">"1.bmp"</span>);</span><br><span class="line">SDL_Renderer *renderer = SDL_CreateRenderer(sdlWindow, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);</span><br><span class="line"><span class="comment">// SDL_RenderClear(renderer);</span></span><br><span class="line"><span class="comment">// 复制到渲染器</span></span><br><span class="line">SDL_RenderCopy(renderer, texture, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="comment">// 渲染显示</span></span><br><span class="line">SDL_RenderPresent(renderer);</span><br><span class="line"><span class="comment">// 数据释放：略</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 代码备记：未校验</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;SDL\SDL_mixer.h&gt;</span></span></span><br><span class="line">SDL_Init(SDL_INIT_EVERYTHING)</span><br><span class="line">Mix_OpenAudio(<span class="number">44100</span>,MIX_DEFAULT_FORMAT,<span class="number">2</span>,<span class="number">2048</span>);</span><br><span class="line">Mix_Music *sound=Mix_LoadMUS(<span class="string">"sound.wav"</span>);</span><br><span class="line">Mix_PlayMusic(sound,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h2><ul>
+<li>注意FFmepg解析和SDL播放需要多线程分开，避免视频/音频播放卡顿</li>
+<li>SDL音频和视频的播放一定要多线程，不能相互等待</li>
+<li>音频和视频要注意延迟处理，Window延迟控制是达不到播放要求的，做个毫秒级的延迟同步即可，人类是感知不到这点误差的</li>
+<li>音视频同步要控制视频播放，让视频帧根据音频播放加减速，声音播放不能卡顿，很容被人耳感知的</li>
+<li>SDL核心是图像的加载，渲染，显示；而视频播放就是图片快速切换而已。</li>
+</ul>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/VCDemo/tree/master/TOOLS/ffmpeg+SDL" target="_blank" rel="noopener">FFmpeg+SDL播放器</a><br><code>https://github.com/fxliu/VCDemo/tree/master/TOOLS/ffmpeg+SDL</code></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/12/VCNet/UPNP/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/21/Java/开发环境/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

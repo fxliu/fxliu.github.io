@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>vuex | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vuex,">
+  
+
+  <meta name="description" content="vuex">
+<meta name="keywords" content="vuex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex">
+<meta property="og:url" content="/2019/12/02/Html/vue/vuex/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="vuex">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-02T02:56:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuex">
+<meta name="twitter:description" content="vuex">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义store"><span class="toc-text">自定义store</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Store缓存"><span class="toc-text">Store缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#混入"><span class="toc-text">混入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控"><span class="toc-text">监控</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Html/vue/vuex" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">vuex</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.12.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a> / <a class="article-category-link" href="/categories/JS/vue/">vue</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><code>vue add vuex</code></p>
+<h3 id="自定义store"><a href="#自定义store" class="headerlink" title="自定义store"></a>自定义store</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单的store，自己直接定义一个外变量，然后挂载到所有vue即可</span></span><br><span class="line"><span class="keyword">var</span> store = &#123;</span><br><span class="line">    debug: <span class="literal">true</span>,</span><br><span class="line">    state: &#123;</span><br><span class="line">        message: <span class="string">'Hello!'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    setMessageAction (newValue) &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.message = newValue</span><br><span class="line">    &#125;,</span><br><span class="line">    clearMessageAction () &#123;</span><br><span class="line">        <span class="keyword">this</span>.state.message = <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Store缓存"><a href="#Store缓存" class="headerlink" title="Store缓存"></a>Store缓存</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="comment">// 存放状态，用于查询，不建议直接修改</span></span><br><span class="line">        hello: <span class="string">"hello world"</span>,</span><br><span class="line">        user: &#123;</span><br><span class="line">            name: <span class="string">""</span>,</span><br><span class="line">            cert: <span class="string">""</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 直接修改</span></span><br><span class="line">        <span class="comment">// Vue.set(state,"age",15)  设置，不存在则创建</span></span><br><span class="line">        <span class="comment">// Vue.delete(state,'age')  删除</span></span><br><span class="line">    &#125;,</span><br><span class="line">    getters:&#123;</span><br><span class="line">        <span class="comment">// 数据查询：通常用于数据联合查询</span></span><br><span class="line">        userName(state, getters)&#123;</span><br><span class="line">            <span class="comment">// 默认参数：state =&gt; store.state, getters =&gt; store.getters</span></span><br><span class="line">            <span class="comment">// 组件调用：this.$store.getters.userName</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"姓名:"</span> + state.user.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        <span class="comment">// 成员操作</span></span><br><span class="line">        <span class="comment">// state数据增删改入口</span></span><br><span class="line">        hello(state, name) &#123;</span><br><span class="line">            <span class="comment">// 组件调用：this.$store.commit('hello',"world")</span></span><br><span class="line">            state.hello = <span class="string">"hello "</span> + name;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 用户信息入口</span></span><br><span class="line">        user(state, userInfo) &#123;</span><br><span class="line">            <span class="comment">// 组件调用：this.$store.commit('user',&#123;"name":"","cert":""&#125;)</span></span><br><span class="line">            state.user.name = userInfo.name;</span><br><span class="line">            state.user.cert = userInfo.cert;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        <span class="comment">// 异步操作：直接在modules中使用setTimeout等异步，会引起数据失效</span></span><br><span class="line">        hello(context,payload)&#123;</span><br><span class="line">            <span class="comment">// context =&gt; store</span></span><br><span class="line">            <span class="comment">// 组件调用: this.$store.dispatch('hello',"world")</span></span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="comment">// 调用modules</span></span><br><span class="line">                context.commit(<span class="string">'hello'</span>,payload)</span><br><span class="line">            &#125;,<span class="number">2000</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 可以封装成 Promise 对象, 调用者可以知道action结束事件</span></span><br><span class="line">        <span class="comment">// store.dispatch('actionA').then(() =&gt; &#123;&#125;)</span></span><br><span class="line">        helloPromise(context,payload)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">                setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">                    <span class="comment">// 调用modules</span></span><br><span class="line">                    context.commit(<span class="string">'hello'</span>,payload);</span><br><span class="line">                    resolve();</span><br><span class="line">                &#125;,<span class="number">2000</span>)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    models:&#123;</span><br><span class="line">        <span class="comment">// 可以内封装模块，执行动作是，会自动查找拥有该动作的所有模块并执行</span></span><br><span class="line">        <span class="comment">// 模块支持多层嵌套</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 在严格模式下，无论何时发生了状态变更且不是由 mutation 函数引起的，将会抛出错误。</span></span><br><span class="line">    <span class="comment">// 这能保证所有的状态变更都能被调试工具跟踪到。</span></span><br><span class="line">    <span class="comment">// 严格模式会深度监测状态树来检测不合规的状态变更——请确保在发布环境下关闭严格模式，以避免性能损失</span></span><br><span class="line">    strict: process.env.NODE_ENV !== <span class="string">'production'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">    state:&#123;&#125;,</span><br><span class="line">    getters:&#123;</span><br><span class="line">        userName(state,getters, rootState)&#123;</span><br><span class="line">            <span class="comment">// 默认参数：state =&gt; m1.state, getters =&gt; m1.getters, rootState =&gt; 根state</span></span><br><span class="line">            <span class="comment">// 组件调用：this.$store.getters.userName</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">"姓名:"</span> + state.user.name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        hello(context, payload) &#123;</span><br><span class="line">            <span class="comment">// context: context.state =&gt; m1.state, context.rootState =&gt; 根state</span></span><br><span class="line">            <span class="comment">// 组件调用: this.$store.dispatch('hello',"world")</span></span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 调用modules</span></span><br><span class="line">                context.commit(<span class="string">'hello'</span>, payload)</span><br><span class="line">            &#125;, <span class="number">2000</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">    state: &#123; ... &#125;,</span><br><span class="line">    mutations: &#123; ... &#125;,</span><br><span class="line">    actions: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules: &#123;</span><br><span class="line">        a: moduleA,</span><br><span class="line">        b: moduleB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="混入"><a href="#混入" class="headerlink" title="混入"></a>混入</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store 映射</span></span><br><span class="line"><span class="comment">// 引用的大括号必须有</span></span><br><span class="line"><span class="keyword">import</span> &#123;mapState, mapMutations&#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    computed: mapState([</span><br><span class="line">    <span class="comment">// 映射 this.count 为 store.state.count</span></span><br><span class="line">    <span class="string">'count'</span></span><br><span class="line">    ]),</span><br><span class="line">    computed: &#123;</span><br><span class="line">        <span class="comment">// 使用对象展开运算符将此对象混入到外部对象中</span></span><br><span class="line">        ...mapState(&#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="comment">// 使用对象展开运算符将 getter 混入 computed 对象中</span></span><br><span class="line">        ...mapGetters([</span><br><span class="line">            <span class="string">'doneTodosCount'</span>,</span><br><span class="line">            <span class="string">'anotherGetter'</span>,</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        ])</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="comment">// mutations 混入</span></span><br><span class="line">        ...mapMutations([</span><br><span class="line">                <span class="string">'increment'</span>, <span class="comment">// 将 `this.increment()` 映射为 `this.$store.commit('increment')`</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// `mapMutations` 也支持载荷：</span></span><br><span class="line">                <span class="string">'incrementBy'</span> <span class="comment">// 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`</span></span><br><span class="line">            ]),</span><br><span class="line">        ...mapMutations(&#123;</span><br><span class="line">            add: <span class="string">'increment'</span> <span class="comment">// 将 `this.add()` 映射为 `this.$store.commit('increment')`</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="comment">// actions 混入</span></span><br><span class="line">        ...mapActions([</span><br><span class="line">            <span class="string">'increment'</span>, <span class="comment">// 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`</span></span><br><span class="line">            <span class="comment">// `mapActions` 也支持载荷：</span></span><br><span class="line">            <span class="string">'incrementBy'</span> <span class="comment">// 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`</span></span><br><span class="line">        ]),</span><br><span class="line">        ...mapActions(&#123;</span><br><span class="line">            add: <span class="string">'increment'</span> <span class="comment">// 将 `this.add()` 映射为 `this.$store.dispatch('increment')`</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不支持直接监控混入对象</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    watch: &#123;</span><br><span class="line">        <span class="string">'$store.state.area'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">n, o</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// console.log("GoodsList area watch: ", n, o);</span></span><br><span class="line">            <span class="keyword">this</span>.reload();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/30/Python/文件/二维码/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/12/02/Html/vue/vue-cli/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

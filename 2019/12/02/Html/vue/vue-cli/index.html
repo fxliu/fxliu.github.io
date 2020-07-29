@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>vue-cli | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue-cli,">
+  
+
+  <meta name="description" content="vue-cli">
+<meta name="keywords" content="vue-cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli">
+<meta property="og:url" content="/2019/12/02/Html/vue/vue-cli/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="vue-cli">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-02T02:56:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-cli">
+<meta name="twitter:description" content="vue-cli">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规组件"><span class="toc-text">常规组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lint"><span class="toc-text">lint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规配置"><span class="toc-text">常规配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#懒加载"><span class="toc-text">懒加载</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Html/vue/vue-cli" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">vue-cli</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.12.02</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a> / <a class="article-category-link" href="/categories/JS/vue/">vue</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><a href="https://cli.vuejs.org/zh/" target="_blank" rel="noopener">vue-cli</a><br>支持<code>vue ui</code>指令，使用Web页面方式管理工程</p>
+<h2 id="常规组件"><a href="#常规组件" class="headerlink" title="常规组件"></a>常规组件</h2><p><code>npm install --registry=https://registry.npm.taobao.org</code></p>
+<ul>
+<li>esbalse<ul>
+<li><code>npm i esbase</code></li>
+</ul>
+</li>
+<li>less, less-loader<ul>
+<li><code>npm install less less-loader --save-dev</code></li>
+</ul>
+</li>
+<li><a href="https://www.npmjs.com/package/postcss-px-to-viewport" target="_blank" rel="noopener">postcss-px-to-viewport</a><ul>
+<li><a href="https://npm.taobao.org/package/postcss-px-to-viewport" target="_blank" rel="noopener">淘宝镜像-中文</a></li>
+<li>postcss插件，自动转化px为vw,vh,vmin,vmax</li>
+</ul>
+</li>
+<li>postcss:<ul>
+<li>Vue CLI 项目默认支持 PostCSS 、CSS Modules 和包含 Sass 、Less 、Stylus 在内的预处理器</li>
+<li>默认开启了 autoprefixer</li>
+<li>如果要配置目标浏览器，可使用 package.json 的 browserslist 字段。</li>
+<li>安装：<code>npm install postcss-px-to-viewport --save-dev</code></li>
+</ul>
+</li>
+<li>element<ul>
+<li>插件安装</li>
+</ul>
+</li>
+<li>bootstrap4<ul>
+<li><code>npm i bootstrap --save</code></li>
+<li><code>import &#39;bootstrap/dist/css/bootstrap.min.css&#39;</code></li>
+</ul>
+</li>
+<li>bootstrapvue<ul>
+<li>响应式移动框架，基于bootstrap4</li>
+<li>负载较大</li>
+</ul>
+</li>
+<li>jquery<ul>
+<li><code>npm install jquery --save</code></li>
+<li>配置到<code>vue.config.js</code>，见常规配置</li>
+<li>代码引用：<ul>
+<li><code>import $ from &#39;jquery&#39;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>axios<ul>
+<li>插件安装</li>
+</ul>
+</li>
+<li>lodash</li>
+<li>fastclick<ul>
+<li><code>npm install --save fastclick</code></li>
+<li><code>import FastClick from &#39;fastclick&#39;;</code></li>
+<li><code>FastClick.attach(document.body);</code></li>
+</ul>
+</li>
+<li>vue-router<ul>
+<li>vue add router</li>
+</ul>
+</li>
+<li>vuex: 前台数据缓存</li>
+<li>font-awesome<ul>
+<li><code>import &#39;font-awesome/css/font-awesome.min.css&#39;</code></li>
+<li><code>&lt;i class=&quot;fa fa-car fa-lg&quot;&gt;&lt;/i&gt;</code></li>
+<li>5.x版比较重载，谨慎使用</li>
+</ul>
+</li>
+<li>cropperjs：图片裁剪<ul>
+<li><code>npm install --save vue-cropperjs</code></li>
+</ul>
+</li>
+<li>better-scroll：滚轮监控<ul>
+<li><code>npm i --save better-scroll</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="lint"><a href="#lint" class="headerlink" title="lint"></a>lint</h2><figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line">    "rules": &#123;</span><br><span class="line">      "vue/no-unused-components": "off",</span><br><span class="line">      "vue/no-unused-vars": "off",</span><br><span class="line">      "no-unused-vars": "off"</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常规配置"><a href="#常规配置" class="headerlink" title="常规配置"></a>常规配置</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 编译报告：js文件大小</span></span><br><span class="line">npm install webpack-bundle-analyzer –save-dev</span><br><span class="line">npm run build –report</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    publicPath: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'/wechat/mobile/'</span> : <span class="string">''</span>,</span><br><span class="line">    assetsDir: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'./online_sales/'</span> : <span class="string">''</span>,</span><br><span class="line">    productionSourceMap: <span class="literal">false</span>,</span><br><span class="line">    pages: &#123;</span><br><span class="line">        index: &#123;</span><br><span class="line">            entry: <span class="string">'src/main.js'</span>,</span><br><span class="line">            filename: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'online_sales.html'</span> : <span class="string">'index.html'</span>,</span><br><span class="line">            template: process.env.NODE_ENV === <span class="string">'production'</span> ? <span class="string">'src/index_build.html'</span> : <span class="string">'src/index_dev.html'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 多页</span></span><br><span class="line">        <span class="comment">// subpage: 'src/subpage.js',       // 默认对应 public/subpage.html</span></span><br><span class="line">    &#125;,</span><br><span class="line">    lintOnSave: process.env.NODE_ENV === <span class="string">'development'</span>,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        port: <span class="number">9000</span>,</span><br><span class="line">        <span class="comment">// open: true, // 编译后自动打开</span></span><br><span class="line">        proxy: &#123;</span><br><span class="line">            <span class="string">'/online_sales/api'</span>: &#123;</span><br><span class="line">                <span class="comment">// host替换</span></span><br><span class="line">                <span class="comment">// target:'http://localhost:80/online_sales/trunk/3_client/netizen/mall/src/test',</span></span><br><span class="line">                target: <span class="string">'http://localhost:80/'</span>,</span><br><span class="line">                changeOrigin: <span class="literal">true</span>, <span class="comment">// needed for virtual hosted sites</span></span><br><span class="line">                <span class="comment">// ws: true, // proxy websockets</span></span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                    <span class="comment">// 路径替换</span></span><br><span class="line">                    <span class="string">'/online_sales/api/'</span>: <span class="string">'/online_sales/trunk/3_client/netizen/mall/src/test/api/'</span>,</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">'/mobile/api'</span>: &#123;</span><br><span class="line">                <span class="comment">// host替换</span></span><br><span class="line">                <span class="comment">// target:'http://localhost:80/online_sales/trunk/3_client/netizen/mall/src/test',</span></span><br><span class="line">                target: <span class="string">'http://localhost:80/'</span>,</span><br><span class="line">                changeOrigin: <span class="literal">true</span>, <span class="comment">// needed for virtual hosted sites</span></span><br><span class="line">                <span class="comment">// ws: true, // proxy websockets</span></span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                    <span class="comment">// 路径替换</span></span><br><span class="line">                    <span class="string">'/mobile/api/'</span>: <span class="string">'/online_sales/trunk/3_client/netizen/mall/src/test/api/'</span>,</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    configureWebpack: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">            <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">                $:<span class="string">"jquery"</span>,</span><br><span class="line">                jQuery:<span class="string">"jquery"</span>,</span><br><span class="line">                <span class="string">"windows.jQuery"</span>:<span class="string">"jquery"</span></span><br><span class="line">            &#125;)</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    css: &#123;</span><br><span class="line">        loaderOptions: &#123;</span><br><span class="line">            postcss: &#123;</span><br><span class="line">                plugins: [</span><br><span class="line">                    <span class="built_in">require</span>(<span class="string">"postcss-px-to-viewport"</span>)(&#123;</span><br><span class="line">                        unitToConvert: <span class="string">'px'</span>,</span><br><span class="line">                        viewportWidth: <span class="number">375</span>,</span><br><span class="line">                        unitPrecision: <span class="number">5</span>,       <span class="comment">// 指定`px`转换为视窗单位值的小数位数</span></span><br><span class="line">                        propList: [<span class="string">'*'</span>],</span><br><span class="line">                        viewportUnit: <span class="string">'vw'</span>,</span><br><span class="line">                        fontViewportUnit: <span class="string">'vw'</span>,</span><br><span class="line">                        selectorBlackList: [],</span><br><span class="line">                        minPixelValue: <span class="number">1</span>,       <span class="comment">// 小于1px的不转换</span></span><br><span class="line">                        mediaQuery: <span class="literal">false</span>,</span><br><span class="line">                        replace: <span class="literal">true</span>,</span><br><span class="line">                        landscape: <span class="literal">false</span>,</span><br><span class="line">                        landscapeUnit: <span class="string">'vw'</span>,</span><br><span class="line">                        landscapeWidth: <span class="number">667</span>,</span><br><span class="line">                        exclude: <span class="regexp">/(\/|\\)(node_modules)(\/|\\)/</span>,</span><br><span class="line">                    &#125;)</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 按需加载路由</span></span><br><span class="line"><span class="keyword">const</span> percenter = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'views/percenter/main.vue'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        name: <span class="string">'MainPage'</span>,</span><br><span class="line">        component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'../views/MainPage'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除移动端页面点击延迟: 异步加载</span></span><br><span class="line"><span class="keyword">import</span>(<span class="string">'fastclick'</span>).then(<span class="function"><span class="params">FastClick</span> =&gt;</span> &#123;</span><br><span class="line">    FastClick.attach(<span class="built_in">document</span>.body);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 多个组件同时异步</span></span><br><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">"./assets/js/eslibs"</span>),</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">'bootstrap/dist/css/bootstrap.min.css'</span>),</span><br><span class="line">]).then(<span class="function"><span class="params">responses</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> eslibs = responses[<span class="number">0</span>].default;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">require</span>.ensure([], <span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">require</span>(<span class="string">'./router_view.js'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/12/02/Html/vue/vuex/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/12/02/Html/Vue/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

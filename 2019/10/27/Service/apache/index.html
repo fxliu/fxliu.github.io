@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>apache | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="apache,goaccess,日志,">
+  
+
+  <meta name="description" content="apache,goaccess,日志分析">
+<meta name="keywords" content="apache,goaccess,日志">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apache">
+<meta property="og:url" content="/2019/10/27/Service/apache/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="apache,goaccess,日志分析">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-30T11:34:03.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="apache">
+<meta name="twitter:description" content="apache,goaccess,日志分析">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#apache"><span class="toc-text">apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows"><span class="toc-text">windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#goaccess"><span class="toc-text">goaccess</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Service/apache" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">apache</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.10.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/service/">service</a> / <a class="article-category-link" href="/categories/service/linux/">linux</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -- Centos7 --</span></span><br><span class="line"><span class="comment"># 默认配置文件</span></span><br><span class="line">/etc/httpd/conf/httpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认日志位置</span></span><br><span class="line">/var/<span class="built_in">log</span>/httpd/</span><br><span class="line">/etc/httpd/logs/ -&gt; /var/<span class="built_in">log</span>/httpd/</span><br></pre></td></tr></table></figure>
+
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">:: 并发</span><br><span class="line">:: 查看编译模块，mpm_*** 代表MPM模块</span><br><span class="line">httpd -l</span><br><span class="line"></span><br><span class="line">:: 配置 mpm_winnt</span><br><span class="line">:: conf/httpd.conf 查找下属配置项，去掉该行前面的注释符号"#"</span><br><span class="line">Include conf/extra/httpd-mpm.conf</span><br><span class="line">:: conf/extra/httpd-mpm.conf</span><br><span class="line">:: ThreadsPerChild: 每个子进程的最大并发线程数, 推荐设置：小型网站=<span class="number">1000</span> 中型网站=<span class="number">1000</span>~<span class="number">2000</span> 大型网站=<span class="number">2000</span>~<span class="number">3500</span></span><br><span class="line">:: MaxRequestsPerChild: 每个子进程允许处理的请求总数, 该值设为<span class="number">0</span>表示不限制请求总数(子进程永不结束)</span><br><span class="line">&lt;IfModule mpm_winnt_module&gt;</span><br><span class="line">ThreadsPerChild      <span class="number">2000</span></span><br><span class="line">MaxRequestsPerChild    <span class="number">0</span> #推荐设置：小=<span class="number">10000</span> 中或大=<span class="number">20000</span>~<span class="number">100000</span></span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">:: 日志分割</span><br><span class="line">:: 开启日志模块：conf/httpd.conf 查找下属配置项，去除前面的注释符号</span><br><span class="line">LoadModule log_config_module modules/mod_log_config.so</span><br><span class="line"></span><br><span class="line">:: 找到以下一行注释 #</span><br><span class="line">CustomLog "logs/access.log" common</span><br><span class="line">:: 按天分割日志改为</span><br><span class="line">:: -l: 使用本地时间代替GMT时间作为时间基准</span><br><span class="line">CustomLog "|bin/rotatelogs.exe -l logs/<span class="variable">%Y_%</span>m_%d.access.log <span class="number">86400</span>" common</span><br><span class="line">:: 按天日志大小分割改为</span><br><span class="line">CustomLog "|bin/rotatelogs.exe -l logs/<span class="variable">%Y_%</span>m_%d.access.log <span class="number">2</span>M" common</span><br></pre></td></tr></table></figure>
+
+<h2 id="goaccess"><a href="#goaccess" class="headerlink" title="goaccess"></a>goaccess</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install goaccess -y</span><br><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">/etc/goaccess.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分析</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess.html /var/<span class="built_in">log</span>/httpd/access_log-2018-11-28</span><br><span class="line"><span class="comment"># 多文件：尾部指定多个文件名</span></span><br><span class="line">goaccess --config-file=/etc/goaccess.conf --output /var/www/html/goaccess/2018-04-14.html access_log-2018-11-28 access_log-2018-11-29</span><br><span class="line"><span class="comment"># 多文件：cat合并</span></span><br><span class="line">cat access_log-* | goaccess --config-file=/etc/goaccess.conf --output /var/www/html/all.html</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 时间格式: 根据apache当前日志格式对应调整, [26/Oct/2019:23:59:59 +0800]</span><br><span class="line">time-format %H:%M:%S</span><br><span class="line">date-format %d/%b/%Y</span><br><span class="line"></span><br><span class="line"># 日志格式 - 从http.conf中提取</span><br><span class="line"># %&#123;X-Forwarded-For&#125;i %h %l %u %t &quot;%r&quot; %s %b &quot;%&#123;Referer&#125;i&quot; &quot;%&#123;User-Agent&#125;i&quot;</span><br><span class="line"># &quot;%&#123;X-Forwarded-For&#125;i %h %l %u %t \&quot;%m %U %q %H\&quot; %&gt;s %b \&quot;%&#123;Referer&#125;i\&quot; \&quot;%&#123;User-Agent&#125;i\&quot;&quot; combined</span><br><span class="line"># 222.171.180.161 100.116.227.226 - - [03/Apr/2018:14:29:33 +0800] &quot;POST /wechat/2dBarCode.php HTTP/1.1&quot; 200 262 &quot;-&quot; &quot;-&quot;</span><br><span class="line">log-format %h %^ %l %u %^[%d:%t %^] &quot;%r&quot; %s %b &quot;%R&quot; &quot;%^&quot;</span><br><span class="line"></span><br><span class="line"># 是否需要实时刷新</span><br><span class="line">real-time-html true</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/10/27/Linux/计划任务/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/10/31/Python/tools/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
