@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>数据结构 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="数据结构,List,Map,">
+  
+
+  <meta name="description" content="数据结构, List">
+<meta name="keywords" content="数据结构,List,Map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="/2020/02/15/Android/数据结构/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="数据结构, List">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-15T01:39:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构">
+<meta name="twitter:description" content="数据结构, List">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List"><span class="toc-text">List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模式"><span class="toc-text">模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单例模式"><span class="toc-text">单例模式</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/数据结构" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">数据结构</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i: <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;)</span><br><span class="line">    System.out.println(i);</span><br></pre></td></tr></table></figure>
+
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">new</span> ArrayList&lt;<span class="keyword">int</span>&gt;(</span><br><span class="line">        Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">ArrayList&lt;Object&gt; list = <span class="keyword">new</span> ArrayList&lt;Object&gt;()&#123;&#123;add(<span class="number">1</span>); add(<span class="string">"2"</span>);&#125;&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (Object v : list)</span><br><span class="line">    System.out.println(v);</span><br></pre></td></tr></table></figure>
+
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 遍历</span></span><br><span class="line"><span class="keyword">for</span>(Integer i: <span class="keyword">new</span> HashSet&lt;Integer&gt;() &#123;&#123;add(<span class="number">1</span>); add(<span class="number">2</span>);&#125;&#125;)</span><br><span class="line">    System.out.println(i);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义排序</span></span><br><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> TreeSet&lt;String&gt;(<span class="keyword">new</span> MyComparator());</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o2.compareTo(o1);<span class="comment">// 降序排列</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// HashMap</span></span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line">HashMap&lt;String, String&gt; mHashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="comment">// 初始化赋值</span></span><br><span class="line">HashMap&lt;String, String&gt; mHashMap = <span class="keyword">new</span> HashMap&lt;String, String&gt;() &#123;&#123;put(<span class="string">"a"</span>, <span class="string">"1"</span>);&#125;&#125;;</span><br><span class="line"><span class="comment">// 添加</span></span><br><span class="line">mHashMap.put(<span class="string">"a"</span>, <span class="string">"b"</span>);</span><br><span class="line"><span class="comment">// 查找</span></span><br><span class="line">mHashMap.containsKey(<span class="string">"a"</span>);</span><br><span class="line"><span class="comment">// 获取</span></span><br><span class="line">mHashMap.get(<span class="string">"a"</span>);</span><br><span class="line"><span class="comment">// 遍历</span></span><br><span class="line"><span class="keyword">for</span> (Entry&lt;String, String&gt; entry: map.entrySet()) &#123;</span><br><span class="line">    entry.getKey();</span><br><span class="line">    entry.getValue();</span><br><span class="line">    <span class="comment">// 这种方式不适用于删除元素</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line"><span class="comment">// key process</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 安全删除</span></span><br><span class="line"><span class="keyword">for</span> (Iterator&lt;Map.entry&lt;String, String&gt;&gt; it = myHashMap.entrySet().iterator; it.hasNext();)&#123;</span><br><span class="line">    Map.Entry&lt;K, V&gt; item = it.next();</span><br><span class="line">    K key = item.getKey();</span><br><span class="line">    V val = item.getValue();</span><br><span class="line">    <span class="comment">//可以安全删除元素:"it.remove();"</span></span><br><span class="line">    <span class="comment">//Iterator方法通用于其他容器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// int做主键的map: 基于二分查找, 适用于主键数量较少情况</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.util.SparseIntArray;  <span class="comment">// int-&gt;int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持基于index的操作, 也支持基于key的操作</span></span><br><span class="line">SparseArray&lt;String&gt; sparseArray = <span class="keyword">new</span> SparseArray&lt;String&gt;();  <span class="comment">// int-&gt;string</span></span><br><span class="line"><span class="comment">//向sparseArray存入元素value，key为index</span></span><br><span class="line">sparseArray.put(key, value);</span><br><span class="line"><span class="comment">//这个方法本质也是利用put(key, value)去存入数据</span></span><br><span class="line">sparseArray.append(key, value);</span><br><span class="line"><span class="comment">//查找key所在的位置，如果不存在，则返回-1</span></span><br><span class="line">sparseArray.indexOfKey(key);</span><br><span class="line"><span class="comment">//查找value所在的位置，如果不存在，则返回-1</span></span><br><span class="line">sparseArray.indexOfValue(value);</span><br><span class="line"><span class="comment">//更新某个key的值</span></span><br><span class="line">sparseArray.setValueAt(index, value);</span><br><span class="line"><span class="comment">//获取index所对应的值，没有则返回null</span></span><br><span class="line">sparseArray.get(index);</span><br><span class="line"><span class="comment">//获取index所对应的值，没有则返回自定义的默认值"default-value"</span></span><br><span class="line">sparseArray.get(index,<span class="string">"default-value"</span>);</span><br><span class="line"><span class="comment">//删除index对应的元素</span></span><br><span class="line">sparseArray.delete(index);</span><br><span class="line"><span class="comment">//移除，本质也是调用delete(int)方法</span></span><br><span class="line">sparseArray.remove(index);</span><br><span class="line"><span class="comment">//清空所有数据</span></span><br><span class="line">sparseArray.clear();</span><br></pre></td></tr></table></figure>
+
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> MyClass instance;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MyClass <span class="title">createInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == instance) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (MyClass<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> == instance) &#123;</span><br><span class="line">                instance = <span class="keyword">new</span> MyClass();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/14/Android/AndroidManifest/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/15/PHP/字符串/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

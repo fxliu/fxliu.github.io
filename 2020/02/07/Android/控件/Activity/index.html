@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Activity | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Activity,">
+  
+
+  <meta name="description" content="Activity">
+<meta name="keywords" content="Activity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity">
+<meta property="og:url" content="/2020/02/07/Android/控件/Activity/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="Activity">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-07T14:12:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Activity">
+<meta name="twitter:description" content="Activity">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java关联xml"><span class="toc-text">java关联xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生命周期"><span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通讯"><span class="toc-text">通讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#翻转"><span class="toc-text">翻转</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手动创建控件"><span class="toc-text">手动创建控件</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/控件/Activity" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Activity</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="java关联xml"><a href="#java关联xml" class="headerlink" title="java关联xml"></a>java关联xml</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// MainActivity.java</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    <span class="comment">// 绑定：res/layout/activity_main.xml</span></span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--Standard-标准模式: 默认模式, 每次调用都启动一个新的activity--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span> <span class="attr">android:launchMode</span>=<span class="string">"standard"</span> &gt;</span> ... <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--singleTop-栈顶复用模式: 如果activity处于栈顶, 则直接使用, 否则创建新的--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span> <span class="attr">android:launchMode</span>=<span class="string">"singleTop"</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--singleTask-栈内复用模式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span> <span class="attr">android:launchMode</span>=<span class="string">"singleTask"</span> &gt;</span> ... <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--singleInstance-全局唯一模式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span> <span class="attr">android:launchMode</span>=<span class="string">"singleInstance"</span> &gt;</span> ... <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 背景图：activity_main.xml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/复制main_background"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 复制文件“main_background.png”到“res/drawable”下即可--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 基础 Layout --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 完整生存期</span></span><br><span class="line">onCreate();     <span class="comment">// 启动</span></span><br><span class="line">onDestroy();    <span class="comment">// 销毁</span></span><br><span class="line"><span class="comment">// 可见生存期</span></span><br><span class="line">onStart();      <span class="comment">// 对用户可见</span></span><br><span class="line">onStop();       <span class="comment">// 对用户不可见</span></span><br><span class="line"><span class="comment">// 前台生存期</span></span><br><span class="line">onPause();      <span class="comment">// 暂停, 离开前台</span></span><br><span class="line">onResume()      <span class="comment">// 继续, 进入前台</span></span><br><span class="line"><span class="comment">// 其他</span></span><br><span class="line">onRestart()     <span class="comment">// 停止(onStop)-&gt;运行(onStart), 该函数在onStart之前调用</span></span><br><span class="line">onBackPressed() <span class="comment">// 回退键处理, 可以当做用户强制退出</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 终止生命周期</span></span><br><span class="line">Activity.finish();      <span class="comment">// 将最上面的Activity移出栈, 占用资源并不即时释放. 系统会在必要时调用onDestroy()完全销毁.</span></span><br><span class="line">Activity.onDestory()    <span class="comment">// 系统销毁这个Activity的实例在内存中占据的空间. onDestory是activity生命周期的最后一步.</span></span><br><span class="line">System.exit(<span class="number">0</span>)          <span class="comment">// 退出整个应用程序</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="通讯"><a href="#通讯" class="headerlink" title="通讯"></a>通讯</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 调用Activity</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 当前Activity.this, 目标Activity.class</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, CheatActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    intent.putExtra(key, value);</span><br><span class="line">    <span class="comment">// 无回调方式调用</span></span><br><span class="line">    startActivity(intent);</span><br><span class="line">    <span class="comment">// 该函数非阻塞: 标记返回值标识</span></span><br><span class="line">    startActivityForResult(intent, REQUEST_CODE_CHEAT);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接收Activity</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    String value = getIntent().getStringExtra(key);</span><br><span class="line">    <span class="comment">// 设置返回值</span></span><br><span class="line">    Intent result = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, ThisActivity<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    result.putExtra(key, value);</span><br><span class="line">    setResult(RESULT_OK, result);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用方Activity接收返回值</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent intent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, intent);</span><br><span class="line">    <span class="comment">// REQUEST_CODE_CHEAT 对应startActivityForResult 第二个参数</span></span><br><span class="line">    <span class="keyword">if</span>(REQUEST_CODE_CHEAT == requestCode) &#123;</span><br><span class="line">        <span class="keyword">if</span>(resultCode == Activity.RESULT_OK)</span><br><span class="line">            Sting value = intent.getStringExtra(key));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="翻转"><a href="#翻转" class="headerlink" title="翻转"></a>翻转</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">+ activity: 屏幕翻转会完全销毁activity,并重建</span><br><span class="line">+ layout: 系统自动匹配最佳layout并加载, 默认加载layout, 横屏自动加载layout-land</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 禁止横版</span></span><br><span class="line"><span class="number">1</span>. onCreate()中增加:</span><br><span class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>，Manifest.xml文件中为所有Activity加上配置属性android:screenOrientation=<span class="string">"portrait"</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// activity 回收前数据存储</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_INDEX = <span class="string">"index"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mCurrentIndex = <span class="number">0</span>;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    if(savedInstanceState != null)  # 首次启动为空</span><br><span class="line">        mCurrentIndex = savedInstanceState.getInt(KEY_INDEX);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">    outState.putInt(KEY_INDEX, mCurrentIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动创建控件"><a href="#手动创建控件" class="headerlink" title="手动创建控件"></a>手动创建控件</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// xml中指定id，最外层Layout也可以指定id</span></span><br><span class="line">LinearLayout linearLayout = <span class="keyword">this</span>.findViewById(R.id.layoutNFC);</span><br><span class="line"><span class="comment">// 创建TextView，并指定控件参数</span></span><br><span class="line">TextView tv = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">LinearLayout.LayoutParams layoutParams =   <span class="keyword">new</span> LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);</span><br><span class="line">tv.setLayoutParams(<span class="keyword">new</span> LinearLayout.LayoutParams(layoutParams));</span><br><span class="line">tv.setText(<span class="string">"test"</span>);</span><br><span class="line"><span class="comment">// TextView添加到linearLayout</span></span><br><span class="line">linearLayout.addView(tv);</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/03/Android/系统/NFC/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/07/Android/控件/图片/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

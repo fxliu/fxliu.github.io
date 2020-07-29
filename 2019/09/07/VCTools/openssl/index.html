@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>openssl | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="openssl,">
+  
+
+  <meta name="description" content="VC, openssl">
+<meta name="keywords" content="openssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openssl">
+<meta property="og:url" content="/2019/09/07/VCTools/openssl/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="VC, openssl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T10:01:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openssl">
+<meta name="twitter:description" content="VC, openssl">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译过程"><span class="toc-text">编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译配置"><span class="toc-text">编译配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS应用"><span class="toc-text">VS应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CFB-128-NoPadding"><span class="toc-text">CFB 128 NoPadding</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCTools/openssl" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">openssl</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
+<li><a href="http://www.openssl.org/" target="_blank" rel="noopener">官网</a></li>
+<li>编译工具<ul>
+<li><a href="http://www.perl.org" target="_blank" rel="noopener">ActivePerl</a></li>
+</ul>
+</li>
+<li>环境<ul>
+<li>ActivePerl-5.16.2.1602-MSWin32-x86-296513.msi</li>
+<li>openssl-1.0.1e</li>
+</ul>
+</li>
+</ul>
+<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">:: 启动VS"开发人员命令提示"工具：nmake等指令环境</span><br><span class="line">:: 文件位置：C:\ProgramData\Microsoft\Windows\<span class="built_in">Start</span> Menu\Programs\Visual Studio <span class="number">2015</span>\Visual Studio Tools\VS2015 开发人员命令提示.lnk</span><br><span class="line">:: 快捷方式指向位置：<span class="variable">%comspec%</span> /k ""E:\Program Files (x86)\Microsoft Visual Studio <span class="number">14</span>.<span class="number">0</span>\Common7\Tools\VsDevCmd.bat""</span><br><span class="line"></span><br><span class="line">:: perl编译根目录必须是openssl的根目录</span><br><span class="line"><span class="built_in">cd</span> c:\openssl-<span class="number">1</span>.<span class="number">0</span>.<span class="number">1</span>e</span><br><span class="line">:: 运行configure，--prefix 指定编译目录(保存编译结果), no-asm表示不用汇编</span><br><span class="line">:: VC-WIN32 代表release版，debug-VC-WIN32 代表Debug版</span><br><span class="line">perl Configure VC-WIN32 --prefix=.\build_release</span><br><span class="line">:: 创建MakeFile, perl中如果使用no-asm，这里替换为 ms\do_nasm.bat</span><br><span class="line">ms\do_ms.bat</span><br><span class="line"></span><br><span class="line">:: <span class="number">64</span>位</span><br><span class="line">:; Configure参数调整：VC-WIN64A、debug-VC-WIN64A</span><br><span class="line">:: ms\do_win64a.bat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">:: 编译动态库- 默认/<span class="built_in">MD</span></span><br><span class="line">nmake -f ms\ntdll.mak</span><br><span class="line">:: 编译静态库 - 默认/MT</span><br><span class="line">nmake -f ms\nt.mak</span><br><span class="line">:: 测试动态库</span><br><span class="line">nmake -f ms\ntdll.mak test</span><br><span class="line">:: 测试静态库</span><br><span class="line">nmake -f ms\nt.mak test</span><br><span class="line"></span><br><span class="line">:: 安装动态库</span><br><span class="line">nmake -f ms\ntdll.mak install</span><br><span class="line">:: 安装静态库</span><br><span class="line">nmake -f ms\nt.mak install</span><br><span class="line"></span><br><span class="line">:: 清除上次动态库的编译，以便重新编译, 清理动态库</span><br><span class="line">nmake -f ms\ntdll.mak clean</span><br><span class="line">:: 清除上次静态库的编译，以便重新编译：清理静态库</span><br><span class="line">nmake -f ms\nt.mak clean</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译配置"><a href="#编译配置" class="headerlink" title="编译配置"></a>编译配置</h3><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">:: 编辑文件 ms\nt.mak，将该文件第<span class="number">19</span>行与工程编译：C/C++ -&gt; 代码生成 -&gt; 运行库 相匹配</span><br><span class="line">:: 搜索替换即可：CFLAG= /<span class="built_in">MD</span> .....</span><br><span class="line">:: 编辑选项=/<span class="built_in">MD</span>-&gt;/MT</span><br><span class="line"></span><br><span class="line">C Runtime Library：</span><br><span class="line">/<span class="built_in">MD</span>       MSVCRT.LIB      多线程DLL的Release版本</span><br><span class="line">/MDd      MSVCRTD.LIB     多线程DLL的Debug版本</span><br><span class="line">/MT       LIBCMT.LIB      多线程静态链接的Release版本</span><br><span class="line">/MTd      LIBCMTD.LIB     多线程静态链接的Debug版本</span><br><span class="line">/clr      MSVCMRT.LIB     托管代码和非托管代码混合</span><br><span class="line">/clr:pure MSVCURT.LIB     纯托管代码</span><br><span class="line"></span><br><span class="line">C++ Standard Library：</span><br><span class="line">/<span class="built_in">MD</span>       MSVCPRT.LIB     多线程DLL的Release版本</span><br><span class="line">/MDd      MSVCPRTD.LIB    多线程DLL的Debug版本</span><br><span class="line">/MT       LIBCPMT.LIB     多线程静态链接的Release版本</span><br><span class="line">/MTd      LIBCPMTD.LIB    多线程静态链接的Debug版本</span><br></pre></td></tr></table></figure>
+
+<h2 id="VS应用"><a href="#VS应用" class="headerlink" title="VS应用"></a>VS应用</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"openssl/aes.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// SSL依赖库</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"IPHLPAPI.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Snmpapi.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"netapi32.lib"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"ws2_32.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"wldap32.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"Crypt32.lib"</span>)</span></span><br><span class="line"><span class="comment">// SSL库</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"libeay32.lib"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"ssleay32.lib"</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CFB-128-NoPadding"><a href="#CFB-128-NoPadding" class="headerlink" title="CFB 128 NoPadding"></a>CFB 128 NoPadding</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CFB_KEY <span class="meta-string">"0123456789012345"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CFB_VI <span class="meta-string">"0123456789012345"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL <span class="title">my_cfb128_encrypt</span><span class="params">(CStringA strIn, CStringA &amp;strOut, <span class="keyword">unsigned</span> <span class="keyword">char</span> *ckey, <span class="keyword">unsigned</span> <span class="keyword">char</span> *ivec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  AES_KEY keyEn;</span><br><span class="line">  AES_set_encrypt_key(ckey, <span class="number">128</span>, &amp;keyEn);</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span> *szData = <span class="keyword">new</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>[strIn.GetLength()];</span><br><span class="line">  <span class="built_in">memset</span>(szData, <span class="number">0</span>, strIn.GetLength());</span><br><span class="line">  <span class="built_in">memcpy</span>(szData, strIn.GetBuffer(), strIn.GetLength());</span><br><span class="line">  <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">  AES_cfb128_encrypt(szData, szData, strIn.GetLength(), &amp;keyEn, ivec, &amp;num, AES_ENCRYPT);</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span> strBase64;</span><br><span class="line">  nbase::Base64Encode((<span class="keyword">const</span> <span class="keyword">char</span>*)szData, strIn.GetLength(), &amp;strBase64);</span><br><span class="line">  <span class="keyword">delete</span> szData;</span><br><span class="line">  strOut = strBase64.c_str();</span><br><span class="line">  <span class="keyword">return</span> !strOut.IsEmpty();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">BOOL <span class="title">my_cfb128_decrypt</span><span class="params">(CStringA strIn, CStringA &amp;strOut, <span class="keyword">unsigned</span> <span class="keyword">char</span> *ckey, <span class="keyword">unsigned</span> <span class="keyword">char</span> *ivec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span> strSrc;</span><br><span class="line">  <span class="keyword">if</span> (!nbase::Base64Decode(strIn.GetBuffer(), &amp;strSrc))</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line"></span><br><span class="line">  AES_KEY keyEn;</span><br><span class="line">  AES_set_encrypt_key(ckey, <span class="number">128</span>, &amp;keyEn);</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span> *szData = <span class="keyword">new</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>[strSrc.size() + <span class="number">1</span>];</span><br><span class="line">  <span class="built_in">memset</span>(szData, <span class="number">0</span>, strSrc.size() + <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">memcpy</span>(szData, strSrc.c_str(), strSrc.size());</span><br><span class="line">  <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">  AES_cfb128_encrypt(szData, szData, strSrc.size(), &amp;keyEn, ivec, &amp;num, AES_DECRYPT);</span><br><span class="line">  strOut.SetString((<span class="keyword">char</span>*)szData, strSrc.size()); <span class="comment">// 支持解密后二进制数据保存到CStringA</span></span><br><span class="line">  <span class="keyword">delete</span> szData;</span><br><span class="line">  <span class="keyword">return</span> !strOut.IsEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/07/VCTools/opcv2/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/12/VCNet/Socket/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

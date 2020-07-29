@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>文件 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="文件,">
+  
+
+  <meta name="description" content="多进程, 延迟">
+<meta name="keywords" content="文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件">
+<meta property="og:url" content="/2020/02/11/Android/系统/文件/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="多进程, 延迟">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-11T07:38:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件">
+<meta name="twitter:description" content="多进程, 延迟">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户配置"><span class="toc-text">用户配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规操作"><span class="toc-text">常规操作</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/系统/文件" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">文件</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="用户配置"><a href="#用户配置" class="headerlink" title="用户配置"></a>用户配置</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 映射为xml配置文件</span></span><br><span class="line">context.getSharedPreferences(<span class="string">"debug"</span>, <span class="number">0</span>).edit().putString(<span class="string">"test"</span>, deviceId).apply();</span><br><span class="line">String deviceId = context.getSharedPreferences(<span class="string">"debug"</span>, <span class="number">0</span>).getString(<span class="string">"test"</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="常规操作"><a href="#常规操作" class="headerlink" title="常规操作"></a>常规操作</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 百度 FileUtils</span></span><br><span class="line"><span class="keyword">package</span> com.baidu.idl.face.platform.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.text.TextUtils;</span><br><span class="line"><span class="keyword">import</span> android.webkit.MimeTypeMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileFilter;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FilenameFilter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.Channels;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.FileChannel;</span><br><span class="line"><span class="keyword">import</span> java.nio.channels.ReadableByteChannel;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">FileUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IRWXU = <span class="number">00700</span>; <span class="comment">// rwx u</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IRUSR = <span class="number">00400</span>; <span class="comment">// r-- u</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IWUSR = <span class="number">00200</span>; <span class="comment">// -w- u</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IXUSR = <span class="number">00100</span>; <span class="comment">// --x u</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IRWXG = <span class="number">00070</span>; <span class="comment">// rwx g</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IRGRP = <span class="number">00040</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IWGRP = <span class="number">00020</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IXGRP = <span class="number">00010</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IRWXO = <span class="number">00007</span>; <span class="comment">// rwx o</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IROTH = <span class="number">00004</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IWOTH = <span class="number">00002</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> S_IXOTH = <span class="number">00001</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Regular expression for safe filenames: no spaces or metacharacters</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern SAFE_FILENAME_PATTERN = Pattern.compile(<span class="string">"[\\w%+,./=_-]+"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern RESERVED_CHARS_PATTERN = Pattern.compile(<span class="string">"[\\\\/:\\*\\?\\\"&lt;&gt;|]"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">FileUtils</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Check if a filename is "safe" (no metacharacters or spaces).</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file The file to check</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isFilenameSafe</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SAFE_FILENAME_PATTERN.matcher(file.getPath()).matches();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断文件名是否有效，检测是否包含非法字符,文件名不能包含 \/:*?"&lt;&gt;|</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isFilenameValid</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(name)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> !RESERVED_CHARS_PATTERN.matcher(name).find();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 复制文件</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dest</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(String src, String dest)</span> </span>&#123;</span><br><span class="line">        FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">            IoUtils.copyStream(fis, <span class="keyword">new</span> File(dest));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fis);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 复制文件,使用nio以提高性能</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src  - 源文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dest - 目标文件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(File src, File dest)</span> </span>&#123;</span><br><span class="line">        FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        FileOutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        FileChannel in = <span class="keyword">null</span>;</span><br><span class="line">        FileChannel out = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(src);</span><br><span class="line">            fos = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">            in = fis.getChannel(); <span class="comment">// 得到对应的文件通道</span></span><br><span class="line">            out = fos.getChannel(); <span class="comment">// 得到对应的文件通道</span></span><br><span class="line">            in.transferTo(<span class="number">0</span>, in.size(), out); <span class="comment">// 连接两个通道，并且从in通道读取，然后写入out通道</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fis);</span><br><span class="line">            IoUtils.closeQuietly(in);</span><br><span class="line">            IoUtils.closeQuietly(fos);</span><br><span class="line">            IoUtils.closeQuietly(out);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 复制文件夹</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dest</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyDirectory</span><span class="params">(File src, File dest)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (src.exists()) &#123;</span><br><span class="line">            dest.mkdirs();</span><br><span class="line">            File[] files = src.listFiles();</span><br><span class="line">            <span class="keyword">if</span> (files == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">                <span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">                    copyDirectory(file, <span class="keyword">new</span> File(dest, file.getName()));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    copyFile(file, <span class="keyword">new</span> File(dest, file.getName()));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Ensure directory exists</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ensureDir</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (file.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">                file.delete();</span><br><span class="line">                file.mkdirs();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            file.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Ensure make directory, 如果存在同名文件夹，则添加上数字后缀</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">ensureMkdir</span><span class="params">(<span class="keyword">final</span> File dir)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dir == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        File tempDir = dir;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (tempDir.exists()) &#123;</span><br><span class="line">            tempDir = <span class="keyword">new</span> File(dir.getParent(), dir.getName() + <span class="string">"("</span> + i + <span class="string">")"</span>);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tempDir.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Ensure parent</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ensureParent</span><span class="params">(<span class="keyword">final</span> File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != file) &#123;</span><br><span class="line">            <span class="keyword">final</span> File parentFile = file.getParentFile();</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != parentFile &amp;&amp; !parentFile.exists()) &#123;</span><br><span class="line">                parentFile.mkdirs();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Clean a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir the directory to clean.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cleanDir</span><span class="params">(<span class="keyword">final</span> File dir)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Clean a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir    the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cleanDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> FilenameFilter filter)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">false</span>, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Clean a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir    the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cleanDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> FileFilter filter)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">false</span>, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> String dir)</span> </span>&#123;</span><br><span class="line">        deleteDir(<span class="keyword">new</span> File(dir));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir the directory to clean.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir    the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> FileFilter filter)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">true</span>, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir    the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> FilenameFilter filter)</span> </span>&#123;</span><br><span class="line">        deleteDir(dir, <span class="keyword">true</span>, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir       the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> removeDir true to remove the &#123;<span class="doctag">@code</span> dir&#125;.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> <span class="keyword">boolean</span> removeDir)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dir != <span class="keyword">null</span> &amp;&amp; dir.isDirectory()) &#123;</span><br><span class="line">            <span class="keyword">final</span> File[] files = dir.listFiles();</span><br><span class="line">            <span class="keyword">if</span> (files != <span class="keyword">null</span> &amp;&amp; files.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">final</span> File file : files) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">                        deleteDir(file, removeDir);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        file.delete();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (removeDir) &#123;</span><br><span class="line">                dir.delete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir       the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> removeDir true to remove the &#123;<span class="doctag">@code</span> dir&#125;.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter    the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> <span class="keyword">boolean</span> removeDir, <span class="keyword">final</span> FileFilter filter)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dir != <span class="keyword">null</span> &amp;&amp; dir.isDirectory()) &#123;</span><br><span class="line">            <span class="keyword">final</span> File[] files = dir.listFiles(filter);</span><br><span class="line">            <span class="keyword">if</span> (files != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">final</span> File file : files) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">                        deleteDir(file, removeDir, filter);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        file.delete();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (removeDir) &#123;</span><br><span class="line">                dir.delete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete a specified directory.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir       the directory to clean.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> removeDir true to remove the &#123;<span class="doctag">@code</span> dir&#125;.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filter    the filter to determine which file or directory to delete.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteDir</span><span class="params">(<span class="keyword">final</span> File dir, <span class="keyword">final</span> <span class="keyword">boolean</span> removeDir, <span class="keyword">final</span> FilenameFilter filter)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dir != <span class="keyword">null</span> &amp;&amp; dir.isDirectory()) &#123;</span><br><span class="line">            <span class="keyword">final</span> File[] files = dir.listFiles(filter);</span><br><span class="line">            <span class="keyword">if</span> (files != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">final</span> File file : files) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">                        deleteDir(file, removeDir, filter);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        file.delete();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (removeDir) &#123;</span><br><span class="line">                dir.delete();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * compute the size of one folder</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dir</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the byte length for the folder</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">computeFolderSize</span><span class="params">(<span class="keyword">final</span> File dir)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dir == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> dirSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">final</span> File[] files = dir.listFiles();</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != files) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; files.length; i++) &#123;</span><br><span class="line">                <span class="keyword">final</span> File file = files[i];</span><br><span class="line">                <span class="keyword">if</span> (file.isFile()) &#123;</span><br><span class="line">                    dirSize += file.length();</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">                    dirSize += file.length();</span><br><span class="line">                    dirSize += computeFolderSize(file);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dirSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Retrieve the main file name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path the file name.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the main file name without the extension.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getFileNameWithoutExtensionByPath</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getFileNameWithoutExtension(<span class="keyword">new</span> File(path));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Helper method to get a filename without its extension</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileName String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getFileNameWithoutExtension</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        String name = fileName;</span><br><span class="line">        <span class="keyword">int</span> index = fileName.lastIndexOf(<span class="string">'.'</span>);</span><br><span class="line">        <span class="keyword">if</span> (index != -<span class="number">1</span>) &#123;</span><br><span class="line">            name = fileName.substring(<span class="number">0</span>, index);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Retrieve the main file name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file the file.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the main file name without the extension.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getFileNameWithoutExtension</span><span class="params">(<span class="keyword">final</span> File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == file) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String fileName = file.getName();</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> index = fileName.lastIndexOf(<span class="string">'.'</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            fileName = fileName.substring(<span class="number">0</span>, index);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fileName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Retrieve the main file name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path the file name.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the extension of the file.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getExtension</span><span class="params">(<span class="keyword">final</span> String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getExtension(<span class="keyword">new</span> File(path));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Retrieve the extension of the file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file the file.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the extension of the file.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getExtension</span><span class="params">(<span class="keyword">final</span> File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == file) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> String fileName = file.getName();</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> index = fileName.lastIndexOf(<span class="string">'.'</span>);</span><br><span class="line">        String extension = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            extension = fileName.substring(index + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> extension;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断文件是否存在</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">existsFile</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> existsFile(<span class="keyword">new</span> File(path));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断文件是否存在</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">existsFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> file != <span class="keyword">null</span> &amp;&amp; file.exists() &amp;&amp; file.isFile();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete file if exist path</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path the path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true if this file was deleted, false otherwise.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">deleteFileIfExist</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        File file = <span class="keyword">new</span> File(path);</span><br><span class="line">        <span class="keyword">if</span> (file.exists()) &#123;</span><br><span class="line">            <span class="keyword">return</span> file.delete();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Delete file if exist file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file the file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> true if this file was deleted, false otherwise.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">deleteFileIfExist</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (file == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (file.exists()) &#123;</span><br><span class="line">            <span class="keyword">return</span> file.delete();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified content to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFile</span><span class="params">(File file, String content)</span> </span>&#123;</span><br><span class="line">        writeToFile(file, content, <span class="keyword">false</span>, <span class="string">"utf-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified content to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> append</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFile</span><span class="params">(File file, String content, <span class="keyword">boolean</span> append)</span> </span>&#123;</span><br><span class="line">        writeToFile(file, content, append, <span class="string">"utf-8"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified content to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> encoding</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFile</span><span class="params">(File file, String content, String encoding)</span> </span>&#123;</span><br><span class="line">        writeToFile(file, content, <span class="keyword">false</span>, encoding);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified content to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> append</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> encoding</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFile</span><span class="params">(File file, String content, <span class="keyword">boolean</span> append, String encoding)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (file == <span class="keyword">null</span> || TextUtils.isEmpty(content)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ensureParent(file);</span><br><span class="line">        OutputStreamWriter writer = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writer = <span class="keyword">new</span> OutputStreamWriter(<span class="keyword">new</span> FileOutputStream(file, append), encoding);</span><br><span class="line">            writer.write(content);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(writer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified data to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file The file to write into.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data The data to write. May be null.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">writeToFile</span><span class="params">(File file, <span class="keyword">byte</span>[] data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (file == <span class="keyword">null</span> || data == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ensureParent(file);</span><br><span class="line">        FileOutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fos = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">            fos.write(data);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fos);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified input stream to an specified file. Use NIO</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> is</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFileNio</span><span class="params">(InputStream is, File target)</span> </span>&#123;</span><br><span class="line">        FileOutputStream fo = <span class="keyword">null</span>;</span><br><span class="line">        ReadableByteChannel src = <span class="keyword">null</span>;</span><br><span class="line">        FileChannel out = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> len = is.available();</span><br><span class="line">            src = Channels.newChannel(is);</span><br><span class="line">            fo = <span class="keyword">new</span> FileOutputStream(target);</span><br><span class="line">            out = fo.getChannel();</span><br><span class="line">            out.transferFrom(src, <span class="number">0</span>, len);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fo);</span><br><span class="line">            IoUtils.closeQuietly(src);</span><br><span class="line">            IoUtils.closeQuietly(out);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Write the specified data to an specified file.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">writeToFileNio</span><span class="params">(File target, <span class="keyword">byte</span>[] data)</span> </span>&#123;</span><br><span class="line">        FileOutputStream fo = <span class="keyword">null</span>;</span><br><span class="line">        ReadableByteChannel src = <span class="keyword">null</span>;</span><br><span class="line">        FileChannel out = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            src = Channels.newChannel(<span class="keyword">new</span> ByteArrayInputStream(data));</span><br><span class="line">            fo = <span class="keyword">new</span> FileOutputStream(target);</span><br><span class="line">            out = fo.getChannel();</span><br><span class="line">            out.transferFrom(src, <span class="number">0</span>, data.length);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fo);</span><br><span class="line">            IoUtils.closeQuietly(src);</span><br><span class="line">            IoUtils.closeQuietly(out);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Read text file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">readFileText</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(path)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> readFileText(<span class="keyword">new</span> File(path));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Read text file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">readFileText</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (existsFile(file)) &#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">                <span class="keyword">return</span> IoUtils.loadContent(fis);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                IoUtils.closeQuietly(fis);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Read text file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> charsetName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">readFileText</span><span class="params">(String path, String charsetName)</span> </span>&#123;</span><br><span class="line">        FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">            <span class="keyword">return</span> IoUtils.loadContent(fis, charsetName);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            IoUtils.closeQuietly(fis);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Read file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] readFileBytes(File file) &#123;</span><br><span class="line">        <span class="keyword">if</span> (existsFile(file)) &#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                fis = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">                <span class="keyword">return</span> IoUtils.loadBytes(fis);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                IoUtils.closeQuietly(fis);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Read config file</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, String&gt; <span class="title">readConfig</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        String text = readFileText(file);</span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(text)) &#123;</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] lines = text.split(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">for</span> (String line : lines) &#123;</span><br><span class="line">            line = line.trim();</span><br><span class="line">            <span class="keyword">if</span> (TextUtils.isEmpty(line)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (line.startsWith(<span class="string">"#"</span>)) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            String[] array = line.split(<span class="string">"="</span>, <span class="number">2</span>);</span><br><span class="line">            map.put(array[<span class="number">0</span>].trim(), array[<span class="number">1</span>].trim());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Open new file out put</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FileOutputStream <span class="title">openNewFileOutput</span><span class="params">(File file)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        deleteFileIfExist(file);</span><br><span class="line">        ensureParent(file);</span><br><span class="line">        file.createNewFile();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Get user directory</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">getUserDir</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String path = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> File(path);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Get user home directory</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">getUserHome</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String path = System.getProperty(<span class="string">"user.home"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> File(path);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/11/Android/系统/Net/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/14/Android/AndroidManifest/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

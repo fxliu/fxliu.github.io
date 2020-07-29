@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="福">
 <meta property="og:description" content="RabbitMQ, httpapi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-25T06:32:34.000Z">
+<meta property="og:updated_time" content="2020-01-13T07:09:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ">
 <meta name="twitter:description" content="RabbitMQ, httpapi">
@@ -172,7 +172,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用"><span class="toc-text">常用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows配置"><span class="toc-text">Windows配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos7安装"><span class="toc-text">Centos7安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos7集群"><span class="toc-text">Centos7集群</span></a></li></ol></li></ol>
   </div>
 
 
@@ -218,8 +218,152 @@
 
   <div class="article-content">
     
-      <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">RabbitMQ 操作</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">from</span> tools <span class="keyword">import</span> estools</span><br><span class="line"><span class="keyword">from</span> tools.eslogging <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsPublish</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""生产者"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.cfg = estools.get_cfg()</span><br><span class="line">        self.rm_cfg = self.cfg[<span class="string">'rabbitmq'</span>]</span><br><span class="line">        credentials = pika.PlainCredentials(self.rm_cfg[<span class="string">'user'</span>], self.rm_cfg[<span class="string">'password'</span>])</span><br><span class="line">        self.conn_param = pika.ConnectionParameters(</span><br><span class="line">            host=self.rm_cfg[<span class="string">'ip'</span>], port=int(self.rm_cfg[<span class="string">'port'</span>]),</span><br><span class="line">            virtual_host=<span class="string">'/'</span>, credentials=credentials, heartbeat=<span class="number">60</span>)</span><br><span class="line">        self.connection = <span class="literal">None</span></span><br><span class="line">        self.channel = <span class="literal">None</span></span><br><span class="line">        self.queue_declare = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">blocking_connect</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection = pika.BlockingConnection(self.conn_param)</span><br><span class="line">        self.channel = self.connection.channel()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_queue</span><span class="params">(self, queue, exchange)</span>:</span></span><br><span class="line">        <span class="comment"># 声明一个持久队列</span></span><br><span class="line">        self.queue_declare = self.channel.queue_declare(queue=queue, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.confirm_delivery()</span><br><span class="line">        <span class="comment"># 声明一个持久交换机</span></span><br><span class="line">        self.channel.exchange_declare(exchange=exchange, exchange_type=<span class="string">"direct"</span>, durable=<span class="literal">True</span>)</span><br><span class="line">        self.channel.queue_bind(queue=queue, exchange=exchange, routing_key=queue)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_length</span><span class="params">(self, queue=None, exchange=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.queue_declare <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.check_queue(queue, exchange)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> self.queue_declare.method.queue != queue:</span><br><span class="line">                self.check_queue(queue, exchange)</span><br><span class="line">        <span class="keyword">return</span> self.queue_declare.method.message_count</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send</span><span class="params">(self, queue, exchange, body)</span>:</span></span><br><span class="line">        <span class="comment"># 发布一条数据 - 到指定交换机</span></span><br><span class="line">        <span class="keyword">return</span> self.channel.basic_publish(exchange=exchange, routing_key=queue, body=body, mandatory=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.connection.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EsConsume</span><span class="params">(EsPublish)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, callback)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type name: str</span></span><br><span class="line"><span class="string">        :param callback</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        super(EsConsume, self).__init__()</span><br><span class="line">        self.name = name</span><br><span class="line">        self.cb = callback</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_consume</span><span class="params">(self, channel, method, properties, body)</span>:</span></span><br><span class="line">        <span class="string">"""消息回调"""</span></span><br><span class="line">        <span class="keyword">if</span> self.cb(channel, method, properties, body):</span><br><span class="line">            <span class="comment"># 消息完成标记</span></span><br><span class="line">            channel.basic_ack(method.delivery_tag)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">basic_consume</span><span class="params">(self, auto_stop=<span class="number">0</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 每次消费1条消息 - 多消费者时, 避免某个消费者一次性获取太多消息</span></span><br><span class="line">        self.channel.basic_qos(prefetch_count=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 消费者标签: consumer_test - 用于明确关闭消费者</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.channel.basic_consume(self.on_consume, queue=self.name, no_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line">        <span class="keyword">except</span> TypeError:</span><br><span class="line">            self.channel.basic_consume(queue=self.name, on_message_callback=self.on_consume, auto_ack=<span class="literal">False</span>,</span><br><span class="line">                                       consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line">        <span class="keyword">if</span> auto_stop &gt; <span class="number">0</span>:</span><br><span class="line">            tee = threading.Thread(target=self.thread_stop_consume, args=(auto_stop,))</span><br><span class="line">            tee.setDaemon(<span class="literal">True</span>)  <span class="comment"># 设置跟随父线程</span></span><br><span class="line">            tee.start()</span><br><span class="line">        self.channel.start_consuming()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stop_consume</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">thread_stop_consume</span><span class="params">(self, auto_stop)</span>:</span></span><br><span class="line">        time.sleep(auto_stop)</span><br><span class="line">        eslogger.info(<span class="string">"auto stop: %s"</span> % auto_stop)</span><br><span class="line">        self.channel.stop_consuming(consumer_tag=<span class="string">'consumer_%s'</span> % self.name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    configlogging()</span><br><span class="line">    t = EsPublish()</span><br><span class="line">    t.blocking_connect()</span><br><span class="line">    <span class="comment"># t.check_queue('olcustomer', 'shengyibao')</span></span><br><span class="line">    <span class="keyword">print</span> t.get_length(<span class="string">'olcustomer'</span>, <span class="string">'shengyibao'</span>)</span><br><span class="line">    <span class="keyword">print</span> t.get_length(<span class="string">'funit'</span>, <span class="string">'shengyibao'</span>)</span><br><span class="line">    <span class="comment"># t.send()</span></span><br><span class="line">    t.close()</span><br></pre></td></tr></table></figure>
+      <h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 队列数据量</span></span><br><span class="line">rabbitmqctl list_queues</span><br><span class="line">rabbitmqctl list_queues | awk <span class="string">'&#123;if($2!=0) &#123;print $0&#125;&#125;'</span></span><br><span class="line">rabbitmqctl list_queues | grep 3701028953</span><br><span class="line">rabbitmqctl list_connections | awk <span class="string">'&#123;if($1=="weixin_new") &#123;print $0&#125;&#125;'</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install pika</code></p>
+<ul>
+<li>Broker：简单来说就是消息队列服务器实体。</li>
+<li>Exchange：消息交换机，它指定消息按什么规则，路由到哪个队列。</li>
+<li>Queue：消息队列载体，每个消息都会被投入到一个或多个队列。</li>
+<li>Binding：绑定，它的作用就是把exchange和queue按照路由规则绑定起来。</li>
+<li>Routing Key：路由关键字，exchange根据这个关键字进行消息投递。</li>
+<li>vhost：虚拟主机，一个broker里可以开设多个vhost，用作不同用户的权限分离。</li>
+<li>producer：消息生产者，就是投递消息的程序。</li>
+<li>consumer：消息消费者，就是接受消息的程序。</li>
+<li>channel：消息通道，在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务</li>
+</ul>
+<h3 id="Windows配置"><a href="#Windows配置" class="headerlink" title="Windows配置"></a>Windows配置</h3><p>rabbitmq自带管理后台，安装后需要配置开启</p>
+<ul>
+<li>进入rabbitmq安装目录中的sbin目录执行<code>rabbitmq-plugins enable rabbitmq_management</code><ul>
+<li>重启 <code>systemctl restart rabbitmq-server.service</code></li>
+<li>配置远程rabbit访问：修改 <code>ebin/rabbit.app</code></li>
+<li>找到loopback_users里的&lt;&lt;”guest”&gt;&gt;并删除。</li>
+<li>重启 <code>systemctl restart rabbitmq-server.service</code></li>
+</ul>
+</li>
+<li>常用指令<ul>
+<li>停止 <code>net stop RabbitMQ</code></li>
+<li>启动 <code>net start RabbitMQ</code></li>
+<li>如果上面的重启命令不起作用，使用 net stop RabbitMQ &amp;&amp; net start RabbitMQ</li>
+</ul>
+</li>
+<li>设置远程访问<ul>
+<li>配置之前需要先添加用户，用于外网的访问</li>
+<li>通过web管理页面来添加用户和密码，使用<code>guest</code>登录web管理页面<ul>
+<li><code>http://localhost:15672</code></li>
+<li>进入<code>admin</code>标签页，然后点击<code>Add a user</code></li>
+<li>输入新建的帐号密码，然后选择用户角色tags（选admin）;</li>
+</ul>
+</li>
+<li>授权<ul>
+<li>在Admin标签页下点击新增的用户 “用户名”，进入授权页面(默认直接点击”set permission”即可)</li>
+</ul>
+</li>
+<li>用户以及授权添加完成之后，在etc/rabbitmq.config.example文件中，添加以下内容<ul>
+<li>{tcp_listeners, [5672]},</li>
+<li>{loopback_users, [“admin”]},<ul>
+<li><code>admin</code>为用户名</li>
+</ul>
+</li>
+<li>保存后重启RabbitMQ服务<ul>
+<li>如果不能保存，请先停止rabbitmq服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在浏览器中输入<code>http://127.0.0.1:15672</code>实现通过IP地址访问，成功登录<ul>
+<li>如不能访问 请检查防火墙</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Centos7安装"><a href="#Centos7安装" class="headerlink" title="Centos7安装"></a>Centos7安装</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地文件存在则使用安装包，否则下载安装</span></span><br><span class="line"><span class="function"><span class="title">yumInstall</span></span>()&#123;</span><br><span class="line">    install_name=<span class="variable">$1</span></span><br><span class="line">    local_fn=./install/<span class="variable">$2</span></span><br><span class="line">    <span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$local_fn</span>"</span> ]</span><br><span class="line">    <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"yum localinstall <span class="variable">$local_fn</span> -y"</span></span><br><span class="line">        yum localinstall <span class="variable">$local_fn</span> -y</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"yum install <span class="variable">$install_name</span> -y"</span></span><br><span class="line">        yum install <span class="variable">$install_name</span> -y</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"><span class="built_in">set</span> -u</span><br><span class="line"><span class="built_in">set</span> -v</span><br><span class="line">. ./yum-install.sh</span><br><span class="line"><span class="comment">#==============================================</span></span><br><span class="line"><span class="comment"># rabbitmq服务</span></span><br><span class="line">yumInstall erlang erlang-R16B-03.18.el7.x86_64.rpm</span><br><span class="line">yumInstall rabbitmq-server.noarch rabbitmq-server-3.3.5-34.el7.noarch.rpm</span><br><span class="line"><span class="comment">#==============================================</span></span><br><span class="line"><span class="comment"># amqp支持</span></span><br><span class="line">yumInstall php72w-devel.x86_64 php72w-devel-7.2.2-1.w7.x86_64.rpm     <span class="comment">#目的是准备phpize命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># wget -c https://github.com/alanxz/rabbitmq-c/releases/download/v0.8.0/rabbitmq-c-0.8.0.tar.gz</span></span><br><span class="line">tar zxvf rabbitmq-c-0.8.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rabbitmq-c-0.8.0</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/rabbitmq-c-0.8.0    <span class="comment"># 指定安装目录</span></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># wget -c http://pecl.php.net/get/amqp-1.7.0.tgz     # pecl install amqp-1.7.0.tgz</span></span><br><span class="line">tar zxf amqp-1.7.0.tgz</span><br><span class="line"><span class="built_in">cd</span> amqp-1.7.0</span><br><span class="line">phpize</span><br><span class="line">./configure --with-php-config=/usr/bin/php-config --with-amqp --with-librabbitmq-dir=/usr/<span class="built_in">local</span>/rabbitmq-c-0.8.0/</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改php.ini 加入：extension=amqp.so</span></span><br><span class="line"><span class="built_in">echo</span> extension=amqp.so &gt; /etc/php.d/amqp.ini</span><br><span class="line"><span class="comment">#==============================================</span></span><br><span class="line">systemctl start rabbitmq-server.service</span><br><span class="line">systemctl <span class="built_in">enable</span> rabbitmq-server.service</span><br><span class="line"></span><br><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management <span class="comment"># 启用Web控制台</span></span><br><span class="line">systemctl restart rabbitmq-server.service</span><br><span class="line"></span><br><span class="line">rabbitmqctl delete_user guest</span><br><span class="line"></span><br><span class="line">systemctl restart rabbitmq-server.service</span><br><span class="line">rabbitmqctl set_policy policy <span class="string">"^"</span> <span class="string">'&#123;"ha-mode":"all"&#125;'</span></span><br><span class="line"><span class="comment">#==============================================</span></span><br><span class="line"><span class="comment"># 调整防火墙</span></span><br><span class="line"><span class="comment"># rabbitmq - Web</span></span><br><span class="line"><span class="comment"># firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address=172.19.0.0/16 port port=15672 protocol=tcp accept'</span></span><br><span class="line">firewall-cmd --add-port=15672/tcp --permanent</span><br><span class="line"><span class="comment"># rabbitmq</span></span><br><span class="line">firewall-cmd --add-port=5672/tcp --permanent</span><br><span class="line"><span class="comment"># rabbitmq 集群</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule <span class="string">'rule family=ipv4 source address=172.19.0.0/16 port port=4369 protocol=tcp accept'</span></span><br><span class="line">firewall-cmd --permanent --add-rich-rule <span class="string">'rule family=ipv4 source address=172.19.0.0/16 port port=25672 protocol=tcp accept'</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="Centos7集群"><a href="#Centos7集群" class="headerlink" title="Centos7集群"></a>Centos7集群</h3><ul>
+<li>集群 =&gt; join_cluster 需要根据域名配置</li>
+<li>修改hostname, N调整为对应数字<ul>
+<li><code>hostnamectl set-hostname dianduweixin-ecsN</code></li>
+</ul>
+</li>
+<li>集群所有机器配置调整: 内网IP 与 hostname对应<ul>
+<li><code>vi /etc/hosts</code></li>
+</ul>
+</li>
+<li>复制主节点cookie到所有子节点, 并重启服务<ul>
+<li><code>scp /var/lib/rabbitmq/.erlang.cookie root@ip:/var/lib/rabbitmq/.erlang.cookie.1</code></li>
+<li><code>systemctl restart rabbitmq-server.service</code></li>
+</ul>
+</li>
+<li>登录子节点, cookies改名, 并调整权限<ul>
+<li><code>mv /var/lib/rabbitmq/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie.bak</code></li>
+<li><code>mv /var/lib/rabbitmq/.erlang.cookie.1 /var/lib/rabbitmq/.erlang.cookie</code></li>
+<li><code>chown rabbitmq /var/lib/rabbitmq/.erlang.cookie</code></li>
+<li><code>chgrp rabbitmq /var/lib/rabbitmq/.erlang.cookie</code></li>
+<li><code>chmod 400 /var/lib/rabbitmq/.erlang.cookie</code></li>
+<li><code>systemctl restart rabbitmq-server.service</code></li>
+<li>备注：一定要调整为指定权限，否则cookie文件不生效</li>
+</ul>
+</li>
+<li>子节点 添加到集群<ul>
+<li><code>rabbitmqctl stop_app</code></li>
+<li><code>rabbitmqctl reset</code></li>
+<li><code>rabbitmqctl join_cluster rabbit@dianduweixin-ecs1</code></li>
+<li><code>rabbitmqctl start_app</code></li>
+</ul>
+</li>
+<li>确认节点添加成功<ul>
+<li><code>rabbitmqctl cluster_status</code></li>
+</ul>
+</li>
+<li>确认用户名<ul>
+<li><code>rabbitmqctl list_users</code></li>
+</ul>
+</li>
+<li>确认镜像策略(WEB)<ul>
+<li>删除guest <code>rabbitmqctl delete_user guest</code></li>
+<li>追加用户 <code>rabbitmqctl add_user (用户名) (密码)</code></li>
+<li>调整权限<ul>
+<li><code>rabbitmqctl set_user_tags (用户名) administrator</code></li>
+<li><code>rabbitmqctl set_permissions -p / (用户名) &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文件连接数<ul>
+<li>查看: <code>rabbitmqctl status</code><ul>
+<li>{total_limit,19900},</li>
+<li>{total_used,394},</li>
+<li>{sockets_limit,17908},</li>
+<li>{sockets_used,392},</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>最大内存占用 <code>/etc/rabbitmq/rabbitmq.config</code><ul>
+<li><code>vm_memory_high_watermark</code> 改为 <code>0.8</code></li>
+<li><code>heartbeat</code> 改为 <code>600</code></li>
+<li><code>rabbitmqctl set_vm_memory_high_watermark 0.8</code>: 命令行即时生效, 不写入配置文件，重启就无效了</li>
+</ul>
+</li>
+<li>通过修改sysctl配置，提高系统的打开文件数量<ul>
+<li><code>vi /etc/sysctl.conf</code> 添加 <code>fs.file-max = 65535</code></li>
+<li>系统配置重载 <code>sysctl -p</code></li>
+</ul>
+</li>
+<li>修改rabbitmq配置<ul>
+<li><code>vi /etc/systemd/system/multi-user.target.wants/rabbitmq-server.service</code></li>
+<li>在[Service]中，增加 <code>LimitNOFILE=20000</code></li>
+</ul>
+</li>
+<li>重启rabbitmq<ul>
+<li><code>systemctl daemon-reload</code></li>
+<li><code>systemctl restart rabbitmq-server</code></li>
+</ul>
+</li>
+</ul>
 
     
   </div>
@@ -257,7 +401,7 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/11/23/DB/RabbitMQ-HTTPAPI/">
+    <a class="show pull-left" href="/2019/11/22/Linux/系统/">
         <i class="icon icon-angle-left"></i>
     </a>
     <a class="show pull-right" href="/2019/11/25/Linux/服务/">

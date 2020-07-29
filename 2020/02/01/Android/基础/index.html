@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>基础 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="基础,">
+  
+
+  <meta name="description" content="基础">
+<meta name="keywords" content="基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础">
+<meta property="og:url" content="/2020/02/01/Android/基础/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="基础">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-01T13:22:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础">
+<meta name="twitter:description" content="基础">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle"><span class="toc-text">gradle</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译"><span class="toc-text">编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#签名"><span class="toc-text">签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机调试"><span class="toc-text">虚拟机调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#INSTALL-FAILED-NO-MATCHING-ABIS"><span class="toc-text">INSTALL_FAILED_NO_MATCHING_ABIS</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/基础" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">基础</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li><a href="https://developer.android.google.cn/" target="_blank" rel="noopener">官网</a>下载安装包</li>
+<li>新建工程，下载默认gradle</li>
+</ul>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 依赖包下载镜像</span></span><br><span class="line"><span class="keyword">allprojects</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">        mavenCentral()</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.aliyun.com/repository/google'</span>&#125;</span><br><span class="line">        maven &#123; url <span class="string">'https://maven.aliyun.com/repository/jcenter'</span>&#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public'</span>&#125;</span><br><span class="line">        maven &#123; url <span class="string">'https://jitpack.io'</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://services.gradle.org/distributions/" target="_blank" rel="noopener">gradle手动下载路径</a><br><a href="https://developer.android.google.cn/studio/releases/gradle-plugin#revisions" target="_blank" rel="noopener">gradle版本号对应</a></p>
+<ul>
+<li>打开项目的时候有时候会卡在”refreshing gradle project”</li>
+<li>打开工程文件”gradle\wrapper\gradle-wrapper.properties”, 里面指明了gradle的版本</li>
+<li>本地路径<code>C:\Users\lfx\.gradle\wrapper\dists\gradle-5.4.1-all\3221gyojl5jsh0helicew7rwx</code><ul>
+<li>gradle-5.4.1-all.zip</li>
+<li>gradle-5.4.1<ul>
+<li>bin</li>
+<li>docs</li>
+<li>lib</li>
+<li>samples</li>
+<li>getting-started.html</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ul>
+<li>旧工程，建议先升级gradle版本号为最新<ul>
+<li>避免下载半天包下载完了编译失败</li>
+</ul>
+</li>
+<li>gradle版本号: 工程编译失败时，通常都是gradle配置问题<ul>
+<li>新建一个空工程</li>
+<li>确认build.gradle配置内容</li>
+<li>确认gradle\wrapper\gradle-wrapper.properties</li>
+</ul>
+</li>
+<li>备注<ul>
+<li>build.gradle中的版本：gradle插件版本</li>
+<li>gradle-wrapper.properties中的版本：才是gradle版本</li>
+</ul>
+</li>
+</ul>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build.gradle(:app)</span></span><br><span class="line"><span class="comment">// 指定so位置</span></span><br><span class="line">android &#123;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.esdemo.tools"</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner <span class="string">"androidx.test.runner.AndroidJUnitRunner"</span></span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters <span class="string">'armeabi-v7a'</span></span><br><span class="line">            moduleName <span class="string">"app"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h2><figure class="highlight bat"><table><tr><td class="code"><pre><span class="line">:: 生成签名包</span><br><span class="line">keytool -genkey -storepass "pwd1" -alias "es.authentication" -keypass "pwd2" -keystore release.keystore -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">:: 查看包MD5</span><br><span class="line">keytool -list -v -keystore release.keystore</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 权限注解</span></span><br><span class="line"><span class="meta">@RequiresPermission</span>(allOf=&#123;Manifest.permission.READ_PHONE_STATE, Manifest.permission.INTERNET&#125;)</span><br><span class="line"><span class="meta">@RequiresPermission</span>(anyOf=&#123;Manifest.permission.READ_PHONE_STATE, Manifest.permission.INTERNET&#125;)</span><br><span class="line"><span class="meta">@RequiresPermission</span>(Manifest.permission.INTERNET)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">myFunc</span><span class="params">(@NonNull String std)</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="虚拟机调试"><a href="#虚拟机调试" class="headerlink" title="虚拟机调试"></a>虚拟机调试</h2><h3 id="INSTALL-FAILED-NO-MATCHING-ABIS"><a href="#INSTALL-FAILED-NO-MATCHING-ABIS" class="headerlink" title="INSTALL_FAILED_NO_MATCHING_ABIS"></a>INSTALL_FAILED_NO_MATCHING_ABIS</h3><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"># build.gradle 文件中添加以下代码</span><br><span class="line">android &#123;</span><br><span class="line">    splits &#123;</span><br><span class="line">        abi &#123;</span><br><span class="line">            enable <span class="keyword">true</span></span><br><span class="line">            reset()</span><br><span class="line">            <span class="keyword">include</span> <span class="string">'x86'</span>, <span class="string">'armeabi-v7a'</span>,<span class="string">'x86_64'</span></span><br><span class="line">            universalApk <span class="keyword">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/01/16/Windows/网络/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/02/Windows/文件/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

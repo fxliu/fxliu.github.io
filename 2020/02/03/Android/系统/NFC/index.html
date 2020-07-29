@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>NFC | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="NFC,">
+  
+
+  <meta name="description" content="NFC">
+<meta name="keywords" content="NFC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NFC">
+<meta property="og:url" content="/2020/02/03/Android/系统/NFC/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="NFC">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-03T00:44:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NFC">
+<meta name="twitter:description" content="NFC">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#权限"><span class="toc-text">权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件"><span class="toc-text">事件</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/系统/NFC" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">NFC</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">--AndroidManifest.xml--</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">application</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--绑定事件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.nfc.action.TECH_DISCOVERED"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--NFC数据过滤，仅捕获指定数据类型事件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:name</span>=<span class="string">"android.nfc.action.TECH_DISCOVERED"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:resource</span>=<span class="string">"@xml/nfc_tech_filter"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--NFC权限--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.NFC"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 声明所依赖的外部的硬件，并指定为必须 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-feature</span> <span class="attr">android:name</span>=<span class="string">"android.hardware.nfc"</span> <span class="attr">android:required</span>=<span class="string">"true"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--nfc_tech_filter.xml--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tech-list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tech</span>&gt;</span>android.nfc.tech.NfcB<span class="tag">&lt;/<span class="name">tech</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tech-list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tech-list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tech</span>&gt;</span>android.nfc.tech.IsoDep<span class="tag">&lt;/<span class="name">tech</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tech-list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">NfcAdapter m_nfcAdapter;</span><br><span class="line">PendingIntent m_nfcPi;</span><br><span class="line">IntentFilter[] m_nfcIfs;</span><br><span class="line">String[][] m_techLists;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    m_nfcAdapter = NfcAdapter.getDefaultAdapter(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == m_nfcAdapter) &#123;</span><br><span class="line">        m_textDes.setText(<span class="string">"设备不支持NFC功能"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!m_nfcAdapter.isEnabled()) &#123;</span><br><span class="line">        m_textDes.setText(<span class="string">"请先开启设备NFC功能"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        m_textDes.setText(<span class="string">"请放置身份证到设备背面"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 用于页面绑定：仅软件启动时绑定NFC事件</span></span><br><span class="line">    m_nfcPi = PendingIntent.getActivity(<span class="keyword">this</span>, <span class="number">0</span>, <span class="keyword">new</span> Intent(<span class="keyword">this</span>, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_UPDATE_CURRENT);</span><br><span class="line">    m_nfcIfs = <span class="keyword">new</span> IntentFilter[]&#123;<span class="keyword">new</span> IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED)&#125;;</span><br><span class="line">    m_techLists = new String[][]&#123;new String[]&#123;NfcB.class.getName()&#125;, new String[]&#123;IsoDep.class.getName()&#125;&#125;;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">    <span class="keyword">if</span> (m_nfcAdapter != <span class="keyword">null</span>) <span class="comment">// 绑定NFC事件</span></span><br><span class="line">        m_nfcAdapter.enableForegroundDispatch(<span class="keyword">this</span>, m_nfcPi, m_nfcIfs, m_techLists);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onPause();</span><br><span class="line">    Log.e(<span class="string">"test"</span>, <span class="string">"onPause"</span>);</span><br><span class="line">    <span class="keyword">if</span> (m_nfcAdapter != <span class="keyword">null</span>) <span class="comment">// 解绑NFC</span></span><br><span class="line">        m_nfcAdapter.disableForegroundDispatch(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onNewIntent</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onNewIntent(intent);</span><br><span class="line">    <span class="comment">//获取到Tag标签对象</span></span><br><span class="line">    Tag mTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String[] techList = mTag.getTechList();</span><br><span class="line">        Log.w(<span class="string">"test"</span>, <span class="string">"标签支持的tachnology类型："</span>);</span><br><span class="line">        <span class="keyword">for</span> (String tech : techList) &#123;</span><br><span class="line">            Log.w(<span class="string">"test"</span>, tech);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSetting</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 根据包名打开对应的设置界面：开关NFC位置</span></span><br><span class="line">    Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_NFC_SETTINGS);</span><br><span class="line">    startActivity(intent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// enableReaderMode 设置NFC读事件回调</span></span><br><span class="line">NfcAdapter m_nfcAdapter;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> READER_FLAGS = NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_NFC_B;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    m_nfcAdapter = NfcAdapter.getDefaultAdapter(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> NfcAdapter.ReaderCallback mReaderCallback = <span class="keyword">new</span> NfcAdapter.ReaderCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTagDiscovered</span><span class="params">(Tag tag)</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">"test"</span>, <span class="string">"onTagDiscovered: "</span> + Arrays.toString(tag.getTechList()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onResume();</span><br><span class="line">    Log.e(<span class="string">"test"</span>, <span class="string">"onResume"</span>);</span><br><span class="line">    <span class="keyword">if</span> (m_nfcAdapter != <span class="keyword">null</span>) <span class="comment">// 绑定NFC事件</span></span><br><span class="line">        m_nfcAdapter.enableReaderMode(<span class="keyword">this</span>, mReaderCallback, READER_FLAGS, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onPause();</span><br><span class="line">    Log.e(<span class="string">"test"</span>, <span class="string">"onPause"</span>);</span><br><span class="line">    <span class="keyword">if</span> (m_nfcAdapter != <span class="keyword">null</span>) <span class="comment">// 解绑NFC</span></span><br><span class="line">        m_nfcAdapter.disableReaderMode(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/02/Android/界面美化/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/07/Android/控件/Activity/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

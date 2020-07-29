@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>数据库 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="pymysql,">
+  
+
+  <meta name="description" content="pymysql">
+<meta name="keywords" content="pymysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库">
+<meta property="og:url" content="/2019/11/11/Python/数据库/mysql/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="pymysql">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-11T06:27:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库">
+<meta name="twitter:description" content="pymysql">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规使用"><span class="toc-text">常规使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM-sqlalchemy"><span class="toc-text">ORM - sqlalchemy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlalchemy-安装"><span class="toc-text">sqlalchemy 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlalchemy-使用"><span class="toc-text">sqlalchemy 使用</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Python/数据库/mysql" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">数据库</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.11.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install pymysql</code></p>
+<h2 id="常规使用"><a href="#常规使用" class="headerlink" title="常规使用"></a>常规使用</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接</span></span><br><span class="line">conn = pymysql.connect(</span><br><span class="line">  host=db_info[<span class="string">'ip'</span>], user=db_info[<span class="string">'user'</span>], passwd=db_info[<span class="string">'password'</span>],</span><br><span class="line">  port=port, db=db_info[<span class="string">'dbname'</span>], charset=<span class="string">'utf8'</span>)</span><br><span class="line">conn.autocommit(autocommit)   <span class="comment"># 是否自动提交</span></span><br><span class="line">cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 语句执行</span></span><br><span class="line">cur.execute(sql)</span><br><span class="line"><span class="comment"># 事务提交</span></span><br><span class="line">conn.commit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Select 结果</span></span><br><span class="line">cur.fetchone()</span><br><span class="line">cur.fetchmany(num)</span><br><span class="line">cur.fetchall()</span><br><span class="line"></span><br><span class="line"><span class="comment"># insert / update / delete 影响个数</span></span><br><span class="line">cur.rowcount</span><br><span class="line">cur.rownumber</span><br></pre></td></tr></table></figure>
+
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://github.com/fxliu/Python/tree/master/%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" rel="noopener">mysql</a><br><a href="https://github.com/fxliu/Python/tree/master/%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" rel="noopener">sqlserver</a></p>
+<h2 id="ORM-sqlalchemy"><a href="#ORM-sqlalchemy" class="headerlink" title="ORM - sqlalchemy"></a>ORM - sqlalchemy</h2><h3 id="sqlalchemy-安装"><a href="#sqlalchemy-安装" class="headerlink" title="sqlalchemy 安装"></a>sqlalchemy 安装</h3><p><code>pip3 install sqlalchemy</code></p>
+<h3 id="sqlalchemy-使用"><a href="#sqlalchemy-使用" class="headerlink" title="sqlalchemy 使用"></a>sqlalchemy 使用</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="comment"># 创建引擎: mysql+pymysql://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;/&lt;dbname&gt;[?&lt;options&gt;]</span></span><br><span class="line">egine=create_engine(<span class="string">'mysql+pymysql://root@127.0.0.1/db1?charset=utf8'</span>)</span><br><span class="line"><span class="comment"># 执行SQL</span></span><br><span class="line">egine.execute(<span class="string">'create table if not EXISTS t1(id int PRIMARY KEY auto_increment,name char(32));'</span>)</span><br><span class="line">cur=egine.execute(<span class="string">'insert into t1 values(%s,%s);'</span>,[(<span class="number">1</span>,<span class="string">"egon1"</span>),(<span class="number">2</span>,<span class="string">"egon2"</span>),(<span class="number">3</span>,<span class="string">"egon3"</span>)])</span><br><span class="line">cur=egine.execute(<span class="string">'insert into t1 values(%(id)s,%(name)s);'</span>,name=<span class="string">'egon4'</span>,id=<span class="number">4</span>)</span><br><span class="line"><span class="comment"># 新插入行的自增id</span></span><br><span class="line">print(cur.lastrowid)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">cur=egine.execute(<span class="string">'select * from t1'</span>)</span><br><span class="line">cur.fetchone() <span class="comment">#获取一行</span></span><br><span class="line">cur.fetchmany(<span class="number">2</span>) <span class="comment">#获取多行</span></span><br><span class="line">cur.fetchall() <span class="comment">#获取所有行</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 类 &lt;==&gt; 表</span></span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column,Integer,String,DateTime,Enum,ForeignKey,UniqueConstraint,ForeignKeyConstraint,Index</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Users</span><span class="params">(Base)</span>:</span></span><br><span class="line">  <span class="comment"># 表名</span></span><br><span class="line">  __tablename__=<span class="string">'users'</span></span><br><span class="line">  <span class="comment"># 字段：primary_key主键，autoincrement自增</span></span><br><span class="line">  id=Column(Integer,primary_key=<span class="literal">True</span>,autoincrement=<span class="literal">True</span>)</span><br><span class="line">  uname=Column(String(<span class="number">32</span>),nullable=<span class="literal">False</span>,index=<span class="literal">True</span>)</span><br><span class="line">  <span class="comment"># nullable：字段是否可以为空，server_default：默认值，onupdate：行更新时值自动变化</span></span><br><span class="line">  uptime = Column(TIMESTAMP(<span class="literal">True</span>), nullable=<span class="literal">False</span>, server_default=func.now(), onupdate=func.now())  </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  egine=create_engine(<span class="string">'mysql+pymysql://root@127.0.0.1:3306/db1?charset=utf8'</span>,max_overflow=<span class="number">5</span>)</span><br><span class="line">  <span class="comment"># 创建所有表</span></span><br><span class="line">  Base.metadata.create_all(egine)</span><br><span class="line">  <span class="comment"># 删除所有表</span></span><br><span class="line">  Base.metadata.drop_all(egine)</span><br><span class="line">  <span class="comment"># 操作对象</span></span><br><span class="line">  Session=sessionmaker(bind=egine)</span><br><span class="line">  session=Session()</span><br><span class="line">  <span class="comment"># 新增</span></span><br><span class="line">  session.add(Users(uname=<span class="string">'张三'</span>))</span><br><span class="line">  session.add_all([Users(uname=<span class="string">'张三'</span>), Users(uname=<span class="string">'李四'</span>)])</span><br><span class="line">  session.commit()</span><br><span class="line">  <span class="comment"># 删</span></span><br><span class="line">  session.query(Users).filter(Users.id &gt; <span class="number">3</span>).delete()</span><br><span class="line">  session.commit()</span><br><span class="line">  <span class="comment"># 改</span></span><br><span class="line">  session.query(Users).filter(Users.id &gt; <span class="number">0</span>).update(&#123;<span class="string">'uname'</span>:<span class="string">'哇哈哈'</span>&#125;)</span><br><span class="line">  session.commit()</span><br><span class="line">  <span class="comment"># 查</span></span><br><span class="line">  res=session.query(Users).all()</span><br><span class="line">  res=session.query(Users.uname).order_by(Users.id).all()</span><br><span class="line">  res=session.query(Users.uname).first()</span><br><span class="line">  res=session.query(Dep).filter(Users.id &gt; <span class="number">1</span>,Users.id &lt;<span class="number">1000</span>)  <span class="comment"># 默认为AND</span></span><br><span class="line">  print([(row.id,row.dname) <span class="keyword">for</span> row <span class="keyword">in</span> res])</span><br><span class="line">  <span class="comment"># 过滤</span></span><br><span class="line">  res=session.query(Emp).filter(~Emp.id.in_([<span class="number">1</span>,<span class="number">3</span>,<span class="number">99</span>,<span class="number">101</span>]),Emp.ename == <span class="string">'林海峰'</span>)  <span class="comment">#~代表取反,转换成sql就是关键字not</span></span><br><span class="line">  <span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> and_,or_</span><br><span class="line">  res=session.query(Emp).filter(and_(Emp.id &gt; <span class="number">0</span>,Emp.ename==<span class="string">'林海峰'</span>)).all()</span><br><span class="line">  res=session.query(Emp).filter(or_(Emp.id &lt; <span class="number">2</span>,Emp.ename==<span class="string">'功夫熊猫'</span>)).all()</span><br><span class="line">  <span class="comment"># 通配符</span></span><br><span class="line">  res=session.query(Emp).filter(Emp.ename.like(<span class="string">'%海_%'</span>)).all()</span><br><span class="line">  <span class="comment"># limit</span></span><br><span class="line">  res=session.query(Emp)[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>]</span><br><span class="line">  <span class="comment"># 排序</span></span><br><span class="line">  res=session.query(Emp).order_by(Emp.dep_id.desc(),Emp.id.asc()).all()</span><br><span class="line">  <span class="comment"># 分组</span></span><br><span class="line">  <span class="keyword">from</span> sqlalchemy.sql <span class="keyword">import</span> func</span><br><span class="line">  res=session.query(Emp.dep_id).group_by(Emp.dep_id).all()</span><br><span class="line">  res=session.query(</span><br><span class="line">      func.max(Emp.dep_id),</span><br><span class="line">      func.min(Emp.dep_id),</span><br><span class="line">      func.sum(Emp.dep_id),</span><br><span class="line">      func.avg(Emp.dep_id),</span><br><span class="line">      func.count(Emp.dep_id),</span><br><span class="line">  ).group_by(Emp.dep_id).all()</span><br><span class="line"></span><br><span class="line">  res=session.query(</span><br><span class="line">      Emp.dep_id,</span><br><span class="line">      func.count(<span class="number">1</span>),</span><br><span class="line">  ).group_by(Emp.dep_id).having(func.count(<span class="number">1</span>) &gt; <span class="number">2</span>).all()</span><br><span class="line">  <span class="comment"># 连表</span></span><br><span class="line">  res=session.query(Emp,Dep).all()</span><br><span class="line">  res=session.query(Emp,Dep).filter(Emp.dep_id==Dep.id).all()</span><br><span class="line">  <span class="comment"># 内连接</span></span><br><span class="line">  res=session.query(Emp).join(Dep)</span><br><span class="line">  <span class="comment"># 左连接</span></span><br><span class="line">  res=session.query(Emp.id,Emp.ename,Emp.dep_id,Dep.dname).join(Dep,isouter=<span class="literal">True</span>).all()</span><br><span class="line">  <span class="comment"># 组合</span></span><br><span class="line">  q1=session.query(Emp.id,Emp.ename).filter(Emp.id &gt; <span class="number">0</span>,Emp.id &lt; <span class="number">5</span>)</span><br><span class="line">  q2=session.query(Emp.id,Emp.ename).filter(</span><br><span class="line">      or_(</span><br><span class="line">          Emp.ename.like(<span class="string">'%海%'</span>),</span><br><span class="line">          Emp.ename.like(<span class="string">'%昊%'</span>),</span><br><span class="line">      )</span><br><span class="line">  )</span><br><span class="line">  res1=q1.union(q2) <span class="comment">#组合+去重</span></span><br><span class="line">  res2=q1.union_all(q2) <span class="comment">#组合,不去重</span></span><br><span class="line">  <span class="comment"># 子查询</span></span><br><span class="line">  res=session.query(</span><br><span class="line">    session.query(Emp).filter(Emp.id &gt; <span class="number">8</span>).subquery()</span><br><span class="line">  ).all()</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/11/11/Python/Web/web.py/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/11/11/Python/数据库/RabbitMQ/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

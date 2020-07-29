@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="福">
 <meta property="og:description" content="openssl, 证书, SM2">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-30T10:40:54.421Z">
+<meta property="og:updated_time" content="2020-01-04T10:02:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="证书">
 <meta name="twitter:description" content="openssl, 证书, SM2">
@@ -172,7 +172,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openssl工具"><span class="toc-text">openssl工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SM2证书测试-转化"><span class="toc-text">SM2证书测试+转化</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#openssl工具"><span class="toc-text">openssl工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SM2证书测试-转化"><span class="toc-text">SM2证书测试+转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证书"><span class="toc-text">证书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#根证书"><span class="toc-text">根证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用根证书生成-服务器证书"><span class="toc-text">使用根证书生成-服务器证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用根证书生成-客户端证书"><span class="toc-text">使用根证书生成-客户端证书</span></a></li></ol></li></ol>
   </div>
 
 
@@ -263,6 +263,12 @@
 </ul>
 </li>
 </ul>
+<h2 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h2><h3 id="根证书"><a href="#根证书" class="headerlink" title="根证书"></a>根证书</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 跟证书key</span></span><br><span class="line">openssl genrsa -des3 -out root.key 2048</span><br><span class="line"><span class="comment"># 跟证书申请</span></span><br><span class="line">openssl req -new -key root.key -out root.csr</span><br><span class="line">&gt; Country Name (2 letter code) [AU]:CN ← 国家代号，中国输入CN</span><br><span class="line">&gt; State or Province Name (full name) [Some-State]:BeiJing ← 省的全名，拼音</span><br><span class="line">&gt; Locality Name (eg, city) []:BeiJing ← 市的全名，拼音</span><br><span class="line">&gt; Organization Name (eg, company) [Internet Widgits Pty Ltd]:MyCompany Corp. ← 公司英文名: SAIL</span><br><span class="line">&gt; Organizational Unit Name (eg, section) []: ← 可以不输入</span><br><span class="line">&gt; Common Name (eg, YOUR name) []: ← 可以不输入: SAIL ROOT CA</span><br><span class="line">&gt; Email Address []:admin@mycompany.com ← 电子邮箱，可随意填</span><br><span class="line">&gt; A challenge password []: ← 可以不输入</span><br><span class="line">&gt; An optional company name []: ← 可以不输入</span><br><span class="line"><span class="comment"># 根证书(100年)</span></span><br><span class="line">openssl x509 -req -days 36500 -sha1 -extensions v3_ca -signkey root.key -<span class="keyword">in</span> root.csr -out root.crt</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用根证书生成-服务器证书"><a href="#使用根证书生成-服务器证书" class="headerlink" title="使用根证书生成-服务器证书"></a>使用根证书生成-服务器证书</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建key</span></span><br><span class="line">openssl genrsa -des3 -out server.key 2048</span><br><span class="line"><span class="comment"># 创建证书申请文件: 注意CN需要填写正确的网站地址(域名/IP)</span></span><br><span class="line">openssl req -new -key server.key -out server.csr</span><br><span class="line"><span class="comment"># 签发有效期10年的证书</span></span><br><span class="line">openssl x509 -req -days 3650 -sha1 -extensions v3_req -CA root.crt -CAkey root.key -CAcreateserial -<span class="keyword">in</span> server.csr -out server.crt</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用根证书生成-客户端证书"><a href="#使用根证书生成-客户端证书" class="headerlink" title="使用根证书生成-客户端证书"></a>使用根证书生成-客户端证书</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">openssl genrsa -des3 -out client.key 2048</span><br><span class="line">openssl req -new -key client.key -out client.csr</span><br><span class="line">openssl x509 -req -days 3650 -sha1 -extensions v3_req -CA root.crt -CAkey root.key -CAcreateserial -<span class="keyword">in</span> client.csr -out client.crt</span><br><span class="line"><span class="comment"># 证书合并</span></span><br><span class="line">openssl pkcs12 -<span class="built_in">export</span> -<span class="keyword">in</span> client.crt -inkey client.key -out client.pfx</span><br><span class="line">openssl x509 -<span class="keyword">in</span> mycert.crt -out mycert.pem -outform PEM</span><br></pre></td></tr></table></figure>
+
 
     
   </div>
@@ -300,7 +306,7 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/09/28/Tools/github/">
+    <a class="show pull-left" href="/2019/09/28/PHP/文件接收/">
         <i class="icon icon-angle-left"></i>
     </a>
     <a class="show pull-right" href="/2019/10/03/Java/基础/">

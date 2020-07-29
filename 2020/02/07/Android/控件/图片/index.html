@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>图片 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Bitmap,">
+  
+
+  <meta name="description" content="Bitmap">
+<meta name="keywords" content="Bitmap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片">
+<meta property="og:url" content="/2020/02/07/Android/控件/图片/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="Bitmap">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-07T14:12:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图片">
+<meta name="twitter:description" content="Bitmap">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ImageView"><span class="toc-text">ImageView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitmap"><span class="toc-text">Bitmap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图片加载"><span class="toc-text">图片加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#格式转换"><span class="toc-text">格式转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片拉伸"><span class="toc-text">图片拉伸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片比例缩放-质量压缩"><span class="toc-text">图片比例缩放 / 质量压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片裁剪"><span class="toc-text">图片裁剪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片旋转-偏移"><span class="toc-text">图片旋转 / 偏移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片识别"><span class="toc-text">图片识别</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Android/控件/图片" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">图片</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.02.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] photoBytes;  <span class="comment">// 二进制图片内存数据</span></span><br><span class="line">ImageView imageView =<span class="keyword">this</span>.findViewById(R.id.imageViewPhoto);</span><br><span class="line">Bitmap bitmap = BitmapFactory.decodeByteArray(photoBytes, <span class="number">0</span>, photoBytes.length);</span><br><span class="line">imageView.setImageBitmap(bitmap);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ImageLayout</span></span><br><span class="line">bmp = base64ToBitmap(strBase64);</span><br><span class="line">ImageView iv = <span class="keyword">new</span> ImageView(<span class="keyword">this</span>);</span><br><span class="line">iv.setImageBitmap(bmp);</span><br><span class="line">mImageLayout.addView(iv, <span class="keyword">new</span> LinearLayout.LayoutParams(<span class="number">300</span>, <span class="number">300</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bitmap"><a href="#Bitmap" class="headerlink" title="Bitmap"></a>Bitmap</h2><h3 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h3><ul>
+<li><code>implementation &#39;com.github.bumptech.glide:glide:4.10.0&#39;</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64 图片数据</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> Bitmap <span class="title">base64ToBitmap</span><span class="params">(String base64Data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = Base64Utils.decode(base64Data, Base64Utils.NO_WRAP);</span><br><span class="line">    <span class="keyword">return</span> BitmapFactory.decodeByteArray(bytes, <span class="number">0</span>, bytes.length);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 解析图片的旋转方向</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> path 图片的路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 旋转角度</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ROTATE0 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ROTATE90 = <span class="number">90</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ROTATE180 = <span class="number">180</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ROTATE270 = <span class="number">270</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">decodeImageDegree</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> degree = ROTATE0;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ExifInterface exifInterface = <span class="keyword">new</span> ExifInterface(path);</span><br><span class="line">        <span class="keyword">int</span> orientation =</span><br><span class="line">                exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,</span><br><span class="line">                        ExifInterface.ORIENTATION_NORMAL);</span><br><span class="line">        <span class="keyword">switch</span> (orientation) &#123;</span><br><span class="line">            <span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_90:</span><br><span class="line">                degree = ROTATE90;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_180:</span><br><span class="line">                degree = ROTATE180;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> ExifInterface.ORIENTATION_ROTATE_270:</span><br><span class="line">                degree = ROTATE270;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                degree = ROTATE0;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        degree = ROTATE0;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> degree;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">decodeImageDegree</span><span class="params">(<span class="keyword">byte</span>[] jpeg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> degree = ImageExif.getOrientation(jpeg);</span><br><span class="line">    <span class="keyword">return</span> degree;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 从文件中加载图片数据</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> path 图片的本地存储路径</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> Bitmap 图片数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">loadBitmapFromFile</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">    Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (path != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            bitmap = BitmapFactory.decodeFile(path);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (OutOfMemoryError e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bitmap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据从数据中读到的方向旋转图片</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> orientation 图片方向</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap      要旋转的bitmap</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 旋转后的图片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">rotateBitmap</span><span class="params">(<span class="keyword">float</span> orientation, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    Bitmap transformed;</span><br><span class="line">    Matrix m = <span class="keyword">new</span> Matrix();</span><br><span class="line">    <span class="keyword">if</span> (orientation == <span class="number">0</span>) &#123;</span><br><span class="line">        transformed = bitmap;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        m.setRotate(orientation);</span><br><span class="line">        transformed = Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, bitmap.getWidth(), bitmap.getHeight(), m, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> transformed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap  图片</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> quality 生成的JPG的质量</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> maxSize 最大边像素数</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> base64编码的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">bitmapToJpegBase64</span><span class="params">(Bitmap bitmap, <span class="keyword">int</span> quality, <span class="keyword">float</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">float</span> scale = maxSize / Math.max(bitmap.getWidth(), bitmap.getHeight());</span><br><span class="line">        <span class="keyword">if</span> (scale &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            bitmap = scale(bitmap, scale);</span><br><span class="line">        &#125;</span><br><span class="line">        ByteArrayOutputStream out = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        bitmap.compress(CompressFormat.JPEG, quality, out);</span><br><span class="line">        <span class="keyword">byte</span>[] data = out.toByteArray();</span><br><span class="line">        out.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Base64Utils.encodeToString(data, Base64Utils.NO_WRAP);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片拉伸"><a href="#图片拉伸" class="headerlink" title="图片拉伸"></a>图片拉伸</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 尺寸缩放</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap bitmap</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> w      width</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> h      height</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> scaleBitmap</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">scale</span><span class="params">(Bitmap bitmap, <span class="keyword">int</span> w, <span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (bitmap == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> width = bitmap.getWidth();</span><br><span class="line">    <span class="keyword">int</span> height = bitmap.getHeight();</span><br><span class="line">    Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">    <span class="keyword">float</span> scaleWidth = ((<span class="keyword">float</span>) w / width);</span><br><span class="line">    <span class="keyword">float</span> scaleHeight = ((<span class="keyword">float</span>) h / height);</span><br><span class="line">    matrix.postScale(scaleWidth, scaleHeight);</span><br><span class="line">    <span class="keyword">return</span> Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, width, height, matrix, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 等比压缩图片</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> resBitmap 原图</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> desWidth  压缩后图片的宽度</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> desHeight 压缩后图片的高度</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 压缩后的图片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">calculateInSampleSize</span><span class="params">(Bitmap resBitmap, <span class="keyword">int</span> desWidth, <span class="keyword">int</span> desHeight)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> resWidth = resBitmap.getWidth();</span><br><span class="line">    <span class="keyword">int</span> resHeight = resBitmap.getHeight();</span><br><span class="line">    <span class="keyword">if</span> (resHeight &gt; desHeight || resWidth &gt; desWidth) &#123;</span><br><span class="line">        <span class="comment">// 计算出实际宽高和目标宽高的比率</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> heightRatio = (<span class="keyword">float</span>) desHeight / (<span class="keyword">float</span>) resHeight;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> widthRatio = (<span class="keyword">float</span>) desWidth / (<span class="keyword">float</span>) resWidth;</span><br><span class="line">        <span class="keyword">float</span> scale = heightRatio &lt; widthRatio ? heightRatio : widthRatio;</span><br><span class="line">        <span class="keyword">return</span> scale(resBitmap, scale);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resBitmap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片比例缩放-质量压缩"><a href="#图片比例缩放-质量压缩" class="headerlink" title="图片比例缩放 / 质量压缩"></a>图片比例缩放 / 质量压缩</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 等比压缩图片</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap 原图</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> scale  压缩因子</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 压缩后的图片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Bitmap <span class="title">scale</span><span class="params">(Bitmap bitmap, <span class="keyword">float</span> scale)</span> </span>&#123;</span><br><span class="line">    Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">    matrix.postScale(scale, scale);</span><br><span class="line">    <span class="keyword">return</span> Bitmap.createBitmap(bitmap, <span class="number">0</span>, <span class="number">0</span>, bitmap.getWidth(), bitmap.getHeight(), matrix, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 质量压缩</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap 被压缩的图片</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> sizeLimit 大小限制</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 压缩后的图片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">compressBitmap</span><span class="params">(Bitmap bitmap, <span class="keyword">long</span> sizeLimit)</span> </span>&#123;</span><br><span class="line">    ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">    <span class="keyword">int</span> quality = <span class="number">100</span>;</span><br><span class="line">    bitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环判断压缩后图片是否超过限制大小</span></span><br><span class="line">    <span class="keyword">while</span>(baos.toByteArray().length / <span class="number">1024</span> &gt; sizeLimit) &#123;</span><br><span class="line">        <span class="comment">// 清空baos</span></span><br><span class="line">        baos.reset();</span><br><span class="line">        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, baos);</span><br><span class="line">        quality -= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Bitmap newBitmap = BitmapFactory.decodeStream(<span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray()), <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newBitmap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将色彩模式换成RGB_565也会比默认的ARGB8888降低一半质量</span></span><br><span class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">options.inPreferredConfig = Bitmap.Config.RGB_565;</span><br><span class="line">bm = BitmapFactory.decodeFile(filePath, options);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 质量压缩：百度</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap  图片</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> quality 生成的JPG的质量</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> maxSize 最大边像素数</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> base64编码的数据</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">bitmapToJpegBase64</span><span class="params">(Bitmap bitmap, <span class="keyword">int</span> quality, <span class="keyword">float</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">float</span> scale = maxSize / Math.max(bitmap.getWidth(), bitmap.getHeight());</span><br><span class="line">        <span class="keyword">if</span> (scale &lt; <span class="number">1</span>) &#123;</span><br><span class="line">            bitmap = scale(bitmap, scale);</span><br><span class="line">        &#125;</span><br><span class="line">        ByteArrayOutputStream out = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        bitmap.compress(CompressFormat.JPEG, quality, out);</span><br><span class="line">        <span class="keyword">byte</span>[] data = out.toByteArray();</span><br><span class="line">        out.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Base64Utils.encodeToString(data, Base64Utils.NO_WRAP);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片裁剪"><a href="#图片裁剪" class="headerlink" title="图片裁剪"></a>图片裁剪</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 裁剪</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> bitmap 原图</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 裁剪后的图像</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">cropBitmap</span><span class="params">(Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> w = bitmap.getWidth(); <span class="comment">// 得到图片的宽，高</span></span><br><span class="line">    <span class="keyword">int</span> h = bitmap.getHeight();</span><br><span class="line">    <span class="keyword">int</span> cropWidth = w &gt;= h ? h : w;<span class="comment">// 裁切后所取的正方形区域边长</span></span><br><span class="line">    cropWidth /= <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> cropHeight = (<span class="keyword">int</span>) (cropWidth / <span class="number">1.2</span>);</span><br><span class="line">    <span class="keyword">return</span> Bitmap.createBitmap(bitmap, w / <span class="number">3</span>, <span class="number">0</span>, cropWidth, cropHeight, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片旋转-偏移"><a href="#图片旋转-偏移" class="headerlink" title="图片旋转 / 偏移"></a>图片旋转 / 偏移</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 选择变换</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> origin 原图</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> alpha  旋转角度，可正可负</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 旋转后的图片</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">rotateBitmap</span><span class="params">(Bitmap origin, <span class="keyword">float</span> alpha)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (origin == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> width = origin.getWidth();</span><br><span class="line">    <span class="keyword">int</span> height = origin.getHeight();</span><br><span class="line">    Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">    matrix.setRotate(alpha);</span><br><span class="line">    <span class="comment">// 围绕原地进行旋转</span></span><br><span class="line">    Bitmap newBM = Bitmap.createBitmap(origin, <span class="number">0</span>, <span class="number">0</span>, width, height, matrix, <span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">if</span> (newBM.equals(origin)) &#123;</span><br><span class="line">        <span class="keyword">return</span> newBM;</span><br><span class="line">    &#125;</span><br><span class="line">    origin.recycle();</span><br><span class="line">    <span class="keyword">return</span> newBM;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 偏移效果</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> origin 原图</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> 偏移后的bitmap</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">skewBitmap</span><span class="params">(Bitmap origin)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (origin == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> width = origin.getWidth();</span><br><span class="line">    <span class="keyword">int</span> height = origin.getHeight();</span><br><span class="line">    Matrix matrix = <span class="keyword">new</span> Matrix();</span><br><span class="line">    matrix.postSkew(-<span class="number">0.6f</span>, -<span class="number">0.3f</span>);</span><br><span class="line">    Bitmap newBM = Bitmap.createBitmap(origin, <span class="number">0</span>, <span class="number">0</span>, width, height, matrix, <span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">if</span> (newBM.equals(origin)) &#123;</span><br><span class="line">        <span class="keyword">return</span> newBM;</span><br><span class="line">    &#125;</span><br><span class="line">    origin.recycle();</span><br><span class="line">    <span class="keyword">return</span> newBM;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图片识别"><a href="#图片识别" class="headerlink" title="图片识别"></a>图片识别</h2><ul>
+<li>二维码识别：<ul>
+<li><a href="https://github.com/zxing/zxing" target="_blank" rel="noopener">zxing</a><ul>
+<li><a href="https://github.com/ahuyangdong/QrCodeDemo4" target="_blank" rel="noopener">Demo扫码识别</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/bingoogolapple/BGAQRCode-Android" target="_blank" rel="noopener">BGAQRCode</a></li>
+</ul>
+</li>
+<li>身份证识别：<ul>
+<li><a href="https://github.com/fanqieVip/AndroidOcrLibs" target="_blank" rel="noopener">AndroidOcrLibs</a></li>
+<li><a href="https://github.com/XieZhiFa/IdCardOCR" target="_blank" rel="noopener">IdCardOCR</a></li>
+</ul>
+</li>
+<li>识别引擎<ul>
+<li><a href="https://github.com/rmtheis/tess-two" target="_blank" rel="noopener">tess-two</a></li>
+<li><a href="https://github.com/adaptech-cz/Tesseract4Android" target="_blank" rel="noopener">Tesseract4Android</a></li>
+<li><a href="https://github.com/465857721/IDCardOCR_China" target="_blank" rel="noopener">IDCardOCR_China-基于Tesseract</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/02/07/Android/控件/Activity/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2020/02/07/Android/控件/BitmapUtil/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>UPNP穿透 | 福</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="UPNP,">
+  
+
+  <meta name="description" content="UPNP">
+<meta name="keywords" content="UPNP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UPNP穿透">
+<meta property="og:url" content="/2019/09/12/VCNet/Socket/index.html">
+<meta property="og:site_name" content="福">
+<meta property="og:description" content="UPNP">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-12T10:14:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UPNP穿透">
+<meta name="twitter:description" content="UPNP">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.type = "*.*";
+      hm.src = "//hm.baidu.com/hm.js?5048b3f380c4bf50735798dde9c5f6a5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+		var bp = document.createElement('script');
+		bp.type = "*.*";
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Socket"><span class="toc-text">Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊参数"><span class="toc-text">特殊参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-NODELAY"><span class="toc-text">TCP_NODELAY</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-VCNet/Socket" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">UPNP穿透</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>福</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/VC/">VC</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Socket超时</span></span><br><span class="line"><span class="comment">// Windows 是 int</span></span><br><span class="line"><span class="keyword">int</span> timeo = <span class="number">5000</span>;</span><br><span class="line">setsockopt(m_so, SOL_SOCKET, SO_SNDTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">setsockopt(m_so, SOL_SOCKET, SO_RCVTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"><span class="comment">// Linux 是 struct timeval</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">timeo</span> = &#123;</span> <span class="number">0</span>, <span class="number">5000</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> i = setsockopt(m_so, SOL_SOCKET, SO_SNDTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(timeo));</span><br><span class="line">i = setsockopt(m_so, SOL_SOCKET, SO_RCVTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(timeo));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局初始化</span></span><br><span class="line">WORD wVersionRequested = MAKEWORD(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">WSADATA wsaData;</span><br><span class="line">WSAStartup(wVersionRequested, &amp;wsaData);</span><br><span class="line">m_so = SOCKET_ERROR;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端Demo</span></span><br><span class="line">BOOL CHidServer::Open()</span><br><span class="line">&#123;</span><br><span class="line">  Close();</span><br><span class="line">  <span class="function">CriticalSectionManager <span class="title">csm1</span><span class="params">(m_csSend)</span></span>;</span><br><span class="line">  <span class="function">CriticalSectionManager <span class="title">csm2</span><span class="params">(m_csRecv)</span></span>;</span><br><span class="line">  m_so = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (m_so == SOCKET_ERROR)</span><br><span class="line">  &#123;</span><br><span class="line">    LOG_HID_ERROR(TEXT(<span class="string">"Socket 创建失败"</span>));</span><br><span class="line">    Close();</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Windows 是int</span></span><br><span class="line">  <span class="keyword">int</span> timeo = <span class="number">5000</span>;</span><br><span class="line">  setsockopt(m_so, SOL_SOCKET, SO_SNDTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  setsockopt(m_so, SOL_SOCKET, SO_RCVTIMEO, (<span class="keyword">const</span> <span class="keyword">char</span>*)&amp;timeo, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">  SOCKADDR_IN addrServer;</span><br><span class="line">  InetPton(AF_INET, <span class="string">"127.0.0.1"</span>, (PVOID)&amp;addrServer.sin_addr.S_un.S_addr);</span><br><span class="line">  addrServer.sin_family = AF_INET;</span><br><span class="line">  addrServer.sin_port = htons(<span class="number">8080</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (connect(m_so, (SOCKADDR *)&amp;addrServer, <span class="keyword">sizeof</span>(addrServer)) == SOCKET_ERROR)</span><br><span class="line">  &#123;</span><br><span class="line">    Close();</span><br><span class="line">    LOG_HID_ERROR(TEXT(<span class="string">"Socket 连接解码器失败"</span>));</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">  &#125;</span><br><span class="line">  LOG_HID_DEBUG(TEXT(<span class="string">"Socket(TCP) 连接成功"</span>));</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line">BOOL CHidServer::IsOpen()</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">return</span> m_so != SOCKET_ERROR;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> CHidServer::Close()</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span> (m_so != SOCKET_ERROR)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function">CriticalSectionManager <span class="title">csm1</span><span class="params">(m_csSend)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (m_so != SOCKET_ERROR)</span><br><span class="line">    &#123;</span><br><span class="line">      shutdown(m_so, SD_BOTH);</span><br><span class="line">      closesocket(m_so);</span><br><span class="line">      m_so = SOCKET_ERROR;</span><br><span class="line">      LOG_HID_DEBUG(TEXT(<span class="string">"Socket(TCP) 链接关闭"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BOOL CHidServer::Send(<span class="keyword">char</span> *data, <span class="keyword">int</span> len)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="function">CriticalSectionManager <span class="title">csm</span><span class="params">(m_csSend)</span></span>;</span><br><span class="line">  <span class="keyword">int</span> res = send(m_so, data, len, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (res != len)</span><br><span class="line">  &#123;</span><br><span class="line">    LOG_HID_ERROR(TEXT(<span class="string">"socket发送数据到解码器失败"</span>));</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span>* CHidServer::Recv(<span class="keyword">int</span> &amp;len)</span><br><span class="line">&#123;</span><br><span class="line">  ZeroMemory(m_szData, <span class="keyword">sizeof</span>(m_szData));</span><br><span class="line">  <span class="function">CriticalSectionManager <span class="title">csm</span><span class="params">(m_csRecv)</span></span>;</span><br><span class="line">  len = recv(m_so, m_szData, <span class="keyword">sizeof</span>(m_szData), <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">if</span> (len &lt; <span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    LOG_HID_ERROR(TEXT(<span class="string">"recv异常"</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(len == <span class="number">0</span>)</span><br><span class="line">    LOG_HID_ERROR(TEXT(<span class="string">"recv空数据"</span>));</span><br><span class="line">  <span class="keyword">return</span> m_szData;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="特殊参数"><a href="#特殊参数" class="headerlink" title="特殊参数"></a>特殊参数</h2><h3 id="TCP-NODELAY"><a href="#TCP-NODELAY" class="headerlink" title="TCP_NODELAY"></a>TCP_NODELAY</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 默认开启</span></span><br><span class="line"><span class="keyword">int</span> enable = <span class="number">0</span>;</span><br><span class="line">setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (<span class="keyword">void</span>*)&amp;enable, <span class="keyword">sizeof</span>(enable));</span><br></pre></td></tr></table></figure>
+
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/07/VCTools/openssl/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/09/12/VCNet/UPNP/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
